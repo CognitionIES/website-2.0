@@ -1,7 +1,7 @@
 import React from "react";
 import { MapPin, Compass, Hammer, Settings } from "lucide-react";
 
-const capabilities = [
+const capabilities: Capability[] = [
   {
     id: 1,
     title: "Strategic Planning",
@@ -40,7 +40,21 @@ const capabilities = [
   },
 ];
 
-const CapabilityCard = ({ capability, index }) => {
+type Capability = {
+  id: number;
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  size: "large" | "medium";
+  position: "top-left" | "top-right" | "bottom-left" | "bottom-right";
+};
+
+interface CapabilityCardProps {
+  capability: Capability;
+  index: number;
+}
+
+const CapabilityCard: React.FC<CapabilityCardProps> = ({ capability }) => {
   const IconComponent = capability.icon;
 
   const getCardClasses = () => {

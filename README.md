@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Cognition IES Website
 
 **Built By:** [Shah Namra](https://github.com/shah-namra)
@@ -66,6 +65,3 @@ Through this project, I gained expertise in:
 - Creating scalable Next applications with modular architecture.
 - Developing responsive, accessible web interfaces.
 - Optimizing websites for performance and search engines.
-=======
-# website-2.0
->>>>>>> f5b53c21900db6ade4fb97e30ac28c02b2af147b

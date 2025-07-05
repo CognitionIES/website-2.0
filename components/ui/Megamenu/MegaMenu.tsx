@@ -9,27 +9,15 @@ import {
   ChevronDown,
   Menu,
   X,
-  Workflow,
-  Box,
-  Building2,
   Server,
   Users,
 } from "lucide-react";
-import { IconSettingsDollar } from "@tabler/icons-react";
-import { Printer, Layers, FileText, Truck } from "lucide-react";
-import { Cpu } from "lucide-react";
-import { Wrench, Factory } from "lucide-react";
+
 import Logo1 from "@/constants/images/navbar-logo.png";
 import { AnimatePresence, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faGears,
-  faPlugCircleBolt,
-  faMagnifyingGlassChart,
-  faBuildingShield,
-  faChartArea,
-  faGaugeHigh,
-  faBridge,
+ 
   faUsers,
   faCity,
 } from "@fortawesome/free-solid-svg-icons";
@@ -261,7 +249,7 @@ const dropdownVariants = {
     height: "auto",
     opacity: 1,
     y: 0,
-    transition: { duration: 0.3, ease: "easeOut" },
+    transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
   },
 };
 

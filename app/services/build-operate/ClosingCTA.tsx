@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight, Calendar } from "lucide-react";
+import Link from "next/link";
 
 const ClosingCTA = () => {
   return (
@@ -48,15 +49,16 @@ const ClosingCTA = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="group relative overflow-hidden px-8 py-4 bg-white text-[#003c46] rounded-xl font-semibold transition-all duration-300 hover:shadow-[0_8px_25px_-8px_rgba(255,255,255,0.3)] ">
-                <span className="relative z-10 flex items-center gap-2">
-                  <Calendar className="h-5 w-5" />
-                  Request a Consultation
-                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-white to-gray-50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </button>
-
+              <Link href="/contact">
+                <button className="group relative overflow-hidden px-8 py-4 bg-white text-[#003c46] rounded-xl font-semibold transition-all duration-300 hover:shadow-[0_8px_25px_-8px_rgba(255,255,255,0.3)] ">
+                  <span className="relative z-10 flex items-center gap-2">
+                    <Calendar className="h-5 w-5" />
+                    Request a Consultation
+                    <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white to-gray-50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                </button>
+              </Link>
               <button className="group flex items-center gap-3 px-8 py-4 text-white rounded-xl font-medium border border-white/20 hover:border-white/40 transition-all duration-300 hover:bg-white/10">
                 <div className="flex items-center justify-center w-2 h-2 bg-green-400 rounded-full">
                   <div className="w-full h-full bg-green-400 rounded-full animate-pulse" />

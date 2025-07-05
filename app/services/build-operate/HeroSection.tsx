@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight, Play, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -54,14 +55,16 @@ const HeroSection = () => {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="group relative overflow-hidden px-10 py-2 bg-[#0098af] text-white rounded-xl font-medium transition-all duration-700 hover:shadow-[0_20px_40px_-10px_rgba(0,152,175,0.4)] hover:-translate-y-2 ">
-                    <span className="relative z-10 flex items-center gap-2">
-                      Start Your Project
-                      <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                    </span>
+                    <Link href="/contact">
+                      <span className="relative z-10 flex items-center gap-2">
+                        Start Your Project
+                        <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-[#0098af] to-[#007c90] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                     <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     {/* Button glow */}
                     <div className="absolute inset-0 bg-gradient-to-r from-[#0098af] to-[#007c90] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg -z-10" />
+                    </Link>
                   </button>
 
                   <button className="group flex items-center gap-3 px-10 py-4 text-[#0098af] rounded-xl font-medium border border-[#0098af]/20 hover:border-[#0098af]/40 transition-all duration-700 hover:bg-[#0098af]/5 hover:-translate-y-1 backdrop-blur-sm bg-white/80">

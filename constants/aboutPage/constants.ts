@@ -1,27 +1,24 @@
-
 // Constants for the About page to keep content and assets modular and reusable
-import HeroImage from "@/constants/images/about/about-hero.jpg"
-import OurJourneyImage from "@/constants/images/about/about-our-journey.jpg"
-import flexScaleImage from "@/constants/images/about/flex-scale.jpg"
-import lifeCycleImage from "@/constants/images/about/lifecyle-mastery.jpg"
-import qualityCoreImage from "@/constants/images/about/quality-core.jpg"
-import coInnovativeImage from "@/constants/images/about/coinnovative.jpg"
-import missionVisionImage from "@/constants/images/about/missionvision.jpg"
-import statsImage from "@/constants/images/about/stats.jpg"
+import HeroImage from "@/constants/images/about/about-hero.jpg";
+import OurJourneyImage from "@/constants/images/about/about-our-journey.jpg";
+import flexScaleImage from "@/constants/images/about/flex-scale.jpg";
+import lifeCycleImage from "@/constants/images/about/lifecyle-mastery.jpg";
+import qualityCoreImage from "@/constants/images/about/quality-core.jpg";
+import coInnovativeImage from "@/constants/images/about/coinnovative.jpg";
+import missionVisionImage from "@/constants/images/about/missionvision.jpg";
+import statsImage from "@/constants/images/about/stats.jpg";
 export const ABOUT_CONSTANTS = {
   // Image URLs
   IMAGES: {
-    HERO_IMAGE: {HeroImage},
-    STORY_IMAGE:{OurJourneyImage},
-    MISSION_VISION_BG:
-    missionVisionImage,
+    HERO_IMAGE: { HeroImage },
+    STORY_IMAGE: { OurJourneyImage },
+    MISSION_VISION_BG: missionVisionImage,
     TECH_PATTERN: statsImage,
     KEY_VALUES: [
       coInnovativeImage,
       lifeCycleImage,
       qualityCoreImage,
       flexScaleImage,
-
     ],
   },
 

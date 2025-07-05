@@ -10,6 +10,7 @@ import {
   Timer,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const processSteps = [
   {
@@ -80,7 +81,12 @@ interface ProcessStepProps {
   index: number;
 }
 
-const ProcessStep = ({ step, isReverse = false, isCenter = false, index }: ProcessStepProps) => {
+const ProcessStep = ({
+  step,
+  isReverse = false,
+  isCenter = false,
+  index,
+}: ProcessStepProps) => {
   const stepRef = useRef(null);
   const IconComponent = step.icon;
 
@@ -164,7 +170,7 @@ const ProcessStep = ({ step, isReverse = false, isCenter = false, index }: Proce
                 src={step.image}
                 alt={step.imageAlt}
                 width={800}
-              height={600}
+                height={600}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -392,15 +398,16 @@ const ProcessOverviewMinimal = () => {
               </h3>
 
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Let&apos;s discuss your project and create a roadmap for success.
+                Let&apos;s discuss your project and create a roadmap for
+                success.
               </p>
             </div>
-
-            <button className="group inline-flex items-center gap-4 px-12 py-4 bg-gradient-to-br from-[hsl(184,100%,14%)] to-[hsl(184,60%,35%)] text-white rounded-2xl shadow-[0_0_60px_hsl(184,60%,35%,0.3)] hover:shadow-[0_25px_50px_-12px_hsl(184,100%,14%,0.25)] transition-all duration-500 hover:-translate-y-2 hover:scale-105">
-              <span className="text-lg font-medium">Start Your Project</span>
-              <ArrowRight className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-2" />
-            </button>
-
+            <Link href="/contact">
+              <button className="group inline-flex items-center gap-4 px-12 py-4 bg-gradient-to-br from-[hsl(184,100%,14%)] to-[hsl(184,60%,35%)] text-white rounded-2xl shadow-[0_0_60px_hsl(184,60%,35%,0.3)] hover:shadow-[0_25px_50px_-12px_hsl(184,100%,14%,0.25)] transition-all duration-500 hover:-translate-y-2 hover:scale-105">
+                <span className="text-lg font-medium">Start Your Project</span>
+                <ArrowRight className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-2" />
+              </button>
+            </Link>
             {/* Trust indicators */}
             <div className="flex items-center justify-center gap-12 pt-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-3">

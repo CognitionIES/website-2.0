@@ -167,7 +167,7 @@ export default function UsefulLinks() {
         </div>
 
         {/* Column 2: Services */}
-        <div >
+        <div>
           <h3 className="text-xl sm:text-2xl mb-1 sm:mb-2">Services</h3>
           {!isMobile && (
             <Line
@@ -180,12 +180,12 @@ export default function UsefulLinks() {
           <ul className="space-y-1 sm:space-y-2 text-[#E6F0F5]/70 text-xs sm:text-sm">
             <li>
               <Link
-                href="/services/product-engineering"
+                href="/services/staffing-recruitment"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#0098AF] flex items-center"
               >
-                Product Engineering
+                Staffing & Recruitment
                 <svg
                   className="w-3 sm:w-4 h-3 sm:h-4 ml-1"
                   fill="none"
@@ -203,12 +203,12 @@ export default function UsefulLinks() {
             </li>
             <li>
               <Link
-                href="/services/plant-engineering"
+                href="/services/build-operate"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#0098AF] flex items-center"
               >
-                Plant Engineering
+                Build & Operate
                 <svg
                   className="w-3 sm:w-4 h-3 sm:h-4 ml-1"
                   fill="none"
@@ -232,29 +232,6 @@ export default function UsefulLinks() {
                 className="hover:text-[#0098AF] flex items-center"
               >
                 SaaS Solutions
-                <svg
-                  className="w-3 sm:w-4 h-3 sm:h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/services/staffing-recruitment"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#0098AF] flex items-center"
-              >
-                Staffing & Recruitment
                 <svg
                   className="w-3 sm:w-4 h-3 sm:h-4 ml-1"
                   fill="none"

@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import objectiveImage from "@/constants/images/projects/digitalization/objective.jpg";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export default function Objective() {
   const [isInView, setIsInView] = useState(false);
@@ -32,7 +32,7 @@ export default function Objective() {
       }
     };
   }, []);
-  const contentVariants = {
+  const contentVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
@@ -57,55 +57,54 @@ export default function Objective() {
               animate={isInView ? "visible" : "hidden"}
               className="items-center"
             >
-                {/* Mobile version */}
-                <div className="md:hidden rounded-xl shadow-md overflow-hidden ">
-                  <div className="relative h-[200px]">
-                    <Image
-                      src={objectiveImage}
-                      alt="Engineering services"
-                      
-                      className="w-[450px] h-[200px] "
-                    />
-                  </div>
-                  <div className="bg-[#003C46] p-4">
-                    <h3 className="text-xl font-semibold uppercase text-white mb-2">
-                      🎯 Objective
-                    </h3>
-                    <p className="text-white/90 text-sm">
-                      To transform a traditionally operated manufacturing plant
-                      into a data-driven, smart facility by implementing
-                      advanced digital tools, real-time monitoring, and process
-                      optimization systems.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Desktop version */}
-                <div className="relative hidden md:block h-[350px] rounded-xl shadow-md overflow-hidden">
+              {/* Mobile version */}
+              <div className="md:hidden rounded-xl shadow-md overflow-hidden ">
+                <div className="relative h-[200px]">
                   <Image
                     src={objectiveImage}
                     alt="Engineering services"
-                    fill
-                    className="object-cover"
+                    className="w-[450px] h-[200px] "
                   />
-                  {/* Overlay text on top of the image */}
-                  <div className="absolute inset-0 bg-black/40 flex flex-col p-6">
-                    <div className="w-full flex justify-end">
-                      <div className="w-[58%]">
-                        <h3 className="text-3xl font-semibold uppercase text-white mb-2">
-                          🎯 Objective
-                        </h3>
-                        <p className="text-white/90 text-lg ">
-                          To transform a traditionally operated manufacturing
-                          plant into a data-driven, smart facility by
-                          implementing advanced digital tools, real-time
-                          monitoring, and process optimization systems.
-                        </p>
-                      </div>
+                </div>
+                <div className="bg-[#003C46] p-4">
+                  <h3 className="text-xl font-semibold uppercase text-white mb-2">
+                    🎯 Objective
+                  </h3>
+                  <p className="text-white/90 text-sm">
+                    To transform a traditionally operated manufacturing plant
+                    into a data-driven, smart facility by implementing advanced
+                    digital tools, real-time monitoring, and process
+                    optimization systems.
+                  </p>
+                </div>
+              </div>
+
+              {/* Desktop version */}
+              <div className="relative hidden md:block h-[350px] rounded-xl shadow-md overflow-hidden">
+                <Image
+                  src={objectiveImage}
+                  alt="Engineering services"
+                  fill
+                  className="object-cover"
+                />
+                {/* Overlay text on top of the image */}
+                <div className="absolute inset-0 bg-black/40 flex flex-col p-6">
+                  <div className="w-full flex justify-end">
+                    <div className="w-[58%]">
+                      <h3 className="text-3xl font-semibold uppercase text-white mb-2">
+                        🎯 Objective
+                      </h3>
+                      <p className="text-white/90 text-lg ">
+                        To transform a traditionally operated manufacturing
+                        plant into a data-driven, smart facility by implementing
+                        advanced digital tools, real-time monitoring, and
+                        process optimization systems.
+                      </p>
                     </div>
                   </div>
                 </div>
-         
+              </div>
+
               <div className="absolute top-12 left-8 w-12 h-12 border-t border-l border-[#0098AF]/10" />
             </motion.div>
           </div>

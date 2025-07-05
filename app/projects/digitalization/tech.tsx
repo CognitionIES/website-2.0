@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile"; // Assuming this hook exists
 
 export default function Tech() {
@@ -57,7 +57,7 @@ export default function Tech() {
   }, [isInView, isMobile]);
 
   // Animation variants
-  const sectionVariants = {
+  const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
@@ -69,7 +69,7 @@ export default function Tech() {
     },
   };
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
       opacity: 1,
@@ -82,7 +82,7 @@ export default function Tech() {
     }),
   };
 
-  const mobileItemVariants = {
+  const mobileItemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: (index: number) => ({
       opacity: 1,

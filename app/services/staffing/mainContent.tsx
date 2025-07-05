@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import aboutImage1 from "@/constants/images/staffing-recruitment/about-2.jpg";
@@ -51,7 +51,7 @@ export default function AboutSection() {
   }, []);
 
   // Animation variants for fade-in and fade-out
-  const contentVariants = {
+  const contentVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,

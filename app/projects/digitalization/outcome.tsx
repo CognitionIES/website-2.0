@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import outcomeImage from "@/constants/images/projects/digitalization/outcome.jpg";
 import Image from "next/image";
 import { useIsMobile } from "@/hooks/use-mobile"; // Assuming this hook exists
@@ -12,7 +13,7 @@ export default function Outcome() {
   const imageRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const  isMobile  = useIsMobile(); // Get isMobile from hook
+  const isMobile = useIsMobile(); // Get isMobile from hook
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -67,19 +68,20 @@ export default function Outcome() {
   }, [isInView, isMobile]);
 
   // Animation variants
-  const sectionVariants = {
+
+  const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.8,
-        ease: ["easeOut"],
+        ease: "easeOut", // Changed from ["easeOut"] to "easeOut"
       },
     },
   };
 
-  const titleVariants = {
+  const titleVariants: Variants = {
     hidden: { opacity: 0, x: -20 },
     visible: {
       opacity: 1,
@@ -91,7 +93,7 @@ export default function Outcome() {
     },
   };
 
-  const mobileItemVariants = {
+  const mobileItemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: (index: number) => ({
       opacity: 1,
@@ -99,23 +101,22 @@ export default function Outcome() {
       transition: {
         delay: 0.1 * index,
         duration: 0.5,
-        ease: ["easeOut"],
+        ease: "easeOut", // Changed from ["easeOut"] to "easeOut"
       },
     }),
   };
 
-  const mobileTableRowVariants = {
+  const mobileTableRowVariants: Variants = {
     hidden: { opacity: 0 },
     visible: (index: number) => ({
       opacity: 1,
       transition: {
         delay: 0.2 * index + 0.5,
         duration: 0.5,
-        ease: ["easeOut"],
+        ease: "easeOut", // Changed from ["easeOut"] to "easeOut"
       },
     }),
   };
-
   // Common data
   const outcomes = [
     {

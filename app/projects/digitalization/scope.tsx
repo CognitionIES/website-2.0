@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile"; // Assuming this hook exists
 
 export default function Scope() {
@@ -46,19 +46,20 @@ export default function Scope() {
     }
   }, [isInView, isMobile]);
 
-  const sectionVariants = {
+
+  const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.8,
-        ease: ["easeOut"],
+        ease: "easeOut", 
       },
     },
   };
 
-  const mobileItemVariants = {
+  const mobileItemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: (index: number) => ({
       opacity: 1,
@@ -66,11 +67,10 @@ export default function Scope() {
       transition: {
         delay: 0.1 * index,
         duration: 0.5,
-        ease: ["easeOut"],
+        ease: "easeOut", 
       },
     }),
   };
-
   // Common data for both desktop and mobile
   const scopeItems = [
     {

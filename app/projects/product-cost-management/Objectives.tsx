@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import objectiveImage from "@/constants/images/projects/pcm/objective.jpg";
@@ -34,7 +35,7 @@ export default function Objectives() {
     };
   }, []);
 
-  const contentVariants = {
+  const contentVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
@@ -46,7 +47,7 @@ export default function Objectives() {
     },
   };
 
-  const mobileItemVariants = {
+  const mobileItemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: (index: number) => ({
       opacity: 1,

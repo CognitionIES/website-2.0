@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
- 
+
 "use client";
 
 import Footer from "@/components/footer";
 import { MegaMenu } from "@/components/ui/Megamenu/MegaMenu";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -38,15 +38,17 @@ const PrivacyPolicy = () => {
     };
   }, []);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeInOut" },
+      transition: {
+        duration: 0.6,
+        ease: "easeInOut",
+      },
     },
   };
-
   return (
     <div className="bg-[#E6F0F5]/40 min-h-screen">
       <MegaMenu />

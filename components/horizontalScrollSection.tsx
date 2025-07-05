@@ -1,7 +1,7 @@
 "use client";
 
 import React, { forwardRef, useState, useEffect, useRef } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import BulletPointGray from "@/constants/images/Bullet_Points/gray.png";
@@ -71,7 +71,7 @@ export const HorizontalScrollSection = forwardRef<
     }, [bulletPoints, expandedGroups]); // Recompute height when expanded state changes
 
     // Animation variants
-    const containerVariants = {
+    const containerVariants: Variants = {
       hidden: { opacity: 0, x: 30 },
       visible: {
         opacity: 1,
@@ -80,7 +80,7 @@ export const HorizontalScrollSection = forwardRef<
       },
     };
 
-    const itemVariants = {
+    const itemVariants: Variants = {
       hidden: { opacity: 0, x: 30 },
       visible: {
         opacity: 1,
@@ -89,7 +89,7 @@ export const HorizontalScrollSection = forwardRef<
       },
     };
 
-    const imageVariants = {
+    const imageVariants: Variants = {
       hidden: { opacity: 0, x: 30 },
       visible: {
         opacity: 1,
@@ -102,7 +102,7 @@ export const HorizontalScrollSection = forwardRef<
       },
     };
 
-    const columnVariants = {
+    const columnVariants: Variants = {
       hidden: { opacity: 0, x: 15 },
       visible: (i: number) => ({
         opacity: 1,
@@ -115,7 +115,7 @@ export const HorizontalScrollSection = forwardRef<
       }),
     };
 
-    const bulletVariants = {
+    const bulletVariants: Variants = {
       rest: { x: 0, color: "#6B7280" },
       hover: {
         x: shouldReduceMotion ? 0 : 5,
@@ -124,10 +124,17 @@ export const HorizontalScrollSection = forwardRef<
       },
     };
 
-    const expandVariants = {
-      collapsed: { height: 0, opacity: 0 },
-      expanded: { height: "auto", opacity: 1 },
-      transition: { duration: shouldReduceMotion ? 0 : 0.3, ease: "easeInOut" },
+    const expandVariants: Variants = {
+      collapsed: {
+        height: 0,
+        opacity: 0,
+        transition: { duration: shouldReduceMotion ? 0 : 0.3, ease: "easeInOut" },
+      },
+      expanded: {
+        height: "auto",
+        opacity: 1,
+        transition: { duration: shouldReduceMotion ? 0 : 0.3, ease: "easeInOut" },
+      },
     };
 
     const setRefs = (node: HTMLDivElement) => {

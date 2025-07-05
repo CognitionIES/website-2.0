@@ -7,7 +7,7 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { CheckCircle, TrendingUp, Award, Target, BarChart } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile"; // Assuming this hook exists
 
@@ -48,7 +48,7 @@ const SummaryGains = () => {
   ];
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -58,7 +58,7 @@ const SummaryGains = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
@@ -71,7 +71,7 @@ const SummaryGains = () => {
     },
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,

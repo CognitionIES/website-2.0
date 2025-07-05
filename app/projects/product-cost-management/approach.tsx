@@ -4,7 +4,7 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import approachImage from "@/constants/images/projects/pcm/pcm-approach.jpg";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile"; // Assuming this hook exists
 
 const ProjectApproach = () => {
@@ -35,7 +35,7 @@ const ProjectApproach = () => {
   }, []);
 
   // Animation variants for fade-in and fade-out
-  const contentVariants = {
+  const contentVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
@@ -47,7 +47,7 @@ const ProjectApproach = () => {
     },
   };
 
-  const mobileItemVariants = {
+  const mobileItemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: (index: number) => ({
       opacity: 1,

@@ -19,7 +19,7 @@ import {
 import Image from "next/image";
 import { MegaMenu } from "@/components/ui/Megamenu/MegaMenu";
 import Footer from "@/components/footer";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -204,7 +204,7 @@ const Employers = () => {
   }, []);
 
   // Animation variants for fade-in and slide-up
-  const contentVariants = {
+  const contentVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Search, MapPin } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 type Job = {
   id: string;
@@ -88,7 +88,7 @@ export default function JobsSection() {
     return searchMatch && locationMatch;
   });
 
-  const searchContainerVariants = {
+  const searchContainerVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,

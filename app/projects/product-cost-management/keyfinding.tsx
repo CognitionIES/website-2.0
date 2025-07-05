@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import keyImage from "@/constants/images/bg/key.jpg";
 import deliverablesImage from "@/constants/images/bg/deliverables.jpg";
@@ -59,7 +59,7 @@ const PCMKeyFindings = () => {
   }, []);
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
@@ -72,7 +72,7 @@ const PCMKeyFindings = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0, scale: 0.95 },
     visible: {
       y: 0,
@@ -87,7 +87,7 @@ const PCMKeyFindings = () => {
     },
   };
 
-  const decorativeVariants = {
+  const decorativeVariants: Variants = {
     hidden: { opacity: 0, scale: 0 },
     visible: {
       opacity: 0.7,

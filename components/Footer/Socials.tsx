@@ -8,7 +8,7 @@ import { FOOTER_CONSTANTS } from "@/constants/footer/constants";
 
 export default function Socials() {
   const { TITLE, ITEMS } = FOOTER_CONSTANTS.SOCIALS;
-  const { FADE_IN, SCALE_HOVER } = FOOTER_CONSTANTS.ANIMATIONS;
+  const { FADE_IN } = FOOTER_CONSTANTS.ANIMATIONS;
 
   return (
     <motion.div variants={FADE_IN} className="col-span-12 md:col-span-2">
@@ -21,7 +21,6 @@ export default function Socials() {
         {ITEMS.map(([title, href]) => (
           <motion.li
             key={title}
-            variants={SCALE_HOVER}
             initial="rest"
             whileHover="hover"
             className="relative"

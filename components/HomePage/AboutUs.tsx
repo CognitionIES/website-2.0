@@ -2,7 +2,7 @@
 import { ABOUT_CONSTANTS } from "@/constants/home/about";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { motion, useInView, useAnimation, Variants } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const AboutUs = () => {
@@ -38,7 +38,7 @@ const AboutUs = () => {
     },
   };
 
-  const imageVariants = {
+  const imageVariants: Variants = {
     hidden: { opacity: 0, x: 50 },
     visible: {
       opacity: 1,
@@ -47,7 +47,7 @@ const AboutUs = () => {
     },
   };
 
-  const circleVariants = {
+  const circleVariants: Variants = {
     hidden: { scale: 0.8, opacity: 0 },
     visible: {
       scale: 1,

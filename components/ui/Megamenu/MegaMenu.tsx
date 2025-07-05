@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 import Logo1 from "@/constants/images/navbar-logo.png";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
  
@@ -233,7 +233,7 @@ const arrowVariants = {
   open: { rotate: 180 },
 };
 
-const mobileMenuVariants = {
+const mobileMenuVariants: Variants = {
   closed: { height: 0, opacity: 0, y: -20 },
   open: {
     height: "auto",
@@ -243,7 +243,7 @@ const mobileMenuVariants = {
   },
 };
 
-const dropdownVariants = {
+const dropdownVariants: Variants = {
   closed: { height: 0, opacity: 0, y: -10 },
   open: {
     height: "auto",

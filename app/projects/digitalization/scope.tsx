@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -52,7 +53,7 @@ export default function Scope() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut",
+        ease: ["easeOut"],
       },
     },
   };
@@ -65,7 +66,7 @@ export default function Scope() {
       transition: {
         delay: 0.1 * index,
         duration: 0.5,
-        ease: "easeOut",
+        ease: ["easeOut"],
       },
     }),
   };

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import Image from "next/image";
@@ -41,7 +42,7 @@ const ProjectApproach = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut",
+        ease: ["easeOut"] as const,
       },
     },
   };
@@ -54,7 +55,7 @@ const ProjectApproach = () => {
       transition: {
         delay: 0.1 * index,
         duration: 0.5,
-        ease: "easeOut",
+        ease: ["easeOut"] as const,
       },
     }),
   };

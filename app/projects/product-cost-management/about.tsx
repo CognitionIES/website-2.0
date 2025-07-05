@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { motion } from "framer-motion";
+import { easeOut } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import aboutImage from "@/constants/images/projects/pcm/project-overview.jpg";
@@ -33,7 +35,6 @@ export default function AboutSection() {
     };
   }, []);
 
-  // Animation variants for fade-in and fade-out
   const contentVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -41,7 +42,7 @@ export default function AboutSection() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };

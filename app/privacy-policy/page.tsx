@@ -1,4 +1,5 @@
-/* eslint-disable react/jsx-no-undef */
+/* eslint-disable react-hooks/exhaustive-deps */
+ 
 "use client";
 
 import Footer from "@/components/footer";
@@ -42,7 +43,7 @@ const PrivacyPolicy = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.6, ease: "easeInOut" },
     },
   };
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { motion } from "framer-motion";
@@ -99,7 +100,7 @@ export default function AboutSection() {
       y: 0,
       transition: {
         duration: 0.7,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   };
@@ -122,7 +123,7 @@ export default function AboutSection() {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   };

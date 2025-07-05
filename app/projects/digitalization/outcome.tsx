@@ -74,7 +74,7 @@ export default function Outcome() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut",
+        ease: ["easeOut"],
       },
     },
   };
@@ -99,7 +99,7 @@ export default function Outcome() {
       transition: {
         delay: 0.1 * index,
         duration: 0.5,
-        ease: "easeOut",
+        ease: ["easeOut"],
       },
     }),
   };
@@ -111,7 +111,7 @@ export default function Outcome() {
       transition: {
         delay: 0.2 * index + 0.5,
         duration: 0.5,
-        ease: "easeOut",
+        ease: ["easeOut"],
       },
     }),
   };

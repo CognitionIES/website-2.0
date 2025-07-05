@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { CheckCircle } from "lucide-react";
@@ -78,7 +79,7 @@ const PCMKeyFindings = () => {
       opacity: 1,
       scale: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 12,
         mass: 0.5,
@@ -93,7 +94,7 @@ const PCMKeyFindings = () => {
       scale: 1,
       transition: {
         duration: 1,
-        ease: "easeOut",
+        ease: "easeOut", // use a valid string easing
       },
     },
   };

@@ -73,11 +73,12 @@ function Hero() {
                 <p className="text-xs font-light leading-relaxed text-gray-100 drop-shadow-md">
                   {slide.description}
                 </p>
+                
               </div>
             </div>
           ) : (
             <div className="absolute bottom-8 right-8 flex items-end justify-end z-10">
-              <div className="text-right text-white px-4 sm:px-6 max-w-7xl">
+              <div className="text-right text-white px-4 sm:px-6 max-w-5xl">
                 <span className="inline-block py-1.5 px-4 bg-white/15 backdrop-blur-sm text-white text-xs uppercase tracking-widest font-semibold rounded-full border border-white/10 animate-slide-right shadow-lg">
                   {slide.majorService}
                 </span>
@@ -170,7 +171,9 @@ function Hero() {
 }
 
 export default Hero;
+// Write an excellent blog or article about closures in javascript, explaining the concept, how it works, and providing examples
 
+// What is async await in JavaScript?
 /*import { useEffect, useState, useRef } from "react";
 import { heroSlides } from "@/constants/hero";
 import { ChevronLeft, ChevronRight } from "lucide-react";

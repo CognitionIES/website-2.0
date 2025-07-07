@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight, Play, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 const HeroSection = () => {
@@ -68,9 +68,6 @@ const HeroSection = () => {
                   </button>
 
                   <button className="group flex items-center gap-3 px-10 py-4 text-[#0098af] rounded-xl font-medium border border-[#0098af]/20 hover:border-[#0098af]/40 transition-all duration-700 hover:bg-[#0098af]/5 hover:-translate-y-1 backdrop-blur-sm bg-white/80">
-                    <div className="flex items-center justify-center w-10 h-10 bg-[#0098af]/10 rounded-full group-hover:bg-[#0098af]/20 transition-colors duration-300">
-                      <Play className="h-4 w-4 fill-current" />
-                    </div>
                     View Our Process
                     <ArrowUpRight className="h-4 w-4 text-slate-400 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[#0098af]" />
                   </button>

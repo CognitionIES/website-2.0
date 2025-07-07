@@ -24,12 +24,12 @@ export default function Home() {
     <div>
       <MegaMenu />
       <Hero />
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-[#F5FDFF] text-gray-900 font-sans relative">
+      <div className="min-h-screen  text-gray-900 font-sans relative">
         <main className="relative">
           <section className="bg-gradient-to-b from-gray-50 to-[#F5FDFF]">
             <AboutUs />
           </section>
-          <section>
+          <section className="bg-gradient-to-b from-gray-50 to-[#F5FDFF]">
             <ServicesShowcase />
           </section>
           <section className="bg-gradient-to-b from-gray-50 to-[#F5FDFF]">

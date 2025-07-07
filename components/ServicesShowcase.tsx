@@ -138,8 +138,8 @@ const ServicesShowcase = () => {
   const [activeService, setActiveService] = useState<number | null>(null);
 
   return (
-    <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-[#F5FDFF] relative">
-      <div className="container mx-auto px-4">
+    <section className="py-24  relative">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 px-4">
         {/* Minimal header */}
         <div className="mb-12">
           <div className="">

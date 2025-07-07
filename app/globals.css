@@ -116,3 +116,6 @@ body {
     @apply text-lg text-[#5b5b5b] mb-12 max-w-2xl mx-auto;
   }
 }
+.subCategoryLink {
+  @apply text-base font-normal tracking-wide leading-snug;
+}

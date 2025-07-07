@@ -21,31 +21,31 @@ export interface HeroSlide {
 export const heroSlides: HeroSlide[] = [
   {
     id: 1,
-    title: "The Right People for the Right Roles",
-    subtitle: "Connecting Talent with Opportunity",
+    title: "Empowering Teams, Elevating Success",
+    subtitle: "The Right People for the Right Roles",
     majorService: "Staffing & Recruitment",
     description:
-      "Helping businesses build high-performing teams by sourcing top talent through strategic recruitment and staffing solutions.",
+      "We connect exceptional talent with forward-thinking businesses, delivering tailored recruitment & staffing solutions that build strong, high-performing teams.",
     image: recruitmentImage,
     mobileImage: recruit2,
   },
   {
     id: 2,
-    title: "Building and Operating for Sustained Excellence",
-    subtitle: "End-to-End Solutions from Inception to Operation",
+    title: "Build and Operate ",
+    subtitle: "End-to-End Solutions for Sustainable Growth",
     majorService: "Build & Operate",
     description:
-      "We design, build, and operate technology platforms and infrastructure that drive long-term value. From development to day-to-day management, we deliver reliability, scalability, and continuous improvement.",
+      "From concept to daily operations, we design, build, & manage robust technology platforms & infrastructure that drive reliability, scalability, & long-term value.",
     image: processImage,
     mobileImage: process2,
   },
   {
     id: 3,
-    title: "Powering Businesses with SaaS Innovation",
-    subtitle: "Scalable Software for a Digital World",
+    title: "Accelerate Growth with Smart SaaS",
+    subtitle: "Scalable Software for a Digital Future",
     majorService: "SaaS Solutions",
     description:
-      "Delivering cloud-based, scalable, and secure software solutions that streamline operations, enhance efficiency, and drive growth.",
+      "We deliver secure, cloud-based applications that streamline processes, improve efficiency, and empower your business to thrive in a rapidly evolving digital landscape.",
     image: saasImage,
     mobileImage: saas2,
   },

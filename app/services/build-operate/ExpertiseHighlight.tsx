@@ -25,7 +25,7 @@ const ExpertiseHighlight = () => {
                 </span>
               </h2>
 
-              <div className="mb-8">
+              <div className="mb-8 text-justify flex flex-col  mr-32">
                 <p className="text-xl text-slate-600 leading-relaxed mb-6">
                   We successfully assembled and managed a dedicated team of 30+
                   professionals for a global client—proving our ability to scale

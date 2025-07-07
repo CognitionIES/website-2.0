@@ -27,9 +27,6 @@ export const FOOTER_CONSTANTS = {
     TITLE: "Services",
     ITEMS: [
       ["Product-Engineering", "/services/product-engineering"],
-      // ["Facebook", "https://facebook.com/cognition-ies"],
-      // ["Instagram", "https://instagram.com/cognition-ies"],
-      // ["Twitter", "https://twitter.com/cognition-ies"],
     ],
   },
 

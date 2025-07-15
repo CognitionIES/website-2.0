@@ -5,7 +5,9 @@ const ExpertiseHighlight = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <section className="py-24 relative overflow-hidden">
-        {/* Background elements */}
+        {/* Background elements 
+            Develop a visually appealing navbar for our company's website the theme of the logo is #0098af and #5b5b5b, make it responsive and include a logo 5 navbar options Home, Services with a dropdown, Projects, Careers, ContactUs and lastly a button that says Contact. and at the extreme end there should be a a button that says FAQ, Keep the navbar simple elegant with glass like effect, heres the code what i have wrote till now  
+        */}
         <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50/30 to-white" />
         <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-[#003c46]/4 to-transparent rounded-full blur-3xl" />
 

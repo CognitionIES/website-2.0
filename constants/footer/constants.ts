@@ -7,7 +7,7 @@ export const FOOTER_CONSTANTS = {
   COMPANY: {
     NAME: "COGNITION IES",
     DESCRIPTION:
-      "At Cognition IES Pvt. Ltd., we are shaping the future of engineering with a commitment to precision, innovation, and client-focused solutions. Established in 2023, our company is dedicated to providing advanced engineering services tailored to the unique demands of process and product industries, delivering wow-worthy results.",
+      "At Cognition IES Pvt. Ltd., we specialize in delivering high-performance engineering and IT talent to meet the evolving needs of today’s industrial and digital enterprises.",
     iamge: logo,
   },
 
@@ -25,9 +25,7 @@ export const FOOTER_CONSTANTS = {
   // Socials
   SOCIALS: {
     TITLE: "Services",
-    ITEMS: [
-      ["Product-Engineering", "/services/product-engineering"],
-    ],
+    ITEMS: [["Product-Engineering", "/services/product-engineering"]],
   },
 
   // Contact Us

@@ -22,7 +22,7 @@ const services = [
     id: "02",
     title: "Build & Operate",
     description:
-      "Scale confidently with dedicated teams built for you. We handle setup, operations, and delivery, so you stay focused on outcomes.",
+      "We don’t just recruit—we take ownership. From team building to full-scale operations management, we ensure performance, compliance, and scalability without overloading your internal teams.",
     image: plantImage,
     href: "/services/build-operate",
     icon: Factory,
@@ -58,7 +58,7 @@ const ServiceCard = ({ service, index, onHover }: ServiceCardProps) => {
       onMouseLeave={() => onHover(null)}
     >
       {/* Enhanced main card with premium details */}
-      <div className="relative overflow-hidden rounded-2xl bg-white/95 backdrop-blur-sm border border-slate-200/60 shadow-[0_10px_30px_-5px_rgba(91,91,91,0.15)] transition-all duration-500 hover:shadow-[0_25px_50px_-12px_rgba(0,152,175,0.25)] hover:-translate-y-3 hover:border-[#0098af]/20">
+      <div className="relative overflow-hidden rounded-2xl bg-white/95 backdrop-blur-sm border border-slate-200/60 transition-all duration-500  hover:-translate-y-3 hover:border-[#0098af]/20">
         {/* Inner shadow for inset feel */}
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/50 to-transparent pointer-events-none" />
 

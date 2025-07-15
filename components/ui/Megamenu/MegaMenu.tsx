@@ -108,7 +108,10 @@ export function MegaMenu() {
   };
   const arrowVariants: Variants = {
     initial: { rotate: 0 },
-    "group-hover": { rotate: -45, transition: { duration: 0.2, ease: "easeOut" } },
+    "group-hover": {
+      rotate: -45,
+      transition: { duration: 0.2, ease: "easeOut" },
+    },
   };
 
   return (

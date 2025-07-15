@@ -82,7 +82,7 @@ const AboutUs = () => {
         <div className="absolute w-full h-full bg-dot-pattern bg-[length:20px_20px] opacity-[0.02]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8">
         <motion.h2
           className={`text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#003C46] ${
             isMobile ? "text-center" : "text-justify"
@@ -105,7 +105,7 @@ const AboutUs = () => {
         <div className="grid grid-cols-1 mt-8 md:grid-cols-[1fr_auto] items-start gap-10 md:gap-8 max-w-7xl mx-auto">
           {/* Text content */}
           <motion.div
-            className="order-2 md:order-1"
+            className="order-2 mt-4 md:order-1"
             variants={containerVariants}
             initial="hidden"
             animate={controls}

@@ -60,10 +60,10 @@ const HeroSection = () => {
                         Start Your Project
                         <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                       </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#0098af] to-[#007c90] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                    {/* Button glow */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#0098af] to-[#007c90] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg -z-10" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#0098af] to-[#007c90] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                      {/* Button glow */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#0098af] to-[#007c90] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg -z-10" />
                     </Link>
                   </button>
 

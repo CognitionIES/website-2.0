@@ -248,7 +248,7 @@ const WhyChooseUs = () => {
               When you choose us, you gain a committed partner who blends
               engineering expertise with the flexibility and scale needed to
               deliver your most ambitious projects. From building dedicated
-              teams to managing every stage end-to-end, we're here to help you
+              teams to managing every stage end-to-end, we&apos;re here to help you
               succeed.
             </motion.p>
           </motion.div>

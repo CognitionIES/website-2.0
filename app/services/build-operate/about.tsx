@@ -59,7 +59,22 @@ const bulletPoints = [
   },
 ];
 
-const BulletCard = ({ bullet, index }) => {
+interface BulletPoint {
+  id: number;
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  highlight: string;
+  position: string;
+  featured?: boolean;
+}
+
+interface BulletCardProps {
+  bullet: BulletPoint;
+  index: number;
+}
+
+const BulletCard = ({ bullet, index }: BulletCardProps) => {
   const cardRef = useRef(null);
   const isInView = useInView(cardRef, { once: true, amount: 0.3 });
 

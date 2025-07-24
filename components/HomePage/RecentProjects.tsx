@@ -128,26 +128,7 @@ const RecentProjects = () => {
         </motion.div>
 
         {/* Navigation buttons (desktop only) */}
-        {!isMobile && (
-          <div className="flex justify-between mt-4 mb-4 sm:hidden md:flex">
-            <Button
-              variant="outline"
-              className="p-2 rounded-full bg-white border-[#0098af] text-[#0098af] hover:bg-[#0098af] hover:text-white transition-colors"
-              onClick={handlePrev}
-              aria-label="Previous project"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </Button>
-            <Button
-              variant="outline"
-              className="p-2 rounded-full bg-white border-[#0098af] text-[#0098af] hover:bg-[#0098af] hover:text-white transition-colors"
-              onClick={handleNext}
-              aria-label="Next project"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </Button>
-          </div>
-        )}
+       
 
         {/* Projects grid with navigation */}
         <div className="relative max-w-7xl">

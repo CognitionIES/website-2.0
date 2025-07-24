@@ -8,7 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Tabs, TabsContent,  } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import faqs from "@/constants/faqs";
 //import { cn } from "@/lib/utils";
 import { MegaMenu } from "@/components/ui/Megamenu/MegaMenu";
@@ -141,9 +141,8 @@ const FAQ = () => {
           {/* CTA section */}
         </div>
       </section>
-        
-    
-    <CTASection />
+
+      <CTASection />
       <Footer />
     </div>
   );

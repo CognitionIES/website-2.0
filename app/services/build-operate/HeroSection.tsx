@@ -5,29 +5,127 @@ import Link from "next/link";
 const HeroSection = () => {
   return (
     <div className="bg-gradient-to-br from-white via-slate-50/40 to-slate-100/60 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4  sm:px-6 lg:px-8">
+      {/* Enhanced Premium Background Pattern */}
+      <div className="absolute inset-0">
+        {/* Primary sophisticated gradient layers */}
+        <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-gradient-to-br from-[#0098af]/6 via-[#007c90]/4 to-transparent rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-gradient-to-tl from-[#007c90]/8 via-[#0098af]/5 to-transparent rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+
+        {/* Premium SVG Background Pattern */}
+        <svg
+          className="absolute w-full h-full opacity-30"
+          viewBox="0 0 1200 800"
+          preserveAspectRatio="xMidYMid slice"
+        >
+          <defs>
+            <linearGradient
+              id="heroGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#0098af" stopOpacity="0.08" />
+              <stop offset="50%" stopColor="#007c90" stopOpacity="0.04" />
+              <stop offset="100%" stopColor="#5b5b5b" stopOpacity="0.06" />
+            </linearGradient>
+            <pattern
+              id="heroGrid"
+              x="0"
+              y="0"
+              width="80"
+              height="80"
+              patternUnits="userSpaceOnUse"
+            >
+              <circle
+                cx="40"
+                cy="40"
+                r="1.5"
+                fill="#0098af"
+                fillOpacity="0.3"
+              />
+              <circle
+                cx="20"
+                cy="20"
+                r="0.8"
+                fill="#007c90"
+                fillOpacity="0.2"
+              />
+              <circle
+                cx="60"
+                cy="20"
+                r="0.8"
+                fill="#5b5b5b"
+                fillOpacity="0.15"
+              />
+            </pattern>
+            <pattern
+              id="engineeringPattern"
+              x="0"
+              y="0"
+              width="120"
+              height="120"
+              patternUnits="userSpaceOnUse"
+            >
+              <g
+                fill="none"
+                stroke="#0098af"
+                strokeWidth="0.5"
+                strokeOpacity="0.2"
+              >
+                <path d="M10 10h100v100H10z" />
+                <path d="M20 20h80v80H20z" />
+                <path d="M30 30h60v60H30z" />
+                <line x1="60" y1="10" x2="60" y2="110" />
+                <line x1="10" y1="60" x2="110" y2="60" />
+              </g>
+            </pattern>
+          </defs>
+
+          {/* Sophisticated wave patterns */}
+          <path
+            d="M0,150 Q300,80 600,150 T1200,150 L1200,400 Q900,330 600,400 T0,400 Z"
+            fill="url(#heroGradient)"
+          />
+          <path
+            d="M0,250 Q400,180 800,250 T1600,250 L1600,500 Q1200,430 800,500 T0,500 Z"
+            fill="#0098af"
+            fillOpacity="0.03"
+          />
+          <rect width="100%" height="100%" fill="url(#heroGrid)" />
+          <rect width="100%" height="100%" fill="url(#engineeringPattern)" />
+
+          {/* Premium geometric elements */}
+          <circle cx="120" cy="120" r="40" fill="#0098af" fillOpacity="0.06" />
+          <circle cx="1080" cy="200" r="30" fill="#007c90" fillOpacity="0.08" />
+          <polygon
+            points="950,80 980,120 920,120"
+            fill="#5b5b5b"
+            fillOpacity="0.15"
+          />
+          <rect
+            x="80"
+            y="350"
+            width="50"
+            height="50"
+            fill="#0098af"
+            fillOpacity="0.05"
+            transform="rotate(30 105 375)"
+          />
+        </svg>
+
+        {/* Enhanced floating abstract elements */}
+        <div className="absolute top-32 left-1/4 w-40 h-40 bg-gradient-to-br from-[#0098af]/5 to-transparent rounded-full blur-2xl animate-pulse" />
+        <div className="absolute bottom-40 right-1/3 w-32 h-32 bg-gradient-to-tl from-[#007c90]/6 to-transparent rounded-3xl rotate-45 blur-xl" />
+        <div className="absolute top-1/2 right-24 w-24 h-24 bg-gradient-to-br from-[#0098af]/8 to-transparent rounded-full blur-lg animate-pulse delay-1000" />
+
+        {/* Additional premium elements */}
+        <div className="absolute top-1/4 left-1/2 w-16 h-16 bg-gradient-to-br from-[#5b5b5b]/4 to-transparent rounded-2xl rotate-12 blur-sm" />
+        <div className="absolute bottom-1/3 left-1/4 w-20 h-20 bg-gradient-to-tl from-[#0098af]/6 to-transparent rounded-full blur-lg animate-pulse delay-500" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <section className="py-12 lg:py-20 ">
-          {/* Enhanced multi-layer background */}
-          <div className="absolute inset-0">
-            {/* Primary sophisticated gradient layers */}
-            <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-gradient-to-br from-[#0098af]/6 via-[#007c90]/4 to-transparent rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-gradient-to-tl from-[#007c90]/8 via-[#0098af]/5 to-transparent rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-
-            {/* Engineering blueprint pattern overlay */}
-            <div
-              className="absolute inset-0 opacity-[0.03]"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230098af' stroke-width='0.5'%3E%3Cpath d='M10 10h80v80H10z'/%3E%3Cpath d='M20 20h60v60H20z'/%3E%3Cpath d='M30 30h40v40H30z'/%3E%3Cline x1='50' y1='10' x2='50' y2='90'/%3E%3Cline x1='10' y1='50' x2='90' y2='50'/%3E%3C/g%3E%3C/svg%3E")`,
-                backgroundSize: "120px 120px",
-              }}
-            />
-
-            {/* Floating abstract elements */}
-            <div className="absolute top-32 left-1/4 w-40 h-40 bg-gradient-to-br from-[#0098af]/5 to-transparent rounded-full blur-2xl animate-pulse" />
-            <div className="absolute bottom-40 right-1/3 w-32 h-32 bg-gradient-to-tl from-[#007c90]/6 to-transparent rounded-3xl rotate-45 blur-xl" />
-            <div className="absolute top-1/2 right-24 w-24 h-24 bg-gradient-to-br from-[#0098af]/8 to-transparent rounded-full blur-lg animate-pulse delay-1000" />
-          </div>
-
           <div className="relative">
             <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
               {/* Left column - Enhanced Content */}

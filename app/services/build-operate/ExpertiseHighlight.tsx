@@ -5,11 +5,145 @@ const ExpertiseHighlight = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <section className="py-24 relative overflow-hidden">
-        {/* Background elements 
-            Develop a visually appealing navbar for our company's website the theme of the logo is #0098af and #5b5b5b, make it responsive and include a logo 5 navbar options Home, Services with a dropdown, Projects, Careers, ContactUs and lastly a button that says Contact. and at the extreme end there should be a a button that says FAQ, Keep the navbar simple elegant with glass like effect, heres the code what i have wrote till now  
-        */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50/30 to-white" />
-        <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-[#003c46]/4 to-transparent rounded-full blur-3xl" />
+        {/* Enhanced Premium Background Pattern */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50/30 to-white" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-[#003c46]/4 to-transparent rounded-full blur-3xl" />
+
+          {/* Premium SVG Background Pattern */}
+          <svg
+            className="absolute w-full h-full opacity-30"
+            viewBox="0 0 1200 800"
+          >
+            <defs>
+              <linearGradient
+                id="expertiseGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="#003c46" stopOpacity="0.08" />
+                <stop offset="50%" stopColor="#0098af" stopOpacity="0.04" />
+                <stop offset="100%" stopColor="#5b5b5b" stopOpacity="0.06" />
+              </linearGradient>
+              <pattern
+                id="expertiseGrid"
+                x="0"
+                y="0"
+                width="100"
+                height="100"
+                patternUnits="userSpaceOnUse"
+              >
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="1.5"
+                  fill="#003c46"
+                  fillOpacity="0.3"
+                />
+                <circle
+                  cx="25"
+                  cy="25"
+                  r="0.8"
+                  fill="#0098af"
+                  fillOpacity="0.2"
+                />
+                <circle
+                  cx="75"
+                  cy="25"
+                  r="0.8"
+                  fill="#5b5b5b"
+                  fillOpacity="0.15"
+                />
+                <polygon
+                  points="75,75 85,65 95,75 90,85 80,85"
+                  fill="#003c46"
+                  fillOpacity="0.1"
+                />
+              </pattern>
+              <pattern
+                id="techPattern"
+                x="0"
+                y="0"
+                width="120"
+                height="120"
+                patternUnits="userSpaceOnUse"
+              >
+                <g
+                  fill="none"
+                  stroke="#0098af"
+                  strokeWidth="0.4"
+                  strokeOpacity="0.15"
+                >
+                  <path d="M10 10h100v100H10z" />
+                  <path d="M20 20h80v80H20z" />
+                  <path d="M30 30h60v60H30z" />
+                  <line x1="60" y1="10" x2="60" y2="110" />
+                  <line x1="10" y1="60" x2="110" y2="60" />
+                  <circle cx="60" cy="60" r="20" fill="none" />
+                </g>
+              </pattern>
+            </defs>
+
+            {/* Sophisticated wave patterns */}
+            <path
+              d="M0,150 Q300,80 600,150 T1200,150 L1200,400 Q900,330 600,400 T0,400 Z"
+              fill="url(#expertiseGradient)"
+            />
+            <path
+              d="M0,250 Q400,180 800,250 T1600,250 L1600,500 Q1200,430 800,500 T0,500 Z"
+              fill="#0098af"
+              fillOpacity="0.03"
+            />
+            <rect width="100%" height="100%" fill="url(#expertiseGrid)" />
+            <rect width="100%" height="100%" fill="url(#techPattern)" />
+
+            {/* Premium geometric elements */}
+            <circle
+              cx="150"
+              cy="150"
+              r="60"
+              fill="#003c46"
+              fillOpacity="0.06"
+            />
+            <circle
+              cx="1050"
+              cy="200"
+              r="40"
+              fill="#0098af"
+              fillOpacity="0.08"
+            />
+            <polygon
+              points="950,100 980,140 920,140"
+              fill="#5b5b5b"
+              fillOpacity="0.15"
+            />
+            <rect
+              x="80"
+              y="350"
+              width="40"
+              height="40"
+              fill="#003c46"
+              fillOpacity="0.05"
+              transform="rotate(30 100 370)"
+            />
+
+            {/* Additional premium elements */}
+            <circle
+              cx="300"
+              cy="600"
+              r="80"
+              fill="#0098af"
+              fillOpacity="0.04"
+            />
+            <polygon
+              points="800,600 850,580 900,600 875,650 825,650"
+              fill="#003c46"
+              fillOpacity="0.06"
+            />
+          </svg>
+        </div>
 
         <div className="relative">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">

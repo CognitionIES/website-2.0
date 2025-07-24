@@ -23,8 +23,8 @@ export function AboutSection() {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/50 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto">
+    <section className=" bg-white/30 backdrop-blur-sm">
+      <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Content */}
           <motion.div

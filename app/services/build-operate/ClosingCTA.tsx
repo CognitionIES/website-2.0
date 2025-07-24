@@ -6,23 +6,19 @@ const ClosingCTA = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
       <section className="py-12 mb-12 relative overflow-hidden rounded-xl shadow-lg bg-white/10 backdrop-blur-md">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-[#003c46] to-[#1c7a8a]" />
-        <div
-          className="absolute inset-0 opacity-50"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
+        {/* Enhanced Premium Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-[#003c46] to-[#1c7a8a]" />
 
-        {/* Floating elements */}
+          
+        </div>
+
+        {/* Enhanced floating elements */}
         <div className="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl" />
         <div className="absolute bottom-10 right-10 w-40 h-40 bg-white/3 rounded-full blur-2xl" />
         <div className="absolute top-1/2 left-1/4 w-2 h-2 bg-white/40 rounded-full animate-pulse" />
-        <div
-          className="absolute top-1/3 right-1/3 w-1 h-1 bg-white/60 rounded-full animate-pulse"
-          style={{ animationDelay: "1s" }}
-        />
+        <div className="absolute bottom-1/4 left-1/3 w-16 h-16 bg-white/4 rounded-2xl rotate-12 blur-sm" />
+        <div className="absolute top-1/4 right-1/4 w-12 h-12 bg-white/6 rounded-full blur-lg animate-pulse delay-700" />
 
         <div className="relative">
           <div className="text-center max-w-4xl mx-auto">
@@ -34,9 +30,8 @@ const ClosingCTA = () => {
             </div>
 
             <h2 className="text-7xl md:text-5xl lg:text-6xl font-light text-white mb-8 leading-tight">
-              Ready to Build{" "}
+              Ready to Build
               <span className=" font-semibold bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
-                {" "}
                 Together?
               </span>
             </h2>

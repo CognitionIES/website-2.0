@@ -8,7 +8,6 @@ import Link from "next/link";
 // import HeroImage from "@/constants/images/Plant-engineering/hero.jpg";
 import heroImage from "@/constants/images/staffing-recruitment/hero.jpg";
 
-
 export default function Hero() {
   return (
     <section>
@@ -24,7 +23,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#003C46]/85 to-[#0098AF]/70" />
         <div className="absolute inset-0 opacity-5   bg-repeat" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-8 h-full flex flex-col justify-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white -top-10 drop-shadow-md relative">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white top-24 drop-shadow-md relative">
             Staffing and Recruitment
             <span className="absolute bottom-0 left-0 w-32 h-0.5 bg-gradient-to-r from-[#99D5DF] to-transparent" />
           </h1>

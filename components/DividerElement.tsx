@@ -14,7 +14,7 @@ const DividerElement: React.FC<DividerElementProps> = ({
     <div
       className={`flex ${
         isVertical
-          ? "flex-col w-6 sm:w-8 min-h-[400px] sm:min-h-[520px] md:h-auto mt-10"
+          ? "flex-col w-6 sm:w-8 min-h-[400px] sm:min-h-[520px] md:h-auto mt-6"
           : "flex-row h-6 sm:h-8 w-full"
       } items-center justify-center bg-gradient-to-b from-[#E6F0F5] to-[#003C46] relative overflow-hidden shrink-0`}
     >

@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import frame8 from "@/constants/images/Background/Frame_8.jpg";
 import FeatureCard from "@/components/FeatureCard";
 import SectionButton from "@/components/SectionButton";
 import DividerElement from "@/components/DividerElement";
@@ -9,7 +11,6 @@ import { Rocket, Award } from "lucide-react";
 import { MegaMenu } from "@/components/ui/Megamenu/MegaMenu";
 import Hero from "./hero";
 import AboutSection from "./mainContent";
-// import CTASection from "@/components/CTA";
 import Footer from "@/components/footer";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -108,20 +109,24 @@ const Index = () => {
     };
   }, []);
 
-  // const fadeInVariants = {
-  //   hidden: { opacity: 0 },
-  //   visible: { opacity: 1, transition: { duration: 0.7, delay: 0.2 } },
-  // };
-
   return (
-    <div className="h-auto w-full overflow-hidden">
+    <div
+      className="h-auto w-full overflow-hidden"
+      style={{
+        backgroundImage: `url(${frame8.src})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <MegaMenu />
       <Hero />
       <AboutSection />
       <div>
         <section
           ref={sectionRef}
-          className="w-full relative bg-gradient-to-b from-white to-[#E6F0F5]/30"
+          className="w-full relative py-16 sm:py-20 lg:py-12"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -141,7 +146,7 @@ const Index = () => {
                 <div
                   className={`w-full ${
                     isMobile ? "" : "md:w-1/2"
-                  } bg-[#E6F0F5] ${
+                  } bg-[#0098af]/30 backdrop-blur-sm ${
                     isMobile
                       ? "rounded-3xl"
                       : "rounded-l-3xl md:rounded-l-none md:rounded-tl-3xl md:rounded-bl-3xl"
@@ -258,7 +263,7 @@ const Index = () => {
                 <div
                   className={`w-full ${
                     isMobile ? "mt-8" : "md:w-1/2"
-                  } bg-[#003C46] ${
+                  } bg-[#003C46] backdrop-blur-sm ${
                     isMobile
                       ? "rounded-3xl"
                       : "rounded-r-3xl md:rounded-r-none md:rounded-tr-3xl md:rounded-br-3xl"
@@ -372,7 +377,7 @@ const Index = () => {
           </motion.div>
         </section>
       </div>
- 
+
       <Footer />
     </div>
   );

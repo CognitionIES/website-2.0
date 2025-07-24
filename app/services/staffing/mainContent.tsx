@@ -67,7 +67,7 @@ export default function AboutSection() {
     <div>
       <section
         ref={sectionRef}
-        className="w-full py-10 sm:py-16 lg:py-12 relative bg-gradient-to-b from-white to-[#E6F0F5]/30"
+        className="w-full py-10 sm:py-16 lg:py-12 relative bg-gradient-to-b from-white to-[#E6F0F5]"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="mb-8 max-w-7xl text-center md:text-left">

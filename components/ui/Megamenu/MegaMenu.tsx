@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Menu, X, Server, Users, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import logo from "@/constants/images/COGNITION LOGO_REV_01.png";
+import logo from "@/constants/images/COGNITION-LOGO_REV_01.png";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 

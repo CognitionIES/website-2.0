@@ -104,7 +104,7 @@ const ServiceCard = ({ service, index, onHover }: ServiceCardProps) => {
             <ArrowUpRight className="h-5 w-5 text-slate-400 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[#0098af] group-hover:scale-110" />
           </div>
 
-          <p className="text-slate-600 leading-relaxed mb-6">
+          <p className="text-slate-600 text-justify leading-relaxed mb-">
             {service.description}
           </p>
 
@@ -176,9 +176,10 @@ const ServicesShowcase = () => {
 
         {/* Bottom section */}
         <div className="mt-24 text-center">
-          <div className="mx-auto h-px w-24 bg-gradient-to-r from-transparent via-[#003c46] to-transparent mb-8" />
+          <div className="mx-auto h-px w-32 bg-gradient-to-r from-transparent via-[#003c46] to-transparent mb-8" />
           <p className="text-sm text-[#64748b]">
-            Ready to transform your business? Let&apos;s discuss your next project.
+            Ready to transform your business? Let&apos;s discuss your next
+            project.
           </p>
           <Link
             href="/contact"

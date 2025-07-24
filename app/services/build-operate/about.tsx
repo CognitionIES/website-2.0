@@ -132,20 +132,14 @@ const BulletCard = ({ bullet, index }: BulletCardProps) => {
         transition: { duration: 0.2, ease: "easeOut" },
       }}
     >
-      {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0098af]/3 via-transparent to-[#5b5b5b]/3 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-      {/* Featured badge */}
       {bullet.featured && (
         <div className="absolute top-4 right-4 px-3 py-1 bg-[#0098af] text-white text-xs font-medium rounded-full flex items-center gap-1">
           <Star className="h-3 w-3 fill-current" />
           Featured
         </div>
       )}
-
-      {/* Content */}
       <div className={`relative z-10 ${bullet.featured ? "p-8" : "p-6"}`}>
-        {/* Icon and number */}
         <div className="flex items-start justify-between mb-6">
           <div className="flex items-center gap-4">
             <div
@@ -159,16 +153,12 @@ const BulletCard = ({ bullet, index }: BulletCardProps) => {
                 className={bullet.featured ? "h-7 w-7" : "h-6 w-6"}
               />
             </div>
-
             <div className="text-4xl font-light text-gray-300 group-hover:text-[#0098af] transition-colors duration-300">
               {String(bullet.id).padStart(2, "0")}
             </div>
           </div>
-
           <ArrowUpRight className="h-5 w-5 text-gray-400 group-hover:text-[#0098af] transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
         </div>
-
-        {/* Title */}
         <h3
           className={`font-semibold text-gray-900 mb-3 leading-tight ${
             bullet.featured ? "text-2xl" : "text-xl"
@@ -176,13 +166,9 @@ const BulletCard = ({ bullet, index }: BulletCardProps) => {
         >
           {bullet.title}
         </h3>
-
-        {/* Highlight */}
         <div className="inline-block px-3 py-1 bg-gradient-to-r from-[#0098af] to-[#5b5b5b] text-white text-sm font-medium rounded-full mb-4">
           {bullet.highlight}
         </div>
-
-        {/* Description */}
         <p
           className={`text-gray-600 leading-relaxed ${
             bullet.featured ? "text-base" : "text-sm"
@@ -190,8 +176,6 @@ const BulletCard = ({ bullet, index }: BulletCardProps) => {
         >
           {bullet.description}
         </p>
-
-        {/* Accent line */}
         <div className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-[#0098af]/30 to-transparent transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
       </div>
     </motion.div>
@@ -210,124 +194,154 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <section
-        ref={sectionRef}
-        className="py-24 bg-gradient-to-br from-white via-gray-50/30 to-white relative overflow-hidden"
-      >
-        {/* Subtle background elements */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[#0098af]/2 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#5b5b5b]/2 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+    <section>
+      <div className="">
+        <section ref={sectionRef} className="py-24 relative overflow-hidden">
+          {/* SVG Background Pattern */}
+          <div className="absolute inset-0 z-0">
+            <svg className="absolute w-full h-full" viewBox="0 0 1200 800">
+              <defs>
+                <radialGradient id="partnerRadial" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stopColor="#99D5DF" stopOpacity="0.08" />
+                  <stop offset="50%" stopColor="#0098af" stopOpacity="0.04" />
+                  <stop offset="100%" stopColor="#003C46" stopOpacity="0.06" />
+                </radialGradient>
+                <pattern
+                  id="diamondPattern"
+                  x="0"
+                  y="0"
+                  width="80"
+                  height="80"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <polygon
+                    points="40,10 70,40 40,70 10,40"
+                    fill="none"
+                    stroke="#99D5DF"
+                    strokeWidth="0.5"
+                    strokeOpacity="0.3"
+                  />
+                </pattern>
+              </defs>
+              <rect width="150%" height="350%" fill="url(#diamondPattern)" />
+              
+              <circle
+                cx="200"
+                cy="500"
+                r="120"
+                fill="#99D5DF"
+                fillOpacity="0.04"
+              />
 
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Header */}
-          <motion.div
-            className="mb-20 max-w-4xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
+            </svg>
+          </div>
+          {/* Existing Background Elements */}
+          <div className="absolute top-0 left-0 w-96 h-96 bg-[#0098af]/2 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 z-1" />
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#5b5b5b]/2 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 z-1" />
+          <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div
-              className="mb-6 text-sm font-semibold text-[#0098af] tracking-wider uppercase flex items-center gap-2"
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mb-20 max-w-4xl"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <motion.div
-                className="w-8 h-px bg-gradient-to-r from-[#0098af] to-[#5b5b5b]"
-                initial={{ scaleX: 0 }}
-                animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              />
-              Why Choose Us
-            </motion.div>
-
-            <motion.h2
-              className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-8 leading-tight"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              A Partner You Can{" "}
-              <span className="block font-semibold bg-gradient-to-r from-[#0098af] to-[#5b5b5b] bg-clip-text text-transparent">
-                Rely On
-              </span>
-            </motion.h2>
-
-            <motion.p
-              className="text-lg text-gray-600 leading-relaxed max-w-3xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              When you choose us, you gain a committed partner who blends
-              engineering expertise with the flexibility and scale needed to
-              deliver your most ambitious projects. From building dedicated
-              teams to managing every stage end-to-end, we&apos;re here to help you
-              succeed.
-            </motion.p>
-          </motion.div>
-
-          {/* Professional Grid */}
-          <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-            {/* Top row */}
-            <div className="md:col-span-1">
-              <BulletCard bullet={bulletPoints[0]} index={0} />
-            </div>
-            <div className="md:col-span-1">
-              <BulletCard bullet={bulletPoints[1]} index={1} />
-            </div>
-
-            {/* Middle row */}
-            <div className="md:col-span-1 lg:row-start-2">
-              <BulletCard bullet={bulletPoints[2]} index={2} />
-            </div>
-            <div className="md:col-span-1 lg:row-start-2">
-              <BulletCard bullet={bulletPoints[3]} index={3} />
-            </div>
-
-            {/* Featured card */}
-            <div className="md:col-span-2 lg:col-span-1 lg:row-start-1 lg:row-end-3 lg:self-center">
-              <BulletCard bullet={bulletPoints[4]} index={4} />
-            </div>
-          </div>
-
-          {/* Professional Trust Indicators */}
-          <motion.div
-            className="mt-20 text-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            <div className="inline-flex items-center flex-wrap justify-center gap-8 px-8 py-6 bg-white/90 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-lg">
-              {trustMetrics.map((metric, index) => (
+                className="mb-6 text-sm font-semibold text-[#0098af] tracking-wider uppercase flex items-center gap-2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={
+                  isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
+                }
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
                 <motion.div
-                  key={metric.label}
-                  className="text-center group"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={
-                    isInView
-                      ? { opacity: 1, scale: 1 }
-                      : { opacity: 0, scale: 0.9 }
-                  }
-                  transition={{ duration: 0.4, delay: 0.9 + index * 0.1 }}
-                >
-                  <div className="flex items-center justify-center mb-2">
-                    <metric.icon className="h-4 w-4 text-[#0098af] mr-2" />
-                    <div className="text-3xl font-bold bg-gradient-to-r from-[#0098af] to-[#000000]/60 bg-clip-text text-transparent">
-                      {metric.value}
-                    </div>
-                  </div>
-                  <div className="text-sm text-gray-600 group-hover:text-[#0098af] transition-colors">
-                    {metric.label}
-                  </div>
-                </motion.div>
-              ))}
+                  className="w-8 h-px bg-gradient-to-r from-[#0098af] to-[#5b5b5b]"
+                  initial={{ scaleX: 0 }}
+                  animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                />
+                Why Choose Us
+              </motion.div>
+              <motion.h2
+                className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-8 leading-tight"
+                initial={{ opacity: 0, y: 20 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                }
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                A Partner You Can{" "}
+                <span className="block font-semibold bg-gradient-to-r from-[#0098af] to-[#5b5b5b] bg-clip-text text-transparent">
+                  Rely On
+                </span>
+              </motion.h2>
+              <motion.p
+                className="text-lg text-gray-600 leading-relaxed max-w-3xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                }
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                When you choose us, you gain a committed partner who blends
+                engineering expertise with the flexibility and scale needed to
+                deliver your most ambitious projects. From building dedicated
+                teams to managing every stage end-to-end, we&apos;re here to help you
+                succeed.
+              </motion.p>
+            </motion.div>
+            <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+              <div className="md:col-span-1">
+                <BulletCard bullet={bulletPoints[0]} index={0} />
+              </div>
+              <div className="md:col-span-1">
+                <BulletCard bullet={bulletPoints[1]} index={1} />
+              </div>
+              <div className="md:col-span-1 lg:row-start-2">
+                <BulletCard bullet={bulletPoints[2]} index={2} />
+              </div>
+              <div className="md:col-span-1 lg:row-start-2">
+                <BulletCard bullet={bulletPoints[3]} index={3} />
+              </div>
+              <div className="md:col-span-2 lg:col-span-1 lg:row-start-1 lg:row-end-3 lg:self-center">
+                <BulletCard bullet={bulletPoints[4]} index={4} />
+              </div>
             </div>
-          </motion.div>
-        </div>
-      </section>
-    </div>
+            <motion.div
+              className="mt-20 text-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <div className="inline-flex items-center flex-wrap justify-center gap-8 px-8 py-6 bg-white/90 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-lg">
+                {trustMetrics.map((metric, index) => (
+                  <motion.div
+                    key={metric.label}
+                    className="text-center group"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={
+                      isInView
+                        ? { opacity: 1, scale: 1 }
+                        : { opacity: 0, scale: 0.9 }
+                    }
+                    transition={{ duration: 0.4, delay: 0.9 + index * 0.1 }}
+                  >
+                    <div className="flex items-center justify-center mb-2">
+                      <metric.icon className="h-4 w-4 text-[#0098af] mr-2" />
+                      <div className="text-3xl font-bold bg-gradient-to-r from-[#0098af] to-[#000000]/60 bg-clip-text text-transparent">
+                        {metric.value}
+                      </div>
+                    </div>
+                    <div className="text-sm text-gray-600 group-hover:text-[#0098af] transition-colors">
+                      {metric.label}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </div>
+    </section>
   );
 };
 

@@ -1,12 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -71,14 +66,6 @@ const RecentProjects = () => {
     };
   }, []);
 
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1 >= projects.length ? 0 : prev + 1));
-  };
-
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 < 0 ? projects.length - 1 : prev - 1));
-  };
-
   return (
     <section
       ref={sectionRef}
@@ -128,7 +115,6 @@ const RecentProjects = () => {
         </motion.div>
 
         {/* Navigation buttons (desktop only) */}
-       
 
         {/* Projects grid with navigation */}
         <div className="relative max-w-7xl">

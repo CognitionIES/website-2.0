@@ -1,139 +1,92 @@
-"use client";
-
+Rimport React from "react";
 import { motion } from "framer-motion";
-import { FiChevronDown, FiChevronRight, FiHome } from "react-icons/fi";
-import Image from "next/image";
+import { ChevronRight, Home } from "lucide-react";
 import Link from "next/link";
-import HeroCareerImg from "@/constants/images/career/hero.jpg";
-import { useIsMobile } from "@/hooks/use-mobile";
+import Image from "next/image";
+import heroImage from "@/constants/images/hero/build-operate.png";
 
-const CAREERS_CONSTANTS = {
-  HERO: {
-    IMAGE: HeroCareerImg,
-    TITLE: "Build & Operate With Confidence",
-    SUBTITLE:
-      "From assembling high-performing teams to managing operations end-to-end, we empower your business to scale faster and smarter.",
-    TAGS: "Trusted by global innovators | 30+ member teams delivered | Proven Build & Operate Expertise",
-  },
-};
-
-export default function Hero() {
-  const isMobile = useIsMobile();
-  const { IMAGE, TITLE, SUBTITLE, TAGS } = CAREERS_CONSTANTS.HERO;
-
-  const scrollToPositions = () => {
-    const positionsSection = document.getElementById("positions");
-    if (positionsSection) {
-      positionsSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
+export default function BuildOperateHero() {
   return (
-    <section className="relative">
-      <div
-        className={`relative h-[450px] overflow-hidden ${
-          isMobile ? "flex items-center justify-center" : ""
-        }`}
-      >
-        <Image
-          src={IMAGE}
-          alt="Vibrant Office Environment"
-          fill
-          className="object-cover object-center"
-          priority
-          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 1280px"
-          quality={80}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#003C46]/90 via-[#003C46]/70 to-[#0098AF]/60" />
-        <div className="absolute inset-0 opacity-10  bg-repeat" />
-        <div
-          className={`relative z-10 ${
-            isMobile
-              ? "max-w-full px-6"
-              : "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-          } h-full flex flex-col items-center justify-center text-center`}
-        >
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className={`text-3xl md:text-4xl lg:text-5xl  font-extrabold tracking-tight text-white drop-shadow-md relative ${
-              isMobile ? "mb-6" : "mb-3 sm:mb-4 md:mb-6"
-            } leading-tight relative`}
-          >
-            {TITLE}
-            <span
-              className={`absolute bottom-0 ${
-                isMobile ? "left-0  " : "left-0 w-24 "
-              } h-0.5 bg-gradient-to-r from-[#99D5DF] to-transparent`}
-            />
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className={`text-white/90 text-sm xs:text-base sm:text-base md:text-lg lg:text-xl font-light ${
-              isMobile
-                ? "max-w-full mb-6"
-                : "max-w-xl xs:max-w-2xl mx-auto mb-4 sm:mb-6 md:mb-8"
-            } leading-relaxed`}
-          >
-            {SUBTITLE}
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className={`text-white/80 text-xs xs:text-sm sm:text-base md:text-lg lg:text-lg font-medium ${
-              isMobile
-                ? "max-w-full mb-6"
-                : "max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10"
-            }`}
-          >
-            {TAGS}
-          </motion.p>
+    <section>
+      <div className="relative h-[450px] overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src={heroImage}
+            alt="Build Operate Hero Section"
+            className="w-full h-full object-cover"
+            fill
+            priority
+          />
         </div>
-        {!isMobile && (
-          <div className="relative z-30 max-w-7xl mx-auto">
-            <nav className="absolute bottom-8 left-0 mb-6 flex items-center sm:px-6 lg:px-12 space-x-2 text-sm xs:text-sm sm:text-base font-light text-white/80">
-              <FiHome className="w-4 h-4" />
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#003C46]/60 to-[#0098AF]/60" />
+
+        <div className="absolute inset-0 opacity-5   bg-repeat" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-8 h-full flex flex-col justify-center">
+          <div className="relative z-20  h-full flex flex-col justify-center">
+            {/* Breadcrumb Navigation */}
+            <nav className="absolute bottom-8   flex items-center space-x-2 text-sm text-white/70">
               <Link
                 href="/"
-                className="hover:text-[#99D5DF] flex items-center gap-1 transition-colors duration-200"
+                className="hover:text-blue-300 flex items-center gap-1.5 transition-colors duration-300"
               >
-                Home
+                <Home className="w-4 h-4" />
+                <span className="font-medium">Home</span>
               </Link>
-              <FiChevronRight className="w-4 h-4" />
-              <Link
-                href="/services/staffing"
-                className="hover:text-[#99D5DF] transition-colors duration-200"
-              >
-                Staffing
-              </Link>
-              <FiChevronRight className="w-4 h-4" />
-              <Link
-                href="/services/staffing/job-seekers"
-                className="hover:text-[#99D5DF] transition-colors duration-200"
-              >
-                Job Seekers
+              <ChevronRight className="w-3.5 h-3.5" />
+              <Link href="/services">
+                <span className="text-blue-200 font-medium">Services</span>
+              </Link>{" "}
+              <ChevronRight className="w-3.5 h-3.5" />
+              <Link href="/services/built-operate">
+                <span className="text-blue-200 font-medium">
+                  Build & Operate
+                </span>
               </Link>
             </nav>
+
+            {/* Hero Content */}
+            <div className="space-y-8">
+              <div className="space-y-6">
+                {/* Main Heading */}
+                <div className="relative top-2">
+                  <h1 className="text-5xl md:text-6xl lg:text-7xl text-white font-bold tracking-tight text-white leading-tight">
+                    <span className="text-white bg-clip-text ">
+                      Build & Operate
+                    </span>
+                  </h1>
+                  <div className="absolute -bottom-2 left-2 w-24 h-1 bg-gradient-to-r from-[#99D5DF] to-transparent rounded-full" />
+                </div>
+              </div>
+            </div>
           </div>
-        )}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 0.7, y: 0 }}
-          transition={{
-            repeat: Infinity,
-            duration: 1.2,
-            repeatType: "reverse",
-            ease: "easeInOut",
-          }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70 cursor-pointer"
-          onClick={scrollToPositions}
-        >
-          <FiChevronDown className="w-6 sm:w-8 h-6 sm:h-8" />
-        </motion.div>
+
+          {/* Subtle Floating Particles */}
+        </div>
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: [0, 0.6, 0],
+              y: [0, -100],
+              x: [0, Math.random() * 200 - 100],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+              ease: "easeOut",
+            }}
+            className="absolute w-1 h-1 bg-blue-300/60 rounded-full"
+            style={{
+              left: `${20 + Math.random() * 60}%`,
+              bottom: "20px",
+            }}
+          />
+        ))}
       </div>
     </section>
   );

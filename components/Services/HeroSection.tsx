@@ -1,12 +1,10 @@
 "use client"; // Mark as Client Component to allow event handlers or interactivity
 
 import { motion } from "framer-motion";
-import { FiChevronDown, FiChevronRight, FiHome } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
-//import engineeringImage from "@/constants/images/Plant-engineering/hero-image-1.jpg";
-// import HeroImage from "@/constants/images/Plant-engineering/hero.jpg";
-import heroImage from "@/constants/images/staffing-recruitment/hero.jpg";
+import heroImage from "@/constants/images/hero/services-hero.png";
+import { ChevronRight, Home } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -20,69 +18,101 @@ export default function Hero() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#003C46]/85 to-[#0098AF]/70" />
-        <div className="absolute inset-0 opacity-5   bg-repeat" />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#003C46]/60 to-[#0098AF]/60" />
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-8 h-full flex flex-col justify-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white top-24 drop-shadow-md relative">
-            Build And Operate
-            <span className="absolute bottom-0 left-0 w-32 h-0.5 bg-gradient-to-r from-[#99D5DF] to-transparent" />
-          </h1>
-          {/* Move nav outside the centered flex flow and position it absolutely */}
-          <nav className="absolute bottom-0 left-6 sm:left-8 lg:left-12 mb-6 flex items-center space-x-2 text-sm font-light text-white/80">
-            <Link
-              href="/"
-              className="hover:text-[#99D5DF] flex items-center gap-1 transition-colors duration-200"
-            >
-              <FiHome className="w-4 h-4" />
-              Home
-            </Link>
-            <FiChevronRight className="w-4 h-4" />
+          <div className="relative z-20  h-full flex flex-col justify-center">
+            {/* Breadcrumb Navigation */}
+            <nav className="absolute bottom-8 flex items-center space-x-2 text-sm text-white/70">
+              <Link
+                href="/"
+                className="hover:text-blue-300 flex items-center gap-1.5 transition-colors duration-300"
+              >
+                <Home className="w-4 h-4" />
+                <span className="font-medium">Home</span>
+              </Link>
+              <ChevronRight className="w-3.5 h-3.5" />
+              <Link href="/services">
+                <span className="text-blue-200 font-medium">Services</span>
+              </Link>
+            </nav>
 
-            <Link
-              href="/services"
-              className="hover:text-[#99D5DF] transition-colors duration-200"
-            >
-              Services
-            </Link>
-            <FiChevronRight className="w-4 h-4" />
+            {/* Hero Content */}
+            <div className="space-y-8">
+              <div className="space-y-6">
+                {/* Main Heading */}
+                <motion.div
+                  className="relative"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                  <div className="relative">
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl text-white font-bold tracking-tight text-white leading-tight">
+                      <span className="text-white bg-clip-text ">
+                        Our Services
+                      </span>
+                    </h1>
+                    <div className="absolute -bottom-2 left-2 w-24 h-1 bg-gradient-to-r from-[#99D5DF] to-transparent rounded-full" />
+                  </div>
+                </motion.div>
+              </div>
+            </div>
 
-            <Link
-              href="/services/build-operate"
-              className="hover:text-[#99D5DF] transition-colors duration-200"
-            >
-              Build And Operate
-            </Link>
-          </nav>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 0.7, y: 0 }}
-            transition={{
-              repeat: Infinity,
-              duration: 1.5,
-              repeatType: "reverse",
-            }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70"
-          >
-            <FiChevronDown className="w-6 h-6" />
-          </motion.div>
+            {/* Scroll Indicator */}
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+              <div className="flex flex-col items-center gap-2">
+                <span className="text-[#F5FDFF]/60 text-xs font-medium tracking-wider uppercase">
+                  Explore Services
+                </span>
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="w-6 h-10 border-2 border-[#99D5DF]/30 rounded-full flex justify-center"
+                >
+                  <motion.div
+                    animate={{ y: [0, 12, 0] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="w-1 h-3 bg-gradient-to-b from-[#99D5DF] to-[#0098AF] rounded-full mt-2"
+                  />
+                </motion.div>
+              </div>
+            </div>
+          </div>
+
+          {/* Subtle Floating Particles */}
         </div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 0.25, scale: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="absolute bottom-0 left-0 w-80 h-80 bg-[#0098AF] opacity-50 rounded-full blur-3xl -z-10"
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.15 }}
-          transition={{
-            delay: 1,
-            duration: 1,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-          className="absolute top-20 right-16 w-5 h-5 bg-[#5B5B5B] opacity-30 rounded-full -z-10"
-        />
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: [0, 0.6, 0],
+              y: [0, -100],
+              x: [0, Math.random() * 200 - 100],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+              ease: "easeOut",
+            }}
+            className="absolute w-1 h-1 bg-blue-300/60 rounded-full"
+            style={{
+              left: `${20 + Math.random() * 60}%`,
+              bottom: "20px",
+            }}
+          />
+        ))}
       </div>
     </section>
   );

@@ -18,12 +18,6 @@ interface Service {
 
 const servicesData: Service[] = [
   {
-    title: "SaaS Solutions - ServiceCPQ",
-    href: "/services/saas-solution/servicecpq",
-    icon: <Server className="w-4 h-4" />,
-    description: "Comprehensive SaaS solutions for your business",
-  },
-  {
     title: "Staffing and Recruitment",
     href: "/services/staffing",
     icon: <Users className="w-4 h-4" />,
@@ -34,6 +28,12 @@ const servicesData: Service[] = [
     href: "/services/build-operate",
     icon: <Server className="w-4 h-4" />,
     description: "End-to-end build and operate solutions",
+  },
+  {
+    title: "SaaS Solutions - ServiceCPQ",
+    href: "/services/saas-solution/servicecpq",
+    icon: <Server className="w-4 h-4" />,
+    description: "Comprehensive SaaS solutions for your business",
   },
 ];
 

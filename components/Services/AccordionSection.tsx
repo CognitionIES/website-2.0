@@ -123,26 +123,6 @@ const AccordionSection = () => {
               </Accordion>
             </motion.div>
           </motion.div>
-
-          {/* Simple divider */}
-          <div className="mt-16 h-[2px] w-full max-w-3xl mx-auto bg-gradient-to-r from-transparent via-[#0098af]/40 to-transparent"></div>
-
-          {/* CTA section */}
-          <div className="mt-12 text-center">
-            <h3 className="text-2xl font-semibold text-[#003C46] mb-4">
-              Still Have Questions?
-            </h3>
-            <p className="text-lg text-gray-600 mb-6">
-              Contact our team for personalized assistance or to discuss your
-              project needs.
-            </p>
-            <a
-              href="/contact"
-              className="inline-block px-6 py-3 bg-[#0098af] text-white font-medium rounded-full hover:bg-[#007a8c] transition"
-            >
-              Get in Touch
-            </a>
-          </div>
         </div>
       </section>
     </div>

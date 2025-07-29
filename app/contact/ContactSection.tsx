@@ -115,10 +115,9 @@ export default function ContactSection() {
   );
 
   const interestOptions = [
-    { value: "Product Engineering", label: "Product Engineering" },
-    { value: "Plant Engineering", label: "Plant Engineering" },
-    { value: "ServiceCPQ", label: "ServiceCPQ" },
     { value: "Staffing And Recruitment", label: "Staffing And Recruitment" },
+    { value: "Build And Operate", label: "Build And Operate" },
+    { value: "ServiceCPQ", label: "ServiceCPQ" },
     { value: "Others", label: "Others" },
   ];
 

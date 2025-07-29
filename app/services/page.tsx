@@ -6,7 +6,7 @@ import HeroSection from "@/components/Services/HeroSection";
 import { AboutSection } from "@/components/Services/AboutSection";
 import AccordionSection from "@/components/Services/AccordionSection";
 import { MegaMenu } from "@/components/ui/Megamenu/MegaMenu";
-import CTA from "@/components/HomePage/CTA";
+import CTA from "@/components/Services/CTA";
 import Footer from "@/components/footer";
 import ServicesShowcase from "@/components/ServicesShowcase";
 

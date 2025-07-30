@@ -14,10 +14,12 @@ import DividerElement from "@/components/DividerElement";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Locate, Mail, Map, MapIcon, MapPin, Phone } from "lucide-react";
-import { ServicesSection } from "./Services";
+import ServicesSection from "./Services";
 import IndustriesWeServe from "./industriesWeServe";
 import CTASection from "./CTA";
 import WhyPartner from "./CTA";
+import ProcessSection from "./process";
+import ToolsSection from "./tool";
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -62,8 +64,10 @@ const Index = () => {
       <Hero />
       <AboutSection />
       <ServicesSection />
-      <JobSeekerSection />
+      <ProcessSection />
+      
       <IndustriesWeServe />
+      <ToolsSection />
       {/* <section
         ref={sectionRef}
         className="w-full relative py-16 sm:py-20 lg:py-12"

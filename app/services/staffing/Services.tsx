@@ -1,377 +1,257 @@
-// import { ArrowRight, Award, Clock, TrendingUp, Users } from "lucide-react";
+import Image from "next/image";
+import React, { useEffect, useRef, useState } from "react";
 
-// export default function ServicesSection() {
-//   return (
-//     <div>
-//       <section className="py-12 relative overflow-hidden bg-white">
-//         {/* Professional divider */}
-//         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+interface Service {
+  title: string;
+  subtitle: string;
+  description: string;
+  image: string;
+  id: string;
+}
 
-//         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-//           <div className=" mb-16">
-//             <h2
-//               className="text-4xl lg:text-6xl font-bold mb-6 tracking-tight"
-//               style={{
-//                 fontFamily: "Playfair Display, serif",
-//                 color: "#003C46",
-//               }}
-//             >
-//               Staffing Solutions
-//             </h2>
-//             <p
-//               className="text-xl leading-relaxed max-w-7xl mx-auto"
-//               style={{ color: "#5B5B5B" }}
-//             >
-//               Innovative staffing strategies designed to meet your unique talent
-//               acquisition challenges
-//             </p>
-//           </div>
-
-//           {/* Creative Services Layout */}
-//           <div className="relative">
-//             {/* Background Elements */}
-//             <div className="absolute inset-0 overflow-hidden">
-//               <div
-//                 className="absolute bottom-20 left-10 w-64 h-64 rounded-full opacity-5"
-//                 style={{ backgroundColor: "#99D5DF" }}
-//               />
-//             </div>
-
-//             {/* Services Grid - Asymmetrical Layout */}
-//             <div className="relative z-10 grid grid-cols-12 gap-8 items-start">
-//               {/* Direct Hiring - Large Featured Card */}
-//               <div className="col-span-12 lg:col-span-7 relative">
-//                 <div
-//                   className="p-8 lg:p-12 rounded-3xl relative overflow-hidden group cursor-pointer transform hover:scale-[1.02] transition-all duration-500"
-//                   style={{
-//                     background:
-//                       "linear-gradient(135deg, #003C46 0%, #0098AF 100%)",
-//                     minHeight: "400px",
-//                   }}
-//                 >
-//                   {/* Decorative Elements */}
-//                   <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
-//                     <Users size={128} style={{ color: "#F5FDFF" }} />
-//                   </div>
-//                   <div
-//                     className="absolute bottom-0 left-0 w-full h-1/3 opacity-10"
-//                     style={{
-//                       background:
-//                         "linear-gradient(45deg, transparent 0%, #99D5DF 50%, transparent 100%)",
-//                     }}
-//                   />
-
-//                   <div className="relative z-10 h-full flex flex-col justify-between">
-//                     <div>
-//                       <div
-//                         className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300"
-//                         style={{ backgroundColor: "rgba(245, 253, 255, 0.2)" }}
-//                       >
-//                         <Users size={32} style={{ color: "#F5FDFF" }} />
-//                       </div>
-
-//                       <h3
-//                         className="text-3xl lg:text-4xl font-bold mb-4 leading-tight"
-//                         style={{
-//                           fontFamily: "Playfair Display, serif",
-//                           color: "#F5FDFF",
-//                         }}
-//                       >
-//                         Direct Hiring
-//                       </h3>
-
-//                       <p
-//                         className="text-lg leading-relaxed mb-6 opacity-90"
-//                         style={{ color: "#99D5DF" }}
-//                       >
-//                         Strategic permanent placement solutions with
-//                         comprehensive candidate assessment, cultural fit
-//                         evaluation, and long-term retention focus. Our direct
-//                         hiring approach ensures sustainable growth for your
-//                         organization.
-//                       </p>
-//                     </div>
-
-//                     <button
-//                       className="inline-flex items-center gap-3 text-lg font-semibold group-hover:gap-4 transition-all duration-300"
-//                       style={{ color: "#F5FDFF" }}
-//                     >
-//                       Explore Direct Hiring <ArrowRight size={20} />
-//                     </button>
-//                   </div>
-//                 </div>
-//               </div>
-
-//               {/* Contract-to-Hire - Medium Card */}
-//               <div className="col-span-12 lg:col-span-5 relative">
-//                 <div
-//                   className="p-6 lg:p-8 rounded-3xl relative overflow-hidden group cursor-pointer transform hover:scale-[1.02] transition-all duration-500 border-2"
-//                   style={{
-//                     backgroundColor: "#F5FDFF",
-//                     borderColor: "#99D5DF",
-//                     minHeight: "400px",
-//                   }}
-//                 >
-//                   {/* Decorative Elements */}
-//                   <div className="absolute top-4 right-4 w-24 h-24 opacity-10">
-//                     <Clock size={96} style={{ color: "#0098AF" }} />
-//                   </div>
-
-//                   <div className="relative z-10 h-full flex flex-col justify-between">
-//                     <div>
-//                       <div
-//                         className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300"
-//                         style={{ backgroundColor: "#0098AF" }}
-//                       >
-//                         <Clock size={28} style={{ color: "#F5FDFF" }} />
-//                       </div>
-
-//                       <h3
-//                         className="text-2xl lg:text-3xl font-bold mb-4 leading-tight"
-//                         style={{
-//                           fontFamily: "Playfair Display, serif",
-//                           color: "#003C46",
-//                         }}
-//                       >
-//                         Contract-to-Hire
-//                       </h3>
-
-//                       <p
-//                         className="leading-relaxed mb-6"
-//                         style={{ color: "#5B5B5B" }}
-//                       >
-//                         Flexible staffing solutions that allow you to evaluate
-//                         candidates in real work environments before making
-//                         permanent commitments. Reduce hiring risks while
-//                         accessing top talent quickly.
-//                       </p>
-//                     </div>
-
-//                     <button
-//                       className="inline-flex items-center gap-2 font-semibold group-hover:gap-3 transition-all duration-300"
-//                       style={{ color: "#0098AF" }}
-//                     >
-//                       Learn More <ArrowRight size={18} />
-//                     </button>
-//                   </div>
-//                 </div>
-//               </div>
-
-//               {/* RPO - Wide Card */}
-//               <div className="col-span-12 lg:col-span-8 lg:col-start-3 relative mt-8">
-//                 <div
-//                   className="p-6 lg:p-10 rounded-3xl relative overflow-hidden group cursor-pointer transform hover:scale-[1.02] transition-all duration-500"
-//                   style={{
-//                     background:
-//                       "linear-gradient(135deg, #99D5DF 0%, #007B8F 100%)",
-//                   }}
-//                 >
-//                   {/* Decorative Elements */}
-//                   <div className="absolute top-0 left-0 w-full h-full opacity-10">
-//                     <svg viewBox="0 0 400 200" className="w-full h-full">
-//                       <defs>
-//                         <pattern
-//                           id="rpo-pattern"
-//                           x="0"
-//                           y="0"
-//                           width="40"
-//                           height="40"
-//                           patternUnits="userSpaceOnUse"
-//                         >
-//                           <circle
-//                             cx="20"
-//                             cy="20"
-//                             r="2"
-//                             fill="#F5FDFF"
-//                             opacity="0.3"
-//                           />
-//                         </pattern>
-//                       </defs>
-//                       <rect
-//                         width="100%"
-//                         height="100%"
-//                         fill="url(#rpo-pattern)"
-//                       />
-//                     </svg>
-//                   </div>
-
-//                   <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center gap-8">
-//                     <div className="flex-1">
-//                       <div
-//                         className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300"
-//                         style={{ backgroundColor: "rgba(0, 60, 70, 0.2)" }}
-//                       >
-//                         <TrendingUp size={32} style={{ color: "#003C46" }} />
-//                       </div>
-
-//                       <h3
-//                         className="text-3xl lg:text-4xl font-bold mb-4 leading-tight"
-//                         style={{
-//                           fontFamily: "Playfair Display, serif",
-//                           color: "#003C46",
-//                         }}
-//                       >
-//                         RPO Solutions
-//                       </h3>
-
-//                       <p
-//                         className="text-lg leading-relaxed mb-6"
-//                         style={{ color: "#003C46" }}
-//                       >
-//                         Complete recruitment process outsourcing with dedicated
-//                         teams, advanced technology, and scalable solutions.
-//                         Transform your entire hiring process with our
-//                         enterprise-grade RPO services.
-//                       </p>
-
-//                       <button
-//                         className="inline-flex items-center gap-3 text-lg font-semibold group-hover:gap-4 transition-all duration-300"
-//                         style={{ color: "#003C46" }}
-//                       >
-//                         Discover RPO <ArrowRight size={20} />
-//                       </button>
-//                     </div>
-
-//                     <div className="flex-shrink-0">
-//                       <div
-//                         className="w-32 h-32 rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform duration-500"
-//                         style={{ backgroundColor: "rgba(0, 60, 70, 0.1)" }}
-//                       >
-//                         <Award size={64} style={{ color: "#003C46" }} />
-//                       </div>
-//                     </div>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-//     </div>
-//   );
-// }
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-import { Users, UserCheck, Building } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-
-const services = [
+const services: Service[] = [
   {
     id: "direct-hire",
     title: "Direct Hire",
+    subtitle: "Finding Permanent Talent",
     description:
-      "Strategic permanent placement solutions with comprehensive candidate assessment, cultural fit evaluation, and long-term retention focus. Our direct hiring approach ensures sustainable growth for your organization.",
-    icon: Users,
-    delay: 0,
-    path: "/services/staffing/direct-hire",
+      "Build your core team with confidence. Our direct hire services connect you with top-tier, pre-vetted professionals who are aligned with your culture, goals, and long-term vision.",
+    image:
+      "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop",
+  },
+  {
+    id: "contract-staffing",
+    title: "Contract Staffing",
+    subtitle: "Flexible Workforce, On Demand",
+    description:
+      "Scale quickly without long-term commitments. Our contract staffing services provide skilled professionals for short- or mid-term assignments. We manage everything from sourcing and onboarding to payroll and compliance — so you can focus on delivery, not HR.",
+    image:
+      "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop",
   },
   {
     id: "contract-to-hire",
-    title: "Contract & Contract-To-Hire",
+    title: "Contract-to-Hire (C2H)",
+    subtitle: "Try Before You Hire",
     description:
-      "Flexible staffing solutions that allow you to evaluate candidates in real work environments before making permanent commitments. Reduce hiring risks while accessing top talent quickly.",
-    icon: UserCheck,
-    delay: 200,
-    path: "/services/staffing/contract-to-hire",
+      "Evaluate talent in real-time before making it permanent. Our contract-to-hire model allows you to assess a candidate's skills, culture fit, and work ethic during a trial period. If it's a match, convert to full-time with confidence and zero guesswork.",
+    image:
+      "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop",
   },
   {
     id: "rpo",
-    title: "RPO Solutions",
+    title: "Recruitment Process Outsourcing",
+    subtitle: "End-to-End Hiring, Handled by Experts",
     description:
-      "Complete recruitment process outsourcing with dedicated teams, advanced technology, and scalable solutions. Transform your entire hiring process with our enterprise-grade RPO services.",
-    icon: Building,
-    delay: 400,
-    path: "/services/staffing/rpo-solutions",
+      "Outsource your recruitment engine and reduce cost-per-hire. With RPO, our team acts as an extension of your HR department, managing the entire hiring process — sourcing, screening, interviews, compliance, and analytics — with speed, consistency, and scale.",
+    image:
+      "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop",
+  },
+  {
+    id: "project-based",
+    title: "Project-Based Hiring",
+    subtitle: "Onboard Full Teams for Specific Deliverables",
+    description:
+      "Deploy pre-assembled talent for mission-critical milestones. Ideal for product launches, system rollouts, or digital transformation projects, our project-based hiring delivers fully-equipped tech or engineering teams with defined scopes, timelines, and KPIs.",
+    image:
+      "https://images.pexels.com/photos/3184638/pexels-photo-3184638.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop",
   },
 ];
 
-export const ServicesSection = () => {
+const ServiceCard: React.FC<{
+  service: Service;
+  index: number;
+  isVisible: boolean;
+}> = ({ service, index, isVisible }) => {
   return (
-    <section className="relative py-16">
-      <div className="absolute inset-0 bg-gradient-to-br from-background to-background-light" />
+    <div
+      className={`group bg-white rounded-xl shadow-lg border-2 overflow-hidden transform transition-all duration-300 hover:scale-105 ${
+        isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+      }`}
+      style={{
+        transitionDelay: isVisible ? `${index * 200}ms` : "0ms",
+        borderColor: "hsl(185 64% 73% / 0.2)",
+        boxShadow: "0 4px 20px hsl(188 100% 34% / 0.15)",
+        transition: "all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = "hsl(188 100% 34% / 0.4)";
+        e.currentTarget.style.boxShadow =
+          "0 10px 30px -10px hsl(193 100% 23% / 0.3)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = "hsl(185 64% 73% / 0.2)";
+        e.currentTarget.style.boxShadow = "0 4px 20px hsl(188 100% 34% / 0.15)";
+      }}
+      role="article"
+      aria-labelledby={`service-title-${service.id}`}
+    >
+      {/* Title and Subtitle */}
+      <div className="p-6 pb-4">
+        <h3
+          id={`service-title-${service.id}`}
+          className="text-xl md:text-2xl font-bold text-[#003C46] mb-2 group-hover:text-[#0098AF] transition-colors duration-300"
+        >
+          {service.title}
+        </h3>
+        <p className="text-base md:text-lg font-medium text-[#0098AF] leading-relaxed">
+          {service.subtitle}
+        </p>
+      </div>
 
-      <div className="relative max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="mb-10 animate-slide-up">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6  bg-clip-text text-[#003C46]">
-            Engagement Model
-          </h2>
-          <p className="text-lg text-[#003C46] max-w-7xl mx-auto">
-            Comprehensive talent acquisition solutions tailored to your unique
-            business needs
+      {/* Image */}
+      <div className="relative overflow-hidden">
+        <Image
+          src={service.image}
+          alt={`${service.title} - Professional staffing service`}
+          className="w-full h-48 md:h-52 object-cover transition-transform duration-300 group-hover:scale-110"
+          width={800}
+          height={80}
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#003C46]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        {/* Hover Description Overlay */}
+        <div className="absolute inset-0 bg-[#003C46]/80 flex items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+          <p className="text-sm md:text-base text-white leading-relaxed text-center">
+            {service.description}
           </p>
         </div>
 
-        {/* Asymmetrical Services Grid */}
-        <div className="relative">
-          {/* Service Cards - Staggered Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              const isCenter = index === 1;
-              const isRight = index === 2;
+        {/* Hover effect overlay */}
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-xl"
+          style={{
+            background:
+              "linear-gradient(135deg, hsl(188 100% 34% / 0.05), transparent)",
+          }}
+        ></div>
+      </div>
+    </div>
+  );
+};
 
-              return (
-                <div
-                  key={service.id}
-                  className={`
-                   relative group
-                   ${isCenter ? "lg:mt-12" : ""}
-                   ${isRight ? "lg:mt-6" : ""}
-                 `}
-                  style={{ animationDelay: `${service.delay}ms` }}
-                >
-                  {/* Clean minimal background */}
-                  <div
-                    className="relative p-8 lg:p-10 bg-white border border-[#003C46]/20 rounded-2xl
-                               hover:border-[#0098af]/30 hover:shadow-soft transition-all duration-300
-                               group-hover:shadow-lg"
-                  >
-                    {/* Icon */}
-                    <div className="mb-6 flex justify-center">
-                      <div
-                        className="w-14 h-14 bg-[#0098af]/10 rounded-xl flex items-center justify-center
-                                   group-hover:bg-[#0098af]/20 transition-colors duration-300"
-                      >
-                        <Icon className="w-7 h-7 text-[#0098af]" />
-                      </div>
-                    </div>
+const ServicesSection: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
-                    {/* Title */}
-                    <h3 className="text-2xl font-bold text-foreground mb-4 text-center">
-                      {service.title}
-                    </h3>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "50px 0px -50px 0px",
+      }
+    );
 
-                    {/* Description */}
-                    <p className="text-[#003C46] text-center justify-center mb-8 leading-relaxed">
-                      {service.description}
-                    </p>
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
-                    {/* CTA Button */}
-                    <div className="flex justify-center">
-                      <Link href={service.path}>
-                        <Button
-                          variant="outline"
-                          className="group/btn relative overflow-hidden border-[#0098af]/30 text-[#0098af]
-                                  hover:text-white hover:border-[#0098af] hover:shadow-glow d
-                                  transition-all duration-300"
-                        >
-                          <span className="relative z-10">Learn More</span>
-                          <div
-                            className="absolute inset-0 bg-gradient-to-r from-[#0098af]/80 to-[#0098af]/80 
-                                       translate-x-[-100%] group-hover/btn:translate-x-0 
-                                       transition-transform duration-300"
-                          />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+    return () => {
+      if (sectionRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  const handleScrollToCTA = () => {
+    const ctaSection = document.getElementById("cta");
+    if (ctaSection) {
+      ctaSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative py-16 md:py-24 overflow-hidden"
+      aria-labelledby="services-section-title"
+    >
+      {/* Background overlay to reduce dot opacity */}
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: "#F5FDFF", opacity: 0.9 }}
+      ></div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-16 md:mb-20">
+          <h2
+            id="services-section-title"
+            className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6 leading-tight"
+          >
+            Our{" "}
+            <span className="bg-gradient-to-r from-[#0098AF] to-[#007B8F] bg-clip-text text-transparent">
+              Engagement Models
+            </span>
+          </h2>
+          <p className="text-lg md:text-xl text-[#5B5B5B] max-w-4xl mx-auto leading-relaxed">
+            Tailored hiring solutions to meet your business needs — whether
+            you&apos;re scaling fast or building for the future.
+          </p>
+        </div>
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-8">
+          {/* First Row - 3 cards */}
+          {services.slice(0, 3).map((service, index) => (
+            <ServiceCard
+              key={service.id}
+              service={service}
+              index={index}
+              isVisible={isVisible}
+            />
+          ))}
+        </div>
+
+        {/* Second Row - 2 cards centered */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-4xl mx-auto">
+          {services.slice(3).map((service, index) => (
+            <ServiceCard
+              key={service.id}
+              service={service}
+              index={index + 3}
+              isVisible={isVisible}
+            />
+          ))}
+        </div>
+
+        {/* CTA Button */}
+        <div className="text-center mt-16 md:mt-20">
+          <button
+            onClick={handleScrollToCTA}
+            className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-[#F5FDFF] bg-[#0098AF] rounded-lg shadow-lg hover:bg-[#007B8F] hover:shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#0098AF]/30 focus:ring-offset-2"
+            aria-label="Get a custom quote for staffing services"
+          >
+            Get Custom Quote
+            <svg
+              className="ml-2 w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </button>
         </div>
       </div>
     </section>
   );
 };
+
+export default ServicesSection;

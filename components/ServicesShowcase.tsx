@@ -149,15 +149,14 @@ const ServicesShowcase = () => {
               </p>
             </div>
             <h2 className="max-w-7xl text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#003C46]">
-              Engineering Excellence Through
-              <span className="block font-semibold bg-gradient-to-br from-[#003c46] to-[#1c7a8a] bg-clip-text text-transparent">
-                Innovative Solutions
+              Scalable Solutions for
+              <span className=" font-semibold bg-gradient-to-br from-[#003c46] to-[#1c7a8a] bg-clip-text text-transparent">
+                Smarter Tomorrow
               </span>
             </h2>
             <p className="text-sm py-4 sm:text-sm md:text-base text-justify text-gray-650 leading-relaxed">
-              We deliver precision-crafted solutions that transform challenges
-              into competitive advantages, backed by decades of engineering
-              expertise and cutting-edge technology.
+              From staffing the right talent to building dedicated teams and
+              deploying powerful SaaS tools, we help you grow with confidence.
             </p>
           </div>
         </div>

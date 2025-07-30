@@ -61,10 +61,13 @@ const IndustriesWeServe = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mb-10">
-          <h2 className="text-4xl lg:text-5xl font-bold text-[#003C46] mb-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#003C46] mb-4">
             Industries <span className="text-[#0098af]">We Serve</span>
           </h2>
-          <p className="text-lg text-[#003C46] max-w-7xl mx-auto">
+          <p
+            className="text-lg max-w-7xl mx-auto "
+            style={{ color: "hsl(200 20% 35%)" }}
+          >
             Specialized recruitment expertise across key industries, delivering
             talent solutions that drive business growth
           </p>

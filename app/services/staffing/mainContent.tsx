@@ -108,8 +108,7 @@ export default function AboutSection() {
                     overwhelming. That’s where we come in. At Cognition IES, we
                     believe recruitment is more than just matching resumes with
                     job descriptions — it’s about understanding people, purpose,
-                    and potential. We work closely with both job seekers and
-                    employers to ensure every connection is meaningful,
+                    and potential. We work closely with you to ensure every connection is meaningful,
                     strategic, and long-lasting.
                   </p>
                 </div>

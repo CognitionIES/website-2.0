@@ -202,15 +202,6 @@ export function MegaMenu() {
                         </Link>
                       ))}
                     </div>
-                    <div className="px-4 py-3 bg-gray-50 border-t border-gray-100">
-                      <Link
-                        href="/services"
-                        className="text-xs text-cyan-600 hover:text-cyan-800 font-medium transition-colors duration-200 flex items-center space-x-1"
-                      >
-                        <span>View all services</span>
-                        <ArrowRight className="w-3 h-3" />
-                      </Link>
-                    </div>
                   </div>
                 )}
               </div>

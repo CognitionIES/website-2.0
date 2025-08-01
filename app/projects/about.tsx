@@ -1,215 +1,267 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ProjectCard } from "./ProjectCard";
+/* eslint-disable react-hooks/exhaustive-deps */
+"use client";
+
+import { motion } from "framer-motion";
+import { StaticImageData } from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { projects } from "@/constants/projects";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import digitalImage from "@/constants/images/home/our-recent-projects/digitalization.jpg";
+import pcmImage2 from "@/constants/images/home/our-recent-projects/pcm.jpg";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
-const SLIDE_INTERVAL = 5000;
-
-const AboutSection: React.FC = () => {
-  const isMobile = useIsMobile();
-
-  // Create infinite loop array
-  const infiniteProjects = [...projects, ...projects, ...projects];
-  const [currentIndex, setCurrentIndex] = useState(projects.length); // Start from middle
-  const [isHovered, setIsHovered] = useState(false);
-  const [slideDirection, setSlideDirection] = useState<"left" | "right">(
-    "right"
-  );
-
-  const cardsToShow = isMobile ? 1 : 2;
-  const visibleProjects = infiniteProjects.slice(
-    currentIndex,
-    currentIndex + cardsToShow
-  );
-
-  // Auto-slide functionality
-  useEffect(() => {
-    if (!isHovered) {
-      const interval = setInterval(() => {
-        setSlideDirection("right");
-        setCurrentIndex((prev) => {
-          const next = prev + 1;
-          // Reset to middle when reaching the end to maintain infinite loop
-          if (next >= infiniteProjects.length - cardsToShow) {
-            return projects.length;
-          }
-          return next;
-        });
-      }, SLIDE_INTERVAL);
-
-      return () => clearInterval(interval);
-    }
-  }, [isHovered, cardsToShow, infiniteProjects.length]);
-
-  const handlePrevious = useCallback(() => {
-    setSlideDirection("left");
-    setCurrentIndex((prev) => {
-      const next = prev - 1;
-      // Reset to middle when reaching the beginning
-      if (next < 0) {
-        return infiniteProjects.length - cardsToShow - projects.length;
-      }
-      return next;
-    });
-  }, [cardsToShow, infiniteProjects.length]);
-
-  const handleNext = useCallback(() => {
-    setSlideDirection("right");
-    setCurrentIndex((prev) => {
-      const next = prev + 1;
-      // Reset to middle when reaching the end
-      if (next >= infiniteProjects.length - cardsToShow) {
-        return projects.length;
-      }
-      return next;
-    });
-  }, [cardsToShow, infiniteProjects.length]);
-
-  // Calculate dot indicators based on actual project position
-  const currentProjectIndex = currentIndex % projects.length;
-
-  const handleDotClick = (index: number) => {
-    setSlideDirection(index > currentProjectIndex ? "right" : "left");
-    setCurrentIndex(projects.length + index);
-  };
-
-  // Animation variants for sliding
-  const slideVariants = {
-    enter: (direction: string) => ({
-      x: direction === "right" ? 100 : -100,
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: string) => ({
-      x: direction === "right" ? -100 : 100,
-      opacity: 0,
-    }),
-  };
-  return (
-    <section className="relative py-16 lg:py-24 bg-gradient-to-br from-[#F5FDFF] to-[#99D5DF]/5">
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
-        {/* Header */}
-        <div className="mb-12 lg:mb-10">
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#003C46] mb-4">
-            Recent Projects
-          </h2>
-          <p className="text-lg text-[#5B5B5B] max-w-7xl mx-auto leading-relaxed">
-            Explore our latest work in delivering innovative solutions across
-            industries.
-          </p>
-        </div>
-
-        {/* Slider Container */}
-        <div
-          className="relative"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          {/* Cards Container */}
-          <div className="overflow-hidden">
-            <AnimatePresence mode="wait" custom={slideDirection}>
-              <motion.div
-                key={currentIndex}
-                custom={slideDirection}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  x: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.3 },
-                }}
-                className="flex gap-4 lg:gap-6"
-              >
-                {visibleProjects.map((project, index) => (
-                  <div
-                    key={`${project.id}-${currentIndex}-${index}`}
-                    className={`${isMobile ? "w-full" : "w-1/2"} flex-shrink-0`}
-                  >
-                    <ProjectCard project={project} />
-                  </div>
-                ))}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Navigation Buttons - Desktop */}
-          {!isMobile && (
-            <>
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4">
-                <Button
-                  onClick={handlePrevious}
-                  variant="outline"
-                  size="default"
-                  className="w-12 h-12 rounded-full shadow-lg"
-                  aria-label="Previous project"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </Button>
-              </div>
-
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4">
-                <Button
-                  onClick={handleNext}
-                  variant="outline"
-                  size="default"
-                  className="w-12 h-12 rounded-full shadow-lg"
-                  aria-label="Next project"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </Button>
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* Navigation Controls - Mobile */}
-        {isMobile && (
-          <div className="flex justify-center gap-4 mt-8">
-            <Button
-              onClick={handlePrevious}
-              variant="outline"
-              size="default"
-              className="w-12 h-12 rounded-full"
-              aria-label="Previous project"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </Button>
-            <Button
-              onClick={handleNext}
-              variant="outline"
-              size="default"
-              className="w-12 h-12 rounded-full"
-              aria-label="Next project"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </Button>
-          </div>
-        )}
-
-        {/* Dot Indicators */}
-        <div className="flex justify-center gap-2 mt-8">
-          {projects.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => handleDotClick(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                currentProjectIndex === index
-                  ? "bg-[#0098AF] scale-110"
-                  : "bg-[#99D5DF] hover:bg-[#0098AF]/50"
-              }`}
-              aria-label={`Go to project ${index + 1}`}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+type Project = {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  image: string | StaticImageData;
+  href: string;
 };
-export default AboutSection;
+
+const projects: Project[] = [
+  {
+    id: "project-1",
+    title: "IT Talent Deployment",
+    category: "Contract Staffing for Full-Stack Development Team",
+    description:
+      "Successfully staffed and deployed a team of skilled full-stack developers (React & Node.js) for a growing IT company. Ensured quick turnaround, seamless onboarding, and end-to-end compliance support for a 12-month contract.",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    href: "/projects/it-talent-deployment",
+  },
+  {
+    id: "project-2",
+    title: "Digitalization",
+    category: "Digital Transformation",
+    description:
+      "Comprehensive Digital Transformation of a Manufacturing Plant through 3D Scanning, Digital Twin, and Real-Time Data Integration to Improve Efficiency and Accuracy.",
+    image: digitalImage,
+    href: "/projects/digitalization",
+  },
+  {
+    id: "project-3",
+    title: "Log Splitter Cost Optimization & Benchmarking",
+    category: "Financial Optimization",
+    description:
+      "Conducted a detailed cost and function analysis of the Log Splitter, identifying cost-saving opportunities through competitive benchmarking and design optimization.",
+    image: pcmImage2,
+    href: "/projects/product-cost-management",
+  },
+];
+
+export default function AboutSection() {
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const isMobile = useIsMobile();
+  const visibleProjects = isMobile ? 1 : 2;
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev + 1) % projects.length);
+  };
+
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -20% 0px",
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isInView) {
+      projectRefs.current.forEach((item, index) => {
+        if (item) {
+          setTimeout(() => {
+            item.classList.add("opacity-100", "translate-y-0");
+            item.classList.remove("opacity-0", "translate-y-12");
+          }, 200 + index * 150);
+        }
+      });
+    }
+  }, [isInView]);
+
+  const sectionHeaderVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: "easeOut" as const,
+      },
+    },
+  };
+
+  const cardsContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut" as const,
+      },
+    },
+  };
+
+  return (
+    <div>
+      <section
+        ref={sectionRef}
+        className="w-full py-16 sm:py-20 lg:py-12 relative bg-gradient-to-br from-white to-[#E6F0F5]/30 overflow-hidden"
+      >
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#0098AF]/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#003C46]/5 rounded-full filter blur-3xl"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="inline-block mb-1 bg-[#E6F0F5] bg-opacity-70 rounded-full backdrop-blur-sm px-3 py-1">
+            <p className="text-xs font-medium tracking-wider text-[#0098af] uppercase">
+              Featured Work
+            </p>
+          </div>
+          <h1 className="text-xl sm:text-2xl lg:text-4xl font-semibold text-[#003C46] tracking-tight drop-shadow-sm">
+            Recent Projects
+          </h1>
+          <motion.div
+            variants={sectionHeaderVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          ></motion.div>
+
+          <motion.div
+            variants={cardsContainerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="relative max-w-7xl mt-8"
+          >
+            <div className="overflow-hidden">
+              <div
+                className="flex transition-transform duration-500 ease-out gap-4 sm:gap-6 lg:gap-6"
+                style={{
+                  transform: `translateX(-${
+                    activeIndex * (100 / visibleProjects)
+                  }%)`,
+                }}
+              >
+                {projects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    ref={(el) => {
+                      projectRefs.current[index] = el;
+                    }}
+                    variants={cardVariants}
+                    className={cn(
+                      "project-card flex-shrink-0 w-full opacity-0 translate-y-12 transition-all duration-700",
+                      isMobile ? "w-full" : "w-1/2"
+                    )}
+                    whileHover={{ y: -5 }}
+                  >
+                    <div className="group h-full bg-white/80 rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
+                      <Link
+                        href={project.href}
+                        className="block relative h-[180px] sm:h-[240px] w-full overflow-hidden cursor-pointer"
+                      >
+                        <div
+                          className="absolute inset-0 bg-cover bg-center h-full w-full transform transition-transform duration-700 group-hover:scale-105"
+                          style={{
+                            backgroundImage: `url(${
+                              typeof project.image === "string"
+                                ? project.image
+                                : project.image.src
+                            })`,
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-60 group-hover:opacity-70 transition-opacity" />
+                        <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
+                          <div className="px-2 sm:px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full">
+                            <p className="text-[10px] sm:text-xs font-medium text-[#003C46]">
+                              {project.category}
+                            </p>
+                          </div>
+                        </div>
+                      </Link>
+
+                      <div className="p-4 sm:p-6 space-y-2 sm:space-y-3">
+                        <a href={project.href} className="block">
+                          <h3 className="text-lg sm:text-2xl font-semibold text-[#5b5b5b] group-hover:text-[#0098af] transition-colors">
+                            {project.title}
+                          </h3>
+                        </a>
+                        <p className="text-gray-600 line-clamp-3 text-sm sm:text-base leading-relaxed">
+                          {project.description}
+                        </p>
+                        <a
+                          href={project.href}
+                          className="inline-flex items-center gap-1.5 text-sm sm:text-base font-medium text-[#0098af] group relative"
+                        >
+                          <span className="relative">
+                            View in detail
+                            <span className="absolute -bottom-px left-0 w-full h-px bg-[#0098af]/50 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                          </span>
+                          <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </a>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex justify-between mt-4">
+              <Button
+                variant="outline"
+                className="p-2 rounded-full bg-white border-[#0098af] text-[#0098af] hover:bg-[#0098af] hover:text-white transition-colors"
+                onClick={handlePrev}
+                aria-label="Previous project"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </Button>
+              <Button
+                variant="outline"
+                className="p-2 rounded-full bg-white border-[#0098af] text-[#0098af] hover:bg-[#0098af] hover:text-white transition-colors"
+                onClick={handleNext}
+                aria-label="Next project"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}

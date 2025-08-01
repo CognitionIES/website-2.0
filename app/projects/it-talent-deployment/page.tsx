@@ -193,7 +193,7 @@ const RecentProjects = () => {
           }`}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6 leading-tight">
-            Projects{" "}
+            Project{" "}
             <span className="bg-gradient-to-r from-[#0098AF] to-[#007B8F] bg-clip-text text-transparent">
               Objective
             </span>

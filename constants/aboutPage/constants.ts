@@ -29,7 +29,7 @@ export const ABOUT_CONSTANTS = {
       "Engineering the future with innovation, agility, and a human-first approach since 2023.",
     STORY_TITLE: "Our Journey",
     STORY_P1:
-      "Founded in 2023, Cognition IES was built on a bold vision: to redefine how talent powers businesses. From India to the world, we've grown into a trusted talent solutions provider—specializing in staffing, recruitment, workforce management, and digital hiring solutions for industries like IT, BFSI, Engineering, Manufacturing, and GCCs.",
+      "Founded in 2005, Cognition IES was built on a bold vision: to redefine how talent powers businesses. From India to the world, we've grown into a trusted talent solutions provider—specializing in staffing, recruitment, workforce management, and digital hiring solutions for industries like IT, BFSI, Engineering, Manufacturing, and GCCs.",
     STORY_P2:
       "Whether you're building agile teams, hiring for long-term roles, or scaling operations, we connect you with the right people—backed by smart technology and deep domain expertise.",
     MISSION_TITLE: "Our Mission",
@@ -40,8 +40,7 @@ export const ABOUT_CONSTANTS = {
       "To be the most agile and trusted partner in workforce transformation—bridging people, processes, and performance globally.",
     VALUES_TITLE: "What Drives Us",
     CTA_TITLE: "Shape the Future with Us",
-    CTA_DESC:
-      "Let’s turn your hiring needs into long-term success.",
+    CTA_DESC: "Let’s turn your hiring needs into long-term success.",
   },
 
   // Animation Variants

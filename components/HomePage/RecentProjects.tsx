@@ -26,7 +26,8 @@ const projects: Project[] = [
     category: "Contract Staffing",
     description:
       "Successfully staffed and deployed a team of skilled full-stack developers (React & Node.js) for a growing IT company. Ensured quick turnaround, seamless onboarding, and end-to-end compliance support for a 12-month contract.",
-    image: digitalImage,
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
     href: "/projects/it-talent-deployment",
   },
   {

@@ -22,6 +22,7 @@ import Image from "next/image";
 import { MegaMenu } from "@/components/ui/Megamenu/MegaMenu";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Footer from "@/components/footer";
 
 const useIntersectionObserver = (threshold = 0.1) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -192,7 +193,7 @@ const RecentProjects = () => {
           }`}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6 leading-tight">
-            Projects {" "}
+            Projects{" "}
             <span className="bg-gradient-to-r from-[#0098AF] to-[#007B8F] bg-clip-text text-transparent">
               Objective
             </span>
@@ -1224,150 +1225,6 @@ const CTASection = () => {
         </div>
       </div>
     </section>
-  );
-};
-
-const Footer = () => {
-  return (
-    <footer className="bg-[#003C46] text-[#F5FDFF] py-20 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-10 right-10 w-32 h-32 border border-[#0098AF]/20 rounded-full animate-spin-slow"></div>
-      <div className="absolute bottom-10 left-10 w-24 h-24 bg-[#0098AF]/10 rounded-full animate-pulse"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          <div className="md:col-span-2">
-            <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-[#F5FDFF] to-[#99D5DF] bg-clip-text text-transparent">
-              TechStaff Solutions
-            </h3>
-            <p className="text-[#F5FDFF]/80 mb-8 leading-relaxed text-lg">
-              Leading IT staffing solutions provider, connecting talent with
-              opportunity across the technology landscape. We specialize in
-              delivering exceptional results with zero compromise on quality.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3 hover:text-[#99D5DF] transition-colors duration-300 group">
-                <div className="w-10 h-10 bg-[#0098AF]/20 rounded-full flex items-center justify-center group-hover:bg-[#0098AF]/30 transition-colors duration-300">
-                  <span className="text-sm">📧</span>
-                </div>
-                <span className="font-medium">
-                  contact@techstaffsolutions.com
-                </span>
-              </div>
-              <div className="flex items-center space-x-3 hover:text-[#99D5DF] transition-colors duration-300 group">
-                <div className="w-10 h-10 bg-[#0098AF]/20 rounded-full flex items-center justify-center group-hover:bg-[#0098AF]/30 transition-colors duration-300">
-                  <span className="text-sm">📞</span>
-                </div>
-                <span className="font-medium">+1 (555) 123-4567</span>
-              </div>
-            </div>
-          </div>
-          <div>
-            <h4 className="font-bold mb-8 text-xl text-[#99D5DF]">Services</h4>
-            <ul className="space-y-4">
-              <li>
-                <a
-                  href="#"
-                  className="text-[#F5FDFF]/80 hover:text-[#99D5DF] transition-all duration-300 hover:translate-x-2 hover:font-medium"
-                >
-                  Contract Staffing
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-[#F5FDFF]/80 hover:text-[#99D5DF] transition-all duration-300 hover:translate-x-2 hover:font-medium"
-                >
-                  Permanent Placement
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-[#F5FDFF]/80 hover:text-[#99D5DF] transition-all duration-300 hover:translate-x-2 hover:font-medium"
-                >
-                  Technical Consulting
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-[#F5FDFF]/80 hover:text-[#99D5DF] transition-all duration-300 hover:translate-x-2 hover:font-medium"
-                >
-                  HR Solutions
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-8 text-xl text-[#99D5DF]">Company</h4>
-            <ul className="space-y-4">
-              <li>
-                <a
-                  href="#"
-                  className="text-[#F5FDFF]/80 hover:text-[#99D5DF] transition-all duration-300 hover:translate-x-2 hover:font-medium"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-[#F5FDFF]/80 hover:text-[#99D5DF] transition-all duration-300 hover:translate-x-2 hover:font-medium"
-                >
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-[#F5FDFF]/80 hover:text-[#99D5DF] transition-all duration-300 hover:translate-x-2 hover:font-medium"
-                >
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-[#F5FDFF]/80 hover:text-[#99D5DF] transition-all duration-300 hover:translate-x-2 hover:font-medium"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Enhanced footer bottom */}
-        <div className="border-t border-[#F5FDFF]/20 mt-16 pt-10">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-[#F5FDFF]/60 text-sm mb-4 md:mb-0">
-              &copy; 2025 TechStaff Solutions. All rights reserved.
-            </p>
-            <div className="flex items-center space-x-6">
-              <a
-                href="#"
-                className="text-[#F5FDFF]/60 hover:text-[#99D5DF] transition-colors duration-300 text-sm"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-[#F5FDFF]/60 hover:text-[#99D5DF] transition-colors duration-300 text-sm"
-              >
-                Terms of Service
-              </a>
-              <a
-                href="#"
-                className="text-[#F5FDFF]/60 hover:text-[#99D5DF] transition-colors duration-300 text-sm"
-              >
-                Cookie Policy
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
   );
 };
 

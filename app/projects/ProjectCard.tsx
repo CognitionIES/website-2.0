@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Project } from "@/constants/projects";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProjectCardProps {
   project: Project;
@@ -18,6 +19,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
               alt={`${project.title} project visual`}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
+              width={800}
+              height={80}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent" />
           </div>
@@ -36,13 +39,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {project.description}
           </p>
 
-          <a
+          <Link
             href={project.link}
             className="inline-flex items-center gap-2 text-[#0098AF] font-medium hover:text-[#007B8F] transition-all duration-200 group hover:gap-3"
           >
             View in Detail
             <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </a>
+          </Link>
         </div>
       </Card>
     </div>

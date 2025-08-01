@@ -8,7 +8,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const SLIDE_INTERVAL = 5000;
 
-export function ProjectSlider() {
+const AboutSection: React.FC = () => {
   const isMobile = useIsMobile();
 
   // Create infinite loop array
@@ -95,11 +95,11 @@ export function ProjectSlider() {
     <section className="relative py-16 lg:py-24 bg-gradient-to-br from-[#F5FDFF] to-[#99D5DF]/5">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
+        <div className="mb-12 lg:mb-10">
           <h2 className="text-3xl lg:text-4xl font-bold text-[#003C46] mb-4">
             Recent Projects
           </h2>
-          <p className="text-lg text-[#5B5B5B] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-[#5B5B5B] max-w-7xl mx-auto leading-relaxed">
             Explore our latest work in delivering innovative solutions across
             industries.
           </p>
@@ -211,4 +211,5 @@ export function ProjectSlider() {
       </div>
     </section>
   );
-}
+};
+export default AboutSection;

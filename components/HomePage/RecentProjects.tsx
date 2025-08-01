@@ -21,6 +21,15 @@ type Project = {
 
 const projects: Project[] = [
   {
+    id: "project-0",
+    title: "IT Talent Deployment",
+    category: "Contract Staffing",
+    description:
+      "Successfully staffed and deployed a team of skilled full-stack developers (React & Node.js) for a growing IT company. Ensured quick turnaround, seamless onboarding, and end-to-end compliance support for a 12-month contract.",
+    image: digitalImage,
+    href: "/projects/it-talent-deployment",
+  },
+  {
     id: "project-1",
     title: "Digitalization",
     category: "Digital Transformation",

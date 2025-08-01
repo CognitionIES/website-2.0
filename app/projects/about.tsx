@@ -146,7 +146,7 @@ export function ProjectSlider() {
                 <Button
                   onClick={handlePrevious}
                   variant="outline"
-                  size="md"
+                  size="default"
                   className="w-12 h-12 rounded-full shadow-lg"
                   aria-label="Previous project"
                 >
@@ -158,7 +158,7 @@ export function ProjectSlider() {
                 <Button
                   onClick={handleNext}
                   variant="outline"
-                  size="md"
+                  size="default"
                   className="w-12 h-12 rounded-full shadow-lg"
                   aria-label="Next project"
                 >
@@ -175,7 +175,7 @@ export function ProjectSlider() {
             <Button
               onClick={handlePrevious}
               variant="outline"
-              size="md"
+              size="default"
               className="w-12 h-12 rounded-full"
               aria-label="Previous project"
             >
@@ -184,7 +184,7 @@ export function ProjectSlider() {
             <Button
               onClick={handleNext}
               variant="outline"
-              size="md"
+              size="default"
               className="w-12 h-12 rounded-full"
               aria-label="Next project"
             >

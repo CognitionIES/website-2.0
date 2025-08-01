@@ -186,81 +186,20 @@ const WhyChooseUs = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
-  const trustMetrics = [
-    { value: "150+", label: "Projects Delivered", icon: CheckCircle },
-    { value: "98%", label: "Client Satisfaction", icon: Star },
-    { value: "5+", label: "Years Experience", icon: Award },
-    { value: "40+", label: "Team Members", icon: Users },
-  ];
-
   return (
     <section>
       <div className="">
-        <section ref={sectionRef} className="py-24 relative overflow-hidden">
-          {/* SVG Background Pattern */}
-          <div className="absolute inset-0 z-0">
-            <svg className="absolute w-full h-full" viewBox="0 0 1200 800">
-              <defs>
-                <radialGradient id="partnerRadial" cx="50%" cy="50%" r="60%">
-                  <stop offset="0%" stopColor="#99D5DF" stopOpacity="0.08" />
-                  <stop offset="50%" stopColor="#0098af" stopOpacity="0.04" />
-                  <stop offset="100%" stopColor="#003C46" stopOpacity="0.06" />
-                </radialGradient>
-                <pattern
-                  id="diamondPattern"
-                  x="0"
-                  y="0"
-                  width="80"
-                  height="80"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <polygon
-                    points="40,10 70,40 40,70 10,40"
-                    fill="none"
-                    stroke="#99D5DF"
-                    strokeWidth="0.5"
-                    strokeOpacity="0.3"
-                  />
-                </pattern>
-              </defs>
-              <rect width="150%" height="350%" fill="url(#diamondPattern)" />
-              
-              <circle
-                cx="200"
-                cy="500"
-                r="120"
-                fill="#99D5DF"
-                fillOpacity="0.04"
-              />
-
-            </svg>
-          </div>
+        <section ref={sectionRef} className="py-16 relative overflow-hidden">
           {/* Existing Background Elements */}
           <div className="absolute top-0 left-0 w-96 h-96 bg-[#0098af]/2 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 z-1" />
           <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#5b5b5b]/2 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 z-1" />
           <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div
-              className="mb-20 max-w-4xl"
+              className="mb-20 max-w-7xl"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <motion.div
-                className="mb-6 text-sm font-semibold text-[#0098af] tracking-wider uppercase flex items-center gap-2"
-                initial={{ opacity: 0, x: -20 }}
-                animate={
-                  isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
-                }
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <motion.div
-                  className="w-8 h-px bg-gradient-to-r from-[#0098af] to-[#5b5b5b]"
-                  initial={{ scaleX: 0 }}
-                  animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                />
-                Why Choose Us
-              </motion.div>
               <motion.h2
                 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-8 leading-tight"
                 initial={{ opacity: 0, y: 20 }}
@@ -269,13 +208,16 @@ const WhyChooseUs = () => {
                 }
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                A Partner You Can{" "}
-                <span className="block font-semibold bg-gradient-to-r from-[#0098af] to-[#5b5b5b] bg-clip-text text-transparent">
-                  Rely On
-                </span>
+                <h2
+                  className=" font-bold text-2xl md:text-3xl lg:text-4xl mb-4"
+                  style={{ color: "hsl(193 100% 23%)" }}
+                >
+                  A Partner You Can{" "}
+                  <span style={{ color: "hsl(188 100% 34%)" }}>Rely On</span>
+                </h2>
               </motion.h2>
               <motion.p
-                className="text-lg text-gray-600 leading-relaxed max-w-3xl"
+                className="text-lg md:text-xl text-[#5B5B5B] max-w-7xl mx-auto leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={
                   isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
@@ -283,10 +225,10 @@ const WhyChooseUs = () => {
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
                 When you choose us, you gain a committed partner who blends
-                Engineering and It expertise with the flexibility and scale needed to
-                deliver your most ambitious projects. From building dedicated
-                teams to managing every stage end-to-end, we&apos;re here to help you
-                succeed.
+                Engineering and It expertise with the flexibility and scale
+                needed to deliver your most ambitious projects. From building
+                dedicated teams to managing every stage end-to-end, we&apos;re
+                here to help you succeed.
               </motion.p>
             </motion.div>
             <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
@@ -306,38 +248,6 @@ const WhyChooseUs = () => {
                 <BulletCard bullet={bulletPoints[4]} index={4} />
               </div>
             </div>
-            <motion.div
-              className="mt-20 text-center"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-            >
-              <div className="inline-flex items-center flex-wrap justify-center gap-8 px-8 py-6 bg-white/90 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-lg">
-                {trustMetrics.map((metric, index) => (
-                  <motion.div
-                    key={metric.label}
-                    className="text-center group"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={
-                      isInView
-                        ? { opacity: 1, scale: 1 }
-                        : { opacity: 0, scale: 0.9 }
-                    }
-                    transition={{ duration: 0.4, delay: 0.9 + index * 0.1 }}
-                  >
-                    <div className="flex items-center justify-center mb-2">
-                      <metric.icon className="h-4 w-4 text-[#0098af] mr-2" />
-                      <div className="text-3xl font-bold bg-gradient-to-r from-[#0098af] to-[#000000]/60 bg-clip-text text-transparent">
-                        {metric.value}
-                      </div>
-                    </div>
-                    <div className="text-sm text-gray-600 group-hover:text-[#0098af] transition-colors">
-                      {metric.label}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
           </div>
         </section>
       </div>

@@ -159,16 +159,6 @@ const ServicesSection: React.FC = () => {
     };
   }, []);
 
-  const handleScrollToCTA = () => {
-    const ctaSection = document.getElementById("cta");
-    if (ctaSection) {
-      ctaSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
-
   return (
     <section
       ref={sectionRef}
@@ -184,7 +174,7 @@ const ServicesSection: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16 md:mb-20">
+        <div className=" mb-16 md:mb-20">
           <h2
             id="services-section-title"
             className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6 leading-tight"
@@ -194,7 +184,7 @@ const ServicesSection: React.FC = () => {
               Engagement Models
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-[#5B5B5B] max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-[#5B5B5B] max-w-7xl mx-auto leading-relaxed">
             Tailored hiring solutions to meet your business needs — whether
             you&apos;re scaling fast or building for the future.
           </p>
@@ -223,31 +213,6 @@ const ServicesSection: React.FC = () => {
               isVisible={isVisible}
             />
           ))}
-        </div>
-
-        {/* CTA Button */}
-        <div className="text-center mt-16 md:mt-20">
-          <button
-            onClick={handleScrollToCTA}
-            className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-[#F5FDFF] bg-[#0098AF] rounded-lg shadow-lg hover:bg-[#007B8F] hover:shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#0098AF]/30 focus:ring-offset-2"
-            aria-label="Get a custom quote for staffing services"
-          >
-            Get Custom Quote
-            <svg
-              className="ml-2 w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </button>
         </div>
       </div>
     </section>

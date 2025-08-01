@@ -23,14 +23,10 @@ const ClosingCTA = () => {
         <div className="relative">
           <div className="text-center max-w-4xl mx-auto">
             {/* Header */}
-            <div className="mb-6 text-sm font-semibold text-white/80 tracking-wider uppercase flex items-center justify-center gap-2">
-              <div className="w-8 h-px bg-white/40" />
-              Ready to Start
-              <div className="w-8 h-px bg-white/40" />
-            </div>
+            
 
             <h2 className="text-7xl md:text-5xl lg:text-6xl font-light text-white mb-8 leading-tight">
-              Ready to Build
+              Ready to Build{" "}
               <span className=" font-semibold bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
                 Together?
               </span>

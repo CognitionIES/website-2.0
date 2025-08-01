@@ -90,7 +90,6 @@ const Projects: React.FC = () => {
         <Hero />
       </section>
       <AboutSection />
-
       <CTASection />
       <Footer />
     </div>

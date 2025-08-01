@@ -30,6 +30,7 @@ function ServicesPage() {
       >
         <HeroSection />
         <AboutSection />
+        
         <ServicesShowcase />
         <AccordionSection />
         <CTA />

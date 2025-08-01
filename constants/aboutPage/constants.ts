@@ -29,19 +29,19 @@ export const ABOUT_CONSTANTS = {
       "Engineering the future with innovation, agility, and a human-first approach since 2023.",
     STORY_TITLE: "Our Journey",
     STORY_P1:
-      "Born in 2023 from a visionary spark in India, Cognition IES has evolved into a global innovator. We’ve reimagined engineering by breaking down traditional hierarchies, connecting our expert engineers directly with clients to deliver seamless solutions for industries like automotive, aerospace, and medical devices.",
+      "Founded in 2023, Cognition IES was built on a bold vision: to redefine how talent powers businesses. From India to the world, we've grown into a trusted talent solutions provider—specializing in staffing, recruitment, workforce management, and digital hiring solutions for industries like IT, BFSI, Engineering, Manufacturing, and GCCs.",
     STORY_P2:
-      "Our unique blend of startup agility and deep services drives us to create value that’s bold, practical, and sustainable—every single day.",
+      "Whether you're building agile teams, hiring for long-term roles, or scaling operations, we connect you with the right people—backed by smart technology and deep domain expertise.",
     MISSION_TITLE: "Our Mission",
     MISSION_DESC:
-      "To spark engineering innovation with a people-first mindset, empowering every team member to deliver exceptional value directly to our clients.",
+      "To deliver flexible, people-first hiring solutions that help businesses grow and talent thrive.",
     VISION_TITLE: "Our Vision",
     VISION_DESC:
-      "To lead as the world’s trusted engineering partner, thriving on self-driven teams and sustainable, collaborative brilliance.",
+      "To be the most agile and trusted partner in workforce transformation—bridging people, processes, and performance globally.",
     VALUES_TITLE: "What Drives Us",
     CTA_TITLE: "Shape the Future with Us",
     CTA_DESC:
-      "Ready to turn your engineering challenges into opportunities? Let’s connect and create something extraordinary together.",
+      "Let’s turn your hiring needs into long-term success.",
   },
 
   // Animation Variants
@@ -61,10 +61,10 @@ export const ABOUT_CONSTANTS = {
 
   // Stats and Values
   STATS: [
-    { stat: "50+", label: "Skilled Engineers" },
-    { stat: "65+", label: "Years of Services" },
-    { stat: "100%", label: "On-Time Delivery" },
-    { stat: "ISO 9001", label: "Certified Quality" },
+    { stat: "150+", label: "Placements Done" },
+    { stat: "15+", label: "Active Clients" },
+    { stat: "98%", label: "Client Retention" },
+    { stat: "< 3 Weeks ", label: " Avg Time-to-Fill" },
   ],
   KEY_VALUES: [
     { title: "Co-Innovation", desc: "Co-creating patents with you." },

@@ -35,7 +35,7 @@ export default function Hero() {
                 />
               </h1>
               <h2 className="text-sm sm:text-base md:text-lg lg:text-xl mt-3 sm:mt-4 tracking-tight text-[#99D5DF] drop-shadow-md">
-                Engineering Smarter Solutions for a Better Tomorrow
+                Empowering Growth Through People and Technology
               </h2>
             </div>
           </div>

@@ -30,7 +30,7 @@ export default function CTASection() {
                   whileInView={{ scaleX: 1 }}
                   transition={{ duration: 1 }}
                   style={{ transformOrigin: "center" }}
-                  className="absolute top-14 left-[32%] -translate-x-[30%] w-[37%] h-0.5 bg-white opacity-50"
+                  className="absolute top-7 left-[58%] -translate-x-[30%] w-[19%] h-0.5 bg-white opacity-50"
                 />
               )}
             </p>

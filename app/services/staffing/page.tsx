@@ -65,7 +65,7 @@ const Index = () => {
       <AboutSection />
       <ServicesSection />
       <ProcessSection />
-      
+
       <IndustriesWeServe />
       <ToolsSection />
       {/* <section
@@ -91,8 +91,9 @@ const Index = () => {
           </div>
         </motion.div>
       </section> */}
-
-      <WhyPartner />
+      <section id="">
+        <WhyPartner />
+      </section>
       <Footer />
     </div>
   );

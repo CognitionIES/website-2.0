@@ -24,7 +24,7 @@ const ExpertiseHighlight = () => {
 
               <div className="mb-8 text-justify flex flex-col  mr-32">
                 <p className="text-xl text-slate-600 leading-relaxed mb-6">
-                  We successfully assembled and managed a dedicated team of 40+
+                  We successfully assembled and managed a dedicated team of 50+
                   professionals for a global client—proving our ability to scale
                   with your ambitions.
                 </p>
@@ -43,7 +43,7 @@ const ExpertiseHighlight = () => {
                     <div className="flex items-center justify-center w-12 h-12 bg-[#003c46]/10 rounded-xl group-hover:bg-[#003c46] transition-colors duration-300">
                       <Users className="h-6 w-6 text-[#003c46] group-hover:text-white transition-colors duration-300" />
                     </div>
-                    <div className="text-3xl font-bold text-[#003c46]">40+</div>
+                    <div className="text-3xl font-bold text-[#003c46]">50+</div>
                   </div>
                   <p className="text-sm text-slate-600 font-medium">
                     Team Members Managed

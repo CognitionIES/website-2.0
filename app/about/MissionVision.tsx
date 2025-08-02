@@ -21,10 +21,10 @@ export default function MissionVision() {
           {/* Mission */}
           <div className="bg-white p-8 rounded-xl shadow-lg max-w-2xl mx-auto transform relative border-l-4 border-[#0098AF] z-10">
             <h2 className="text-3xl font-semibold text-[#0098af] mb-4 tracking-tight">
-              {TEXT.MISSION_TITLE}
+              {TEXT.VISION_TITLE}
             </h2>
             <p className="text-lg leading-relaxed text-justify text-gray-700 mb-6">
-              {TEXT.MISSION_DESC}
+              {TEXT.VISION_DESC}
             </p>
             <motion.div
               initial={{ width: 0 }}
@@ -36,10 +36,10 @@ export default function MissionVision() {
           {/* Vision */}
           <div className="bg-white opacity-100 p-8 rounded-xl shadow-lg max-w-2xl ml-auto transform border-r-4 border-[#5c5c5c] relative z-10 border-r-4 border-[#0098AF]">
             <h2 className="text-3xl font-semibold text-[#5c5c5c] mb-4 tracking-tight">
-              {TEXT.VISION_TITLE}
+              {TEXT.MISSION_TITLE}
             </h2>
             <p className="text-lg leading-relaxed text-justify text-gray-700 mb-6">
-              {TEXT.VISION_DESC}
+              {TEXT.MISSION_DESC}
             </p>
             <motion.div
               initial={{ width: 0 }}

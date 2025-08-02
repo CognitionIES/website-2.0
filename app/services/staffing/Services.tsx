@@ -162,7 +162,7 @@ const ServicesSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-16 md:py-24 overflow-hidden"
+      className="relative py-16 overflow-hidden"
       aria-labelledby="services-section-title"
     >
       {/* Background overlay to reduce dot opacity */}
@@ -176,15 +176,18 @@ const ServicesSection: React.FC = () => {
         {/* Section Header */}
         <div className=" mb-16 md:mb-20">
           <h2
-            id="services-section-title"
-            className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6 leading-tight"
+            className=" font-bold text-2xl md:text-3xl lg:text-4xl mb-4"
+            style={{ color: "hsl(193 100% 23%)" }}
           >
             Our{" "}
-            <span className="bg-gradient-to-r from-[#0098AF] to-[#007B8F] bg-clip-text text-transparent">
+            <span style={{ color: "hsl(188 100% 34%)" }}>
               Engagement Models
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-[#5B5B5B] max-w-7xl mx-auto leading-relaxed">
+          <p
+            className="text-lg max-w-7xl mx-auto "
+            style={{ color: "hsl(200 20% 35%)" }}
+          >
             Tailored hiring solutions to meet your business needs — whether
             you&apos;re scaling fast or building for the future.
           </p>

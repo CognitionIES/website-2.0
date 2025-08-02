@@ -5,10 +5,10 @@ import { Building2, Cpu, Wrench, Radio, Fuel } from "lucide-react";
 const IndustriesWeServe = () => {
   const industries = [
     {
-      icon: Building2,
-      name: "BFSI",
+      icon: Wrench,
+      name: "Engineering",
       description:
-        "From investment banking to accounting and everything in between, we have the expertise to match the right candidate with the right opportunity",
+        "Specialized recruitment for engineering roles across mechanical, civil, electrical, and chemical disciplines.",
       color: "#0098af",
     },
     {
@@ -18,11 +18,12 @@ const IndustriesWeServe = () => {
         "From software development and IT support to cyber security and project management, we have the expertise to match the right candidate with the right opportunity",
       color: "#003C46",
     },
+
     {
-      icon: Wrench,
-      name: "Engineering",
+      icon: Fuel,
+      name: "Oil & Gas",
       description:
-        "Specialized recruitment for engineering roles across mechanical, civil, electrical, and chemical disciplines.",
+        "Comprehensive staffing for upstream, midstream, and downstream operations with safety-first approach.",
       color: "#0098af",
     },
     {
@@ -33,10 +34,10 @@ const IndustriesWeServe = () => {
       color: "#003C46",
     },
     {
-      icon: Fuel,
-      name: "Oil & Gas",
+      icon: Building2,
+      name: "BFSI",
       description:
-        "Comprehensive staffing for upstream, midstream, and downstream operations with safety-first approach.",
+        "From investment banking to accounting and everything in between, we have the expertise to match the right candidate with the right opportunity",
       color: "#0098af",
     },
   ];

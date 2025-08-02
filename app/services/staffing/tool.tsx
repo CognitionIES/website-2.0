@@ -80,7 +80,7 @@ const ToolsSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
       style={{ backgroundColor: "hsl(189 100% 98%)" }}
     >
       {/* Background pattern */}

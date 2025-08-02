@@ -109,7 +109,7 @@ const HeroSection = () => {
                   </div>
 
                   <div className="absolute bottom-20 -left-10 bg-white/95 backdrop-blur-sm rounded-xl p-5 shadow-[0_8px_25px_-8px_rgba(0,152,175,0.2)] border border-white/60 transform rotate-6 hover:rotate-0 transition-transform duration-300">
-                    <div className="text-xl font-bold text-[#0098af]">40+</div>
+                    <div className="text-xl font-bold text-[#0098af]">50+</div>
                     <div className="text-xs text-slate-600">Team Members</div>
                   </div>
                 </div>

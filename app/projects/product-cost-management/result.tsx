@@ -57,7 +57,7 @@ const ProjectResults = () => {
           {[
             { value: "50%", label: "Increased Profit Margins" },
             { value: "35%", label: "Reduced Manufacturing Costs" },
-            { value: "40+", label: "Optimization Opportunities" },
+            { value: "50+", label: "Optimization Opportunities" },
             { value: "3x", label: "Market Competitiveness" },
           ].map((outcome) => (
             <motion.div

@@ -254,7 +254,7 @@ export default function UsefulLinks() {
       {isMobile && (
         <div className="flex justify-center items-center space-x-2 sm:space-x-3 mt-6">
           <Link
-            href="https://www.linkedin.com/company/cognitionies"
+            href="https://www.linkedin.com/company/cognition-ies"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#0098AF] px-2"

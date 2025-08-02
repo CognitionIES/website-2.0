@@ -3,7 +3,7 @@ import { CAREERS_CONSTANTS } from "@/constants/careersPage/constants";
 import { motion } from "framer-motion";
 
 const BenefitsSection = () => {
-  const { ITEMS, TITLE } = CAREERS_CONSTANTS.BENEFITS;
+  const { ITEMS } = CAREERS_CONSTANTS.BENEFITS;
 
   // Animation variants for cards
   const cardVariants = {
@@ -29,15 +29,22 @@ const BenefitsSection = () => {
       <div className="absolute top-0 left-0 w-full  sm:h-16 bg-gradient-to-b from-white to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-full  sm:h-16 bg-gradient-to-t from-white to-transparent"></div>
       <section className="w-full  sm:h-[620px] relative  rounded-xl">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className=" mb-8 sm:mb-12 lg:mb-16">
             <span className="inline-block px-2 py-1 sm:px-3 sm:py-1.5 bg-[#0098AF]/10 text-[#0098AF] text-xs sm:text-sm font-medium rounded-full mb-3 sm:mb-4">
               Benefits & Perks
             </span>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#003C46] drop-shadow-sm">
-              {TITLE}
+
+            <h2
+              id="services-section-title"
+              className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6 leading-tight"
+            >
+              Why Work{" "}
+              <span className="bg-gradient-to-r from-[#0098AF] to-[#007B8F] bg-clip-text text-transparent">
+                With Us
+              </span>
             </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-[#5B5B5B] max-w-xl sm:max-w-2xl mx-auto mt-2 sm:mt-3">
+            <p className="text-lg md:text-xl text-[#5B5B5B] max-w-7xl mx-auto leading-relaxed">
               We believe in taking care of our team with benefits and a
               supportive environment.
             </p>

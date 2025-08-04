@@ -9,6 +9,7 @@ import Scope from "./scope";
 import Outcome from "./outcome";
 import Tech from "./tech";
 import CTASection from "./CTA";
+import ApproachSection from "./approachSection";
 
 export default function DigitalizationProject() {
   return (
@@ -21,10 +22,12 @@ export default function DigitalizationProject() {
       <AboutSection />
       <Objective />
       <Scope />
+      <ApproachSection />
+
       <Outcome />
       <Tech />
       <CTASection />
-      {/* Call to Action Section */} 
+      {/* Call to Action Section */}
       <Footer />
     </div>
   );

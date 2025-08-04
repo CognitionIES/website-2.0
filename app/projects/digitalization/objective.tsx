@@ -71,10 +71,10 @@ export default function Objective() {
                     🎯 Objective
                   </h3>
                   <p className="text-white/90 text-sm">
-                    To transform a traditionally operated manufacturing plant
-                    into a data-driven, smart facility by implementing advanced
-                    digital tools, real-time monitoring, and process
-                    optimization systems.
+                    To build and operate a fully digitized manufacturing
+                    environment by integrating physical plant data with
+                    real-time digital intelligence — enhancing accuracy,
+                    reducing downtime, and enabling predictive operations.
                   </p>
                 </div>
               </div>
@@ -95,10 +95,10 @@ export default function Objective() {
                         🎯 Objective
                       </h3>
                       <p className="text-white/90 text-lg ">
-                        To transform a traditionally operated manufacturing
-                        plant into a data-driven, smart facility by implementing
-                        advanced digital tools, real-time monitoring, and
-                        process optimization systems.
+                        To build and operate a fully digitized manufacturing
+                        environment by integrating physical plant data with
+                        real-time digital intelligence — enhancing accuracy,
+                        reducing downtime, and enabling predictive operations.
                       </p>
                     </div>
                   </div>

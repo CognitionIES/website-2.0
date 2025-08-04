@@ -1,25 +1,24 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-import approachImage from "@/constants/images/projects/pcm/pcm-approach.jpg";
 import { motion, Variants } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile"; // Assuming this hook exists
+import { useIsMobile } from "@/hooks/use-mobile";
+import approachImage from "@/constants/images/projects/pcm/pcm-approach.jpg";
 
-const ProjectApproach = () => {
+export default function ProjectApproach() {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const isMobile = useIsMobile(); // Get isMobile from hook
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting); // Update state when section enters or leaves view
+        setIsInView(entry.isIntersecting);
       },
       {
-        threshold: 0.2, // Triggers when 20% of the section is visible
-        rootMargin: "0px 0px -20% 0px", // Ensures it triggers only when scrolling down into the section
+        threshold: 0.2,
+        rootMargin: "0px 0px -20% 0px",
       }
     );
 
@@ -34,7 +33,6 @@ const ProjectApproach = () => {
     };
   }, []);
 
-  // Animation variants for fade-in and fade-out
   const contentVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -42,7 +40,7 @@ const ProjectApproach = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: ["easeOut"] as const,
+        ease: "easeOut",
       },
     },
   };
@@ -55,53 +53,47 @@ const ProjectApproach = () => {
       transition: {
         delay: 0.1 * index,
         duration: 0.5,
-        ease: ["easeOut"] as const,
+        ease: "easeOut",
       },
     }),
   };
 
   const sections = [
     {
-      title: "Cost Analysis & Optimization",
+      title: "Team Setup & Onboarding",
       points: [
-        "Conducted a thorough review of material costs, design efficiency, and manufacturing processes.",
-        "Applied value engineering principles to identify cost-saving opportunities.",
-        "Implemented should-costing methodologies to drive supplier negotiations.",
+        "Recruited, trained, and deployed a cross-functional engineering team aligned to client goals.",
+        "Enabled seamless integration with client’s internal teams via virtual and physical collaboration hubs.",
       ],
     },
     {
-      title: "Physical Benchmarking",
+      title: "Cost Benchmarking & Value Engineering (VAVE)",
       points: [
-        "Performed hands-on analysis of competitor equipment to gain actionable insights.",
-        "Compared product performance and material choices to industry standards.",
-        "Leveraged reverse engineering to understand competitor cost structures.",
+        "Reverse-engineered competitors’ products for cost-performance insights.",
+        "Conducted deep-dive analysis of existing product families to identify material and design inefficiencies.",
+        "Applied VAVE and should-costing techniques to optimize part and assembly-level costs.",
       ],
     },
     {
-      title: "Applied VAVE Method",
+      title: "Modular Design & SKU Rationalization",
       points: [
-        "Utilized VAVE method to optimize design and manufacturing.",
-        "Focused on enhancing product value while reducing unnecessary costs.",
-        "Implemented a phased approach with regular feedback loops to refine recommendations.",
+        "Simplified and standardized SKUs across product families.",
+        "Identified over-engineered components and proposed modular redesigns to reduce tooling, inventory, and fabrication costs.",
       ],
     },
     {
-      title: "Cross-functional Collaboration",
+      title: "Cross-functional Collaboration & Knowledge Transfer",
       points: [
-        "Engaged with client teams across engineering, procurement, and operations to align strategies.",
-        "Facilitated workshops to identify and implement cost-saving opportunities.",
-        "Provided training & knowledge transfer to internal teams for continuous improvement.",
+        "Conducted design workshops with sourcing and manufacturing teams.",
+        "Delivered training and documentation for long-term internal use and continuous improvement.",
       ],
     },
   ];
 
   return (
     <div>
-      {/* First Section with Fade-In Animation */}
       <div className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#E6F0F5] to-white opacity-90 z-0" />
-        <div className="absolute inset-0 bg-[] bg-cover bg-center opacity-20 z-0" />
-
         <section
           ref={sectionRef}
           className="relative z-10 py-8 sm:py-10 lg:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -110,10 +102,10 @@ const ProjectApproach = () => {
             variants={contentVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className=" backdrop-blur-sm rounded-xl  px-4"
+            className="backdrop-blur-sm rounded-xl px-4"
           >
             <h1 className="text-3xl font-bold mb-4 text-[#003C46]">
-              Cognition&apos;s Approach
+              Build & Operate Execution Strategy
             </h1>
             {isMobile ? (
               <div className="space-y-4">
@@ -124,7 +116,7 @@ const ProjectApproach = () => {
                     variants={mobileItemVariants}
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
-                    className="rounded-xl shadow-md  p-3 bg-white/80 border border-[#0098af]"
+                    className="rounded-xl shadow-md p-3 bg-white/80 border border-[#0098af]"
                   >
                     <h2 className="text-lg font-bold text-[#0098af] mb-2">
                       {idx + 1}. {section.title}
@@ -133,7 +125,7 @@ const ProjectApproach = () => {
                       {section.points.map((point, pointIdx) => (
                         <div key={pointIdx} className="flex items-start gap-2">
                           <span className="text-[#00b4d8] pl-2">•</span>
-                          <p className="text-[#5b5b5b]  text-justify text-sm">
+                          <p className="text-[#5b5b5b] text-justify text-sm">
                             {point}
                           </p>
                         </div>
@@ -145,43 +137,10 @@ const ProjectApproach = () => {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-6">
                 <div className="lg:col-span-4">
-                  {[
-                    {
-                      title: "Cost Analysis & Optimization",
-                      points: [
-                        "Conducted a thorough review of material costs, design efficiency, and manufacturing processes.",
-                        "Applied value engineering principles to identify cost-saving opportunities.",
-                        "Implemented should-costing methodologies to drive supplier negotiations.",
-                      ],
-                    },
-                    {
-                      title: "Physical Benchmarking",
-                      points: [
-                        "Performed hands-on analysis of competitor equipment to gain actionable insights.",
-                        "Compared product performance and material choices to industry standards.",
-                        "Leveraged reverse engineering to understand competitor cost structures.",
-                      ],
-                    },
-                    {
-                      title: "Applied VAVE Method",
-                      points: [
-                        "Utilized VAVE method to optimize design and manufacturing.",
-                        "Focused on enhancing product value while reducing unnecessary costs.",
-                        "Implemented a phased approach with regular feedback loops to refine recommendations.",
-                      ],
-                    },
-                    {
-                      title: "Cross-functional Collaboration",
-                      points: [
-                        "Engaged with client teams across engineering, procurement, and operations to align strategies.",
-                        "Facilitated workshops to identify and implement cost-saving opportunities.",
-                        "Provided training & knowledge transfer to internal teams for continuous improvement.",
-                      ],
-                    },
-                  ].map((section, idx) => (
+                  {sections.map((section, idx) => (
                     <div
                       key={idx}
-                      className={`p-1 ml-14 rounded-xl transition-shadow ${
+                      className={`p-3 ml-14 rounded-xl transition-shadow ${
                         idx % 2 === 0 ? "px-0" : "px-32"
                       }`}
                     >
@@ -207,7 +166,6 @@ const ProjectApproach = () => {
                     </div>
                   ))}
                 </div>
-
                 <div className="lg:col-span-2 z-20 justify-end hidden lg:flex items-center">
                   <Image
                     src={approachImage}
@@ -220,10 +178,6 @@ const ProjectApproach = () => {
           </motion.div>
         </section>
       </div>
-
-      {/* Second Section (Already Has Animation) */}
     </div>
   );
-};
-
-export default ProjectApproach;
+}

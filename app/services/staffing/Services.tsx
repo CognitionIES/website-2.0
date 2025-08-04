@@ -63,68 +63,71 @@ const ServiceCard: React.FC<{
   isVisible: boolean;
 }> = ({ service, index, isVisible }) => {
   return (
-    <div
-      className={`group bg-white rounded-xl shadow-lg border-2 overflow-hidden transform transition-all duration-300 hover:scale-105 ${
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-      }`}
-      style={{
-        transitionDelay: isVisible ? `${index * 200}ms` : "0ms",
-        borderColor: "hsl(185 64% 73% / 0.2)",
-        boxShadow: "0 4px 20px hsl(188 100% 34% / 0.15)",
-        transition: "all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = "hsl(188 100% 34% / 0.4)";
-        e.currentTarget.style.boxShadow =
-          "0 10px 30px -10px hsl(193 100% 23% / 0.3)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = "hsl(185 64% 73% / 0.2)";
-        e.currentTarget.style.boxShadow = "0 4px 20px hsl(188 100% 34% / 0.15)";
-      }}
-      role="article"
-      aria-labelledby={`service-title-${service.id}`}
-    >
-      {/* Title and Subtitle */}
-      <div className="p-6 pb-4">
-        <h3
-          id={`service-title-${service.id}`}
-          className="text-xl md:text-2xl font-bold text-[#003C46] mb-2 group-hover:text-[#0098AF] transition-colors duration-300"
-        >
-          {service.title}
-        </h3>
-        <p className="text-base md:text-lg font-medium text-[#0098AF] leading-relaxed">
-          {service.subtitle}
-        </p>
-      </div>
-
-      {/* Image */}
-      <div className="relative overflow-hidden">
-        <Image
-          src={service.image}
-          alt={`${service.title} - Professional staffing service`}
-          className="w-full h-48 md:h-52 object-cover transition-transform duration-300 group-hover:scale-110"
-          width={800}
-          height={80}
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#003C46]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-        {/* Hover Description Overlay */}
-        <div className="absolute inset-0 bg-[#003C46]/80 flex items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-          <p className="text-sm md:text-base text-white leading-relaxed text-center">
-            {service.description}
+    <div>
+      <div
+        className={`group bg-white rounded-xl shadow-lg border-2 overflow-hidden transform sxtransition-transform transition-opacity duration-300 hover:scale-105 ${
+    isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+  }`}
+        style={{
+          transitionDelay: isVisible ? `${index * 200}ms` : "0ms",
+          borderColor: "hsl(185 64% 73% / 0.2)",
+          boxShadow: "0 4px 20px hsl(188 100% 34% / 0.15)",
+          transition: "all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = "hsl(188 100% 34% / 0.4)";
+          e.currentTarget.style.boxShadow =
+            "0 10px 30px -10px hsl(193 100% 23% / 0.3)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = "hsl(185 64% 73% / 0.2)";
+          e.currentTarget.style.boxShadow =
+            "0 4px 20px hsl(188 100% 34% / 0.15)";
+        }}
+        role="article"
+        aria-labelledby={`service-title-${service.id}`}
+      >
+        {/* Title and Subtitle */}
+        <div className="p-6 pb-4">
+          <h3
+            id={`service-title-${service.id}`}
+            className="text-xl md:text-2xl font-bold text-[#003C46] mb-2 group-hover:text-[#0098AF] transition-colors duration-300"
+          >
+            {service.title}
+          </h3>
+          <p className="text-base md:text-lg font-medium text-[#0098AF] leading-relaxed">
+            {service.subtitle}
           </p>
         </div>
 
-        {/* Hover effect overlay */}
-        <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-xl"
-          style={{
-            background:
-              "linear-gradient(135deg, hsl(188 100% 34% / 0.05), transparent)",
-          }}
-        ></div>
+        {/* Image */}
+        <div className="relative overflow-hidden">
+          <Image
+            src={service.image}
+            alt={`${service.title} - Professional staffing service`}
+            className="w-full h-48 md:h-52 object-cover transition-transform duration-300 group-hover:scale-110"
+            width={800}
+            height={80}
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#003C46]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+          {/* Hover Description Overlay */}
+          <div className="absolute inset-0 bg-[#003C46]/80 flex items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+            <p className="text-sm md:text-base text-white leading-relaxed text-center">
+              {service.description}
+            </p>
+          </div>
+
+          {/* Hover effect overlay */}
+          <div
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-xl"
+            style={{
+              background:
+                "linear-gradient(135deg, hsl(188 100% 34% / 0.05), transparent)",
+            }}
+          ></div>
+        </div>
       </div>
     </div>
   );
@@ -223,3 +226,4 @@ const ServicesSection: React.FC = () => {
 };
 
 export default ServicesSection;
+  

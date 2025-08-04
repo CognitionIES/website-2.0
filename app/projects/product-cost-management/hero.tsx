@@ -1,115 +1,146 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { motion } from "framer-motion";
-import { FiChevronDown, FiChevronRight, FiHome } from "react-icons/fi";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { FiChevronRight, FiHome } from "react-icons/fi";
 import engineeringImage from "@/constants/images/projects/pcm/hero.jpg";
-import { useIsMobile } from "@/hooks/use-mobile";
+
+const useIntersectionObserver = (threshold = 0.1) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [ref, setRef] = useState<Element | null>(null);
+
+  useEffect(() => {
+    if (!ref) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(ref);
+        }
+      },
+      { threshold, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    observer.observe(ref);
+    return () => observer.disconnect();
+  }, [ref, threshold]);
+
+  return [setRef, isVisible] as const;
+};
 
 export default function Hero() {
-  const isMobile = useIsMobile();
+  const [setRef, isVisible] = useIntersectionObserver();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
-    <section>
-      <div
-        className={`relative ${
-          isMobile ? "h-[400px]" : "h-[450px]"
-        } overflow-hidden`}
-      >
-        <Image
-          src={engineeringImage}
-          alt="Log Splitter Cost Optimization & Benchmarking"
-          fill
-          className="object-cover"
-          priority
-          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 1280px"
-          quality={80}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#003C46]/85 to-[#0098AF]/70" />
-        <div className="absolute inset-0 opacity-5   bg-repeat" />
-        <div
-          className={`relative z-10 max-w-7xl mx-auto px-8 sm:px-6 lg:px-8 h-full flex flex-col justify-center ${
-            isMobile ? "items-center text-center" : ""
-          }`}
-        >
-          <motion.h1
+    <section
+      ref={setRef}
+      className="relative h-[500px] overflow-hidden"
+      style={{
+        backgroundImage: `url(${engineeringImage.src})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#003C46]/80 to-[#0098AF]/70" />
+
+      {/* Main Container */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 h-full flex flex-col justify-center">
+        <div className="relative z-20 h-full flex flex-col justify-center space-y-6">
+          {/* Breadcrumb Navigation */}
+          <motion.nav
+            className="absolute bottom-8 flex items-center space-x-2 text-sm text-white/70"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white drop-shadow-md relative"
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
           >
-            Industrial Equipment Cost Optimization
-            <span
-              className={`absolute bottom-0 ${
-                isMobile ? "" : "left-0 w-24"
-              } h-0.5 bg-gradient-to-r from-[#99D5DF] to-transparent`}
+            <Link
+              href="/"
+              className="hover:text-blue-300 flex items-center gap-1.5 transition-colors duration-300"
+            >
+              <FiHome className="w-4 h-4" />
+              <span className="font-medium">Home</span>
+            </Link>
+            <FiChevronRight className="w-3.5 h-3.5" />
+            <Link
+              href="/projects"
+              className="hover:text-blue-300 transition-colors duration-300"
+            >
+              <span className="text-blue-200 font-medium">Projects</span>
+            </Link>
+            <FiChevronRight className="w-3.5 h-3.5" />
+            <Link
+              href="/projects/product-cost-management"
+              className="hover:text-blue-300 transition-colors duration-300"
+            >
+              <span className="text-blue-200 font-medium">
+                Product Cost Management
+              </span>
+            </Link>
+          </motion.nav>
+
+          {/* Heading */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-tight">
+              Industrial Equipment Cost Optimization
+            </h1>
+            <motion.div
+              className="absolute -bottom-2 left-1 w-32 h-1 bg-gradient-to-r from-[#99D5DF] to-transparent rounded-full"
+              initial={{ width: 0 }}
+              animate={isVisible ? { width: 128 } : {}}
+              transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
             />
-          </motion.h1>
-          <motion.h2
+          </motion.div>
+
+          {/* Subtitle */}
+          <motion.p
+            className="text-lg md:text-xl text-white/90 max-w-3xl leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-lg md:text-xl lg:text-xl mt-4 tracking-tight text-white/90 drop-shadow-md"
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           >
             Offshore Engineering Team for a US-Based Industrial Equipment
             Manufacturer
-          </motion.h2>
-          {!isMobile && (
-            <nav className="absolute bottom-0 left-4 sm:left-6 lg:left-8 mb-6 flex items-center space-x-2 text-sm font-light text-white/80">
-              <Link
-                href="/"
-                className="hover:text-[#99D5DF] flex items-center gap-1 transition-colors duration-200"
-              >
-                <FiHome className="w-4 h-4" />
-                Home
-              </Link>
-              <FiChevronRight className="w-4 h-4" />
-              <Link
-                href="/projects"
-                className="hover:text-[#99D5DF] transition-colors duration-200"
-              >
-                Projects
-              </Link>
-              <FiChevronRight className="w-4 h-4" />
-              <Link
-                href="/projects/product-cost-management"
-                className="hover:text-[#99D5DF] transition-colors duration-200"
-              >
-                Product Cost Management
-              </Link>
-            </nav>
-          )}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 0.7, y: 0 }}
-            transition={{
-              repeat: Infinity,
-              duration: 1.5,
-              repeatType: "reverse",
-            }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70"
-          >
-            <FiChevronDown className="w-6 h-6" />
-          </motion.div>
+          </motion.p>
         </div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 0.25, scale: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="absolute bottom-0 left-0 w-80 h-80 bg-[#0098AF] opacity-50 rounded-full blur-3xl -z-10"
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.15 }}
-          transition={{
-            delay: 1,
-            duration: 1,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-          className="absolute top-20 right-16 w-5 h-5 bg-[#5B5B5B] opacity-30 rounded-full -z-10"
-        />
+
+        {/* Floating Particles */}
+        {[...Array(12)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: [0, 0.4, 0],
+              y: [0, -120],
+              x: [0, Math.random() * 150 - 75],
+            }}
+            transition={{
+              duration: 5 + Math.random() * 3,
+              repeat: Infinity,
+              delay: Math.random() * 4,
+              ease: "easeOut",
+            }}
+            className="absolute w-1 h-1 bg-blue-200/40 rounded-full"
+            style={{
+              left: `${15 + Math.random() * 70}%`,
+              bottom: "15px",
+            }}
+          />
+        ))}
       </div>
     </section>
   );

@@ -46,7 +46,6 @@ export default function Scope() {
     }
   }, [isInView, isMobile]);
 
-
   const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -54,7 +53,7 @@ export default function Scope() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut", 
+        ease: "easeOut",
       },
     },
   };
@@ -67,31 +66,28 @@ export default function Scope() {
       transition: {
         delay: 0.1 * index,
         duration: 0.5,
-        ease: "easeOut", 
+        ease: "easeOut",
       },
     }),
   };
-  // Common data for both desktop and mobile
+
+  // Updated data for both desktop and mobile
   const scopeItems = [
     {
-      title: "Dimensional Laser Survey Scanning",
-      desc: "Conducted high-precision 3D scans of the facility to capture accurate spatial data, ensuring a comprehensive digital representation of the plant layout.",
+      title: "Process Lead",
+      desc: "Oversaw process design and validation, ensuring alignment with operational requirements and project specifications.",
     },
     {
-      title: "Digital Dimensional Control",
-      desc: "Utilized AI-powered software to analyze and validate laser survey scans against engineering designs and P&IDs, identifying necessary adjustments before fabrication and installation.",
+      title: "Structural Design Engineer",
+      desc: "Designed and validated structural components, ensuring compliance with engineering standards and plant layout requirements.",
     },
     {
-      title: "Intelligent Digital Twin Creation",
-      desc: "Developed a dynamic digital twin of the facility, integrating real-time data and enabling simulation of operational scenarios for proactive decision-making.",
+      title: "Piping Design Engineer",
+      desc: "Developed and validated piping designs, ensuring integration with the overall plant layout and operational efficiency.",
     },
     {
-      title: "Software Application Integration",
-      desc: "Implemented a suite of applications within the digital twin to drive efficiencies across departments, including maintenance scheduling, inventory management, and performance analytics.",
-    },
-    {
-      title: "Evergreen Program Implementation",
-      desc: "Established a continuous update mechanism to maintain the accuracy and relevance of the digital twin, ensuring it reflects real-time changes in the facility.",
+      title: "AVEVA – E3D & PCM Tool Experts",
+      desc: "Utilized AVEVA E3D and PCM tools to create and manage 3D models, supporting design conformity and digital twin operations.",
     },
   ];
 
@@ -111,9 +107,13 @@ export default function Scope() {
             {isMobile && (
               <div className="bg-white/95 rounded-xl shadow-md p-6 space-y-4 ">
                 <h3 className="text-xl sm:text-2xl font-semibold uppercase text-[#5b5b5b] flex items-center">
-                  <span className="text-[#0098af] mr-2">🛠</span>
-                  Scope of Work
+                  <span className="text-[#0098af] mr-2">👷</span>
+                  Key Roles Deployed
                 </h3>
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                  To support build, validation, and continuous operations, the
+                  following expert roles were staffed:
+                </p>
                 <ul className="space-y-4">
                   {scopeItems.map((item, index) => (
                     <motion.li
@@ -136,6 +136,12 @@ export default function Scope() {
                     </motion.li>
                   ))}
                 </ul>
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                  These professionals played a crucial role in plant layout
+                  validation, design conformity, and 3D model creation during
+                  the build phase, and provided continued engineering oversight
+                  for digital twin operations.
+                </p>
               </div>
             )}
 
@@ -147,9 +153,13 @@ export default function Scope() {
                   <div className="w-full ">
                     <div className="w-full ">
                       <h3 className="text-2xl sm:text-3xl font-semibold uppercase text-[#5b5b5b] mb-6 flex items-center">
-                        <span className="text-[#0098af] mr-3">🛠</span>
-                        Scope of Work
+                        <span className="text-[#0098af] mr-3">👷</span>
+                        Key Roles Deployed
                       </h3>
+                      <p className="text-gray-700 text-base sm:text-lg mb-6">
+                        To support build, validation, and continuous operations,
+                        the following expert roles were staffed:
+                      </p>
                       <ul className="space-y-4">
                         {scopeItems.map((item, index) => (
                           <li
@@ -171,6 +181,12 @@ export default function Scope() {
                           </li>
                         ))}
                       </ul>
+                      <p className="text-gray-700 text-base sm:text-lg mt-6">
+                        These professionals played a crucial role in plant
+                        layout validation, design conformity, and 3D model
+                        creation during the build phase, and provided continued
+                        engineering oversight for digital twin operations.
+                      </p>
                     </div>
                   </div>
                 </div>

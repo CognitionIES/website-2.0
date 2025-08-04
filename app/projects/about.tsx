@@ -8,7 +8,7 @@ import {
   buildOperateProjects,
 } from "@/constants/projects-data";
 import { ProjectCard } from "./ProjectCard";
-import { Users, Settings, Sparkles, ArrowRight } from "lucide-react";
+import { Users, Settings } from "lucide-react";
 
 export function ProjectsSection() {
   const { ref, isIntersecting } = useIntersectionObserver({

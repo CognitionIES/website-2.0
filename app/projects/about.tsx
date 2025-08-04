@@ -1,267 +1,217 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-"use client";
-
-import { motion } from "framer-motion";
-import { StaticImageData } from "next/image";
-import { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
-import digitalImage from "@/constants/images/home/our-recent-projects/digitalization.jpg";
-import pcmImage2 from "@/constants/images/home/our-recent-projects/pcm.jpg";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React from "react";
+import { motion, Variants } from "framer-motion";
+import { useIntersectionObserver } from "../../hooks/use-intersection-observer";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
+import {
+  staffingProjects,
+  buildOperateProjects,
+} from "@/constants/projects-data";
+import { ProjectCard } from "./ProjectCard";
+import { Users, Settings, Sparkles, ArrowRight } from "lucide-react";
 
-type Project = {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  image: string | StaticImageData;
-  href: string;
-};
-
-const projects: Project[] = [
-  {
-    id: "project-1",
-    title: "IT Talent Deployment",
-    category: "Contract Staffing for Full-Stack Development Team",
-    description:
-      "Successfully staffed and deployed a team of skilled full-stack developers (React & Node.js) for a growing IT company. Ensured quick turnaround, seamless onboarding, and end-to-end compliance support for a 12-month contract.",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    href: "/projects/it-talent-deployment",
-  },
-  {
-    id: "project-2",
-    title: "Digitalization",
-    category: "Digital Transformation",
-    description:
-      "Comprehensive Digital Transformation of a Manufacturing Plant through 3D Scanning, Digital Twin, and Real-Time Data Integration to Improve Efficiency and Accuracy.",
-    image: digitalImage,
-    href: "/projects/digitalization",
-  },
-  {
-    id: "project-3",
-    title: "Log Splitter Cost Optimization & Benchmarking",
-    category: "Financial Optimization",
-    description:
-      "Conducted a detailed cost and function analysis of the Log Splitter, identifying cost-saving opportunities through competitive benchmarking and design optimization.",
-    image: pcmImage2,
-    href: "/projects/product-cost-management",
-  },
-];
-
-export default function AboutSection() {
-  const [isInView, setIsInView] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [activeIndex, setActiveIndex] = useState(0);
+export function ProjectsSection() {
+  const { ref, isIntersecting } = useIntersectionObserver({
+    threshold: 0.05,
+    rootMargin: "-50px",
+  });
   const isMobile = useIsMobile();
-  const visibleProjects = isMobile ? 1 : 2;
 
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % projects.length);
-  };
-
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
-      {
-        threshold: 0.2,
-        rootMargin: "0px 0px -20% 0px",
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isInView) {
-      projectRefs.current.forEach((item, index) => {
-        if (item) {
-          setTimeout(() => {
-            item.classList.add("opacity-100", "translate-y-0");
-            item.classList.remove("opacity-0", "translate-y-12");
-          }, 200 + index * 150);
-        }
-      });
-    }
-  }, [isInView]);
-
-  const sectionHeaderVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.7,
-        ease: "easeOut" as const,
-      },
-    },
-  };
-
-  const cardsContainerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
+        duration: 0.8,
+        staggerChildren: 0.2,
       },
     },
   };
 
-  const cardVariants = {
+  const headerVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
-        ease: "easeOut" as const,
+        duration: 0.8,
+        ease: [0.25, 0.25, 0.25, 0.75],
+      },
+    },
+  };
+
+  const sectionVariants: Variants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.25, 0.25, 0.75],
       },
     },
   };
 
   return (
-    <div>
-      <section
-        ref={sectionRef}
-        className="w-full py-16 sm:py-20 lg:py-12 relative bg-gradient-to-br from-white to-[#E6F0F5]/30 overflow-hidden"
-      >
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#0098AF]/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#003C46]/5 rounded-full filter blur-3xl"></div>
+    <section
+      ref={ref}
+      className="relative py-20 md:py-18 overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(135deg, #F5FDFF 0%, rgba(153, 213, 223, 0.05) 50%, #F5FDFF 100%)",
+      }}
+    >
+      {/* Enhanced Background Elements */}
+      <div className="absolute top-20 right-16 w-40 h-40 bg-gradient-to-br from-[#0098AF]/10 to-[#99D5DF]/5 rounded-full blur-2xl" />
+      <div className="absolute bottom-32 left-16 w-32 h-32 bg-gradient-to-tr from-[#99D5DF]/15 to-[#0098AF]/5 rounded-full blur-xl" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="inline-block mb-1 bg-[#E6F0F5] bg-opacity-70 rounded-full backdrop-blur-sm px-3 py-1">
-            <p className="text-xs font-medium tracking-wider text-[#0098af] uppercase">
-              Featured Work
-            </p>
-          </div>
-          <h1 className="text-xl sm:text-2xl lg:text-4xl font-semibold text-[#003C46] tracking-tight drop-shadow-sm">
-            Recent Projects
-          </h1>
-          <motion.div
-            variants={sectionHeaderVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          ></motion.div>
+      {/* Floating particles */}
+      {[...Array(8)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-1.5 h-1.5 bg-[#0098AF]/20 rounded-full"
+          style={{
+            top: `${15 + i * 12}%`,
+            left: `${8 + i * 11}%`,
+          }}
+          animate={{
+            y: [-8, 8, -8],
+            opacity: [0.2, 0.6, 0.2],
+            scale: [0.8, 1.2, 0.8],
+          }}
+          transition={{
+            duration: 3 + i * 0.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.2,
+          }}
+        />
+      ))}
 
-          <motion.div
-            variants={cardsContainerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="relative max-w-7xl mt-8"
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-7xl relative">
+        <motion.div
+          className=" mb-16 md:mb-20"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isIntersecting ? "visible" : "hidden"}
+        >
+          <span className="inline-block px-3 py-1 bg-[#0098af]/10 text-[#0098af] text-xs font-medium uppercase tracking-wider rounded-full mb-4">
+            Featured Work
+          </span>
+          <motion.div variants={headerVariants}>
+            <h2
+              className=" font-bold  text-3xl md:text-4xl lg:text-5xl mb-4"
+              style={{ color: "hsl(193 100% 23%)" }}
+            >
+              Our Recent{" "}
+              <span style={{ color: "hsl(188 100% 34%)" }}>Projects</span>
+            </h2>
+          </motion.div>
+          <motion.p
+            variants={headerVariants}
+            className="text-xl max-w-3xl "
+            style={{ color: "hsl(200 20% 35%)" }}
           >
-            <div className="overflow-hidden">
-              <div
-                className="flex transition-transform duration-500 ease-out gap-4 sm:gap-6 lg:gap-6"
-                style={{
-                  transform: `translateX(-${
-                    activeIndex * (100 / visibleProjects)
-                  }%)`,
-                }}
-              >
-                {projects.map((project, index) => (
-                  <motion.div
-                    key={project.id}
-                    ref={(el) => {
-                      projectRefs.current[index] = el;
-                    }}
-                    variants={cardVariants}
-                    className={cn(
-                      "project-card flex-shrink-0 w-full opacity-0 translate-y-12 transition-all duration-700",
-                      isMobile ? "w-full" : "w-1/2"
-                    )}
-                    whileHover={{ y: -5 }}
-                  >
-                    <div className="group h-full bg-white/80 rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
-                      <Link
-                        href={project.href}
-                        className="block relative h-[180px] sm:h-[240px] w-full overflow-hidden cursor-pointer"
-                      >
-                        <div
-                          className="absolute inset-0 bg-cover bg-center h-full w-full transform transition-transform duration-700 group-hover:scale-105"
-                          style={{
-                            backgroundImage: `url(${
-                              typeof project.image === "string"
-                                ? project.image
-                                : project.image.src
-                            })`,
-                          }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-60 group-hover:opacity-70 transition-opacity" />
-                        <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
-                          <div className="px-2 sm:px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full">
-                            <p className="text-[10px] sm:text-xs font-medium text-[#003C46]">
-                              {project.category}
-                            </p>
-                          </div>
-                        </div>
-                      </Link>
+            Explore how Cognition IES is transforming businesses through
+            cutting-edge
+            <span className="text-[#0098AF] font-medium">
+              {" "}
+              staffing solutions
+            </span>{" "}
+            and end-to-end
+            <span className="text-[#0098AF] font-medium">
+              {" "}
+              Build & Operate models
+            </span>{" "}
+            across{" "}
+            <span className="text-[#003C46] font-medium">
+              IT and Engineering sectors.
+            </span>
+          </motion.p>{" "}
+        </motion.div>
 
-                      <div className="p-4 sm:p-6 space-y-2 sm:space-y-3">
-                        <a href={project.href} className="block">
-                          <h3 className="text-lg sm:text-2xl font-semibold text-[#5b5b5b] group-hover:text-[#0098af] transition-colors">
-                            {project.title}
-                          </h3>
-                        </a>
-                        <p className="text-gray-600 line-clamp-3 text-sm sm:text-base leading-relaxed">
-                          {project.description}
-                        </p>
-                        <a
-                          href={project.href}
-                          className="inline-flex items-center gap-1.5 text-sm sm:text-base font-medium text-[#0098af] group relative"
-                        >
-                          <span className="relative">
-                            View in detail
-                            <span className="absolute -bottom-px left-0 w-full h-px bg-[#0098af]/50 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-                          </span>
-                          <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                        </a>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+        {/* Staffing & Recruitment Section */}
+        <motion.div
+          className="mb-20 md:mb-24"
+          variants={sectionVariants}
+          initial="hidden"
+          animate={isIntersecting ? "visible" : "hidden"}
+        >
+          <div className="flex items-center gap-4 mb-12">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#0098AF] to-[#007B8F] rounded-2xl flex items-center justify-center shadow-lg">
+                <Users className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-3xl md:text-4xl font-bold text-[#003C46] tracking-tight">
+                  Staffing & Recruitment
+                </h3>
+                <p className="text-[#5B5B5B] font-medium">
+                  Expert talent deployment solutions
+                </p>
               </div>
             </div>
+            <motion.div
+              className="flex-1 h-px bg-gradient-to-r from-[#0098AF]/50 to-transparent ml-8"
+              initial={{ scaleX: 0, originX: 0 }}
+              animate={isIntersecting ? { scaleX: 1 } : { scaleX: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            />
+          </div>
 
-            <div className="flex justify-between mt-4">
-              <Button
-                variant="outline"
-                className="p-2 rounded-full bg-white border-[#0098af] text-[#0098af] hover:bg-[#0098af] hover:text-white transition-colors"
-                onClick={handlePrev}
-                aria-label="Previous project"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </Button>
-              <Button
-                variant="outline"
-                className="p-2 rounded-full bg-white border-[#0098af] text-[#0098af] hover:bg-[#0098af] hover:text-white transition-colors"
-                onClick={handleNext}
-                aria-label="Next project"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </Button>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            {staffingProjects.map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index}
+                isInView={isIntersecting}
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Build & Operate Section */}
+        <motion.div
+          variants={sectionVariants}
+          initial="hidden"
+          animate={isIntersecting ? "visible" : "hidden"}
+          transition={{ delay: 0.3 }}
+        >
+          <div className="flex items-center gap-4 mb-12">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#0098AF] to-[#007B8F] rounded-2xl flex items-center justify-center shadow-lg">
+                <Settings className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-3xl md:text-4xl font-bold text-[#003C46] tracking-tight">
+                  Build & Operate
+                </h3>
+                <p className="text-[#5B5B5B] font-medium">
+                  End-to-end solution development
+                </p>
+              </div>
             </div>
-          </motion.div>
-        </div>
-      </section>
-    </div>
+            <motion.div
+              className="flex-1 h-px bg-gradient-to-r from-[#99D5DF]/50 to-transparent ml-8"
+              initial={{ scaleX: 0, originX: 0 }}
+              animate={isIntersecting ? { scaleX: 1 } : { scaleX: 0 }}
+              transition={{ duration: 1, delay: 0.8 }}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            {buildOperateProjects.map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index + staffingProjects.length}
+                isInView={isIntersecting}
+              />
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 }

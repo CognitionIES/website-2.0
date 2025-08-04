@@ -7,7 +7,7 @@ import {
   CalendarIcon,
   DocumentIcon,
   SupportIcon,
-} from "./direct-hire/CustomIcons";
+} from "./CustomIcons";
 
 interface ProcessStep {
   id: string;

@@ -1,11 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useRef, useState } from "react";
-import {
-  DatabaseIcon,
-  BrainIcon,
-  NetworkIcon,
-  VideoIcon,
-} from "./direct-hire/CustomIcons";
+import { DatabaseIcon, BrainIcon, NetworkIcon, VideoIcon } from "./CustomIcons";
 
 interface Tool {
   id: string;

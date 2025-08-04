@@ -39,7 +39,7 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white drop-shadow-md relative"
           >
-            Log Splitter Cost Optimization & Benchmarking
+            Industrial Equipment Cost Optimization
             <span
               className={`absolute bottom-0 ${
                 isMobile ? "" : "left-0 w-24"
@@ -52,7 +52,8 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="text-lg md:text-xl lg:text-xl mt-4 tracking-tight text-white/90 drop-shadow-md"
           >
-            Driving efficiency through innovative cost management solutions
+            Offshore Engineering Team for a US-Based Industrial Equipment
+            Manufacturer
           </motion.h2>
           {!isMobile && (
             <nav className="absolute bottom-0 left-4 sm:left-6 lg:left-8 mb-6 flex items-center space-x-2 text-sm font-light text-white/80">

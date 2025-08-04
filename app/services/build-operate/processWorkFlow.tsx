@@ -103,8 +103,7 @@ export function ProcessWorkflow() {
               className=" font-bold text-2xl md:text-3xl lg:text-4xl mb-4"
               style={{ color: "hsl(193 100% 23%)" }}
             >
-              Our{" "}
-              <span style={{ color: "hsl(188 100% 34%)" }}>Process</span>
+              Our <span style={{ color: "hsl(188 100% 34%)" }}>Process</span>
             </h2>
           </motion.h2>
 

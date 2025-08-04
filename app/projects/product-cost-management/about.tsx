@@ -11,7 +11,7 @@ import { useIsMobile } from "@/hooks/use-mobile"; // Assuming this hook exists
 export default function AboutSection() {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const isMobile  = useIsMobile(); // Get isMobile from hook
+  const isMobile = useIsMobile(); // Get isMobile from hook
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -105,32 +105,31 @@ export default function AboutSection() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-black/50 flex flex-col justify-center p-6 sm:p-8 lg:p-12">
-                  <div className="max-w-3xl">
+                  <div className="max-w-2xl">
                     <h3 className="text-2xl sm:text-3xl font-semibold uppercase text-white mb-4">
                       🏢 Client Profile
                     </h3>
                     <p className="text-white/90 text-base sm:text-lg leading-relaxed text-justify">
-                      Our client is a leading manufacturer in the industrial
-                      equipment sector, known for delivering high-performance
-                      outdoor power tools such as log splitters, pressure
-                      washers, and air compressors. Serving both commercial and
-                      residential markets, the client holds a reputable market
-                      presence in North America. With a focus on maintaining
-                      competitive advantage, they partnered with Cognition
-                      Engineering Solutions to drive product cost optimization
-                      and design innovation for their Log Splitter product line.
+                      Our client is a reputed North American manufacturer in the
+                      industrial equipment sector, offering products such as
+                      pressure washers, air compressors, and other
+                      commercial-grade machinery. To remain competitive in a
+                      price-sensitive market, the client partnered with
+                      Cognition IES to establish a dedicated offshore
+                      engineering and cost optimization team under a Build &
+                      Operate model.
                     </p>
                     <h3 className="text-2xl sm:text-3xl font-semibold uppercase text-white mt-6 mb-4">
                       🎯 Project Overview
                     </h3>
                     <p className="text-white/90 text-base sm:text-lg leading-relaxed text-justify">
-                      The engagement was aimed at a complete cost transformation
-                      and design refinement of the Log Splitter lineup. The key
-                      was to maintain product quality and safety while achieving
-                      substantial cost reductions and improving margin.
-                      Cognition’s unique PCM (Product Cost Management) approach
-                      was adopted to uncover inefficiencies, benchmark
-                      competitors, and propose high-impact design optimizations.
+                      The engagement aimed at driving a complete transformation
+                      in product cost, design efficiency, and manufacturability
+                      of selected equipment lines. Through our Build & Operate
+                      approach, Cognition IES established and managed a
+                      specialized engineering team to support design
+                      improvements, benchmarking, and cost control initiatives
+                      for the client’s offshore operations.
                     </p>
                   </div>
                 </div>

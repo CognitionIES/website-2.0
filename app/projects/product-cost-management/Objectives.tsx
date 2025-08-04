@@ -117,52 +117,29 @@ export default function Objectives() {
                   </div>
                 </div>
 
-                {/* Mobile Business Perspective */}
+                {/* Mobile Roles Builts */}
                 <div className="rounded-xl shadow-md overflow-hidden">
                   {" "}
                   <div className="bg-[#003C46] p-3 sm:p-6">
                     {" "}
                     <h3 className="text-xl sm:text-4xl font-semibold uppercase text-white mb-4">
-                      💼 Business Perspective
+                      💼 Roles Built
                     </h3>
                     <div className=" grid grid-cols-1 md:grid-cols-2">
                       {/* Market Positioning */}
                       <div>
-                        <h6 className="text-base sm:text-lg font-semibold uppercase text-white my-2">
-                          🧭 Market Positioning
-                        </h6>
                         <div className="space-y-2">
                           {[
-                            "Enhance brand value improvements",
-                            "Compete more aggressively on price ladder",
+                            "Product Designer",
+                            "Costing Engineer ",
+                            "Manufacturing Engineer",
+                            "Hydraulic – SME",
+                            "FEA Engineer",
+                            "Sourcing Engineer",
                           ].map((item, index) => (
                             <motion.p
                               key={index}
                               custom={index + 8} // Offset for previous list
-                              variants={mobileItemVariants}
-                              initial="hidden"
-                              animate={isInView ? "visible" : "hidden"}
-                              className="text-white/90 text-sm sm:text-base flex items-start"
-                            >
-                              <span className="text-[#E6F0F5] mr-2">⦿</span>
-                              {item}
-                            </motion.p>
-                          ))}
-                        </div>
-                      </div>
-                      {/* 📊 Revenue Growth */}
-                      <div>
-                        <h6 className="text-base sm:text-lg font-semibold uppercase text-white my-2 ">
-                          📊 Revenue Growth
-                        </h6>
-                        <div className="space-y-2">
-                          {[
-                            "Increase margin with cost effective design",
-                            "Expand customer base with optimized SKUs",
-                          ].map((item, index) => (
-                            <motion.p
-                              key={index}
-                              custom={index + 10} // Offset for previous lists
                               variants={mobileItemVariants}
                               initial="hidden"
                               animate={isInView ? "visible" : "hidden"}
@@ -216,48 +193,28 @@ export default function Objectives() {
                   </div>
                 </div>
 
-                {/* Desktop Business Perspective */}
+                {/* Desktop Roles Built */}
                 <div className="relative h-[400px] lg:h-[430px] rounded-xl shadow-md overflow-hidden">
                   <Image
                     src={objectiveImage2}
-                    alt="Business Perspective"
+                    alt="Roles Built"
                     fill
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-black/50 flex flex-col p-6 sm:p-8 lg:p-10">
                     <h3 className="text-2xl sm:text-3xl font-semibold uppercase text-white mb-6">
-                      💼 Business Perspective
+                      👥 Roles Built
                     </h3>
                     <div className="space-y-4">
                       <div>
-                        <h6 className="text-lg sm:text-xl font-semibold uppercase text-white mb-2">
-                          🧭 Market Positioning
-                        </h6>
                         <div className="space-y-2">
                           {[
-                            "Enhance brand value improvements",
-                            "Compete more aggressively on price ladder",
-                          ].map((item, index) => (
-                            <p
-                              key={index}
-                              className="text-white/90 text-base sm:text-lg flex items-start"
-                            >
-                              <span className="text-[#E6F0F5] mr-2 transition-transform duration-300 inline-block hover:scale-110">
-                                ⦿
-                              </span>
-                              {item}
-                            </p>
-                          ))}
-                        </div>
-                      </div>
-                      <div>
-                        <h6 className="text-lg sm:text-xl font-semibold uppercase text-white mb-2">
-                          📊 Revenue Growth
-                        </h6>
-                        <div className="space-y-2">
-                          {[
-                            "Increased margins with cost-effective designs",
-                            "Expand customer base with optimized SKUs",
+                            "Product Designer",
+                            "Costing Engineer ",
+                            "Manufacturing Engineer",
+                            "Hydraulic – SME",
+                            "FEA Engineer",
+                            "Sourcing Engineer",
                           ].map((item, index) => (
                             <p
                               key={index}

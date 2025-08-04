@@ -128,7 +128,7 @@ const PCMKeyFindings = () => {
 
       <section
         ref={sectionRef}
-        className="relative z-10 py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="relative z-10 py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 "
       >
         {/* Key Findings Section */}
         {isMobile ? (

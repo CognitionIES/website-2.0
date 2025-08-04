@@ -112,8 +112,8 @@ const ProjectApproach = () => {
             animate={isInView ? "visible" : "hidden"}
             className=" backdrop-blur-sm rounded-xl  px-4"
           >
-            <h1 className="text-2xl font-bold mb-4 text-[#003C46]">
-              🧠 Cognition&apos;s PCM Approach
+            <h1 className="text-3xl font-bold mb-4 text-[#003C46]">
+              Cognition&apos;s Approach
             </h1>
             {isMobile ? (
               <div className="space-y-4">
@@ -133,13 +133,14 @@ const ProjectApproach = () => {
                       {section.points.map((point, pointIdx) => (
                         <div key={pointIdx} className="flex items-start gap-2">
                           <span className="text-[#00b4d8] pl-2">•</span>
-                          <p className="text-[#5b5b5b]  text-justify text-sm">{point}</p>
+                          <p className="text-[#5b5b5b]  text-justify text-sm">
+                            {point}
+                          </p>
                         </div>
                       ))}
                     </div>
                   </motion.div>
                 ))}
-                
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-6">

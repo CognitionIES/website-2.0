@@ -1,11 +1,11 @@
-"use client"; // Mark as Client Component to allow event handlers or interactivity
-
+"use client";
 import React from "react";
 import { MegaMenu } from "@/components/ui/Megamenu/MegaMenu";
 import Hero from "./hero";
 import Footer from "@/components/footer";
-import AboutSection from "./about";
+import { ProjectsSection } from "./about";
 import CTASection from "@/components/CTA";
+
 const Projects: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
@@ -13,7 +13,7 @@ const Projects: React.FC = () => {
       <section className="relative  overflow-hidden">
         <Hero />
       </section>
-      <AboutSection />
+      <ProjectsSection />
       <CTASection />
       <Footer />
     </div>

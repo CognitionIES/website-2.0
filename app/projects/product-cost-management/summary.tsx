@@ -93,7 +93,7 @@ const SummaryGains = () => {
           viewport={{ once: true, amount: 0.1 }}
           variants={cardVariants}
         >
-          <div className="backdrop-blur-sm rounded-2xl p-2 sm:p-8">
+          <div className="backdrop-blur-sm rounded-2xl p-2 sm:py-8">
             {isMobile ? (
               <div className="space-y-6">
                 {/* Business Impact Section */}

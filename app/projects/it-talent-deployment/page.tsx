@@ -16,13 +16,16 @@ import {
   Zap,
   Shield,
   Target,
-  Briefcase,
 } from "lucide-react";
 import Image from "next/image";
 import { MegaMenu } from "@/components/ui/Megamenu/MegaMenu";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Footer from "@/components/footer";
+import heroImage from "@/constants/images/projects/it/hero.jpg";
+import aboutImage from "@/constants/images/projects/it/about.jpg";
+import objectiveImage from "@/constants/images/projects/it/objective.jpg";
+import overviewImage from "@/constants/images/projects/it/overview.jpg";
 
 const useIntersectionObserver = (threshold = 0.1) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -61,8 +64,7 @@ const Hero = () => {
       ref={setRef}
       className="relative h-[500px] overflow-hidden"
       style={{
-        backgroundImage:
-          "url(https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80)",
+        backgroundImage: `url(${heroImage.src})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -213,7 +215,7 @@ const RecentProjects = () => {
             <div className="md:flex">
               <div className="md:w-2/5 relative overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src={aboutImage}
                   alt="IT talent deployment team"
                   className="w-full h-64 md:h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   width={800}
@@ -224,7 +226,7 @@ const RecentProjects = () => {
                 {/* Floating badges on image */}
                 <div className="absolute top-4 left-4 flex flex-col space-y-2">
                   <div className="px-3 py-1 bg-[#0098AF]/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
-                    12-Month Contract
+                    Contractual Staffing
                   </div>
                   <div className="px-3 py-1 bg-[#99D5DF]/90 backdrop-blur-sm text-[#003C46] text-xs font-semibold rounded-full">
                     Zero Attrition
@@ -268,7 +270,7 @@ const RecentProjects = () => {
                   Successfully staffed and deployed a team of skilled full-stack
                   developers (React & Node.js) for a growing IT company. Ensured
                   quick turnaround, seamless onboarding, and end-to-end
-                  compliance support for a 12-month contract.
+                  compliance support.
                 </p>
 
                 {/* Key highlights */}
@@ -335,7 +337,7 @@ const ProjectOverview = () => {
             <div className="md:flex">
               <div className="md:w-2/5 relative overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src={objectiveImage}
                   alt="SaaS platform development"
                   className="w-full h-80 md:h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   width={800}
@@ -473,9 +475,9 @@ const Objectives = () => {
             <div className="md:w-2/5 mb-12 md:mb-0">
               <div className="relative group">
                 <Image
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src={overviewImage}
                   alt="Team objective visualization"
-                  className="w-full h-80 md:h-[500px] object-cover rounded-3xl shadow-2xl transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-80 md:h-[420px] object-cover rounded-3xl shadow-2xl transition-transform duration-700 group-hover:scale-105"
                   width={800}
                   height={80}
                 />
@@ -516,17 +518,11 @@ const Objectives = () => {
                       <span className="text-[#99D5DF] font-semibold">
                         high-performing full-stack development team
                       </span>{" "}
-                      on a 12-month contract, ensuring smooth onboarding,
-                      delivery readiness, and full compliance coverage.
+                      on a contract, ensuring smooth onboarding, delivery
+                      readiness, and full compliance coverage.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-                      <div className="flex items-center space-x-3 p-4 bg-[#F5FDFF]/10 rounded-xl border border-[#F5FDFF]/20">
-                        <CheckCircle className="w-5 h-5 text-[#99D5DF] flex-shrink-0" />
-                        <span className="text-[#F5FDFF]/90">
-                          12-month engagement
-                        </span>
-                      </div>
                       <div className="flex items-center space-x-3 p-4 bg-[#F5FDFF]/10 rounded-xl border border-[#F5FDFF]/20">
                         <CheckCircle className="w-5 h-5 text-[#99D5DF] flex-shrink-0" />
                         <span className="text-[#F5FDFF]/90">
@@ -537,12 +533,6 @@ const Objectives = () => {
                         <CheckCircle className="w-5 h-5 text-[#99D5DF] flex-shrink-0" />
                         <span className="text-[#F5FDFF]/90">
                           Seamless onboarding
-                        </span>
-                      </div>
-                      <div className="flex items-center space-x-3 p-4 bg-[#F5FDFF]/10 rounded-xl border border-[#F5FDFF]/20">
-                        <CheckCircle className="w-5 h-5 text-[#99D5DF] flex-shrink-0" />
-                        <span className="text-[#F5FDFF]/90">
-                          Delivery readiness
                         </span>
                       </div>
                     </div>

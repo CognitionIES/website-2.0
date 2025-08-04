@@ -25,8 +25,6 @@ const WhyChoose = () => {
     },
   ];
 
-  
-
   return (
     <section className="py-10 md:py-14 relative overflow-hidden">
       {/* Background with gradient */}
@@ -54,29 +52,11 @@ const WhyChoose = () => {
                 </span>
                 for Service CPQ?
               </h2>
-
-             
             </div>
           </div>
 
           {/* Right side - curved image */}
-          <div className="md:w-3/5">
-            {/* <div className="relative overflow-hidden rounded-l-full rounded-r-lg shadow-lg">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0098af]/70 to-transparent mix-blend-multiply z-10"></div>
-              <Image
-                src="https://images.unsplash.com/photo-1742943892627-f7e4ddf91224?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8"
-                alt="Partnership"
-                width={500}
-                height={500}
-                className="w-full h-64 md:h-80 object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#003C46]/80 to-transparent z-20">
-                <p className="text-white font-medium">
-                  Your success is our mission
-                </p>
-              </div>
-            </div> */}
-          </div>
+          <div className="md:w-3/5"></div>
         </div>
 
         {/* Reason cards - overlapping design */}
@@ -96,8 +76,6 @@ const WhyChoose = () => {
 
         {/* Success metrics - animated vertical bars */}
         <div className="mt-20 max-w-5xl mx-auto">
-          
-
           {/* Bottom callout */}
           {/* <div className="mt-16 text-center bg-gradient-to-r from-[#0098af]/10 via-[#00b4d8]/20 to-[#0098af]/10 p-8 rounded-2xl">
             <p className="text-xl text-[#003C46] font-medium">
@@ -171,7 +149,5 @@ const ReasonCard = ({
     </div>
   );
 };
-
-
 
 export default WhyChoose;

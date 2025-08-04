@@ -24,7 +24,7 @@ export default function Footer() {
         <div className="hidden md:block absolute bottom-2 right-4 sm:bottom-2 sm:right-8 md:bottom-1 md:right-40 text-base sm:text-lg text-[#F5FDFF]/70">
           <div className="flex items-center space-x-2 sm:space-x-3 mt-8 sm:mt-10">
             <Link
-              href="https://www.linkedin.com/company/cognitionies"
+              href="https://www.linkedin.com/company/cognition-ies"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-[#99D5DF] px-2"

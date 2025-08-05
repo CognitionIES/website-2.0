@@ -3,7 +3,6 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import frame8 from "@/constants/images/Background/Frame_8.jpg";
 import { MegaMenu } from "@/components/ui/Megamenu/MegaMenu";
 import Hero from "./hero";
 import AboutSection from "./mainContent";
@@ -38,28 +37,20 @@ const Index = () => {
       }
     };
   }, []);
+
   const handleContsactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
     alert("Thank you for your message! We'll get back to you soon.");
   };
+
   return (
-    <div
-      className="h-auto w-full overflow-hidden"
-      style={{
-        backgroundImage: `url(${frame8.src})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <div className="h-auto w-full overflow-hidden relative">
+      <div className="absolute inset-0 pointer-events-none" />
       <MegaMenu />
       <Hero />
       <AboutSection />
       <ServicesSection />
       <ProcessSection />
-
       <IndustriesWeServe />
       <ToolsSection />
       <section id="">

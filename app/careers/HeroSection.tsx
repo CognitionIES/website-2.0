@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ChevronRight, Home, Users, Briefcase, TrendingUp } from "lucide-react";
+import { ChevronRight, Home } from "lucide-react";
 import Image from "next/image";
 import heroImage from "@/constants/images/hero/careers-hero.png";
 import Link from "next/link";
@@ -79,7 +79,7 @@ export default function CareersHero() {
                 </motion.p>
 
                 {/* Feature Points */}
-                <motion.div
+                {/* <motion.div
                   className="flex flex-wrap gap-6 text-white/80"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -107,7 +107,7 @@ export default function CareersHero() {
                       Exciting Projects
                     </span>
                   </div>
-                </motion.div>
+                </motion.div> */}
               </div>
             </div>
           </div>
@@ -140,4 +140,3 @@ export default function CareersHero() {
     </section>
   );
 }
-

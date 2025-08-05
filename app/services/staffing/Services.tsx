@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -61,15 +62,14 @@ const ServiceCard: React.FC<{
   service: Service;
   index: number;
   isVisible: boolean;
-}> = ({ service, index, isVisible }) => {
+}> = ({ service, isVisible }) => {
   return (
     <div>
       <div
-        className={`group bg-white rounded-xl shadow-lg border-2 overflow-hidden transform sxtransition-transform transition-opacity duration-300 hover:scale-105 ${
-    isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-  }`}
+        className={`group bg-white/90 backdrop-blur-md rounded-xl shadow-lg border-2 overflow-hidden transform transition-all duration-300 hover:scale-105 ${
+          isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+        }`}
         style={{
-          transitionDelay: isVisible ? `${index * 200}ms` : "0ms",
           borderColor: "hsl(185 64% 73% / 0.2)",
           boxShadow: "0 4px 20px hsl(188 100% 34% / 0.15)",
           transition: "all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
@@ -77,7 +77,7 @@ const ServiceCard: React.FC<{
         onMouseEnter={(e) => {
           e.currentTarget.style.borderColor = "hsl(188 100% 34% / 0.4)";
           e.currentTarget.style.boxShadow =
-            "0 10px 30px -10px hsl(193 100% 23% / 0.3)";
+            "0 10px 30px hsl(193 100% 23% / 0.3)";
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.borderColor = "hsl(185 64% 73% / 0.2)";
@@ -87,7 +87,6 @@ const ServiceCard: React.FC<{
         role="article"
         aria-labelledby={`service-title-${service.id}`}
       >
-        {/* Title and Subtitle */}
         <div className="p-6 pb-4">
           <h3
             id={`service-title-${service.id}`}
@@ -99,27 +98,22 @@ const ServiceCard: React.FC<{
             {service.subtitle}
           </p>
         </div>
-
-        {/* Image */}
         <div className="relative overflow-hidden">
           <Image
             src={service.image}
             alt={`${service.title} - Professional staffing service`}
             className="w-full h-48 md:h-52 object-cover transition-transform duration-300 group-hover:scale-110"
             width={800}
-            height={80}
+            height={200}
+            sizes="(max-width: 768px) 100vw, 33vw"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#003C46]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-          {/* Hover Description Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#003C46]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div className="absolute inset-0 bg-[#003C46]/80 flex items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
             <p className="text-sm md:text-base text-white leading-relaxed text-center">
               {service.description}
             </p>
           </div>
-
-          {/* Hover effect overlay */}
           <div
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-xl"
             style={{
@@ -156,7 +150,6 @@ const ServicesSection: React.FC = () => {
 
     return () => {
       if (sectionRef.current) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         observer.unobserve(sectionRef.current);
       }
     };
@@ -165,21 +158,20 @@ const ServicesSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-16 overflow-hidden"
+      className="relative py-16 overflow-hidden bg-gradient-to-b from-white to-white"
       aria-labelledby="services-section-title"
     >
-      {/* Background overlay to reduce dot opacity */}
       <div
-        className="absolute inset-0"
-        style={{ backgroundColor: "#F5FDFF", opacity: 0.9 }}
-      ></div>
-
-      {/* Content */}
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Crect width="100" height="100" fill="none"/%3E%3Cpath fill="rgba(0,60,70,0.05)" d="M0 0h100v100H0z"/%3E%3C/svg%3E')`,
+          backgroundRepeat: "repeat",
+        }}
+      />
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
-        {/* Section Header */}
-        <div className=" mb-16 md:mb-20">
+        <div className="mb-16 md:mb-20">
           <h2
-            className=" font-bold text-2xl md:text-3xl lg:text-4xl mb-4"
+            className="font-bold text-2xl md:text-3xl lg:text-4xl mb-4"
             style={{ color: "hsl(193 100% 23%)" }}
           >
             Our{" "}
@@ -188,17 +180,14 @@ const ServicesSection: React.FC = () => {
             </span>
           </h2>
           <p
-            className="text-lg max-w-7xl mx-auto "
+            className="text-lg max-w-7xl mx-auto"
             style={{ color: "hsl(200 20% 35%)" }}
           >
             Tailored hiring solutions to meet your business needs — whether
             you&apos;re scaling fast or building for the future.
           </p>
         </div>
-
-        {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-8">
-          {/* First Row - 3 cards */}
           {services.slice(0, 3).map((service, index) => (
             <ServiceCard
               key={service.id}
@@ -208,8 +197,6 @@ const ServicesSection: React.FC = () => {
             />
           ))}
         </div>
-
-        {/* Second Row - 2 cards centered */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-4xl mx-auto">
           {services.slice(3).map((service, index) => (
             <ServiceCard
@@ -226,4 +213,3 @@ const ServicesSection: React.FC = () => {
 };
 
 export default ServicesSection;
-  

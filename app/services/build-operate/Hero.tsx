@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ChevronRight, Home } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import heroImage from "@/constants/images/hero/build-operate.png";
+import heroImage from "@/constants/images/build-operate/hero.jpg";
 
 export default function BuildOperateHero() {
   return (

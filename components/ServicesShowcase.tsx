@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
-import plantImage from "@/constants/images/home/our-services/plant.jpg";
-import productImage from "@/constants/images/home/our-services/product-2.jpg";
 import saasImage from "@/constants/images/home/our-services/saas.jpg";
 import { ArrowUpRight, Settings, Factory, Monitor } from "lucide-react";
+import buildImage from "@/constants/images/build-operate/hero.jpg";
 import Image from "next/image";
 import Link from "next/link";
+import staffImage from "@/constants/images/home/staffing.jpg";
 
 const services = [
   {
@@ -13,7 +13,7 @@ const services = [
     title: "Staffing & Recruitment",
     description:
       "Quickly access skilled talent and build high-performing teams. We connect you with experts to drive growth and deliver results.",
-    image: productImage,
+    image: staffImage,
     href: "/services/staffing",
     icon: Settings,
     metrics: { projects: "150+", satisfaction: "98%" },
@@ -23,7 +23,7 @@ const services = [
     title: "Build & Operate",
     description:
       "We don’t just recruit—we take ownership. From team building to full-scale operations management, we ensure performance, compliance, and scalability without overloading your internal teams.",
-    image: plantImage,
+    image: buildImage,
     href: "/services/build-operate",
     icon: Factory,
   },

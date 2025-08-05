@@ -1,6 +1,7 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image"; // Import Next.js Image component
 import { Project } from "@/constants/projects-data";
 
 interface ProjectCardProps {
@@ -69,9 +70,16 @@ export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
           className="relative h-64 overflow-hidden"
           variants={imageVariants}
         >
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${project.image})` }}
+          <Image
+            src={
+              typeof project.image === "string"
+                ? project.image
+                : project.image.src
+            }
+            alt={project.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
 
           {/* Gradient Overlay */}

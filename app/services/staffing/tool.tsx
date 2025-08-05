@@ -75,32 +75,32 @@ const ToolsSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-      style={{ backgroundColor: "hsl(189 100% 98%)" }}
+      className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-white to-[#E6F0F5]/90"
     >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5"></div>
-
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Crect width="100" height="100" fill="none"/%3E%3Cpath fill="rgba(0,60,70,0.05)" d="M0 0h100v100H0z"/%3E%3C/svg%3E')`,
+          backgroundRepeat: "repeat",
+        }}
+      />
       <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Section header */}
-        <div className=" mb-10">
+        <div className="mb-10">
           <h2
-            className=" font-bold text-2xl md:text-3xl lg:text-4xl mb-4"
+            className="font-bold text-2xl md:text-3xl lg:text-4xl mb-4"
             style={{ color: "hsl(193 100% 23%)" }}
           >
             Tools &{" "}
             <span style={{ color: "hsl(188 100% 34%)" }}>Technologies</span>
           </h2>
           <p
-            className=" text-lg max-w-7xl mx-auto"
+            className="text-lg max-w-7xl mx-auto"
             style={{ color: "hsl(200 20% 35%)" }}
           >
             Leveraging cutting-edge technology to deliver superior recruitment
             outcomes
           </p>
         </div>
-
-        {/* Tools grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {tools.map((tool, index) => {
             const IconComponent = tool.icon;
@@ -121,13 +121,8 @@ const ToolsSection: React.FC = () => {
                 }`}
               >
                 <div
-                  className={`
-                  relative p-8 ${tool.shape} border-2 cursor-pointer
-                  transition-all duration-500 hover:scale-102
-                `}
+                  className={`relative p-8 ${tool.shape} border-2 cursor-pointer bg-white/90 backdrop-blur-md transition-all duration-500 hover:scale-102`}
                   style={{
-                    background:
-                      "linear-gradient(135deg, white, hsl(185 64% 73% / 0.1))",
                     borderColor: "hsl(185 64% 73% / 0.2)",
                     boxShadow: "0 4px 20px hsl(188 100% 34% / 0.15)",
                     transition:
@@ -146,7 +141,6 @@ const ToolsSection: React.FC = () => {
                       "0 4px 20px hsl(188 100% 34% / 0.15)";
                   }}
                 >
-                  {/* Icon */}
                   <div className="flex items-start gap-6 mb-6">
                     <div
                       className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center transition-colors duration-300"
@@ -162,25 +156,21 @@ const ToolsSection: React.FC = () => {
                     >
                       <IconComponent className="text-white w-8 h-8" />
                     </div>
-
                     <div>
                       <h3
-                        className=" font-bold text-xl md:text-2xl mb-2"
+                        className="font-bold text-xl md:text-2xl mb-2"
                         style={{ color: "hsl(193 100% 23%)" }}
                       >
                         {tool.title}
                       </h3>
                     </div>
                   </div>
-
                   <p
-                    className=" leading-relaxed"
+                    className="leading-relaxed"
                     style={{ color: "hsl(200 20% 35%)" }}
                   >
                     {tool.description}
                   </p>
-
-                  {/* Hover effect */}
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl"
                     style={{

@@ -1,12 +1,13 @@
 import { StaticImageData } from "next/image";
 //import productImage from "./images/home/hero/product.jpg";
-import processImage from "./images/home/hero/process.jpg";
+//import processImage from "./images/home/hero/process.jpg";
 //import aimlImage from "./images/home/hero/ai-ml.jpg";
 import saasImage from "@/constants/images/home/hero/saas.jpg";
 import recruitmentImage from "@/constants/images/home/hero/recruit.jpg";
 import saas2 from "@/constants/images/home/hero/saas-mobile.jpg";
-import process2 from "@/constants/images/home/hero/process-mobile.jpg";
+//import process2 from "@/constants/images/home/hero/process-mobile.jpg";
 import recruit2 from "@/constants/images/home/hero/recruit-mobile.jpg";
+import buildImage from "@/constants/images/build-operate/hero.jpg";
 
 export interface HeroSlide {
   id: number;
@@ -36,8 +37,8 @@ export const heroSlides: HeroSlide[] = [
     majorService: "Build & Operate",
     description:
       "From concept to daily operations, we design, build, & manage robust technology platforms & infrastructure that drive reliability, scalability, & long-term value.",
-    image: processImage,
-    mobileImage: process2,
+    image: buildImage,
+    mobileImage: buildImage,
   },
   {
     id: 3,

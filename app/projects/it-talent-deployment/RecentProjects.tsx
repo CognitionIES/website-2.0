@@ -108,7 +108,7 @@ const RecentProjects = () => {
                   Successfully staffed and deployed a team of skilled full-stack
                   developers (React & Node.js) for a growing IT company. Ensured
                   quick turnaround, seamless onboarding, and end-to-end
-                  compliance support for a 12-month contract.
+                  compliance support.
                 </p>
                 <button
                   onClick={() =>

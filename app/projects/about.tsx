@@ -210,7 +210,7 @@ export function ProjectsSection() {
               />
             ))}
           </div>
-        </motion.div>
+        </motion.div> 
       </div>
     </section>
   );

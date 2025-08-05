@@ -4,8 +4,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import HeroImage from "@/constants/images/projects/digitalization/hero.jpg";
 import { FiChevronRight, FiHome } from "react-icons/fi";
+import { PROJECTS_PAGE_CONSTANTS } from "@/constants/project/home";
 
 const useIntersectionObserver = (threshold = 0.1) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -44,7 +44,7 @@ export default function ProjectsHero() {
       ref={setRef}
       className="relative h-[500px] overflow-hidden"
       style={{
-        backgroundImage: `url(${HeroImage.src})`,
+        backgroundImage: `url(${PROJECTS_PAGE_CONSTANTS.HERO.IMAGE.src})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -68,14 +68,18 @@ export default function ProjectsHero() {
               className="hover:text-blue-300 flex items-center gap-1.5 transition-colors duration-300"
             >
               <FiHome className="w-4 h-4" />
-              <span className="font-medium">Home</span>
+              <span className="font-medium">
+                {PROJECTS_PAGE_CONSTANTS.HERO.BREADCRUMBS.HOME}
+              </span>
             </Link>
             <FiChevronRight className="w-3.5 h-3.5" />
             <Link
               href="/projects"
               className="hover:text-blue-300 transition-colors duration-300"
             >
-              <span className="text-blue-200 font-medium">Projects</span>
+              <span className="text-blue-200 font-medium">
+                {PROJECTS_PAGE_CONSTANTS.HERO.BREADCRUMBS.PROJECTS}
+              </span>
             </Link>
           </motion.nav>
 
@@ -87,7 +91,7 @@ export default function ProjectsHero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl text-white font-bold tracking-tight leading-tight">
-              Projects
+              {PROJECTS_PAGE_CONSTANTS.HERO.TITLE}
             </h1>
             <motion.div
               className="absolute -bottom-2 left-1 w-32 h-1 bg-gradient-to-r from-[#99D5DF] to-transparent rounded-full"
@@ -104,7 +108,7 @@ export default function ProjectsHero() {
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           >
-            Showcasing innovative engineering solutions across industries.
+            {PROJECTS_PAGE_CONSTANTS.HERO.SUBTITLE}
           </motion.p>
         </div>
 

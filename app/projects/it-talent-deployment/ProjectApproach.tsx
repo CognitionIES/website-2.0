@@ -32,7 +32,7 @@ const ProjectApproach = () => {
 
   const steps = [
     {
-      title: "Requirement Scoping",
+      title: "ABC",
       description:
         "Collaborated with the client to finalize job descriptions, skill expectations, and team composition.",
     },

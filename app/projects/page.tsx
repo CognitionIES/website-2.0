@@ -10,7 +10,7 @@ const Projects: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <MegaMenu />
-      <section className="relative  overflow-hidden">
+      <section className="relative overflow-hidden">
         <Hero />
       </section>
       <ProjectsSection />

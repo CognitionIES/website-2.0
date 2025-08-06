@@ -1,281 +1,138 @@
-"use client";
-import Link from "next/link";
 import * as React from "react";
-import { motion } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile";
-import Image from "next/image";
-import LinkedinLogo from "@/constants/images/linkedinLogo.png";
+import { motion, Variants } from "framer-motion";
+import { useIsMobile } from "../../hooks/use-mobile";
+import { ExternalLink, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 export default function UsefulLinks() {
   const isMobile = useIsMobile();
-  const Line = isMobile ? "span" : motion.span;
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
+  const linkVariants: Variants = {
+    rest: { x: 0 },
+    hover: { x: 4 },
+  };
+
+  const Container = isMobile ? "div" : motion.div;
+
+  const usefulLinks = [
+    { name: "Home", href: "/" },
+    { name: "Projects", href: "/projects" },
+    { name: "Careers", href: "/careers" },
+    { name: "About Us", href: "/about" },
+    { name: "Contact Us", href: "/contact" },
+    { name: "FAQs", href: "/faq" },
+  ];
+
+  const services = [
+    { name: "Staffing & Recruitment", href: "/services/staffing-recruitment" },
+    { name: "Build & Operate", href: "/services/build-operate" },
+    { name: "SaaS Solutions", href: "/services/saas-solution/servicecpq" },
+  ];
 
   return (
-    <div className="col-span-1 md:col-span-4 px-8">
-      <div className="grid grid-cols-2 gap-4 sm:gap-6">
-        {/* Column 1: Useful Links */}
-        <div>
-          <h3 className="text-xl sm:text-2xl mb-1 sm:mb-2">Useful Links</h3>
-          {!isMobile && (
-            <Line
-              initial={{ width: 0 }}
-              whileInView={{ width: "50%" }}
-              transition={{ delay: 0.6, duration: 1 }}
-              className="block h-[2px] bg-gradient-to-r from-[#0098AF] to-[#003C46] opacity-70 mb-3 sm:mb-4 rounded-full"
-            />
-          )}
-          <ul className="space-y-1 sm:space-y-2 text-[#E6F0F5]/70 text-xs sm:text-sm">
-            <li>
-              <Link
-                href="/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#0098AF] flex items-center"
-              >
-                Home
-                <svg
-                  className="w-3 sm:w-4 h-3 sm:h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/projects"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#0098AF] flex items-center"
-              >
-                Projects
-                <svg
-                  className="w-3 sm:w-4 h-3 sm:h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/careers"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#0098AF] flex items-center"
-              >
-                Careers
-                <svg
-                  className="w-3 sm:w-4 h-3 sm:h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/about"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#0098AF] flex items-center"
-              >
-                About Us
-                <svg
-                  className="w-3 sm:w-4 h-3 sm:h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#0098AF] flex items-center"
-              >
-                Contact Us
-                <svg
-                  className="w-3 sm:w-4 h-3 sm:h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/faq"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#0098AF] flex items-center"
-              >
-                FAQs
-                <svg
-                  className="w-3 sm:w-4 h-3 sm:h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </Link>
-            </li>
-          </ul>
+    <Container
+      {...(!isMobile && {
+        variants: containerVariants,
+        initial: "hidden",
+        whileInView: "visible",
+        viewport: { once: true, margin: "-50px" },
+      })}
+      className="grid grid-cols-1 sm:grid-cols-2 "
+    >
+      {/* Quick Links Column */}
+      <motion.div variants={!isMobile ? itemVariants : undefined}>
+        <div className="mb-6">
+          <h3 className="text-xl  font-semibold text-[#F5FDFF] ml-5 mb-2">
+            Quick Links
+          </h3>
         </div>
 
-        {/* Column 2: Services */}
-        <div>
-          <h3 className="text-xl sm:text-2xl mb-1 sm:mb-2">Services</h3>
-          {!isMobile && (
-            <Line
-              initial={{ width: 0 }}
-              whileInView={{ width: "30%" }}
-              transition={{ delay: 0.6, duration: 1 }}
-              className="block h-[2px] bg-gradient-to-r from-[#0098AF] to-[#003C46] opacity-70 mb-3 sm:mb-4 rounded-full"
-            />
-          )}
-          <ul className="space-y-1 sm:space-y-2 text-[#E6F0F5]/70 text-xs sm:text-sm">
-            <li>
+        <ul className="space-y-3">
+          {usefulLinks.map((link) => (
+            <motion.li
+              key={link.name}
+              variants={!isMobile ? itemVariants : undefined}
+              whileHover="hover"
+              initial="rest"
+            >
               <Link
-                href="/services/staffing-recruitment"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#0098AF] flex items-center"
+                href={link.href}
+                className="group flex items-center text-[#E6F0F5]/70 hover:text-[#99D5DF] transition-all duration-300 text-sm"
               >
-                Staffing & Recruitment
-                <svg
-                  className="w-3 sm:w-4 h-3 sm:h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                <motion.div
+                  variants={linkVariants}
+                  className="flex items-center"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
+                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="group-hover:font-medium transition-all text-base duration-300">
+                    {link.name}
+                  </span>
+                </motion.div>
               </Link>
-            </li>
-            <li>
-              <Link
-                href="/services/build-operate"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#0098AF] flex items-center"
-              >
-                Build & Operate
-                <svg
-                  className="w-3 sm:w-4 h-3 sm:h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/services/saas-solution/servicecpq"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#0098AF] flex items-center"
-              >
-                SaaS Solutions
-                <svg
-                  className="w-3 sm:w-4 h-3 sm:h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </Link>
-            </li>
-          </ul>
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
+
+      {/* Services Column */}
+      <motion.div variants={!isMobile ? itemVariants : undefined}>
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold text-[#F5FDFF] mb-2 ml-5">
+            Our Services
+          </h3>
         </div>
-      </div>
-      {/* LinkedIn and Email for mobile view */}
-      {isMobile && (
-        <div className="flex justify-center items-center space-x-2 sm:space-x-3 mt-6">
-          <Link
-            href="https://www.linkedin.com/company/cognition-ies"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#0098AF] px-2"
-          >
-            <Image
-              src={LinkedinLogo}
-              alt="Linkedin Logo"
-              width={32}
-              height={32}
-              className="sm:w-10 sm:h-10"
-            />
-          </Link>
-          <span>|</span>
-          <Link
-            href="mailto:info@cognitionies.com"
-            className="hover:text-[#0098AF] text-sm sm:text-base"
-          >
-            info@cognitionies.com
-          </Link>
-        </div>
-      )}
-    </div>
+
+        <ul className="space-y-3">
+          {services.map((service) => (
+            <motion.li
+              key={service.name}
+              variants={!isMobile ? itemVariants : undefined}
+              whileHover="hover"
+              initial="rest"
+            >
+              <Link
+                href={service.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center text-[#E6F0F5]/70 hover:text-[#0098AF] transition-all duration-300 text-sm"
+              >
+                <motion.div
+                  variants={linkVariants}
+                  className="flex items-center"
+                >
+                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="group-hover:font-medium transition-all text-base duration-300">
+                    {service.name}
+                  </span>
+                  <ExternalLink className="w-3 h-3 ml-2 opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.div>
+              </Link>
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
+    </Container>
   );
 }

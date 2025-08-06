@@ -1,53 +1,96 @@
-"use client";
-import { motion } from "framer-motion";
-import { FOOTER_CONSTANTS } from "@/constants/footer/constants";
+import { motion, Variants } from "framer-motion";
+import { FOOTER_CONSTANTS } from "../../constants/footer/constants";
+import { useIsMobile } from "../../hooks/use-mobile";
 import Image from "next/image";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function CompanyInfo() {
   const { DESCRIPTION, iamge } = FOOTER_CONSTANTS.COMPANY;
-  const { FADE_IN } = FOOTER_CONSTANTS.ANIMATIONS;
   const isMobile = useIsMobile();
 
+  const containerVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   const Container = isMobile ? "div" : motion.div;
-  const Line = isMobile ? "span" : motion.span;
 
   return (
     <Container
       {...(!isMobile && {
-        variants: FADE_IN,
+        variants: containerVariants,
+        initial: "hidden",
+        whileInView: "visible",
+        viewport: { once: true, margin: "-50px" },
       })}
-      className="col-span-1 md:col-span-5"
+      className="space-y-6"
     >
-      {/* Company logo */}
-      <div className="flex items-center justify-center md:justify-start mb-4 sm:mb-6 relative">
-        <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
+      {/* Company Logo */}
+      <motion.div
+        variants={!isMobile ? itemVariants : undefined}
+        className="flex items-center justify-center lg:justify-start"
+      >
+        <div className="relative">
           <Image
             src={iamge}
-            alt="Company Logo"
-            width={580}
+            alt="Cognition IES Logo"
+            width={380}
             height={80}
-            className="max-w-[100%] h-auto"
+            className="filter brightness-110"
+            priority
           />
-        </span>
-      </div>
-      {/* Company description - only shown in desktop view */}
-      {!isMobile && (
-        <div className="pr-0 sm:pr-8">
-          <p className="text-xs sm:text-sm md:text-base text-justify leading-relaxed text-gray-200 mb-4 sm:mb-6 font-light">
-            {DESCRIPTION}
-          </p>
+          {/* Subtle glow effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#99D5DF]/20 to-[#0098AF]/20 blur-xl -z-10 opacity-50" />
         </div>
-      )}
-      {/* Decorative line for non-mobile */}
+      </motion.div>
+
+      {/* Company Description */}
+      <motion.div
+        variants={!isMobile ? itemVariants : undefined}
+        className="max-w-3xl lg:max-w-2xl"
+      >
+
+        <p className="text-[#E6F0F5]/80  text-sm sm:text-base leading-relaxed font-light">
+          {DESCRIPTION}
+        </p>
+      </motion.div>
+
+      {/* Decorative Elements */}
       {!isMobile && (
-        <Line
-          initial={{ width: 0 }}
-          whileInView={{ width: "70%" }}
-          transition={{ delay: 0.6, duration: 1 }}
-          className="block h-1 bg-gradient-to-r from-[#0098AF] to-[#003C46] opacity-70 rounded-full"
-        />
+        <motion.div
+          variants={itemVariants}
+          className="flex items-center space-x-4"
+        >
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "60%" }}
+            transition={{ delay: 1, duration: 1.2, ease: "easeOut" }}
+            className="h-0.5 bg-gradient-to-r from-[#99D5DF] via-[#0098AF] to-transparent rounded-full"
+          />
+          <div className="flex space-x-2">
+            <div className="w-2 h-2 bg-[#99D5DF] rounded-full opacity-60" />
+            <div className="w-2 h-2 bg-[#0098AF] rounded-full opacity-40" />
+            <div className="w-2 h-2 bg-[#007B8F] rounded-full opacity-20" />
+          </div>
+        </motion.div>
       )}
+
     </Container>
   );
 }

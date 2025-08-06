@@ -1,4 +1,4 @@
-import logo from "@/constants/images/WEB-LOGO.png";
+import logo from "@/constants/images/cognition-logo-02.png";
 import { Variants } from "framer-motion";
 
 // This file holds all constants for the footer component

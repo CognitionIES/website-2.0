@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import CompanyInfo from "./Footer/CompanyInfo";
 import UsefulLinks from "./Footer/UsefulLinks";
 import SocialConnect from "./Footer/SocialConnect";
+import Link from "next/link";
 //import Newsletter from "./Footer/Newsletter";
 
 export default function Footer() {
@@ -61,13 +62,12 @@ export default function Footer() {
                 © 2025 Cognition IES. All rights reserved.
               </p>
               <div className="flex items-center space-x-6 text-sm text-[#E6F0F5]/70">
-                <motion.link
-                  href="/privacy"
+                <motion.div
                   whileHover={{ color: "#99D5DF" }}
                   className="hover:text-[#99D5DF] transition-colors duration-200"
                 >
-                  Privacy Policy
-                </motion.link>
+                  <Link href="/privacy">Privacy Policy</Link>
+                </motion.div>
               </div>
             </div>
           </div>

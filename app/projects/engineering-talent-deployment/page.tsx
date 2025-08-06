@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import Footer from "@/components/footer";
 
 // Custom hook for intersection observer
 const useIntersectionObserver = (threshold = 0.1) => {
@@ -1256,89 +1257,6 @@ const CTASection = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
-
-// Footer Component
-const Footer = () => {
-  return (
-    <footer className="bg-[#003C46] text-white py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-2">
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-r from-[#0098AF] to-[#00B4D8] rounded-lg flex items-center justify-center">
-                <Cpu className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-2xl font-bold">TechStaff</span>
-            </div>
-            <p className="text-white/80 mb-6 max-w-md leading-relaxed">
-              Transforming engineering teams through strategic talent deployment
-              and innovative staffing solutions.
-            </p>
-            <div className="flex space-x-4">
-              <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
-                <Globe className="w-5 h-5" />
-              </div>
-              <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
-                <Mail className="w-5 h-5" />
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-2 text-white/80">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Engineering Staffing
-                </Link>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Technical Consulting
-                </Link>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Project Management
-                </Link>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Compliance Support
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <ul className="space-y-2 text-white/80">
-              <li className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4" />
-                <span>123 Tech Avenue, Suite 100</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <Phone className="w-4 h-4" />
-                <span>+1 (555) 123-4567</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <Mail className="w-4 h-4" />
-                <span>contact@techstaff.com</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="border-t border-white/20 mt-12 pt-8 text-center text-white/60">
-          <p>
-            &copy; 2025 TechStaff. All rights reserved. Engineered with
-            precision.
-          </p>
-        </div>
-      </div>
-    </footer>
   );
 };
 

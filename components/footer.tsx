@@ -1,9 +1,10 @@
+"use client";
 import React from "react";
-import { motion } from "framer-motion";
 import CompanyInfo from "./Footer/CompanyInfo";
 import UsefulLinks from "./Footer/UsefulLinks";
 import SocialConnect from "./Footer/SocialConnect";
 import Link from "next/link";
+import { motion } from "framer-motion";
 //import Newsletter from "./Footer/Newsletter";
 
 export default function Footer() {

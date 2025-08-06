@@ -1,38 +1,32 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-"use client";
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useRef, useState } from "react";
-import { motion, Variants } from "framer-motion";
+"use client";
+import React, { useState, useEffect } from "react";
 import {
   ChevronRight,
   Home,
   ArrowRight,
   Users,
   Code,
+  Database,
+  GitBranch,
+  Globe,
   CheckCircle,
-  Shield,
-  Target,
   Clock,
   TrendingUp,
-  Mail,
-  Phone,
-  MapPin,
-  Award,
   Zap,
-  BarChart3,
-  PieChart,
-  Settings,
-  Wrench,
-  Cpu,
-  Globe,
-  Star,
-  Quote,
+  Shield,
+  Target,
 } from "lucide-react";
 import Image from "next/image";
+import { MegaMenu } from "@/components/ui/Megamenu/MegaMenu";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Footer from "@/components/footer";
+import heroImage from "@/constants/images/projects/it/hero.jpg";
+import aboutImage from "@/constants/images/projects/it/about.jpg";
+import objectiveImage from "@/constants/images/projects/it/objective.jpg";
+import overviewImage from "@/constants/images/projects/it/overview.jpg";
 
-// Custom hook for intersection observer
 const useIntersectionObserver = (threshold = 0.1) => {
   const [isVisible, setIsVisible] = useState(false);
   const [ref, setRef] = useState<Element | null>(null);
@@ -57,116 +51,8 @@ const useIntersectionObserver = (threshold = 0.1) => {
   return [setRef, isVisible] as const;
 };
 
-// Custom hook for mobile detection
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkIsMobile();
-    window.addEventListener("resize", checkIsMobile);
-
-    return () => window.removeEventListener("resize", checkIsMobile);
-  }, []);
-
-  return isMobile;
-};
-
-// Enhanced Button Component
-const Button = ({
-  children,
-  className = "",
-  variant = "primary",
-  size = "default",
-  onClick,
-  ...props
-}: {
-  children: React.ReactNode;
-  className?: string;
-  variant?: "primary" | "secondary" | "outline";
-  size?: "sm" | "default" | "lg";
-  onClick?: () => void;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>) => {
-  const baseClasses =
-    "inline-flex items-center justify-center font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
-
-  const variants = {
-    primary:
-      "bg-gradient-to-r from-[#0098AF] to-[#00B4D8] text-white hover:from-[#007B9A] hover:to-[#0098AF] focus:ring-[#0098AF] shadow-lg hover:shadow-xl transform hover:-translate-y-0.5",
-    secondary:
-      "bg-white text-[#003C46] border-2 border-[#0098AF] hover:bg-[#0098AF] hover:text-white focus:ring-[#0098AF]",
-    outline:
-      "border-2 border-white text-white hover:bg-white hover:text-[#0098AF] focus:ring-white",
-  };
-
-  const sizes = {
-    sm: "px-4 py-2 text-sm rounded-lg",
-    default: "px-6 py-3 text-base rounded-xl",
-    lg: "px-8 py-4 text-lg rounded-2xl",
-  };
-
-  return (
-    <button
-      className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`}
-      onClick={onClick}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-};
-
-// Enhanced Navigation Component
-const Navigation = () => {
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-[#0098AF] to-[#00B4D8] rounded-lg flex items-center justify-center">
-              <Cpu className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold text-[#003C46]">TechStaff</span>
-          </div>
-          <div className="hidden md:flex items-center space-x-8">
-            <Link
-              href="#"
-              className="text-gray-700 hover:text-[#0098AF] transition-colors font-medium"
-            >
-              Home
-            </Link>
-            <Link
-              href="#"
-              className="text-gray-700 hover:text-[#0098AF] transition-colors font-medium"
-            >
-              Services
-            </Link>
-            <Link
-              href="#"
-              className="text-gray-700 hover:text-[#0098AF] transition-colors font-medium"
-            >
-              Projects
-            </Link>
-            <Link
-              href="#"
-              className="text-gray-700 hover:text-[#0098AF] transition-colors font-medium"
-            >
-              About
-            </Link>
-            <Button size="sm">Contact Us</Button>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
-};
-
-// Hero Component
 const Hero = () => {
-  const [setRef, isVisible] = useIntersectionObserver();
+  const [setRef, isVisible] = useIntersectionObserver(0.1);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -176,679 +62,629 @@ const Hero = () => {
   return (
     <section
       ref={setRef}
-      className="relative h-screen overflow-hidden bg-gradient-to-br from-[#003C46] via-[#0098AF] to-[#00B4D8]"
+      className="relative h-[500px] overflow-hidden"
+      style={{
+        backgroundImage: `url(${heroImage.src})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed opacity-20"
-        style={{
-          backgroundImage:
-            "url('https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop')",
-        }}
-      />
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#003C46]/75 to-[#0098AF]/65" />
 
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(15)].map((_, i) => (
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-8 h-full flex flex-col justify-center">
+        <div className="relative z-20 h-full flex flex-col justify-center">
+          {/* Breadcrumb Navigation */}
+          <motion.nav
+            className="absolute bottom-8 flex items-center space-x-2 text-sm text-white/70"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
+          >
+            <Link
+              href="/"
+              className="hover:text-blue-300 flex items-center gap-1.5 transition-colors duration-300"
+            >
+              <Home className="w-4 h-4" />
+              <span className="font-medium">Home</span>
+            </Link>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <Link
+              href="/projects"
+              className="hover:text-blue-300 transition-colors duration-300"
+            >
+              <span className="text-blue-200 font-medium">Projects</span>
+            </Link>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <Link
+              href="/projects/it-talent-deployment"
+              className="hover:text-blue-300 transition-colors duration-300"
+            >
+              <span className="text-blue-200 font-medium">
+                Engineering Talent Deployment
+              </span>
+            </Link>
+          </motion.nav>
+
+          {/* Hero Content */}
+          <div className="space-y-8">
+            <div className="space-y-6">
+              {/* Main Heading */}
+              <motion.div
+                className="relative"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
+                <h1 className="text-5xl md:text-6xl lg:text-7xl text-white font-bold tracking-tight leading-tight">
+                  <span className="text-white">
+                    {" "}
+                    Engineering Talent Deployment
+                  </span>
+                </h1>
+                <motion.div
+                  className="absolute -bottom-2 left-1 w-32 h-1 bg-gradient-to-r from-[#60a5fa] to-transparent rounded-full"
+                  initial={{ width: 0 }}
+                  animate={{ width: 128 }}
+                  transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+                />
+              </motion.div>
+
+              {/* Subtitle */}
+              <motion.p
+                className="text-xl md:text-2xl text-white/90 max-w-3xl leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              >
+                Strategic staffing solution for engineering teams across
+                multiple disciplines.
+              </motion.p>
+            </div>
+          </div>
+        </div>
+
+        {/* Subtle Floating Particles */}
+        {[...Array(12)].map((_, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0 }}
             animate={{
-              opacity: [0, 0.6, 0],
-              y: [0, -200],
-              x: [0, Math.random() * 200 - 100],
-              scale: [0.5, 1, 0.5],
+              opacity: [0, 0.4, 0],
+              y: [0, -120],
+              x: [0, Math.random() * 150 - 75],
             }}
             transition={{
-              duration: 8 + Math.random() * 4,
+              duration: 5 + Math.random() * 3,
               repeat: Infinity,
-              delay: Math.random() * 6,
+              delay: Math.random() * 4,
               ease: "easeOut",
             }}
-            className="absolute w-2 h-2 bg-white/40 rounded-full"
+            className="absolute w-1 h-1 bg-blue-200/40 rounded-full"
             style={{
-              left: `${10 + Math.random() * 80}%`,
-              bottom: "0px",
+              left: `${15 + Math.random() * 70}%`,
+              bottom: "15px",
             }}
           />
         ))}
       </div>
-
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
-        {/* Breadcrumb */}
-        <motion.nav
-          className="absolute top-24 flex items-center space-x-2 text-sm text-white/80"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <Home className="w-4 h-4" />
-          <span>Home</span>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <span>Projects</span>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-[#99D5DF]">Engineering Talent</span>
-        </motion.nav>
-
-        {/* Main Content */}
-        <div className="max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl text-white font-black tracking-tight leading-none mb-8">
-              Engineering
-              <br />
-              <span className="bg-gradient-to-r from-[#99D5DF] to-[#FFFFFF] bg-clip-text text-transparent">
-                Talent Deployment
-              </span>
-            </h1>
-          </motion.div>
-
-          <motion.p
-            className="text-xl md:text-2xl text-white/90 max-w-2xl leading-relaxed mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Strategic staffing solutions for engineering teams across multiple
-            disciplines, delivering expertise that drives innovation and project
-            success.
-          </motion.p>
-
-          <motion.div
-            className="flex flex-col sm:flex-row gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <Button size="lg" className="group">
-              Explore Our Services
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button variant="outline" size="lg">
-              View Case Studies
-            </Button>
-          </motion.div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center"
-          >
-            <div className="w-1 h-3 bg-white rounded-full mt-2" />
-          </motion.div>
-        </motion.div>
-      </div>
     </section>
   );
 };
 
-// Stats Component
-const StatsSection = () => {
+const RecentProjects = () => {
   const [setRef, isVisible] = useIntersectionObserver();
-  const [counters, setCounters] = useState({
-    projects: 0,
-    clients: 0,
-    engineers: 0,
-    success: 0,
-  });
-
-  useEffect(() => {
-    if (isVisible) {
-      const targets = {
-        projects: 150,
-        clients: 50,
-        engineers: 500,
-        success: 98,
-      };
-      const duration = 2000;
-      const steps = 60;
-      const stepDuration = duration / steps;
-
-      Object.keys(targets).forEach((key) => {
-        let current = 0;
-        const target = targets[key as keyof typeof targets];
-        const increment = target / steps;
-
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
-          setCounters((prev) => ({ ...prev, [key]: Math.floor(current) }));
-        }, stepDuration);
-      });
-    }
-  }, [isVisible]);
-
-  const stats = [
-    {
-      icon: <Target className="w-8 h-8" />,
-      number: counters.projects,
-      label: "Projects Completed",
-      suffix: "+",
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      number: counters.clients,
-      label: "Happy Clients",
-      suffix: "+",
-    },
-    {
-      icon: <Code className="w-8 h-8" />,
-      number: counters.engineers,
-      label: "Engineers Deployed",
-      suffix: "+",
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8" />,
-      number: counters.success,
-      label: "Success Rate",
-      suffix: "%",
-    },
-  ];
-
-  return (
-    <section ref={setRef} className="py-20 bg-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC] to-[#E2E8F0] opacity-50" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-4">
-            Delivering Excellence
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Our track record speaks for itself - consistently delivering
-            top-tier engineering talent
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              className="text-center group"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-            >
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#0098AF] to-[#00B4D8] text-white rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                {stat.icon}
-              </div>
-              <div className="text-4xl md:text-5xl font-black text-[#003C46] mb-2">
-                {stat.number}
-                {stat.suffix}
-              </div>
-              <div className="text-gray-600 font-medium">{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-// About Section
-const AboutSection = () => {
-  const [isInView, setIsInView] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-  const isMobile = useIsMobile();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   return (
     <section
-      ref={sectionRef}
-      className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden"
+      id="recent-projects"
+      ref={setRef}
+      className="py-16 bg-gradient-to-br from-[#F5FDFF] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#0098AF]/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#00B4D8]/5 rounded-full blur-3xl" />
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 left-20 w-40 h-40 border border-[#0098AF] rounded-full animate-spin-slow"></div>
+        <div className="absolute bottom-32 right-32 w-32 h-32 border border-[#0098AF] rounded-full animate-spin-reverse"></div>
+        <div className="absolute top-1/2 left-1/4 w-2 h-2 bg-[#0098AF] rounded-full animate-ping"></div>
+        <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-[#0098AF] rounded-full animate-pulse"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="inline-block px-4 py-2 bg-[#0098AF]/10 text-[#0098AF] text-sm font-semibold uppercase tracking-wider rounded-full mb-6">
-              Project Overview
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div
+          className={` mb-10 transition-all duration-800 ease-out ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+          }`}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6 leading-tight">
+            Project{" "}
+            <span className="bg-gradient-to-r from-[#0098AF] to-[#007B8F] bg-clip-text text-transparent">
+              Objective
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-8 leading-tight">
-              Transforming Engineering
-              <span className="text-[#0098AF]"> Teams</span>
-            </h2>
-            <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
-              <p>
-                A major engineering project required rapid mobilization of
-                skilled professionals across mechanical, electrical, and piping
-                disciplines. The client needed engineers familiar with advanced
-                design tools and industry standards.
-              </p>
-              <p>
-                We delivered end-to-end staffing solutions – from understanding
-                requirements to sourcing, screening, onboarding, and managing
-                compliance. This project demanded not just technical skill but
-                domain expertise and quick adaptability.
-              </p>
+          </h2>
+          <p className="text-xl text-[#5B5B5B] max-w-7xl mx-auto">
+            Delivering experienced engineering professionals to support design,
+            development, and execution across capital projects, manufacturing
+            setups, and plant engineering functions.
+          </p>
+        </div>
+
+        <div
+          className={`transition-all duration-1000 ease-out delay-200 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
+        >
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-700 hover:scale-[1.01] group border border-[#0098AF]/10">
+            <div className="md:flex">
+              <div className="md:w-2/5 relative overflow-hidden">
+                <Image
+                  src={aboutImage}
+                  alt="IT talent deployment team"
+                  className="w-full h-64 md:h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  width={800}
+                  height={80}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#003C46]/30 via-transparent to-[#0098AF]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+                {/* Floating badges on image */}
+                <div className="absolute top-4 left-4 flex flex-col space-y-2">
+                  <div className="px-3 py-1 bg-[#0098AF]/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
+                    Contractual Staffing
+                  </div>
+                  <div className="px-3 py-1 bg-[#99D5DF]/90 backdrop-blur-sm text-[#003C46] text-xs font-semibold rounded-full">
+                    Zero Attrition
+                  </div>
+                </div>
+              </div>
+              <div className="md:w-3/5 p-8 md:p-12 relative">
+                {/* Decorative corner element */}
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#0098AF]/10 to-transparent rounded-bl-3xl"></div>
+
+                <h3
+                  className={`text-3xl md:text-4xl font-bold text-[#003C46] mb-3 transition-all duration-500 ${
+                    isVisible
+                      ? "translate-x-0 opacity-100"
+                      : "translate-x-4 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "500ms" }}
+                >
+                  Engineering Talent Staffing
+                </h3>
+
+                <h4
+                  className={`text-xl font-semibold text-[#0098AF] mb-6 transition-all duration-500 ${
+                    isVisible
+                      ? "translate-x-0 opacity-100"
+                      : "translate-x-4 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "600ms" }}
+                >
+                  Contract Staffing for Full-Stack Development Team
+                </h4>
+
+                <p
+                  className={`text-[#5B5B5B] mb-8 leading-relaxed text-lg transition-all duration-500 ${
+                    isVisible
+                      ? "translate-x-0 opacity-100"
+                      : "translate-x-4 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "700ms" }}
+                >
+                  Successfully staffed and deployed a team of skilled full-stack
+                  developers (React & Node.js) for a growing IT company. Ensured
+                  quick turnaround, seamless onboarding, and end-to-end
+                  compliance support.
+                </p>
+
+                {/* Key highlights */}
+                <div
+                  className={`grid grid-cols-2 gap-4 mb-8 transition-all duration-500 ${
+                    isVisible
+                      ? "translate-x-0 opacity-100"
+                      : "translate-x-4 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "750ms" }}
+                >
+                  <div className="flex items-center space-x-2">
+                    <Zap className="w-4 h-4 text-[#0098AF]" />
+                    <span className="text-sm text-[#5B5B5B]">
+                      Rapid deployment
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Shield className="w-4 h-4 text-[#0098AF]" />
+                    <span className="text-sm text-[#5B5B5B]">
+                      Full compliance
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Users className="w-4 h-4 text-[#0098AF]" />
+                    <span className="text-sm text-[#5B5B5B]">Expert team</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Target className="w-4 h-4 text-[#0098AF]" />
+                    <span className="text-sm text-[#5B5B5B]">
+                      Zero attrition
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <div className="mt-10 grid grid-cols-2 gap-6">
-              <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                <Clock className="w-8 h-8 text-[#0098AF] mx-auto mb-3" />
-                <div className="text-2xl font-bold text-[#003C46]">4 Weeks</div>
-                <div className="text-gray-600">Avg. Hiring Time</div>
-              </div>
-              <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                <Shield className="w-8 h-8 text-[#0098AF] mx-auto mb-3" />
-                <div className="text-2xl font-bold text-[#003C46]">100%</div>
-                <div className="text-gray-600">Compliance Rate</div>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
-              <Image
-                src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
-                alt="Engineering team collaboration"
-                width={800}
-                height={600}
-                className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-
-            {/* Floating Cards */}
-            <motion.div
-              className="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <Award className="w-6 h-6 text-[#0098AF] mb-2" />
-              <div className="text-sm font-semibold text-gray-900">
-                Certified Excellence
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl"
-              initial={{ opacity: 0, y: -20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              <Zap className="w-6 h-6 text-[#0098AF] mb-2" />
-              <div className="text-sm font-semibold text-gray-900">
-                Rapid Deployment
-              </div>
-            </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-// Objectives Section
-const ObjectivesSection = () => {
+const ProjectOverview = () => {
   const [setRef, isVisible] = useIntersectionObserver();
-
-  const objectives = [
-    {
-      icon: <Target className="w-12 h-12" />,
-      title: "Strategic Talent Placement",
-      description:
-        "Delivering experienced engineering professionals across design, development, and execution phases of capital projects.",
-    },
-    {
-      icon: <Settings className="w-12 h-12" />,
-      title: "Technical Expertise",
-      description:
-        "Specialized engineers proficient in advanced design tools and industry-standard methodologies.",
-    },
-    {
-      icon: <Globe className="w-12 h-12" />,
-      title: "Scalable Solutions",
-      description:
-        "Flexible workforce deployment that adapts to project requirements and timeline changes.",
-    },
-  ];
 
   return (
-    <section ref={setRef} className="py-20 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+    <section
+      id="project-overview"
+      ref={setRef}
+      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+    >
+      {/* Background decorative elements */}
+      <div className="absolute top-20 right-10 w-64 h-64 bg-[#0098AF]/5 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 left-10 w-48 h-48 bg-[#99D5DF]/10 rounded-full blur-2xl animate-float"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div
+          className={`transition-all duration-1000 ease-out ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+          }`}
         >
-          <span className="inline-block px-4 py-2 bg-[#0098AF]/10 text-[#0098AF] text-sm font-semibold uppercase tracking-wider rounded-full mb-6">
-            Our Objectives
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6">
-            Mission-Critical <span className="text-[#0098AF]">Goals</span>
-          </h2>
-        </motion.div>
+          <div className="bg-gradient-to-br from-[#003C46] via-[#003C46] to-[#0098AF]/90 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-700 group border border-[#0098AF]/20">
+            <div className="md:flex">
+              <div className="md:w-2/5 relative overflow-hidden">
+                <Image
+                  src={objectiveImage}
+                  alt="SaaS platform development"
+                  className="w-full h-80 md:h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  width={800}
+                  height={80}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#003C46]/40 via-transparent to-[#0098AF]/30"></div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {objectives.map((objective, index) => (
-            <motion.div
-              key={index}
-              className="relative group"
-              initial={{ opacity: 0, y: 50 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-            >
-              <div className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group-hover:border-[#0098AF]/20 h-full">
-                <div className="text-[#0098AF] mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {objective.icon}
+                {/* Floating stats on image */}
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+                    <div className="grid grid-cols-2 gap-4 text-center">
+                      <div>
+                        <div className="text-2xl font-bold text-white">12</div>
+                        <div className="text-xs text-white/80">Months</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-white">0%</div>
+                        <div className="text-xs text-white/80">Attrition</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-[#003C46] mb-4">
-                  {objective.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {objective.description}
-                </p>
               </div>
+              <div className="md:w-3/5 p-8 md:p-12 text-[#F5FDFF] relative">
+                {/* Decorative corner gradient */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#0098AF]/20 to-transparent rounded-bl-3xl"></div>
 
-              {/* Decorative Elements */}
-              <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-[#0098AF] to-[#00B4D8] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.div>
-          ))}
+                <h2
+                  className={`text-4xl md:text-5xl font-bold mb-8 transition-all duration-700 ${
+                    isVisible
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-6 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "300ms" }}
+                >
+                  Project Overview
+                </h2>
+
+                <div
+                  className={`space-y-6 transition-all duration-700 ${
+                    isVisible
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-6 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "400ms" }}
+                >
+                  <p className="text-xl leading-relaxed text-[#F5FDFF]/90">
+                    A major engineering project required rapid mobilization of
+                    skilled professionals across mechanical, electrical, and
+                    piping disciplines. The client needed engineers familiar
+                    with advanced design tools and standards, capable of
+                    integrating with their existing offshore project support
+                    team. We were entrusted with end-to-end staffing – from
+                    understanding requirements to sourcing, screening,
+                    onboarding, and managing compliance.
+                  </p>
+
+                  <p className="text-lg leading-relaxed text-[#F5FDFF]/80">
+                    This project demanded not just technical skill but also
+                    domain familiarity, tool-specific expertise, and quick
+                    adaptability to client processes. Our challenge was to
+                    ensure full operational readiness in under four weeks while
+                    ensuring team stability over the long term.
+                  </p>
+                </div>
+
+                {/* Challenge highlights */}
+                <div
+                  className={`mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 transition-all duration-700 ${
+                    isVisible
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-6 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "600ms" }}
+                >
+                  <div className="flex items-start space-x-3 p-4 bg-[#F5FDFF]/10 rounded-xl border border-[#F5FDFF]/20">
+                    <Clock className="w-5 h-5 text-[#99D5DF] mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="font-semibold text-[#F5FDFF] mb-1">
+                        Time Pressure
+                      </div>
+                      <div className="text-sm text-[#F5FDFF]/80">
+                        Rapid deployment needed
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3 p-4 bg-[#F5FDFF]/10 rounded-xl border border-[#F5FDFF]/20">
+                    <Shield className="w-5 h-5 text-[#99D5DF] mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="font-semibold text-[#F5FDFF] mb-1">
+                        Full Compliance
+                      </div>
+                      <div className="text-sm text-[#F5FDFF]/80">
+                        End-to-end coverage
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Decorative element */}
+                <div className="absolute bottom-6 right-6 w-20 h-20 border-2 border-[#0098AF]/30 rounded-full opacity-50 animate-spin-slow"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-// Key Positions Section
-const KeyPositionsSection = () => {
+const Objectives = () => {
   const [setRef, isVisible] = useIntersectionObserver();
 
-  const positions = [
+  return (
+    <section
+      ref={setRef}
+      className="py-24 bg-gradient-to-br from-[#F5FDFF] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+    >
+      {/* Background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-[#0098AF] rounded-full animate-ping"></div>
+        <div className="absolute top-3/4 right-1/3 w-2 h-2 bg-[#0098AF] rounded-full animate-pulse"></div>
+        <div className="absolute top-1/2 right-1/4 w-4 h-4 border border-[#0098AF] rounded-full animate-spin-slow"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div
+          className={`transition-all duration-1000 ease-out ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
+        >
+          <div className="md:flex md:items-center md:space-x-16">
+            <div className="md:w-2/5 mb-12 md:mb-0">
+              <div className="relative group">
+                <Image
+                  src={overviewImage}
+                  alt="Team objective visualization"
+                  className="w-full h-80 md:h-[420px] object-cover rounded-3xl shadow-2xl transition-transform duration-700 group-hover:scale-105"
+                  width={800}
+                  height={80}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#003C46]/30 via-transparent to-[#0098AF]/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+                {/* Floating objective badge */}
+                <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border border-[#0098AF]/20">
+                  <div className="flex items-center space-x-2">
+                    <Target className="w-4 h-4 text-[#0098AF]" />
+                    <span className="text-sm font-semibold text-[#003C46]">
+                      Mission Critical
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="md:w-3/5">
+              <div className="bg-gradient-to-br from-[#003C46] via-[#003C46] to-[#0098AF]/90 p-10 md:p-12 rounded-3xl text-[#F5FDFF] shadow-2xl relative overflow-hidden hover:shadow-3xl transition-all duration-700 group border border-[#0098AF]/20">
+                {/* Animated background elements */}
+                <div className="absolute top-0 right-0 w-40 h-40 bg-[#0098AF]/10 rounded-full -translate-y-20 translate-x-20 group-hover:scale-150 transition-transform duration-1000"></div>
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#99D5DF]/10 rounded-full translate-y-16 -translate-x-16 group-hover:scale-125 transition-transform duration-1000"></div>
+
+                <div
+                  className={`relative z-10 transition-all duration-700 ${
+                    isVisible
+                      ? "translate-x-0 opacity-100"
+                      : "translate-x-6 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "200ms" }}
+                >
+                  <h2 className="text-4xl md:text-5xl font-bold mb-8">
+                    Objective
+                  </h2>
+
+                  <div className="space-y-6">
+                    <p className="text-xl leading-relaxed text-[#F5FDFF]/90">
+                      To staff and manage a{" "}
+                      <span className="text-[#99D5DF] font-semibold">
+                        high-performing full-stack development team
+                      </span>{" "}
+                      on a contract, ensuring smooth onboarding, delivery
+                      readiness, and full compliance coverage.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                      <div className="flex items-center space-x-3 p-4 bg-[#F5FDFF]/10 rounded-xl border border-[#F5FDFF]/20">
+                        <CheckCircle className="w-5 h-5 text-[#99D5DF] flex-shrink-0" />
+                        <span className="text-[#F5FDFF]/90">
+                          Full compliance coverage
+                        </span>
+                      </div>
+                      <div className="flex items-center space-x-3 p-4 bg-[#F5FDFF]/10 rounded-xl border border-[#F5FDFF]/20">
+                        <CheckCircle className="w-5 h-5 text-[#99D5DF] flex-shrink-0" />
+                        <span className="text-[#F5FDFF]/90">
+                          Seamless onboarding
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Success indicator with animation */}
+                <div
+                  className={`flex items-center space-x-3 mt-10 text-[#99D5DF] relative z-10 transition-all duration-700 ${
+                    isVisible
+                      ? "translate-x-0 opacity-100"
+                      : "translate-x-6 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "600ms" }}
+                >
+                  <div className="w-3 h-3 bg-[#99D5DF] rounded-full animate-pulse"></div>
+                  <span className="font-semibold text-lg">
+                    Mission Accomplished
+                  </span>
+                  <CheckCircle className="w-6 h-6 animate-bounce" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ProjectApproach = () => {
+  const [setRef, isVisible] = useIntersectionObserver();
+
+  const steps = [
     {
-      title: "Mechanical Design Engineer",
+      title: "Requirement Scoping",
       description:
-        "Designed and validated mechanical components for plant and EPC projects using advanced CAD tools.",
-      skills: ["SolidWorks", "AutoCAD", "ANSYS", "Design Validation"],
+        "Collaborated with the client to finalize job descriptions, skill expectations, and team composition.",
+      icon: <Target className="w-5 h-5" />,
+      color: "from-[#0098AF] to-[#007B8F]",
     },
     {
-      title: "Electrical & Instrumentation Engineer",
+      title: "Talent Sourcing & Screening",
       description:
-        "Developed electrical systems and instrumentation designs for operational efficiency.",
-      skills: ["SmartPlant", "E3.series", "PLC Programming", "HMI Design"],
+        "Leveraged our tech talent pool to identify and evaluate suitable candidates.",
+      icon: <Users className="w-5 h-5" />,
+      color: "from-[#007B8F] to-[#0098AF]",
     },
     {
-      title: "Piping Layout & Stress Engineer",
+      title: "Technical Evaluation",
       description:
-        "Created and analyzed piping layouts using specialized stress analysis tools.",
-      skills: ["CAESAR II", "PDMS", "AutoPIPE", "Stress Analysis"],
+        "Conducted pre-interviews, coding tests, and cultural fit assessments.",
+      icon: <Code className="w-5 h-5" />,
+      color: "from-[#0098AF] to-[#99D5DF]",
     },
     {
-      title: "SmartPlant & SPI Specialists",
+      title: "Onboarding & Documentation",
       description:
-        "Managed 3D modeling and instrumentation data using industry-leading platforms.",
-      skills: ["SmartPlant 3D", "SPI", "3D Modeling", "Data Management"],
+        "Handled all offer roll-outs, background verification, and documentation.",
+      icon: <CheckCircle className="w-5 h-5" />,
+      color: "from-[#99D5DF] to-[#0098AF]",
     },
     {
-      title: "Plant Maintenance Design Support",
+      title: "Payroll & Compliance",
       description:
-        "Supported ongoing plant maintenance with design optimization expertise.",
-      skills: [
-        "Maintenance Planning",
-        "Asset Management",
-        "Reliability Engineering",
-      ],
+        "Managed PF, ESI, taxation, and monthly payroll with complete compliance support.",
+      icon: <Shield className="w-5 h-5" />,
+      color: "from-[#0098AF] to-[#007B8F]",
     },
     {
-      title: "HVAC & Utility Systems Designer",
+      title: "Ongoing Coordination",
       description:
-        "Designed comprehensive HVAC and utility systems for plant operations.",
-      skills: [
-        "HVAC Design",
-        "Energy Efficiency",
-        "System Integration",
-        "Load Calculations",
-      ],
+        "Regular follow-ups for performance check-ins, engagement, and attrition control.",
+      icon: <TrendingUp className="w-5 h-5" />,
+      color: "from-[#007B8F] to-[#0098AF]",
     },
   ];
 
   return (
     <section
       ref={setRef}
-      className="py-20 bg-gradient-to-br from-[#F8FAFC] to-[#E2E8F0] relative overflow-hidden"
+      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-40" />
-      </div>
+      {/* Enhanced background decoration */}
+      <div className="absolute top-20 right-10 w-80 h-80 bg-[#0098AF]/5 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-20 left-10 w-64 h-64 bg-[#99D5DF]/10 rounded-full blur-2xl animate-float-delayed"></div>
+      <div className="absolute top-1/2 left-1/4 w-4 h-4 bg-[#0098AF]/30 rounded-full animate-ping"></div>
+      <div className="absolute top-1/3 right-1/3 w-6 h-6 border-2 border-[#0098AF]/20 rounded-full animate-spin-slow"></div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div
+          className={`mb-20 transition-all duration-800 ease-out ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+          }`}
         >
-          <span className="inline-block px-4 py-2 bg-[#0098AF]/10 text-[#0098AF] text-sm font-semibold uppercase tracking-wider rounded-full mb-6">
-            Key Positions Filled
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6">
-            Expert <span className="text-[#0098AF]">Engineering Roles</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6 leading-tight">
+            Our{" "}
+            <span className="bg-gradient-to-r from-[#0098AF] to-[#007B8F] bg-clip-text text-transparent">
+              Approach
+            </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Successfully deployed specialized engineering personnel across
-            multiple disciplines
+          <p className="text-xl text-[#5B5B5B] max-w-7xl mx-auto">
+            We deployed our proven contract staffing model tailored to IT
+            development roles, ensuring seamless integration and exceptional
+            results.
           </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {positions.map((position, index) => (
-            <motion.div
-              key={index}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#0098AF]/20 group"
-              initial={{ opacity: 0, y: 50 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-            >
-              <div className="flex items-start space-x-4 mb-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#0098AF] to-[#00B4D8] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Wrench className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-[#003C46] mb-2 group-hover:text-[#0098AF] transition-colors">
-                    {position.title}
-                  </h3>
-                </div>
-              </div>
-
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                {position.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                {position.skills.map((skill, skillIndex) => (
-                  <span
-                    key={skillIndex}
-                    className="px-3 py-1 bg-[#0098AF]/10 text-[#0098AF] text-sm font-medium rounded-full"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
         </div>
 
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
+        <div
+          className={`transition-all duration-1000 ease-out delay-200 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
         >
-          <div className="inline-flex items-center space-x-4 bg-white rounded-2xl p-6 shadow-lg">
-            <Users className="w-8 h-8 text-[#0098AF]" />
-            <div className="text-left">
-              <div className="text-sm text-gray-600">Engagement Type</div>
-              <div className="text-lg font-bold text-[#003C46]">
-                Contractual & Permanent Staffing
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-// Approach Section
-const ApproachSection = () => {
-  const [setRef, isVisible] = useIntersectionObserver();
-
-  const approaches = [
-    {
-      step: "01",
-      title: "Requirement Scoping & Skill Mapping",
-      description:
-        "Collaborate closely with project leads to define precise skill sets, project alignment criteria, and tool-specific requirements.",
-      icon: <Target className="w-8 h-8" />,
-    },
-    {
-      step: "02",
-      title: "Strategic Sourcing",
-      description:
-        "Deploy targeted hiring campaigns across mechanical, electrical, and instrumentation talent pools with industry expertise.",
-      icon: <Users className="w-8 h-8" />,
-    },
-    {
-      step: "03",
-      title: "Tool-Based Evaluation",
-      description:
-        "Comprehensive screening for software proficiency including SmartPlant 3D, CAESAR II, STAAD, and specialized engineering tools.",
-      icon: <Settings className="w-8 h-8" />,
-    },
-    {
-      step: "04",
-      title: "Onboarding & Compliance",
-      description:
-        "Streamlined background verification, documentation management, and payroll onboarding with full regulatory compliance.",
-      icon: <Shield className="w-8 h-8" />,
-    },
-    {
-      step: "05",
-      title: "Post-Deployment Support",
-      description:
-        "Continuous engagement monitoring, performance tracking, and proactive attrition control processes.",
-      icon: <CheckCircle className="w-8 h-8" />,
-    },
-  ];
-
-  return (
-    <section ref={setRef} className="py-20 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="inline-block px-4 py-2 bg-[#0098AF]/10 text-[#0098AF] text-sm font-semibold uppercase tracking-wider rounded-full mb-6">
-            Our Methodology
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6">
-            Strategic <span className="text-[#0098AF]">Approach</span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A systematic methodology ensuring optimal talent placement and
-            project success
-          </p>
-        </motion.div>
-
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="hidden lg:block absolute left-1/2 transform -translate-x-0.5 w-0.5 h-full bg-gradient-to-b from-[#0098AF] to-[#00B4D8]" />
-
-          <div className="space-y-16">
-            {approaches.map((approach, index) => (
-              <motion.div
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {steps.map((step, index) => (
+              <div
                 key={index}
-                className={`flex items-center ${
-                  index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                className={`bg-white/90 backdrop-blur-sm p-8 rounded-2xl border-l-4 border-[#0098AF] shadow-xl hover:shadow-2xl transition-all duration-700 hover:scale-[1.02] hover:border-l-8 group relative overflow-hidden ${
+                  isVisible
+                    ? "translate-x-0 opacity-100"
+                    : "translate-x-8 opacity-0"
                 }`}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                style={{ transitionDelay: `${400 + index * 150}ms` }}
               >
-                <div
-                  className={`w-full lg:w-5/12 ${
-                    index % 2 === 0 ? "lg:pr-16" : "lg:pl-16"
-                  }`}
-                >
-                  <div className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#0098AF]/20">
-                    <div className="flex items-center space-x-4 mb-6">
-                      <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-[#0098AF] to-[#00B4D8] rounded-2xl flex items-center justify-center text-white">
-                        {approach.icon}
-                      </div>
-                      <div className="text-4xl font-black text-[#0098AF]/20">
-                        {approach.step}
-                      </div>
+                {/* Gradient background on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0098AF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <div className="flex items-start space-x-6 relative z-10">
+                  <div
+                    className={`flex-shrink-0 w-12 h-12 bg-gradient-to-r ${step.color} text-white rounded-2xl flex items-center justify-center font-bold text-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}
+                  >
+                    {step.icon}
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <h3 className="font-bold text-[#003C46] text-xl group-hover:text-[#0098AF] transition-colors duration-300">
+                        {step.title}
+                      </h3>
+                      <div className="w-8 h-0.5 bg-[#0098AF]/30 group-hover:bg-[#0098AF] group-hover:w-12 transition-all duration-500"></div>
                     </div>
-                    <h3 className="text-2xl font-bold text-[#003C46] mb-4">
-                      {approach.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {approach.description}
+                    <p className="text-[#5B5B5B] leading-relaxed text-lg group-hover:text-[#003C46] transition-colors duration-300">
+                      {step.description}
                     </p>
                   </div>
-                </div>
 
-                {/* Timeline Node */}
-                <div className="hidden lg:flex w-2/12 justify-center">
-                  <div className="w-6 h-6 bg-gradient-to-br from-[#0098AF] to-[#00B4D8] rounded-full border-4 border-white shadow-lg" />
+                  {/* Step number */}
+                  <div className="text-6xl font-bold text-[#0098AF]/10 group-hover:text-[#0098AF]/20 transition-colors duration-500">
+                    {String(index + 1).padStart(2, "0")}
+                  </div>
                 </div>
-
-                <div className="hidden lg:block w-5/12" />
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -857,427 +693,549 @@ const ApproachSection = () => {
   );
 };
 
-// Results Section
-const ResultsSection = () => {
+const KeyResults = () => {
   const [setRef, isVisible] = useIntersectionObserver();
 
   const results = [
     {
-      title: "Project Continuity",
-      description:
-        "Zero manpower-related delays in engineering project flow and delivery timelines.",
-      icon: <Clock className="w-8 h-8" />,
-      color: "from-green-500 to-emerald-600",
+      title: "Rapid Talent Onboarding",
+      description: "From requirement to deployment in record time.",
+      icon: <Zap className="w-6 h-6" />,
+      metric: "< 3 weeks",
     },
     {
-      title: "Cost Efficiency",
-      description:
-        "Offshore deployment strategy reduced overall engineering costs by up to 45%.",
-      icon: <TrendingUp className="w-8 h-8" />,
-      color: "from-blue-500 to-cyan-600",
+      title: "Exceptional Team Stability",
+      description: "Zero attrition during the entire contract period.",
+      icon: <Shield className="w-6 h-6" />,
+      metric: "0% attrition",
     },
     {
-      title: "Accelerated Hiring",
+      title: "Accelerated Integration",
       description:
-        "Reduced average hiring turnaround from 8+ weeks to under 4 weeks consistently.",
-      icon: <Zap className="w-8 h-8" />,
-      color: "from-purple-500 to-violet-600",
+        "Developers aligned with sprint goals within the first week.",
+      icon: <TrendingUp className="w-6 h-6" />,
+      metric: "5 days",
     },
     {
-      title: "Scalable Framework",
+      title: "Process Automation Ready",
       description:
-        "Enabled flexible workforce scaling across engineering functions as needed.",
-      icon: <BarChart3 className="w-8 h-8" />,
-      color: "from-orange-500 to-red-600",
-    },
-    {
-      title: "Full Compliance",
-      description:
-        "100% accuracy in payroll and statutory process management (PF, ESI, NDAs).",
-      icon: <Shield className="w-8 h-8" />,
-      color: "from-indigo-500 to-blue-600",
+        "All timesheets, billing, and compliance handled through automation.",
+      icon: <CheckCircle className="w-6 h-6" />,
+      metric: "100% automated",
     },
   ];
 
-  const metrics = [
+  const kpiData = [
     {
-      metric: "Time to Fill (avg.)",
-      before: "8–10 weeks",
-      after: "< 4 weeks",
-      improvement: "60% faster",
+      metric: "Hiring Turnaround Time",
+      before: "7–9 weeks",
+      after: "Less than 3 weeks",
+      improvement: "70% faster",
     },
     {
-      metric: "Attrition (6 months)",
-      before: "~15%",
-      after: "< 5%",
-      improvement: "67% reduction",
+      metric: "Team Stability (Attrition Rate)",
+      before: "~20% per quarter",
+      after: "0% attrition in 6 months",
+      improvement: "100% retention",
     },
     {
-      metric: "Compliance Accuracy",
-      before: "Manual process",
-      after: "Fully automated",
-      improvement: "100% accuracy",
+      metric: "Sprint Integration Time",
+      before: "2–3 weeks",
+      after: "Within 5 working days",
+      improvement: "75% faster",
     },
     {
-      metric: "Cost Efficiency",
-      before: "Standard rates",
-      after: "45% reduction",
-      improvement: "Significant savings",
+      metric: "Compliance/Billing Accuracy",
+      before: "Manual + delayed processing",
+      after: "100% automated, on-time billing",
+      improvement: "Full automation",
+    },
+  ];
+
+  const services = [
+    { name: "Contract Staffing", icon: <Users className="w-4 h-4" /> },
+    { name: "Full-Stack Developer Hiring", icon: <Code className="w-4 h-4" /> },
+    { name: "Payroll & Compliance", icon: <Shield className="w-4 h-4" /> },
+    {
+      name: "HR Documentation & Support",
+      icon: <CheckCircle className="w-4 h-4" />,
     },
   ];
 
   return (
     <section
       ref={setRef}
-      className="py-20 bg-gradient-to-br from-[#003C46] to-[#0098AF] text-white relative overflow-hidden"
+      className="py-24 bg-gradient-to-br from-[#F5FDFF] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-white rounded-full blur-3xl" />
+      {/* Enhanced background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-[#0098AF] rounded-full animate-ping"></div>
+        <div className="absolute top-3/4 right-1/3 w-4 h-4 bg-[#0098AF] rounded-full animate-pulse"></div>
+        <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-[#0098AF] rounded-full animate-bounce"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-5 h-5 border border-[#0098AF] rounded-full animate-spin-slow"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div
+          className={`mb-12  transition-all duration-800 ease-out ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+          }`}
         >
-          <span className="inline-block px-4 py-2 bg-white/10 text-white text-sm font-semibold uppercase tracking-wider rounded-full mb-6">
-            Key Results & Outcomes
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Measurable <span className="text-[#99D5DF]">Impact</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6 leading-tight">
+            Key Results{" "}
+            <span className="bg-gradient-to-r from-[#0098AF] to-[#007B8F] bg-clip-text text-transparent">
+              & Outcomes
+            </span>
           </h2>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Delivering tangible results that transform engineering project
-            outcomes
+          <p className="text-xl text-[#5B5B5B] max-w-7xl mx-auto">
+            Measurable impact and exceptional results that exceeded client
+            expectations
           </p>
-        </motion.div>
-
-        {/* Results Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {results.map((result, index) => (
-            <motion.div
-              key={index}
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 border border-white/20"
-              initial={{ opacity: 0, y: 50 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-            >
-              <div
-                className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${result.color} rounded-2xl mb-4`}
-              >
-                {result.icon}
-              </div>
-              <h3 className="text-2xl font-bold mb-3">{result.title}</h3>
-              <p className="text-white/80 leading-relaxed">
-                {result.description}
-              </p>
-            </motion.div>
-          ))}
         </div>
 
-        {/* Metrics Comparison */}
-        <motion.div
-          className="bg-white rounded-3xl p-8 shadow-2xl"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
+        <div
+          className={`transition-all duration-1000 ease-out delay-200 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
         >
-          <h3 className="text-3xl font-bold text-[#003C46] mb-8 text-center">
-            Performance Metrics
-          </h3>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-left">
-              <thead>
-                <tr className="border-b-2 border-[#0098AF]/20">
-                  <th className="pb-4 text-lg font-semibold text-[#003C46]">
-                    Metric
-                  </th>
-                  <th className="pb-4 text-lg font-semibold text-[#003C46] text-center">
-                    Before
-                  </th>
-                  <th className="pb-4 text-lg font-semibold text-[#003C46] text-center">
-                    After
-                  </th>
-                  <th className="pb-4 text-lg font-semibold text-[#003C46] text-center">
-                    Improvement
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {metrics.map((metric, index) => (
-                  <motion.tr
+          <div className="md:flex md:space-x-12">
+            <div className="md:w-3/5 space-y-10">
+              {/* Enhanced Results Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {results.map((result, index) => (
+                  <div
                     key={index}
-                    className="border-b border-gray-200 hover:bg-gray-50 transition-colors"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                    className={`bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-700 hover:scale-105 group border border-[#0098AF]/10 relative overflow-hidden ${
+                      isVisible
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-6 opacity-0"
+                    }`}
+                    style={{ transitionDelay: `${300 + index * 100}ms` }}
                   >
-                    <td className="py-4 font-medium text-[#003C46]">
-                      {metric.metric}
-                    </td>
-                    <td className="py-4 text-center text-gray-600">
-                      {metric.before}
-                    </td>
-                    <td className="py-4 text-center font-semibold text-[#0098AF]">
-                      {metric.after}
-                    </td>
-                    <td className="py-4 text-center">
-                      <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-                        {metric.improvement}
-                      </span>
-                    </td>
-                  </motion.tr>
+                    {/* Gradient background on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#0098AF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                    <div className="relative z-10">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="text-[#0098AF] group-hover:scale-110 group-hover:text-[#007B8F] transition-all duration-300">
+                          {result.icon}
+                        </div>
+                        <div className="text-2xl font-bold text-[#0098AF] group-hover:scale-110 transition-transform duration-300">
+                          {result.metric}
+                        </div>
+                      </div>
+                      <h3 className="font-bold text-[#003C46] mb-3 text-lg group-hover:text-[#0098AF] transition-colors duration-300">
+                        {result.title}
+                      </h3>
+                      <p className="text-[#5B5B5B] leading-relaxed group-hover:text-[#003C46] transition-colors duration-300">
+                        {result.description}
+                      </p>
+                    </div>
+                  </div>
                 ))}
-              </tbody>
-            </table>
+              </div>
+
+              {/* Enhanced KPI Table */}
+            </div>
+
+            <div className="md:w-2/5 mt-10 md:mt-0 space-y-10">
+              {/* Enhanced Services Delivered */}
+              <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-700 group border border-[#0098AF]/10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#0098AF]/10 to-transparent rounded-bl-3xl"></div>
+
+                <h3
+                  className={`text-2xl font-bold text-[#003C46] mb-8 transition-all duration-500 ${
+                    isVisible
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-4 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "1300ms" }}
+                >
+                  Services Delivered
+                </h3>
+                <div className="space-y-4">
+                  {services.map((service, index) => (
+                    <div
+                      key={index}
+                      className={`flex items-center space-x-4 p-4 bg-[#0098AF]/5 rounded-xl hover:bg-[#0098AF]/10 transition-all duration-500 hover:translate-x-2 hover:scale-105 group/service ${
+                        isVisible
+                          ? "translate-x-0 opacity-100"
+                          : "translate-x-4 opacity-0"
+                      }`}
+                      style={{ transitionDelay: `${1400 + index * 100}ms` }}
+                    >
+                      <div className="text-[#0098AF] group-hover/service:scale-125 group-hover/service:text-[#007B8F] transition-all duration-300">
+                        {service.icon}
+                      </div>
+                      <span className="text-[#5B5B5B] font-medium group-hover/service:text-[#003C46] transition-colors duration-300">
+                        {service.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Enhanced Visual with Stats Overlay */}
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#003C46]/60 via-transparent to-[#0098AF]/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+                {/* Stats overlay */}
+                <div className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                    <div className="grid grid-cols-2 gap-4 text-center text-white">
+                      <div>
+                        <div className="text-xl font-bold">100%</div>
+                        <div className="text-xs opacity-80">Success Rate</div>
+                      </div>
+                      <div>
+                        <div className="text-xl font-bold">12M</div>
+                        <div className="text-xs opacity-80">Contract</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </motion.div>
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-700 border border-[#0098AF]/10">
+            <div className="p-8 md:p-10">
+              <h3
+                className={`text-2xl font-bold text-[#003C46] mb-8 transition-all duration-500 ${
+                  isVisible
+                    ? "translate-x-0 opacity-100"
+                    : "translate-x-4 opacity-0"
+                }`}
+                style={{ transitionDelay: "800ms" }}
+              >
+                Performance Metrics Comparison
+              </h3>
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="bg-gradient-to-r from-[#0098AF]/10 to-[#99D5DF]/10">
+                      <th className="text-left p-6 font-bold text-[#003C46] rounded-l-xl">
+                        Metric
+                      </th>
+                      <th className="text-left p-6 font-bold text-[#003C46]">
+                        Before
+                      </th>
+                      <th className="text-left p-6 font-bold text-[#003C46]">
+                        After
+                      </th>
+                      <th className="text-left p-6 font-bold text-[#003C46] rounded-r-xl">
+                        Improvement
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {kpiData.map((row, index) => (
+                      <tr
+                        key={index}
+                        className={`border-b border-gray-100 hover:bg-gradient-to-r hover:from-[#0098AF]/5 hover:to-transparent transition-all duration-500 hover:scale-[1.01] group/row ${
+                          isVisible
+                            ? "translate-x-0 opacity-100"
+                            : "translate-x-6 opacity-0"
+                        }`}
+                        style={{
+                          transitionDelay: `${900 + index * 100}ms`,
+                        }}
+                      >
+                        <td className="p-6 font-semibold text-[#003C46] group-hover/row:text-[#0098AF] transition-colors duration-300">
+                          {row.metric}
+                        </td>
+                        <td className="p-6 text-[#5B5B5B]">{row.before}</td>
+                        <td className="p-6 text-[#0098AF] font-bold group-hover/row:scale-105 transition-transform duration-300">
+                          {row.after}
+                        </td>
+                        <td className="p-6">
+                          <span className="inline-flex items-center px-3 py-1 bg-[#0098AF]/10 text-[#0098AF] rounded-full text-sm font-semibold">
+                            {row.improvement}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
-// Technologies Section
-const TechnologiesSection = () => {
+const TechAndTestimonial = () => {
   const [setRef, isVisible] = useIntersectionObserver();
 
   const technologies = [
+    { name: "React.js", icon: <Code className="w-5 h-5" />, level: "Expert" },
+    { name: "Node.js", icon: <Globe className="w-5 h-5" />, level: "Expert" },
     {
-      name: "SmartPlant 3D",
-      description: "Advanced 3D modeling and plant design",
-      icon: <Cpu className="w-6 h-6" />,
+      name: "PostgreSQL",
+      icon: <Database className="w-5 h-5" />,
+      level: "Advanced",
     },
     {
-      name: "AutoCAD",
-      description: "Precise 2D and 3D design drafting",
-      icon: <Settings className="w-6 h-6" />,
+      name: "CI/CD & GitLab",
+      icon: <GitBranch className="w-5 h-5" />,
+      level: "Advanced",
     },
     {
-      name: "CAESAR II",
-      description: "Piping stress analysis and validation",
-      icon: <Wrench className="w-6 h-6" />,
+      name: "API Integration",
+      icon: <Globe className="w-5 h-5" />,
+      level: "Expert",
     },
     {
-      name: "STAAD.Pro",
-      description: "Structural analysis and design",
-      icon: <BarChart3 className="w-6 h-6" />,
-    },
-    {
-      name: "SPI",
-      description: "Instrumentation data management",
-      icon: <PieChart className="w-6 h-6" />,
-    },
-    {
-      name: "SolidWorks",
-      description: "Mechanical design and simulation",
-      icon: <Code className="w-6 h-6" />,
+      name: "Microservices",
+      icon: <Code className="w-5 h-5" />,
+      level: "Advanced",
     },
   ];
 
   return (
-    <section ref={setRef} className="py-20 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="inline-block px-4 py-2 bg-[#0098AF]/10 text-[#0098AF] text-sm font-semibold uppercase tracking-wider rounded-full mb-6">
-            Core Technologies
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6">
-            Industry-Leading <span className="text-[#0098AF]">Tools</span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Our engineers are proficient in the most advanced engineering
-            software and platforms
-          </p>
-        </motion.div>
+    <section
+      ref={setRef}
+      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+    >
+      {/* Enhanced animated background elements */}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {technologies.map((tech, index) => (
-            <motion.div
-              key={index}
-              className="group bg-gradient-to-br from-white to-gray-50 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#0098AF]/30"
-              initial={{ opacity: 0, y: 50 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-            >
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#0098AF] to-[#00B4D8] rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                  {tech.icon}
-                </div>
-                <h3 className="text-xl font-bold text-[#003C46] group-hover:text-[#0098AF] transition-colors">
-                  {tech.name}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div
+          className={`mb-12 transition-all duration-800 ease-out ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+          }`}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6 leading-tight">
+            Technologies &{" "}
+            <span className="bg-gradient-to-r from-[#0098AF] to-[#007B8F] bg-clip-text text-transparent">
+              Roles Placed
+            </span>
+          </h2>
+          <p className="text-xl text-[#5B5B5B] max-w-7xl mx-auto">
+            Cutting-edge technology stack and skilled professionals deployed for
+            maximum impact
+          </p>
+        </div>
+
+        <div
+          className={`transition-all duration-1000 ease-out delay-200 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
+        >
+          <div className="md:flex md:space-x-16">
+            <div className="md:w-3/5 space-y-10">
+              {/* Enhanced Technologies Grid */}
+              <div className="bg-white/95 backdrop-blur-sm p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-700 border border-[#0098AF]/10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#0098AF]/10 to-transparent rounded-bl-3xl"></div>
+
+                <h3
+                  className={`text-2xl font-bold text-[#003C46] mb-8 transition-all duration-500 ${
+                    isVisible
+                      ? "translate-x-0 opacity-100"
+                      : "translate-x-4 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "300ms" }}
+                >
+                  Technology Stack
                 </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {technologies.map((tech, index) => (
+                    <div
+                      key={index}
+                      className={`flex items-center justify-between p-2 bg-gradient-to-r from-[#0098AF]/5 to-[#99D5DF]/5 rounded-xl hover:from-[#0098AF]/10 hover:to-[#99D5DF]/10 transition-all duration-500 hover:scale-105 hover:shadow-lg group border border-[#0098AF]/10 ${
+                        isVisible
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-4 opacity-0"
+                      }`}
+                      style={{ transitionDelay: `${400 + index * 100}ms` }}
+                    >
+                      <div className="flex items-center space-x-4">
+                        <div className="text-[#0098AF] group-hover:scale-125 group-hover:text-[#007B8F] transition-all duration-300">
+                          {tech.icon}
+                        </div>
+                        <div>
+                          <div className="text-[#003C46] font-semibold group-hover:text-[#0098AF] transition-colors duration-300">
+                            {tech.name}
+                          </div>
+                          <div className="text-sm text-[#5B5B5B] group-hover:text-[#003C46] transition-colors duration-300">
+                            {tech.level}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <p className="text-gray-600 leading-relaxed">
-                {tech.description}
-              </p>
-            </motion.div>
-          ))}
+            </div>
+
+            {/* Enhanced Testimonial */}
+            <div className="md:w-2/5 mt-10 md:mt-0">
+              <div className="bg-white/95 backdrop-blur-sm p-10 rounded-2xl shadow-xl border-l-4 border-[#0098AF] hover:border-l-8 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden">
+                {/* Enhanced decorative elements */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#0098AF]/10 to-transparent rounded-bl-3xl"></div>
+                <div className="absolute top-4 right-4 text-8xl text-[#0098AF]/10 font-serif leading-none">
+                  &quot;
+                </div>
+                <div className="absolute bottom-4 left-4 text-6xl text-[#0098AF]/10 font-serif leading-none">
+                  &quot;
+                </div>
+
+                <h3
+                  className={`text-2xl font-bold text-[#003C46] mb-3 relative z-10 transition-all duration-500 ${
+                    isVisible
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-4 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "1300ms" }}
+                >
+                  Client Testimonial
+                </h3>
+
+                <div className="relative z-10">
+                  <blockquote
+                    className={`text-[#5B5B5B] italic text-xl leading-relaxed mb-4 transition-all duration-500 ${
+                      isVisible
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-4 opacity-0"
+                    }`}
+                    style={{ transitionDelay: "1400ms" }}
+                  >
+                    &quot;The team delivered quality candidates within days, and
+                    took complete responsibility from onboarding to payroll.
+                    This allowed us to scale faster and stay focused on our
+                    product roadmap. Their expertise in full-stack development
+                    was exactly what we needed&quot;
+                  </blockquote>
+
+                  <div
+                    className={`flex items-center space-x-4 transition-all duration-500 ${
+                      isVisible
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-4 opacity-0"
+                    }`}
+                    style={{ transitionDelay: "1500ms" }}
+                  >
+                    <div className="w-12 h-12 bg-gradient-to-r from-[#0098AF] to-[#99D5DF] rounded-full flex items-center justify-center">
+                      <Users className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <cite className="text-[#0098AF] font-bold text-lg not-italic">
+                        HR Head
+                      </cite>
+                      <div className="text-[#5B5B5B] text-sm">
+                        IT Services Client
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Hover effect background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0098AF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-// Testimonial Section
-const TestimonialSection = () => {
-  const [setRef, isVisible] = useIntersectionObserver();
-
-  return (
-    <section
-      ref={setRef}
-      className="py-20 bg-gradient-to-r from-[#F8FAFC] to-[#E2E8F0] relative overflow-hidden"
-    >
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-64 h-64 bg-[#0098AF]/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-[#00B4D8]/5 rounded-full blur-3xl" />
-      </div>
-
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="inline-block px-4 py-2 bg-[#0098AF]/10 text-[#0098AF] text-sm font-semibold uppercase tracking-wider rounded-full mb-8">
-            Client Feedback
-          </span>
-
-          <div className="relative">
-            <Quote className="w-16 h-16 text-[#0098AF]/20 mx-auto mb-8" />
-
-            <blockquote className="text-2xl md:text-3xl font-light text-[#003C46] leading-relaxed mb-8">
-              &quot;Cognition&apos;s engineering staffing model helped us
-              quickly mobilize a multi-disciplinary team with the right skill
-              sets and tool experience. Their support ensured project timelines
-              were met without overloading our internal recruitment
-              resources.&quot;
-            </blockquote>
-
-            <div className="flex items-center justify-center space-x-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#0098AF] to-[#00B4D8] rounded-full flex items-center justify-center">
-                <span className="text-white text-xl font-bold">SM</span>
-              </div>
-              <div className="text-left">
-                <div className="font-bold text-[#003C46]">
-                  Senior Engineering Manager
-                </div>
-                <div className="text-gray-600">
-                  Fortune 500 Manufacturing Company
-                </div>
-              </div>
-            </div>
-
-            <div className="flex justify-center mt-8 space-x-2">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="w-6 h-6 fill-yellow-400 text-yellow-400"
-                />
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-// CTA Section
 const CTASection = () => {
   const [setRef, isVisible] = useIntersectionObserver();
 
   return (
     <section
       ref={setRef}
-      className="py-20 bg-gradient-to-r from-[#003C46] to-[#0098AF] text-white relative overflow-hidden"
+      className="py-16 bg-gradient-to-br from-[#0098AF] via-[#0098AF] to-[#007B8F] relative overflow-hidden"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-1/4 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse" />
-        <div
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "1s" }}
-        />
-      </div>
+      {/* Enhanced decorative elements */}
+      <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-black/20 rounded-full blur-3xl animate-pulse"></div>
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0098AF]/90 via-transparent to-[#007B8F]/90"></div>
 
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div
+          className={`transition-all duration-1000 ease-out ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
-            Ready to Build Your
-            <br />
-            <span className="text-[#99D5DF]">Engineering Team?</span>
+          {/* Enhanced badge */}
+
+          <h2
+            className={`text-2xl sm:text-4xl lg:text-5xl font-bold text-[#F5FDFF] mb-6 leading-tight transition-all duration-700 ${
+              isVisible ? "scale-100" : "scale-95"
+            }`}
+            style={{ transitionDelay: "300ms" }}
+          >
+            Ready to Scale Your{" "}
+            <span className=" bg-gradient-to-r from-white to-[#99D5DF] bg-clip-text text-transparent">
+              IT Team?
+            </span>
           </h2>
 
-          <p className="text-xl md:text-2xl mb-12 text-white/90 max-w-2xl mx-auto leading-relaxed">
-            Transform your engineering projects with our strategic staffing
-            solutions. Let&apos;s discuss how we can accelerate your success.
+          <p
+            className={`text-sm sm:text-lg text-[#F5FDFF]/90 mb-12 leading-relaxed transition-all duration-700 ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-4 opacity-0"
+            }`}
+            style={{ transitionDelay: "400ms" }}
+          >
+            Let us help you build a high-performing team with
+            <span className="text-white font-semibold"> zero hassle</span> and
+            <span className="text-white font-semibold">
+              {" "}
+              guaranteed results
+            </span>
+            .
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-12">
-            <Button
-              size="lg"
-              variant="outline"
-              className="group text-lg px-10 py-4"
-            >
-              Start Your Project
-              <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button
-              size="lg"
-              className="bg-white text-[#003C46] hover:bg-gray-100 text-lg px-10 py-4"
-            >
-              Schedule Consultation
-            </Button>
+          {/* Enhanced CTA buttons */}
+          <div
+            className={`flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-700 ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-4 opacity-0"
+            }`}
+            style={{ transitionDelay: "600ms" }}
+          >
+            <Link href="/contact">
+              <button className="inline-flex items-center space-x-3 bg-[#F5FDFF] text-[#003C46] px-8 py-4 rounded-2xl font-bold text-xl hover:bg-[#E6F0F5]  hover:shadow-2xl transition-all duration-500 group transform hover:-translate-y-1">
+                <span>Start Your Project</span>
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+              </button>
+            </Link>
+            <Link href="/projects">
+              <button className="inline-flex items-center space-x-3 border-2 border-white/30 text-white px-8 py-4 rounded-2xl font-bold text-xl hover:bg-white/10 hover:border-white/50  transition-all duration-500 group backdrop-blur-sm">
+                <span>View More Projects</span>
+                <Globe className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
+              </button>
+            </Link>
           </div>
-
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 text-white/80">
-            <div className="flex items-center space-x-2">
-              <Phone className="w-5 h-5" />
-              <span>+1 (555) 123-4567</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Mail className="w-5 h-5" />
-              <span>contact@techstaff.com</span>
-            </div>
-          </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 };
 
-// Main Component
-export default function App() {
+function App() {
   return (
-    <div className="min-h-screen font-['Inter',sans-serif] antialiased bg-white">
-      <Navigation />
+    <div className="min-h-screen font-['Inter',sans-serif] antialiased">
+      <MegaMenu />
       <main>
         <Hero />
-        <StatsSection />
-        <AboutSection />
-        <ObjectivesSection />
-        <KeyPositionsSection />
-        <ApproachSection />
-        <ResultsSection />
-        <TechnologiesSection />
-        <TestimonialSection />
+        <RecentProjects />
+        <ProjectOverview />
+        <Objectives />
+        <ProjectApproach />
+        <KeyResults />
+        <TechAndTestimonial />
         <CTASection />
       </main>
       <Footer />
     </div>
   );
 }
+
+export default App;

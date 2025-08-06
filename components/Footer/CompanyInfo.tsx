@@ -63,10 +63,10 @@ export default function CompanyInfo() {
       {/* Company Description */}
       <motion.div
         variants={!isMobile ? itemVariants : undefined}
-        className="max-w-3xl lg:max-w-2xl"
+        className="flex text-justify mr-20"
       >
-
-        <p className="text-[#E6F0F5]/80  text-sm sm:text-base leading-relaxed font-light">
+        <p className="text-[#E6F0F5]/80 max-w-xl mx-auto text-sm sm:text-base leading-relaxed font-light">
+          {" "}
           {DESCRIPTION}
         </p>
       </motion.div>
@@ -90,7 +90,6 @@ export default function CompanyInfo() {
           </div>
         </motion.div>
       )}
-
     </Container>
   );
 }

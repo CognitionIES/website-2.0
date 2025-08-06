@@ -45,11 +45,11 @@ export const buildOperateProjects: Project[] = [
     team: "12 specialists",
   },
   {
-    id: "log-cutter",
-    title: "Log Cutter Optimization",
+    id: "Industrial-equipment",
+    title: "Industrial Equipment Cost Optimization",
     category: "Cost Optimization & Benchmarking",
     description:
-      "Conducted a detailed cost and function analysis of the Log Cutter, identifying cost-saving opportunities through competitive benchmarking and design optimization.",
+      "Conducted a detailed cost and function analysis of the Industrial Equipment, identifying cost-saving opportunities through competitive benchmarking and design optimization.",
     image:
       "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
     href: "/projects/product-cost-management",

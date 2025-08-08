@@ -203,9 +203,8 @@ const RecentProjects = () => {
             </span>
           </h2>
           <p className="text-xl text-[#5B5B5B] max-w-7xl mx-auto">
-            Delivering experienced engineering professionals to support design,
-            development, and execution across capital projects, manufacturing
-            setups, and plant engineering functions.
+            Showcasing our latest success in Engineering talent deployment and
+            staffing excellence
           </p>
         </div>
 
@@ -259,7 +258,8 @@ const RecentProjects = () => {
                   }`}
                   style={{ transitionDelay: "600ms" }}
                 >
-                  Contract Staffing for Full-Stack Development Team
+                  Multidisciplinary Engineering Recruitment for Design, Plant,
+                  and EPC Projects
                 </h4>
 
                 <p
@@ -270,41 +270,36 @@ const RecentProjects = () => {
                   }`}
                   style={{ transitionDelay: "700ms" }}
                 >
-                  Successfully staffed and deployed a team of skilled full-stack
-                  developers (React & Node.js) for a growing IT company. Ensured
-                  quick turnaround, seamless onboarding, and end-to-end
-                  compliance support.
+                  Successfully deployed key engineering personnel including
+                  Mechanical Design Engineers, Electrical & Instrumentation
+                  (E&I) Engineers, and SmartPlant/AutoCAD-based tool specialists
+                  for ongoing plant engineering and industrial design projects.
                 </p>
 
                 {/* Key highlights */}
                 <div
-                  className={`grid grid-cols-2 gap-4 mb-8 transition-all duration-500 ${
+                  className={`grid grid-cols-1 gap-4 mb-8 transition-all duration-500 ${
                     isVisible
                       ? "translate-x-0 opacity-100"
                       : "translate-x-4 opacity-0"
                   }`}
                   style={{ transitionDelay: "750ms" }}
                 >
-                  <div className="flex items-center space-x-2">
-                    <Zap className="w-4 h-4 text-[#0098AF]" />
-                    <span className="text-sm text-[#5B5B5B]">
-                      Rapid deployment
+                  <div className="flex flex-col space-y-2">
+                    <span className="text-xl text-[#5B5B5B] font-semibold">
+                      Engagement Type:
+                    </span>
+                    <span className="text-md text-[#5B5B5B]">
+                      Contractual & Permanent Staffing
                     </span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <Shield className="w-4 h-4 text-[#0098AF]" />
-                    <span className="text-sm text-[#5B5B5B]">
-                      Full compliance
+                  <div className="flex flex-col space-y-2">
+                    <span className="text-xl text-[#5B5B5B] font-semibold">
+                      Core Tools:
                     </span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Users className="w-4 h-4 text-[#0098AF]" />
-                    <span className="text-sm text-[#5B5B5B]">Expert team</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Target className="w-4 h-4 text-[#0098AF]" />
-                    <span className="text-sm text-[#5B5B5B]">
-                      Zero attrition
+                    <span className="text-md text-[#5B5B5B]">
+                      SmartPlant 3D, AutoCAD, CAESAR II, STAAD.Pro, SPI,
+                      SolidWorks
                     </span>
                   </div>
                 </div>
@@ -349,20 +344,6 @@ const ProjectOverview = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-[#003C46]/40 via-transparent to-[#0098AF]/30"></div>
 
                 {/* Floating stats on image */}
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
-                    <div className="grid grid-cols-2 gap-4 text-center">
-                      <div>
-                        <div className="text-2xl font-bold text-white">12</div>
-                        <div className="text-xs text-white/80">Months</div>
-                      </div>
-                      <div>
-                        <div className="text-2xl font-bold text-white">0%</div>
-                        <div className="text-xs text-white/80">Attrition</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
               <div className="md:w-3/5 p-8 md:p-12 text-[#F5FDFF] relative">
                 {/* Decorative corner gradient */}
@@ -420,10 +401,10 @@ const ProjectOverview = () => {
                     <Clock className="w-5 h-5 text-[#99D5DF] mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="font-semibold text-[#F5FDFF] mb-1">
-                        Time Pressure
+                        Niche roles
                       </div>
                       <div className="text-sm text-[#F5FDFF]/80">
-                        Rapid deployment needed
+                        requiring specific tool proficiency
                       </div>
                     </div>
                   </div>
@@ -431,10 +412,10 @@ const ProjectOverview = () => {
                     <Shield className="w-5 h-5 text-[#99D5DF] mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="font-semibold text-[#F5FDFF] mb-1">
-                        Full Compliance
+                        Standardized hiring
                       </div>
                       <div className="text-sm text-[#F5FDFF]/80">
-                        End-to-end coverage
+                        across departments with varied timelines
                       </div>
                     </div>
                   </div>
@@ -515,12 +496,10 @@ const Objectives = () => {
 
                   <div className="space-y-6">
                     <p className="text-xl leading-relaxed text-[#F5FDFF]/90">
-                      To staff and manage a{" "}
-                      <span className="text-[#99D5DF] font-semibold">
-                        high-performing full-stack development team
-                      </span>{" "}
-                      on a contract, ensuring smooth onboarding, delivery
-                      readiness, and full compliance coverage.
+                      Delivering experienced engineering professionals to
+                      support design, development, and execution across capital
+                      projects, manufacturing setups, and plant engineering
+                      functions.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
@@ -569,37 +548,37 @@ const ProjectApproach = () => {
 
   const steps = [
     {
-      title: "Requirement Scoping",
+      title: "Requirement Scoping & Skill Mapping",
       description:
-        "Collaborated with the client to finalize job descriptions, skill expectations, and team composition.",
+        "Worked closely with project leads to define skill sets, project alignment, and tool-specific criteria.",
       icon: <Target className="w-5 h-5" />,
       color: "from-[#0098AF] to-[#007B8F]",
     },
     {
-      title: "Talent Sourcing & Screening",
+      title: "Sourcing Strategy",
       description:
-        "Leveraged our tech talent pool to identify and evaluate suitable candidates.",
+        "Deployed targeted hiring campaigns across mechanical, electrical, and instrumentation talent pools.",
       icon: <Users className="w-5 h-5" />,
       color: "from-[#007B8F] to-[#0098AF]",
     },
     {
-      title: "Technical Evaluation",
+      title: "Tool-Based Evaluation",
       description:
-        "Conducted pre-interviews, coding tests, and cultural fit assessments.",
+        "Screened candidates for software/tool proficiency (e.g., SmartPlant 3D, CAESAR II, STAAD, SPI).",
       icon: <Code className="w-5 h-5" />,
       color: "from-[#0098AF] to-[#99D5DF]",
     },
     {
-      title: "Onboarding & Documentation",
+      title: "Onboarding & Compliance",
       description:
-        "Handled all offer roll-outs, background verification, and documentation.",
+        "Streamlined background verification, documentation, and payroll onboarding.",
       icon: <CheckCircle className="w-5 h-5" />,
       color: "from-[#99D5DF] to-[#0098AF]",
     },
     {
-      title: "Payroll & Compliance",
+      title: "Post-Deployment Support",
       description:
-        "Managed PF, ESI, taxation, and monthly payroll with complete compliance support.",
+        "Continuous check-ins, engagement tracking, and attrition control processes.",
       icon: <Shield className="w-5 h-5" />,
       color: "from-[#0098AF] to-[#007B8F]",
     },
@@ -728,37 +707,42 @@ const KeyResults = () => {
   const kpiData = [
     {
       metric: "Hiring Turnaround Time",
-      before: "7–9 weeks",
-      after: "Less than 3 weeks",
-      improvement: "70% faster",
+      before: "8-10 weeks",
+      after: "Less than 4 weeks",
     },
     {
-      metric: "Team Stability (Attrition Rate)",
-      before: "~20% per quarter",
-      after: "0% attrition in 6 months",
-      improvement: "100% retention",
+      metric: "Attrition (6 months)",
+      before: "~15%",
+      after: "Less than 5% ",
     },
     {
-      metric: "Sprint Integration Time",
-      before: "2–3 weeks",
-      after: "Within 5 working days",
-      improvement: "75% faster",
-    },
-    {
-      metric: "Compliance/Billing Accuracy",
-      before: "Manual + delayed processing",
-      after: "100% automated, on-time billing",
-      improvement: "Full automation",
+      metric: "Compliance Accuracy",
+      before: "Manual",
+      after: "Fully automated",
     },
   ];
 
   const services = [
-    { name: "Contract Staffing", icon: <Users className="w-4 h-4" /> },
-    { name: "Full-Stack Developer Hiring", icon: <Code className="w-4 h-4" /> },
-    { name: "Payroll & Compliance", icon: <Shield className="w-4 h-4" /> },
+    { name: "Mechanical Design Engineer", icon: <Users className="w-4 h-4" /> },
     {
-      name: "HR Documentation & Support",
+      name: "Electrical & Instrumentation (E&I) Engineer",
+      icon: <Code className="w-4 h-4" />,
+    },
+    {
+      name: "Piping Layout & Stress Engineer",
+      icon: <Shield className="w-4 h-4" />,
+    },
+    {
+      name: "SmartPlant & SPI Specialists",
       icon: <CheckCircle className="w-4 h-4" />,
+    },
+    {
+      name: "Plant Maintenance Design Support",
+      icon: <Shield className="w-4 h-4" />,
+    },
+    {
+      name: "HVAC & Utility Systems Designer",
+      icon: <Shield className="w-4 h-4" />,
     },
   ];
 
@@ -782,7 +766,7 @@ const KeyResults = () => {
           }`}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6 leading-tight">
-            Key Results{" "}
+            Key Positions{" "}
             <span className="bg-gradient-to-r from-[#0098AF] to-[#007B8F] bg-clip-text text-transparent">
               & Outcomes
             </span>
@@ -799,46 +783,7 @@ const KeyResults = () => {
           }`}
         >
           <div className="md:flex md:space-x-12">
-            <div className="md:w-3/5 space-y-10">
-              {/* Enhanced Results Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {results.map((result, index) => (
-                  <div
-                    key={index}
-                    className={`bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-700 hover:scale-105 group border border-[#0098AF]/10 relative overflow-hidden ${
-                      isVisible
-                        ? "translate-y-0 opacity-100"
-                        : "translate-y-6 opacity-0"
-                    }`}
-                    style={{ transitionDelay: `${300 + index * 100}ms` }}
-                  >
-                    {/* Gradient background on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#0098AF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                    <div className="relative z-10">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="text-[#0098AF] group-hover:scale-110 group-hover:text-[#007B8F] transition-all duration-300">
-                          {result.icon}
-                        </div>
-                        <div className="text-2xl font-bold text-[#0098AF] group-hover:scale-110 transition-transform duration-300">
-                          {result.metric}
-                        </div>
-                      </div>
-                      <h3 className="font-bold text-[#003C46] mb-3 text-lg group-hover:text-[#0098AF] transition-colors duration-300">
-                        {result.title}
-                      </h3>
-                      <p className="text-[#5B5B5B] leading-relaxed group-hover:text-[#003C46] transition-colors duration-300">
-                        {result.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Enhanced KPI Table */}
-            </div>
-
-            <div className="md:w-2/5 mt-10 md:mt-0 space-y-10">
+            <div className="md:w-full mt-10 md:mt-0 space-y-10">
               {/* Enhanced Services Delivered */}
               <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-700 group border border-[#0098AF]/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#0098AF]/10 to-transparent rounded-bl-3xl"></div>
@@ -851,9 +796,9 @@ const KeyResults = () => {
                   }`}
                   style={{ transitionDelay: "1300ms" }}
                 >
-                  Services Delivered
+                  Key Positions Filled
                 </h3>
-                <div className="space-y-4">
+                <div className="grid grid-cols-3 gap-4">
                   {services.map((service, index) => (
                     <div
                       key={index}
@@ -864,9 +809,7 @@ const KeyResults = () => {
                       }`}
                       style={{ transitionDelay: `${1400 + index * 100}ms` }}
                     >
-                      <div className="text-[#0098AF] group-hover/service:scale-125 group-hover/service:text-[#007B8F] transition-all duration-300">
-                        {service.icon}
-                      </div>
+                      <div className="text-[#0098AF] group-hover/service:scale-125 group-hover/service:text-[#007B8F] transition-all duration-300"></div>
                       <span className="text-[#5B5B5B] font-medium group-hover/service:text-[#003C46] transition-colors duration-300">
                         {service.name}
                       </span>
@@ -922,9 +865,6 @@ const KeyResults = () => {
                       <th className="text-left p-6 font-bold text-[#003C46]">
                         After
                       </th>
-                      <th className="text-left p-6 font-bold text-[#003C46] rounded-r-xl">
-                        Improvement
-                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -947,11 +887,6 @@ const KeyResults = () => {
                         <td className="p-6 text-[#0098AF] font-bold group-hover/row:scale-105 transition-transform duration-300">
                           {row.after}
                         </td>
-                        <td className="p-6">
-                          <span className="inline-flex items-center px-3 py-1 bg-[#0098AF]/10 text-[#0098AF] rounded-full text-sm font-semibold">
-                            {row.improvement}
-                          </span>
-                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -969,25 +904,29 @@ const TechAndTestimonial = () => {
   const [setRef, isVisible] = useIntersectionObserver();
 
   const technologies = [
-    { name: "React.js", icon: <Code className="w-5 h-5" />, level: "Expert" },
-    { name: "Node.js", icon: <Globe className="w-5 h-5" />, level: "Expert" },
     {
-      name: "PostgreSQL",
+      name: "SmartPlant 3D",
+      icon: <Code className="w-5 h-5" />,
+      level: "Expert",
+    },
+    { name: "AutoCAD", icon: <Globe className="w-5 h-5" />, level: "Expert" },
+    {
+      name: "CAESAR II",
       icon: <Database className="w-5 h-5" />,
       level: "Advanced",
     },
     {
-      name: "CI/CD & GitLab",
+      name: "STAAD.Pro",
       icon: <GitBranch className="w-5 h-5" />,
       level: "Advanced",
     },
     {
-      name: "API Integration",
+      name: "SPI",
       icon: <Globe className="w-5 h-5" />,
       level: "Expert",
     },
     {
-      name: "Microservices",
+      name: "SolidWorks",
       icon: <Code className="w-5 h-5" />,
       level: "Advanced",
     },
@@ -1009,7 +948,7 @@ const TechAndTestimonial = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6 leading-tight">
             Technologies &{" "}
             <span className="bg-gradient-to-r from-[#0098AF] to-[#007B8F] bg-clip-text text-transparent">
-              Roles Placed
+              Testimonial
             </span>
           </h2>
           <p className="text-xl text-[#5B5B5B] max-w-7xl mx-auto">
@@ -1037,7 +976,7 @@ const TechAndTestimonial = () => {
                   }`}
                   style={{ transitionDelay: "300ms" }}
                 >
-                  Technology Stack
+                  Core Tools
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {technologies.map((tech, index) => (
@@ -1051,9 +990,7 @@ const TechAndTestimonial = () => {
                       style={{ transitionDelay: `${400 + index * 100}ms` }}
                     >
                       <div className="flex items-center space-x-4">
-                        <div className="text-[#0098AF] group-hover:scale-125 group-hover:text-[#007B8F] transition-all duration-300">
-                          {tech.icon}
-                        </div>
+                        <div className="text-[#0098AF] group-hover:scale-125 group-hover:text-[#007B8F] transition-all duration-300"></div>
                         <div>
                           <div className="text-[#003C46] font-semibold group-hover:text-[#0098AF] transition-colors duration-300">
                             {tech.name}
@@ -1101,11 +1038,11 @@ const TechAndTestimonial = () => {
                     }`}
                     style={{ transitionDelay: "1400ms" }}
                   >
-                    &quot;The team delivered quality candidates within days, and
-                    took complete responsibility from onboarding to payroll.
-                    This allowed us to scale faster and stay focused on our
-                    product roadmap. Their expertise in full-stack development
-                    was exactly what we needed&quot;
+                    &quot;The teamCognition’s engineering staffing model made it
+                    easy for us to quickly bring in a skilled,
+                    multi-disciplinary team with the right tools and experience.
+                    Their support helped us stay on schedule without putting
+                    extra pressure on our internal recruitment team&quot;
                   </blockquote>
 
                   <div
@@ -1123,9 +1060,7 @@ const TechAndTestimonial = () => {
                       <cite className="text-[#0098AF] font-bold text-lg not-italic">
                         HR Head
                       </cite>
-                      <div className="text-[#5B5B5B] text-sm">
-                        IT Services Client
-                      </div>
+                      <div className="text-[#5B5B5B] text-sm">Client</div>
                     </div>
                   </div>
                 </div>
@@ -1170,7 +1105,7 @@ const CTASection = () => {
           >
             Ready to Scale Your{" "}
             <span className=" bg-gradient-to-r from-white to-[#99D5DF] bg-clip-text text-transparent">
-              IT Team?
+              Team?
             </span>
           </h2>
 

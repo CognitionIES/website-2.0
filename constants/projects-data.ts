@@ -2,7 +2,6 @@ import digitalImage from "@/constants/images/home/our-recent-projects/digitaliza
 //import pcmImage2 from "@/constants/images/home/our-recent-projects/pcm.jpg";
 import { StaticImageData } from "next/image";
 
-
 export interface Project {
   id: string;
   title: string;
@@ -22,6 +21,20 @@ export const staffingProjects: Project[] = [
     category: "Contract Staffing for Full-Stack Development Team",
     description:
       "Successfully staffed and deployed a team of skilled full-stack developers (React & Node.js) for a growing IT company. Ensured quick turnaround, seamless onboarding, and end-to-end compliance support.",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    href: "/projects/it-talent-deployment",
+    tags: ["React", "Node.js", "Full-Stack", "Contract Staffing"],
+    duration: "12 months",
+    team: "8 developers",
+  },
+  {
+    id: "eng-talent-deployment",
+    title: "Engineering Talent Deployment",
+    category:
+      "Strategic staffing solution for engineering teams across multiple disciplines.",
+    description:
+      "Delivering experienced engineering professionals to support design, development, and execution across capital projects, manufacturing setups, and plant engineering functions.",
     image:
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
     href: "/projects/it-talent-deployment",

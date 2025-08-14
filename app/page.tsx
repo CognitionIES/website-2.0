@@ -26,19 +26,19 @@ export default function Home() {
       <Hero />
       <div className="min-h-screen  text-gray-900 font-sans relative">
         <main className="relative">
-          <section className="w-full bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 relative">
+          <section className="w-full  relative">
             <AboutUs />
           </section>
-          <section className="py-24 bg-gradient-to-br from-[#F5FDFF] via-[#99D5DF]/50 to-[#5B5B5B]/20 relative">
+          <section className=" relative">
             <ServicesShowcase />
           </section>
-          <section className="bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 relative">
+          <section className=" relative">
             <RecentProjects />
           </section>
-          <section className="bg-gradient-to-br from-[#F5FDFF] via-[#99D5DF]/50 to-[#5B5B5B]/20 relative">
+          <section className=" relative">
             <TestimonialSlider />
           </section>
-          <section className="w-full bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 relative overflow-hidden">
+          <section className="w-full  relative overflow-hidden">
             <Careers />
           </section>
           <section className=" bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 relative">

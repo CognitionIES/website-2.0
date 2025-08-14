@@ -99,8 +99,7 @@ const ProcessSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30"
-      style={{ backgroundColor: "hsl(189 100% 98%)" }}
+      className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-[#F5FDFF]/50"
     >
       {/* Background pattern */}
       <div
@@ -113,7 +112,7 @@ const ProcessSection: React.FC = () => {
         }}
       ></div>
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative px-4 sm:px-6 lg:px-8 z-10 max-w-7xl mx-auto">
         {/* Section header */}
         <div className=" mb-16">
           <h2

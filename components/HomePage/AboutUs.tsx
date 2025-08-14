@@ -59,7 +59,7 @@ const AboutUs = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full py-10 sm:py-8 lg:py-12 bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 relative"
+      className="w-full py-10 sm:py-8 lg:py-12 relative"
     >
       {/* Subtle background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

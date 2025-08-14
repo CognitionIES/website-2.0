@@ -75,7 +75,7 @@ const ToolsSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30"
+      className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden "
     >
       <div
         className="absolute inset-0 pointer-events-none"

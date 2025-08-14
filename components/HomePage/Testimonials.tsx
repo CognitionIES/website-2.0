@@ -78,7 +78,7 @@ const Testimonials = () => {
     <section
       ref={sectionRef}
       className="w-full py-10 sm:py-8 lg:py-12 relative overflow-hidden"
-      style={{ backgroundColor: "#E6F0F5" }}
+      style={{ backgroundColor: "#fff" }}
     >
       {/* Subtle Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
@@ -127,7 +127,7 @@ const Testimonials = () => {
                 <CarouselItem key={testimonial.id} className="basis-full">
                   <Card
                     className={cn(
-                      "bg-white/30 border-none rounded-2xl sm:rounded-3xl mx-auto relative",
+                      "bg-black/10 border-none rounded-2xl sm:rounded-3xl mx-auto relative",
                       "w-full max-w-[100%] sm:max-w-3xl lg:max-w-5xl h-[400px] sm:h-[380px] lg:h-[420px]"
                     )}
                   >

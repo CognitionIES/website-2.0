@@ -22,7 +22,7 @@ const services = [
     id: "02",
     title: "Build & Operate",
     description:
-      "We don’t just recruit—we take ownership. From team building to full-scale operations management, we ensure performance, compliance, and scalability without overloading your internal teams.",
+      "We don’t just recruit—we manage. From building teams to running operations, we deliver performance, compliance & scalability without burdening your staff.",
     image: buildImage,
     href: "/services/build-operate",
     icon: Factory,
@@ -31,7 +31,7 @@ const services = [
     id: "03",
     title: "SaaS Solutions (ServiceCPQ)",
     description:
-      "Streamline quoting and delivery with ServiceCPQ, our SaaS platform designed to simplify complex workflows and accelerate your business.",
+      "Streamline quoting & delivery with ServiceCPQ, our SaaS platform designed to simplify complex workflows and accelerate your business.",
     image: saasImage,
     href: "/services/saas-solution/servicecpq",
     icon: Monitor,
@@ -51,14 +51,12 @@ const ServiceCard = ({ service, index, onHover }: ServiceCardProps) => {
   const IconComponent = service.icon;
   return (
     <div
-      className={`group relative transition-all duration-500 ${
-        index === 1 ? "md:translate-y-12" : ""
-      } ${index === 2 ? "md:-translate-y-6" : ""}`}
+      className="group relative transition-all duration-500"
       onMouseEnter={() => onHover(index)}
       onMouseLeave={() => onHover(null)}
     >
       {/* Enhanced main card with premium details */}
-      <div className="relative overflow-hidden rounded-2xl bg-white/95 backdrop-blur-sm border border-slate-200/60 transition-all duration-500  hover:-translate-y-3 hover:border-[#0098af]/20">
+      <div className="relative overflow-hidden rounded-2xl bg-white/95 backdrop-blur-sm border border-slate-200/60 transition-all duration-500 hover:-translate-y-3 hover:border-[#0098af]/20">
         {/* Inner shadow for inset feel */}
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/50 to-transparent pointer-events-none" />
 
@@ -104,28 +102,28 @@ const ServiceCard = ({ service, index, onHover }: ServiceCardProps) => {
             <ArrowUpRight className="h-5 w-5 text-slate-400 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[#0098af] group-hover:scale-110" />
           </div>
 
-          <p className="text-slate-600 text-justify leading-relaxed mb-">
+          <p className="text-slate-600 text-justify leading-relaxed mb-4">
             {service.description}
           </p>
-
           {/* Enhanced CTA with micro-interactions */}
           <div className="flex items-center justify-between">
             <Link
               href={service.href}
               aria-label={`Learn more about ${service.title}`}
-              className="text-sm font-medium text-[#0098af] hover:text-[#007c90] transition-all duration-300 hover:translate-x-1"
+              className="relative text-sm font-medium text-[#0098af] bg-[#0098af]/5 px-4 py-2 rounded-full transition-all duration-300 hover:bg-[#0098af]/10 hover:text-[#007c90] hover:shadow-[0_4px_12px_rgba(0,152,175,0.2)] hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#0098af]/50 focus:ring-offset-2 z-10"
             >
               Learn More
+              <span className="absolute inset-0 rounded-full bg-[#0098af]/0 group-hover:bg-[#0098af]/5 transition-all duration-300" />
             </Link>
             <div className="h-px flex-1 mx-4 bg-gradient-to-r from-transparent via-slate-200 to-transparent group-hover:via-[#0098af]/30 transition-colors duration-300" />
-            <div className="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded-full border border-slate-100">
+            <div className="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded-full border border-slate-200">
               Premium Service
             </div>
           </div>
         </div>
 
         {/* Enhanced accent line with animation */}
-        <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from (#0098af]/0 via-[#0098af] to-[#0098af]/0 transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100" />
+        <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-[#0098af]/0 via-[#0098af] to-[#0098af]/0 transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100" />
 
         {/* Subtle glow on hover */}
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#0098af]/0 to-[#0098af]/0 group-hover:from-[#0098af]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
@@ -138,7 +136,7 @@ const ServicesShowcase = () => {
   const [activeService, setActiveService] = useState<number | null>(null);
 
   return (
-    <section className="py-24  relative">
+    <section className="py-24 relative">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 px-4">
         {/* Minimal header */}
         <div className="mb-12">
@@ -150,7 +148,7 @@ const ServicesShowcase = () => {
             </div>
             <h2 className="max-w-7xl text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#003C46]">
               Scalable Solutions for{" "}
-              <span className=" font-semibold bg-gradient-to-br from-[#003c46] to-[#1c7a8a] bg-clip-text text-transparent">
+              <span className="font-semibold bg-gradient-to-br from-[#003c46] to-[#1c7a8a] bg-clip-text text-transparent">
                 Smarter Tomorrow
               </span>
             </h2>

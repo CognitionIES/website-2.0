@@ -27,12 +27,16 @@ const useMobile = () => {
 export default function AboutSection() {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const hasAnimated = useRef(false); // Track if animation has run
   const isMobile = useMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        if (entry.isIntersecting && !hasAnimated.current) {
+          setIsInView(true);
+          hasAnimated.current = true; // Set to true after first view
+        }
       },
       {
         threshold: 0.2,
@@ -68,7 +72,7 @@ export default function AboutSection() {
     <div>
       <section
         ref={sectionRef}
-        className="w-full py-10 sm:py-16 lg:py-12 relative bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30"
+        className="w-full py-10 sm:py-16 lg:py-12 relative bg-[#F5FDFF]/50"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="mb-8 max-w-7xl text-center md:text-left">

@@ -55,8 +55,8 @@ const Careers: React.FC = () => {
         <div className="max-w-[95%] sm:max-w-7xl mx-auto ${responsiveConfig.containerPadding}">
           <div className="flex flex-col  sm:gap-8 md:gap-12">
             {/* "We’re Hiring" Text */}
-            <div className="text-left ">
-              <span className="inline-block px-2 py-1 sm:px-3 sm:py-1.5 bg-[#0098af]/10 text-[#0098af] text-xs sm:text-sm font-medium uppercase tracking-wider rounded-full">
+            <div className="">
+              <span className="inline-block  bg-[#0098af]/10 text-[#0098af] text-xs sm:text-sm font-medium uppercase tracking-wider rounded-full">
                 We&apos;re Hiring
               </span>
             </div>
@@ -105,9 +105,9 @@ const Careers: React.FC = () => {
   // Desktop Layout (default)
   return (
     <section
-      className={`w-full ${responsiveConfig.sectionPadding} bg-gradient-to-b from-white to-[#E6F0F5]/20 relative overflow-hidden`}
+      className={`w-full ${responsiveConfig.sectionPadding} bg-gradient-to-b  from-white to-[#E6F0F5]/20 relative overflow-hidden`}
     >
-      <div className="max-w-[95%] sm:max-w-7xl mx-auto ${responsiveConfig.containerPadding}">
+      <div className="max-w-[95%] sm:max-w-7xl mx-auto py-12 ${responsiveConfig.containerPadding}">
         <div className="grid grid-cols-1 md:grid-cols-3 ${responsiveConfig.gap} items-start md:items-center">
           {/* Image Section */}
           <div className="relative md:col-span-2">
@@ -139,13 +139,13 @@ const Careers: React.FC = () => {
             className="md:col-span-1 mt-6 sm:mt-4 md:mt-0"
           >
             <div className="ml-8">
-              <div className="text-left md:text-right">
+              <div className="">
                 <span className="inline-block px-2 py-1 sm:px-3 sm:py-1.5 bg-[#0098af]/10 text-[#0098af] text-[10px] sm:text-xs font-medium uppercase tracking-wider rounded-full">
                   We&apos;re Hiring
                 </span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#003C46] leading-tight mt-4 md:mt-24">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#003C46] leading-tight mt-4 ">
                 Join Our Team
               </h2>
               <div className="w-[60px] sm:w-[100px] h-[2px] md:h-[3px] bg-gradient-to-r from-[#0098af] to-transparent rounded-full mt-2 md:mt-0" />
@@ -168,9 +168,6 @@ const Careers: React.FC = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Divider */}
-      <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16 h-[2px] w-full max-w-3xl mx-auto bg-gradient-to-r from-transparent via-[#0098af]/50 to-transparent" />
     </section>
   );
 };

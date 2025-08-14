@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { motion } from "framer-motion";
@@ -8,11 +9,15 @@ import Link from "next/link";
 export default function CTASection() {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const hasAnimated = useRef(false); // Track if animation has run
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        if (entry.isIntersecting && !hasAnimated.current) {
+          setIsInView(true);
+          hasAnimated.current = true; // Set to true after first view
+        }
       },
       { threshold: 0.2 }
     );
@@ -41,13 +46,13 @@ export default function CTASection() {
       <section className="w-full py-12 sm:py-14 lg:py-22 bg-gradient-to-r from-[#007B8F] to-[#0098AF] text-white relative overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
         >
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
             className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-6 drop-shadow-md"
           >
@@ -55,7 +60,7 @@ export default function CTASection() {
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
             className="text-sm sm:text-lg lg:text-xl mb-8 max-w-3xl mx-auto leading-relaxed"
           >
@@ -70,13 +75,17 @@ export default function CTASection() {
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 0.1, scale: 1 }}
+          animate={
+            isInView ? { opacity: 0.1, scale: 1 } : { opacity: 0, scale: 0 }
+          }
           transition={{ delay: 0.7, duration: 1, ease: "easeOut" }}
           className="absolute bottom-1/3 left-1/3 w-64 h-64 bg-[#0098AF] opacity-10 rounded-full blur-3xl -z-10"
         />
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 0.1, scale: 1 }}
+          animate={
+            isInView ? { opacity: 0.1, scale: 1 } : { opacity: 0, scale: 0 }
+          }
           transition={{ delay: 0.9, duration: 1, ease: "easeOut" }}
           className="absolute top-1/4 right-1/4 w-48 h-48 bg-[#003C46] opacity-10 rounded-full blur-3xl -z-10"
         />

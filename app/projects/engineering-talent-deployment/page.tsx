@@ -26,6 +26,7 @@ import heroImage from "@/constants/images/projects/it/hero.jpg";
 import aboutImage from "@/constants/images/projects/it/about.jpg";
 import objectiveImage from "@/constants/images/projects/it/objective.jpg";
 import overviewImage from "@/constants/images/projects/it/overview.jpg";
+import KeyResults from "./KeyResults";
 
 const useIntersectionObserver = (threshold = 0.1) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -70,10 +71,12 @@ const Hero = () => {
         backgroundAttachment: "fixed",
       }}
     >
+      {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#003C46]/75 to-[#0098AF]/65" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-8 h-full flex flex-col justify-center">
         <div className="relative z-20 h-full flex flex-col justify-center">
+          {/* Breadcrumb Navigation */}
           <motion.nav
             className="absolute bottom-8 flex items-center space-x-2 text-sm text-white/70"
             initial={{ opacity: 0, y: 20 }}
@@ -105,8 +108,10 @@ const Hero = () => {
             </Link>
           </motion.nav>
 
+          {/* Hero Content */}
           <div className="space-y-8">
             <div className="space-y-6">
+              {/* Main Heading */}
               <motion.div
                 className="relative"
                 initial={{ opacity: 0, y: 30 }}
@@ -178,6 +183,7 @@ const RecentProjects = () => {
       ref={setRef}
       className="py-16 bg-gradient-to-br from-[#F5FDFF] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
+      {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-20 w-40 h-40 border border-[#0098AF] rounded-full animate-spin-slow"></div>
         <div className="absolute bottom-32 right-32 w-32 h-32 border border-[#0098AF] rounded-full animate-spin-reverse"></div>
@@ -212,7 +218,7 @@ const RecentProjects = () => {
             <div className="md:flex">
               <div className="md:w-2/5 relative overflow-hidden">
                 <Image
-                  src={aboutImage}
+                  src="https://images.pexels.com/photos/3862379/pexels-photo-3862379.jpeg"
                   alt="IT talent deployment team"
                   className="w-full h-64 md:h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   width={800}
@@ -314,7 +320,7 @@ const ProjectOverview = () => {
     <section
       id="project-overview"
       ref={setRef}
-      className="py-24 bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 relative overflow-hidden"
+      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
       {/* Background decorative elements */}
       <div className="absolute top-20 right-10 w-64 h-64 bg-[#0098AF]/5 rounded-full blur-3xl animate-pulse"></div>
@@ -589,7 +595,7 @@ const ProjectApproach = () => {
   return (
     <section
       ref={setRef}
-      className="py-24 bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 relative overflow-hidden"
+      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
       {/* Enhanced background decoration */}
       <div className="absolute top-20 right-10 w-80 h-80 bg-[#0098AF]/5 rounded-full blur-3xl animate-float"></div>
@@ -667,234 +673,6 @@ const ProjectApproach = () => {
   );
 };
 
-const KeyResults = () => {
-  const [setRef, isVisible] = useIntersectionObserver();
-
-  const results = [
-    {
-      title: "Rapid Talent Onboarding",
-      description: "From requirement to deployment in record time.",
-      icon: <Zap className="w-6 h-6" />,
-      metric: "< 3 weeks",
-    },
-    {
-      title: "Exceptional Team Stability",
-      description: "Zero attrition during the entire contract period.",
-      icon: <Shield className="w-6 h-6" />,
-      metric: "0% attrition",
-    },
-    {
-      title: "Accelerated Integration",
-      description:
-        "Developers aligned with sprint goals within the first week.",
-      icon: <TrendingUp className="w-6 h-6" />,
-      metric: "5 days",
-    },
-    {
-      title: "Process Automation Ready",
-      description:
-        "All timesheets, billing, and compliance handled through automation.",
-      icon: <CheckCircle className="w-6 h-6" />,
-      metric: "100% automated",
-    },
-  ];
-
-  const kpiData = [
-    {
-      metric: "Hiring Turnaround Time",
-      before: "8-10 weeks",
-      after: "Less than 4 weeks",
-    },
-    {
-      metric: "Attrition (6 months)",
-      before: "~15%",
-      after: "Less than 5% ",
-    },
-    {
-      metric: "Compliance Accuracy",
-      before: "Manual",
-      after: "Fully automated",
-    },
-  ];
-
-  const services = [
-    { name: "Mechanical Design Engineer", icon: <Users className="w-4 h-4" /> },
-    {
-      name: "Electrical & Instrumentation (E&I) Engineer",
-      icon: <Code className="w-4 h-4" />,
-    },
-    {
-      name: "Piping Layout & Stress Engineer",
-      icon: <Shield className="w-4 h-4" />,
-    },
-    {
-      name: "SmartPlant & SPI Specialists",
-      icon: <CheckCircle className="w-4 h-4" />,
-    },
-    {
-      name: "Plant Maintenance Design Support",
-      icon: <Shield className="w-4 h-4" />,
-    },
-    {
-      name: "HVAC & Utility Systems Designer",
-      icon: <Shield className="w-4 h-4" />,
-    },
-  ];
-
-  return (
-    <section
-      ref={setRef}
-      className="py-24 bg-gradient-to-br from-[#F5FDFF] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
-    >
-      {/* Enhanced background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-[#0098AF] rounded-full animate-ping"></div>
-        <div className="absolute top-3/4 right-1/3 w-4 h-4 bg-[#0098AF] rounded-full animate-pulse"></div>
-        <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-[#0098AF] rounded-full animate-bounce"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-5 h-5 border border-[#0098AF] rounded-full animate-spin-slow"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div
-          className={`mb-12  transition-all duration-800 ease-out ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-          }`}
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6 leading-tight">
-            Key Positions{" "}
-            <span className="bg-gradient-to-r from-[#0098AF] to-[#007B8F] bg-clip-text text-transparent">
-              & Outcomes
-            </span>
-          </h2>
-          <p className="text-xl text-[#5B5B5B] max-w-7xl mx-auto">
-            Measurable impact and exceptional results that exceeded client
-            expectations
-          </p>
-        </div>
-
-        <div
-          className={`transition-all duration-1000 ease-out delay-200 ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-          }`}
-        >
-          <div className="md:flex md:space-x-12">
-            <div className="md:w-full mt-10 md:mt-0 space-y-10">
-              {/* Enhanced Services Delivered */}
-              <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-700 group border border-[#0098AF]/10 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#0098AF]/10 to-transparent rounded-bl-3xl"></div>
-
-                <h3
-                  className={`text-2xl font-bold text-[#003C46] mb-8 transition-all duration-500 ${
-                    isVisible
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-4 opacity-0"
-                  }`}
-                  style={{ transitionDelay: "1300ms" }}
-                >
-                  Key Positions Filled
-                </h3>
-                <div className="grid grid-cols-3 gap-4">
-                  {services.map((service, index) => (
-                    <div
-                      key={index}
-                      className={`flex items-center space-x-4 p-4 bg-[#0098AF]/5 rounded-xl hover:bg-[#0098AF]/10 transition-all duration-500 hover:translate-x-2 hover:scale-105 group/service ${
-                        isVisible
-                          ? "translate-x-0 opacity-100"
-                          : "translate-x-4 opacity-0"
-                      }`}
-                      style={{ transitionDelay: `${1400 + index * 100}ms` }}
-                    >
-                      <div className="text-[#0098AF] group-hover/service:scale-125 group-hover/service:text-[#007B8F] transition-all duration-300"></div>
-                      <span className="text-[#5B5B5B] font-medium group-hover/service:text-[#003C46] transition-colors duration-300">
-                        {service.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Enhanced Visual with Stats Overlay */}
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#003C46]/60 via-transparent to-[#0098AF]/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-
-                {/* Stats overlay */}
-                <div className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
-                    <div className="grid grid-cols-2 gap-4 text-center text-white">
-                      <div>
-                        <div className="text-xl font-bold">100%</div>
-                        <div className="text-xs opacity-80">Success Rate</div>
-                      </div>
-                      <div>
-                        <div className="text-xl font-bold">12M</div>
-                        <div className="text-xs opacity-80">Contract</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-700 border border-[#0098AF]/10">
-            <div className="p-8 md:p-10">
-              <h3
-                className={`text-2xl font-bold text-[#003C46] mb-8 transition-all duration-500 ${
-                  isVisible
-                    ? "translate-x-0 opacity-100"
-                    : "translate-x-4 opacity-0"
-                }`}
-                style={{ transitionDelay: "800ms" }}
-              >
-                Performance Metrics Comparison
-              </h3>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="bg-gradient-to-r from-[#0098AF]/10 to-[#99D5DF]/10">
-                      <th className="text-left p-6 font-bold text-[#003C46] rounded-l-xl">
-                        Metric
-                      </th>
-                      <th className="text-left p-6 font-bold text-[#003C46]">
-                        Before
-                      </th>
-                      <th className="text-left p-6 font-bold text-[#003C46]">
-                        After
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {kpiData.map((row, index) => (
-                      <tr
-                        key={index}
-                        className={`border-b border-gray-100 hover:bg-gradient-to-r hover:from-[#0098AF]/5 hover:to-transparent transition-all duration-500 hover:scale-[1.01] group/row ${
-                          isVisible
-                            ? "translate-x-0 opacity-100"
-                            : "translate-x-6 opacity-0"
-                        }`}
-                        style={{
-                          transitionDelay: `${900 + index * 100}ms`,
-                        }}
-                      >
-                        <td className="p-6 font-semibold text-[#003C46] group-hover/row:text-[#0098AF] transition-colors duration-300">
-                          {row.metric}
-                        </td>
-                        <td className="p-6 text-[#5B5B5B]">{row.before}</td>
-                        <td className="p-6 text-[#0098AF] font-bold group-hover/row:scale-105 transition-transform duration-300">
-                          {row.after}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const TechAndTestimonial = () => {
   const [setRef, isVisible] = useIntersectionObserver();
 
@@ -930,7 +708,7 @@ const TechAndTestimonial = () => {
   return (
     <section
       ref={setRef}
-      className="py-24 bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 relative overflow-hidden"
+      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
       {/* Enhanced animated background elements */}
 
@@ -941,14 +719,14 @@ const TechAndTestimonial = () => {
           }`}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6 leading-tight">
-            Technologies &{" "}
+            Tools &{" "}
             <span className="bg-gradient-to-r from-[#0098AF] to-[#007B8F] bg-clip-text text-transparent">
               Testimonial
             </span>
           </h2>
           <p className="text-xl text-[#5B5B5B] max-w-7xl mx-auto">
-            Cutting-edge technology stack and skilled professionals deployed for
-            maximum impact
+            Cutting-edge Tools and skilled professionals deployed for maximum
+            impact.
           </p>
         </div>
 
@@ -1077,7 +855,7 @@ const CTASection = () => {
   return (
     <section
       ref={setRef}
-      className="py-16 bg-gradient-to-r from-[#007B8F] to-[#0098AF] text-[#F5FDFF] relative overflow-hidden"
+      className="py-16 bg-gradient-to-br from-[#0098AF] via-[#0098AF] to-[#007B8F] relative overflow-hidden"
     >
       {/* Enhanced decorative elements */}
       <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-black/20 rounded-full blur-3xl animate-pulse"></div>

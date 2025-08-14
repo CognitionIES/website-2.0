@@ -9,7 +9,7 @@ import CTASection from "@/components/CTA";
 
 const Projects: React.FC = () => {
   return (
-    <div className="min-h-screen w-full overflow-hidden relative font-roboto bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30">
+    <div className="min-h-screen w-full overflow-hidden relative font-roboto ">
       <MegaMenu />
       <Hero />
       <ProjectsSection />

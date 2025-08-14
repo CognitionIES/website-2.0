@@ -48,7 +48,7 @@ export function ProjectsSection() {
   return (
     <section
       ref={ref}
-      className="relative py-16 bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 overflow-hidden"
+      className="relative py-16 overflow-hidden"
       aria-labelledby="projects-section-title"
     >
       <div className="absolute top-20 right-16 w-40 h-40 bg-gradient-to-br from-[#0098AF]/10 to-[#99D5DF]/5 rounded-full blur-2xl" />

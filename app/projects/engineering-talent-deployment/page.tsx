@@ -22,7 +22,7 @@ import { MegaMenu } from "@/components/ui/Megamenu/MegaMenu";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Footer from "@/components/footer";
-import heroImage from "@/constants/images/projects/it/hero.jpg";
+import heroImage from "@/constants/images/hero/pexels-edmond-dantes-8068878.jpg";
 import aboutImage from "@/constants/images/projects/it/about.jpg";
 import objectiveImage from "@/constants/images/projects/it/objective.jpg";
 import overviewImage from "@/constants/images/projects/it/overview.jpg";

@@ -208,9 +208,6 @@ const KeyResults = () => {
                       {position.name}
                     </span>
                   </div>
-                  <div className="bg-[#0098AF] text-white px-3 py-1 rounded-full font-bold text-sm">
-                    {position.count}
-                  </div>
                 </motion.div>
               ))}
             </div>
@@ -237,10 +234,10 @@ const KeyResults = () => {
                   transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
                   className="border-l-4 border-[#0098AF] pl-4 py-2 hover:border-l-8 transition-all duration-300 group"
                 >
-                  <div className="font-semibold text-[#003C46] mb-2 group-hover:text-[#0098AF] transition-colors duration-300">
+                  <div className="font-semibold text-lg text-[#003C46] mb-2 group-hover:text-[#0098AF] transition-colors duration-300">
                     {kpi.metric}
                   </div>
-                  <div className="flex items-center justify-between text-sm">
+                  <div className="flex items-center justify-between text-base">
                     <div>
                       <span className="text-red-500 line-through mr-2">
                         {kpi.before}
@@ -249,7 +246,7 @@ const KeyResults = () => {
                         {kpi.after}
                       </span>
                     </div>
-                    <div className="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-bold">
+                    <div className="bg-green-100  text-green-700 px-2 py-1 rounded-full text-sm font-bold">
                       +{kpi.improvement}
                     </div>
                   </div>

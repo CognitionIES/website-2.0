@@ -42,7 +42,7 @@ const IndustriesWeServe = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-[#E6F0F5]/90 relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mb-10">

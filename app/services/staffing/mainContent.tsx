@@ -68,7 +68,7 @@ export default function AboutSection() {
     <div>
       <section
         ref={sectionRef}
-        className="w-full py-10 sm:py-16 lg:py-12 relative bg-gradient-to-b from-white to-[#E6F0F5]"
+        className="w-full py-10 sm:py-16 lg:py-12 relative bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="mb-8 max-w-7xl text-center md:text-left">
@@ -109,8 +109,8 @@ export default function AboutSection() {
                     overwhelming. That’s where we come in. At Cognition IES, we
                     believe recruitment is more than just matching resumes with
                     job descriptions — it’s about understanding people, purpose,
-                    and potential. We work closely with you to ensure every connection is meaningful,
-                    strategic, and long-lasting.
+                    and potential. We work closely with you to ensure every
+                    connection is meaningful, strategic, and long-lasting.
                   </p>
                 </div>
               )}

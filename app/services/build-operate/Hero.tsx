@@ -1,68 +1,59 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { ChevronRight, Home } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import heroImage from "@/constants/images/build-operate/hero.jpg";
 
-export default function BuildOperateHero() {
+export default function Hero() {
   return (
-    <section>
+    <section aria-labelledby="hero-title">
       <div className="relative h-[450px] overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src={heroImage}
-            alt="Build Operate Hero Section"
-            className="w-full h-full object-cover"
-            fill
-            priority
-          />
-        </div>
-
-        {/* Gradient Overlay */}
+        <Image
+          src={heroImage}
+          alt="Build & Operate"
+          className="w-full h-full object-cover"
+          fill
+          priority
+        />
         <div className="absolute inset-0 bg-gradient-to-br from-[#003C46]/60 to-[#0098AF]/60" />
-
-        <div className="absolute inset-0 opacity-5   bg-repeat" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-8 h-full flex flex-col justify-center">
-          <div className="relative z-20  h-full flex flex-col justify-center">
-            {/* Breadcrumb Navigation */}
-            <nav className="absolute bottom-8   flex items-center space-x-2 text-sm text-white/70">
+        <div className="absolute inset-0 opacity-5 bg-repeat" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
+          <div className="relative z-20 h-full flex flex-col justify-center">
+            <nav className="absolute bottom-8 flex items-center space-x-2 text-sm font-medium text-white/70 font-roboto">
               <Link
                 href="/"
-                className="hover:text-blue-300 flex items-center gap-1.5 transition-colors duration-300"
+                className="hover:text-[#99D5DF] flex items-center gap-1.5 transition-colors duration-300"
               >
                 <Home className="w-4 h-4" />
-                <span className="font-medium">Home</span>
+                Home
               </Link>
               <ChevronRight className="w-3.5 h-3.5" />
-              <Link href="/services">
-                <span className="text-blue-200 font-medium">Services</span>
-              </Link>{" "}
+              <Link
+                href="/services"
+                className="hover:text-[#99D5DF] transition-colors duration-300"
+              >
+                Services
+              </Link>
               <ChevronRight className="w-3.5 h-3.5" />
-              <Link href="/services/built-operate">
-                <span className="text-blue-200 font-medium">
-                  Build & Operate
-                </span>
+              <Link
+                href="/services/build-operate"
+                className="hover:text-[#99D5DF] transition-colors duration-300"
+              >
+                Build & Operate
               </Link>
             </nav>
-
-            {/* Hero Content */}
-            <div className="space-y-8">
-              <div className="space-y-6">
-                {/* Main Heading */}
-                <div className="relative top-2">
-                  <h1 className="text-5xl md:text-6xl lg:text-7xl text-white font-bold tracking-tight text-white leading-tight">
-                    <span className="text-white bg-clip-text ">
-                      Build & Operate
-                    </span>
-                  </h1>
-                  <div className="absolute -bottom-2 left-2 w-24 h-1 bg-gradient-to-r from-[#99D5DF] to-transparent rounded-full" />
-                </div>
-              </div>
+            <div className="space-y-6">
+              <h1
+                id="hero-title"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold font-montserrat tracking-tight text-white leading-tight relative"
+              >
+                Build & Operate
+                <div className="absolute -bottom-2 left-0 w-24 h-1 bg-gradient-to-r from-[#99D5DF] to-transparent rounded-full" />
+              </h1>
             </div>
           </div>
-
-          {/* Subtle Floating Particles */}
         </div>
         {[...Array(8)].map((_, i) => (
           <motion.div
@@ -79,7 +70,7 @@ export default function BuildOperateHero() {
               delay: Math.random() * 3,
               ease: "easeOut",
             }}
-            className="absolute w-1 h-1 bg-blue-300/60 rounded-full"
+            className="absolute w-1 h-1 bg-[#99D5DF]/60 rounded-full"
             style={{
               left: `${20 + Math.random() * 60}%`,
               bottom: "20px",

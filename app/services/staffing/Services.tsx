@@ -158,7 +158,7 @@ const ServicesSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-16 overflow-hidden bg-gradient-to-b from-white to-white"
+      className="relative py-16 overflow-hidden bg-gradient-to-br from-[#F5FDFF] via-[#99D5DF]/50 to-[#5B5B5B]/20"
       aria-labelledby="services-section-title"
     >
       <div

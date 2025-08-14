@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 const {
   default: flattenColorPalette,
-// eslint-disable-next-line @typescript-eslint/no-require-imports
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
 export default {
@@ -15,8 +15,10 @@ export default {
     extend: {
       fontFamily: {
         calibri: ["Calibri", "sans-serif"], // Adding Calibri
-      },filter: {
-        "teal-900": "invert(20%) sepia(50%) saturate(500%) hue-rotate(160deg) brightness(40%) contrast(120%)",
+      },
+      filter: {
+        "teal-900":
+          "invert(20%) sepia(50%) saturate(500%) hue-rotate(160deg) brightness(40%) contrast(120%)",
       },
       colors: {
         background: "hsl(var(--background))",
@@ -66,18 +68,19 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       careers: {
-        primary: '#0098AF',
-        secondary: '#003C46',
-        accent: '#99D5DF',
-        muted: '#5B5B5B',
-        light: '#F5FDFF',
-        'primary-hover': '#007B8F'
-      },brand: {
-        primary: '#0098af',
-        secondary: '#5b5b5b',
-        dark: '#003C46',
-        light: '#E6F0F5',
-        accent: '#00b4d8'
+        primary: "#0098AF",
+        secondary: "#003C46",
+        accent: "#99D5DF",
+        muted: "#5B5B5B",
+        light: "#F5FDFF",
+        "primary-hover": "#007B8F",
+      },
+      brand: {
+        primary: "#0098af",
+        secondary: "#5b5b5b",
+        dark: "#003C46",
+        light: "#E6F0F5",
+        accent: "#00b4d8",
       },
       keyframes: {
         "accordion-down": {
@@ -100,6 +103,15 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      backgroundImage: {
+        "frosty-minimalist":
+          "linear-gradient(to bottom, #F5FDFF 0%, rgba(153, 213, 223, 0.3) 100%)",
+        "oceanic-depth":
+          "linear-gradient(to bottom, #99D5DF 0%, #0098AF 50%, #003C46 100%)",
+        "teal-horizon": "linear-gradient(to right, #007B8F 0%, #0098AF 100%)",
+        "icy-neutral":
+          "linear-gradient(to bottom right, #F5FDFF 0%, rgba(153, 213, 223, 0.5) 50%, rgba(91, 91, 91, 0.2) 100%)",
       },
     },
   },

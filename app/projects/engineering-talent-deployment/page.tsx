@@ -70,12 +70,10 @@ const Hero = () => {
         backgroundAttachment: "fixed",
       }}
     >
-      {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#003C46]/75 to-[#0098AF]/65" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-8 h-full flex flex-col justify-center">
         <div className="relative z-20 h-full flex flex-col justify-center">
-          {/* Breadcrumb Navigation */}
           <motion.nav
             className="absolute bottom-8 flex items-center space-x-2 text-sm text-white/70"
             initial={{ opacity: 0, y: 20 }}
@@ -107,10 +105,8 @@ const Hero = () => {
             </Link>
           </motion.nav>
 
-          {/* Hero Content */}
           <div className="space-y-8">
             <div className="space-y-6">
-              {/* Main Heading */}
               <motion.div
                 className="relative"
                 initial={{ opacity: 0, y: 30 }}
@@ -182,7 +178,6 @@ const RecentProjects = () => {
       ref={setRef}
       className="py-16 bg-gradient-to-br from-[#F5FDFF] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
-      {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-20 w-40 h-40 border border-[#0098AF] rounded-full animate-spin-slow"></div>
         <div className="absolute bottom-32 right-32 w-32 h-32 border border-[#0098AF] rounded-full animate-spin-reverse"></div>
@@ -319,7 +314,7 @@ const ProjectOverview = () => {
     <section
       id="project-overview"
       ref={setRef}
-      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+      className="py-24 bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 relative overflow-hidden"
     >
       {/* Background decorative elements */}
       <div className="absolute top-20 right-10 w-64 h-64 bg-[#0098AF]/5 rounded-full blur-3xl animate-pulse"></div>
@@ -594,7 +589,7 @@ const ProjectApproach = () => {
   return (
     <section
       ref={setRef}
-      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+      className="py-24 bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 relative overflow-hidden"
     >
       {/* Enhanced background decoration */}
       <div className="absolute top-20 right-10 w-80 h-80 bg-[#0098AF]/5 rounded-full blur-3xl animate-float"></div>
@@ -935,7 +930,7 @@ const TechAndTestimonial = () => {
   return (
     <section
       ref={setRef}
-      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+      className="py-24 bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 relative overflow-hidden"
     >
       {/* Enhanced animated background elements */}
 
@@ -1082,7 +1077,7 @@ const CTASection = () => {
   return (
     <section
       ref={setRef}
-      className="py-16 bg-gradient-to-br from-[#0098AF] via-[#0098AF] to-[#007B8F] relative overflow-hidden"
+      className="py-16 bg-gradient-to-r from-[#007B8F] to-[#0098AF] text-[#F5FDFF] relative overflow-hidden"
     >
       {/* Enhanced decorative elements */}
       <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-black/20 rounded-full blur-3xl animate-pulse"></div>

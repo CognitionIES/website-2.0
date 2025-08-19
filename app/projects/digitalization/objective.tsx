@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import Image from "next/image";
@@ -9,15 +10,19 @@ import { motion, Variants } from "framer-motion";
 export default function Objective() {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const hasAnimated = useRef(false); // Track if animation has run
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting); // Update state when section enters or leaves view
+        if (entry.isIntersecting && !hasAnimated.current) {
+          setIsInView(true);
+          hasAnimated.current = true; // Set to true after first view
+        }
       },
       {
-        threshold: 0.2, // Triggers when 20% of the section is visible
-        rootMargin: "0px 0px -20% 0px", // Ensures it triggers only when scrolling down into the section
+        threshold: 0.2,
+        rootMargin: "0px 0px -20% 0px",
       }
     );
 
@@ -27,11 +32,11 @@ export default function Objective() {
 
     return () => {
       if (sectionRef.current) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         observer.unobserve(sectionRef.current);
       }
     };
   }, []);
+
   const contentVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -43,73 +48,69 @@ export default function Objective() {
       },
     },
   };
+
   return (
     <div>
-      <div>
-        <section
-          ref={sectionRef}
-          className="w-full py-8 sm:py-10 lg:py-12 relative overflow-hidden"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <motion.div
-              variants={contentVariants}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              className="items-center"
-            >
-              {/* Mobile version */}
-              <div className="md:hidden rounded-xl shadow-md overflow-hidden ">
-                <div className="relative h-[200px]">
-                  <Image
-                    src={objectiveImage}
-                    alt="Engineering services"
-                    className="w-[450px] h-[200px] "
-                  />
-                </div>
-                <div className="bg-[#003C46] p-4">
-                  <h3 className="text-xl font-semibold uppercase text-white mb-2">
-                    🎯 Objective
-                  </h3>
-                  <p className="text-white/90 text-sm">
-                    To build and operate a fully digitized manufacturing
-                    environment by integrating physical plant data with
-                    real-time digital intelligence — enhancing accuracy,
-                    reducing downtime, and enabling predictive operations.
-                  </p>
-                </div>
-              </div>
-
-              {/* Desktop version */}
-              <div className="relative hidden md:block h-[350px] rounded-xl shadow-md overflow-hidden">
+      <section
+        ref={sectionRef}
+        className="w-full py-8 sm:py-10 lg:py-12 relative overflow-hidden"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <motion.div
+            variants={contentVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="items-center"
+          >
+            <div className="md:hidden rounded-xl shadow-md overflow-hidden">
+              <div className="relative h-[200px]">
                 <Image
                   src={objectiveImage}
                   alt="Engineering services"
-                  fill
-                  className="object-cover"
+                  className="w-[450px] h-[200px]"
                 />
-                {/* Overlay text on top of the image */}
-                <div className="absolute inset-0 bg-black/40 flex flex-col p-6">
-                  <div className="w-full flex justify-end">
-                    <div className="w-[58%]">
-                      <h3 className="text-3xl font-semibold uppercase text-white mb-2">
-                        🎯 Objective
-                      </h3>
-                      <p className="text-white/90 text-lg ">
-                        To build and operate a fully digitized manufacturing
-                        environment by integrating physical plant data with
-                        real-time digital intelligence — enhancing accuracy,
-                        reducing downtime, and enabling predictive operations.
-                      </p>
-                    </div>
+              </div>
+              <div className="bg-[#003C46] p-4">
+                <h3 className="text-xl font-semibold uppercase text-white mb-2">
+                  🎯 Objective
+                </h3>
+                <p className="text-white/90 text-sm">
+                  To build and operate a fully digitized manufacturing
+                  environment by integrating physical plant data with real-time
+                  digital intelligence — enhancing accuracy, reducing downtime,
+                  and enabling predictive operations.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative hidden md:block h-[350px] rounded-xl shadow-md overflow-hidden">
+              <Image
+                src={objectiveImage}
+                alt="Engineering services"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40 flex flex-col p-6">
+                <div className="w-full flex justify-end">
+                  <div className="w-[58%]">
+                    <h3 className="text-3xl font-semibold uppercase text-white mb-2">
+                      🎯 Objective
+                    </h3>
+                    <p className="text-white/90 text-lg">
+                      To build and operate a fully digitized manufacturing
+                      environment by integrating physical plant data with
+                      real-time digital intelligence — enhancing accuracy,
+                      reducing downtime, and enabling predictive operations.
+                    </p>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="absolute top-12 left-8 w-12 h-12 border-t border-l border-[#0098AF]/10" />
-            </motion.div>
-          </div>
-        </section>
-      </div>
+            <div className="absolute top-12 left-8 w-12 h-12 border-t border-l border-[#0098AF]/10" />
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }

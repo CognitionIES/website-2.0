@@ -23,7 +23,6 @@ export default function DigitalizationProject() {
       <Objective />
       <Scope />
       <ApproachSection />
-
       <Outcome />
       <Tech />
       <CTASection />

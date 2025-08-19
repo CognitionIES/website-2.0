@@ -195,7 +195,7 @@ const WhyChooseUs = () => {
           <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#5b5b5b]/2 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 z-1" />
           <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div
-              className="mb-20 max-w-7xl"
+              className="mb-12 max-w-7xl"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, ease: "easeOut" }}

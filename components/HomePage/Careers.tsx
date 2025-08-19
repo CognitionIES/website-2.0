@@ -7,24 +7,21 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { CAREERS_CONSTANTS } from "@/constants/home/careers";
-import { useIsMobile } from "@/hooks/use-mobile"; // Import the useMobile hook
+import { useIsMobile } from "@/hooks/use-mobile";
 
-// Define types for props and constants
 interface CareersContent {
   IMAGE: string;
   SUBTITLE: string;
   DESCRIPTION: string;
 }
 
-// Animation variants for consistent motion
 const motionVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-// Configuration for responsive design
 const responsiveConfig = {
-  sectionPadding: "py-10 sm:py-8 lg:py-12",
+  sectionPadding: "py-16 sm:py-12 lg:py-16",
   containerPadding: "px-4 sm:px-6 md:px-8 lg:px-12",
   gap: "gap-4 sm:gap-2 md:gap-8 lg:gap-12",
   imageSize: {
@@ -38,36 +35,43 @@ const responsiveConfig = {
     "top-2 right-2 sm:top-20 sm:right-8 md:top-24 md:right-12 lg:right-40",
 };
 
-// Main Careers component
 const Careers: React.FC = () => {
   const { IMAGE, SUBTITLE, DESCRIPTION } =
     CAREERS_CONSTANTS as unknown as CareersContent;
-
-  // Use the custom useMobile hook
   const isMobile = useIsMobile();
 
-  // Mobile Layout
   if (isMobile) {
     return (
       <section
-        className={`w-full ${responsiveConfig.sectionPadding} bg-gradient-to-b from-white to-[#E6F0F5]/20 relative overflow-hidden`}
+        className={`w-full ${responsiveConfig.sectionPadding} bg-gradient-to-b from-[#F5F7FA] to-[#E6F0F5]/60 relative overflow-hidden`}
       >
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 0.15, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2 }}
+            className="absolute top-1/5 left-1/5 w-48 h-48 bg-[#0098AF]/20 rounded-full blur-3xl -z-10"
+          />
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 0.05 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="absolute w-full h-full bg-dot-pattern bg-[length:20px_20px] opacity-[0.03]"
+          />
+        </div>
         <div className="max-w-[95%] sm:max-w-7xl mx-auto ${responsiveConfig.containerPadding}">
-          <div className="flex flex-col  sm:gap-8 md:gap-12">
-            {/* "We’re Hiring" Text */}
+          <div className="flex flex-col sm:gap-8 md:gap-12">
             <div className="">
-              <span className="inline-block  bg-[#0098af]/10 text-[#0098af] text-xs sm:text-sm font-medium uppercase tracking-wider rounded-full">
+              <span className="inline-block px-2 py-1 bg-[#0098AF]/10 text-[#0098AF] text-xs sm:text-sm font-medium uppercase tracking-wider rounded-full">
                 We&apos;re Hiring
               </span>
             </div>
-
-            {/* "Join Our Team" Title */}
             <h2 className="text-2xl sm:text-3xl font-bold text-[#003C46] leading-tight mt-2">
               Join Our Team
             </h2>
-            <div className="w-[60px] sm:w-[100px] h-[2px] md:h-[3px] bg-gradient-to-r from-[#0098af] to-transparent rounded-full mt-[3px]" />
-
-            {/* Image */}
+            <div className="w-[60px] sm:w-[100px] h-[2px] md:h-[3px] bg-gradient-to-r from-[#0098AF] to-[#007A8C] rounded-full mt-[3px]" />
             <div className="relative rounded-2xl mt-4 overflow-hidden shadow-lg">
               <Image
                 src={IMAGE}
@@ -78,19 +82,15 @@ const Careers: React.FC = () => {
                 priority
               />
             </div>
-
-            {/* Subtitle and Description */}
             <h3 className="text-lg sm:text-xl text-gray-600 font-medium leading-snug mt-4">
               {SUBTITLE}
             </h3>
             <p className="text-base sm:text-lg text-gray-600 mt-3 sm:mt-4 text-justify leading-relaxed">
               {DESCRIPTION}
             </p>
-
-            {/* "Opportunities" Button */}
             <div className="pt-6 text-left">
               <Link href="/careers">
-                <Button className="group bg-[#0098af] text-white hover:bg-white hover:text-[#003C46] text-sm sm:text-base font-medium transition-all duration-300 border-2 border-transparent hover:border-[#0098af] rounded-xl px-4 py-2.5 h-10 sm:h-11 shadow-md hover:shadow-lg">
+                <Button className="group bg-[#0098AF] text-white hover:bg-white hover:text-[#003C46] text-sm sm:text-base font-medium transition-all duration-300 border-2 border-transparent hover:border-[#0098AF] rounded-xl px-4 py-2.5 h-10 sm:h-11 shadow-md hover:shadow-lg">
                   <span>Opportunities</span>
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -102,14 +102,28 @@ const Careers: React.FC = () => {
     );
   }
 
-  // Desktop Layout (default)
   return (
     <section
-      className={`w-full ${responsiveConfig.sectionPadding} bg-gradient-to-b  from-white to-[#E6F0F5]/20 relative overflow-hidden`}
+      className={`w-full ${responsiveConfig.sectionPadding} bg-gradient-to-b from-[#F5F7FA] to-[#E6F0F5]/60 relative overflow-hidden`}
     >
-      <div className="max-w-[95%] sm:max-w-7xl mx-auto py-12 ${responsiveConfig.containerPadding}">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 0.15, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+          className="absolute top-1/5 left-1/5 w-64 h-64 bg-[#0098AF]/20 rounded-full blur-3xl -z-10"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.05 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="absolute w-full h-full bg-dot-pattern bg-[length:20px_20px] opacity-[0.03]"
+        />
+      </div>
+      <div className="max-w-[95%] sm:max-w-7xl mx-auto ${responsiveConfig.containerPadding}">
         <div className="grid grid-cols-1 md:grid-cols-3 ${responsiveConfig.gap} items-start md:items-center">
-          {/* Image Section */}
           <div className="relative md:col-span-2">
             <div className="rounded-2xl overflow-hidden shadow-lg">
               <Image
@@ -129,8 +143,6 @@ const Careers: React.FC = () => {
               </div>
             </div>
           </div>
-
-          {/* Text Content */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -140,16 +152,14 @@ const Careers: React.FC = () => {
           >
             <div className="ml-8">
               <div className="">
-                <span className="inline-block px-2 py-1 sm:px-3 sm:py-1.5 bg-[#0098af]/10 text-[#0098af] text-[10px] sm:text-xs font-medium uppercase tracking-wider rounded-full">
+                <span className="inline-block px-2 py-1 sm:px-3 sm:py-1.5 bg-[#0098AF]/10 text-[#0098AF] text-[10px] sm:text-xs font-medium uppercase tracking-wider rounded-full">
                   We&apos;re Hiring
                 </span>
               </div>
-
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#003C46] leading-tight mt-4 ">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#003C46] leading-tight mt-4">
                 Join Our Team
               </h2>
-              <div className="w-[60px] sm:w-[100px] h-[2px] md:h-[3px] bg-gradient-to-r from-[#0098af] to-transparent rounded-full mt-2 md:mt-0" />
-
+              <div className="w-[60px] sm:w-[100px] h-[2px] md:h-[3px] bg-gradient-to-r from-[#0098AF] to-[#007A8C] rounded-full mt-2 md:mt-0" />
               <h3 className="text-sm sm:text-lg md:text-xl text-gray-600 font-medium leading-snug mt-4 md:mt-8">
                 {SUBTITLE}
               </h3>
@@ -158,7 +168,7 @@ const Careers: React.FC = () => {
               </p>
               <div className="pt-6 sm:pt-12 text-left md:text-right">
                 <Link href="/careers">
-                  <Button className="group bg-[#0098af] text-white hover:bg-white hover:text-[#003C46] text-xs sm:text-sm md:text-base font-medium transition-all duration-300 border-2 border-transparent hover:border-[#0098af] rounded-xl px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 md:py-2.5 h-8 sm:h-9 md:h-10 shadow-md hover:shadow-lg">
+                  <Button className="group bg-[#0098AF] text-white hover:bg-white hover:text-[#003C46] text-xs sm:text-sm md:text-base font-medium transition-all duration-300 border-2 border-transparent hover:border-[#0098AF] rounded-xl px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 md:py-2.5 h-8 sm:h-9 md:h-10 shadow-md hover:shadow-lg">
                     <span>Opportunities</span>
                     <ArrowRight className="ml-1 sm:ml-2 h-3 sm:h-4 md:h-5 w-3 sm:w-4 md:w-5 transition-transform group-hover:translate-x-1" />
                   </Button>

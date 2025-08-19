@@ -1,20 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import keyImage from "@/constants/images/bg/key.jpg";
 import deliverablesImage from "@/constants/images/bg/deliverables.jpg";
 import Image from "next/image";
-import { useIsMobile } from "@/hooks/use-mobile"; // Assuming this hook exists
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const PCMKeyFindings = () => {
   const [isInView, setIsInView] = useState(false);
-  const sectionRef = useRef(null);
-  const isMobile = useIsMobile(); // Get isMobile from hook
+  const sectionRef = useRef<HTMLElement>(null);
+  const hasAnimated = useRef(false); // Track if animation has run
+  const isMobile = useIsMobile();
 
   const keyFindings = [
     "Major weight savings and design simplification opportunities were found across valves, cradles, tanks, and support structures",
-    "Several NorthStar components were over-engineered, leading to excess material usage and fabrication costs",
+    "Several Client's components were over-engineered, leading to excess material usage and fabrication costs",
     "Benchmark competitors utilized fabricated or modular designs with fewer parts and less hardware",
     "Opportunities to standardize SKUs across product families were identified to improve inventory and sourcing efficiency",
     "Areas such as hydraulic tanks, filter systems, and frames showed potential for leaner, cost-effective alternatives",
@@ -35,11 +38,13 @@ const PCMKeyFindings = () => {
     "Physical Competitive Benchmark Report",
   ];
 
-  // Intersection Observer setup
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        if (entry.isIntersecting && !hasAnimated.current) {
+          setIsInView(true);
+          hasAnimated.current = true; // Set to true after first view
+        }
       },
       {
         threshold: 0.2,
@@ -58,7 +63,6 @@ const PCMKeyFindings = () => {
     };
   }, []);
 
-  // Animation variants
   const containerVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -79,7 +83,7 @@ const PCMKeyFindings = () => {
       opacity: 1,
       scale: 1,
       transition: {
-        type: "spring" as const,
+        type: "spring",
         stiffness: 100,
         damping: 12,
         mass: 0.5,
@@ -94,12 +98,11 @@ const PCMKeyFindings = () => {
       scale: 1,
       transition: {
         duration: 1,
-        ease: "easeOut", // use a valid string easing
+        ease: "easeOut",
       },
     },
   };
 
-  // Parallax effect
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 300], [0, -50]);
   const y2 = useTransform(scrollY, [0, 300], [0, -30]);
@@ -109,10 +112,9 @@ const PCMKeyFindings = () => {
       <motion.div
         className="absolute inset-0 bg-gradient-to-b from-[#E6F0F5] via-white to-white opacity-90 z-0"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.9 }}
+        animate={isInView ? { opacity: 0.9 } : { opacity: 0 }}
         transition={{ duration: 1.5 }}
       />
-      {/* Decorative elements */}
       <motion.div
         variants={decorativeVariants}
         initial="hidden"
@@ -128,9 +130,8 @@ const PCMKeyFindings = () => {
 
       <section
         ref={sectionRef}
-        className="relative z-10 py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 "
+        className="relative z-10 py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        {/* Key Findings Section */}
         {isMobile ? (
           <motion.div
             variants={containerVariants}
@@ -144,7 +145,7 @@ const PCMKeyFindings = () => {
             >
               <span className="text-2xl">📌</span> Key Findings
             </motion.h2>
-            <motion.div variants={containerVariants} className="">
+            <motion.div variants={containerVariants}>
               {keyFindings.map((finding, idx) => (
                 <motion.div
                   key={idx}
@@ -152,7 +153,7 @@ const PCMKeyFindings = () => {
                   className="flex items-start px-2 py-1 gap-2"
                 >
                   <span className="text-[#00b4d8] mt-1">•</span>
-                  <p className="text-black/90  text-base  text-justify sm:text-base">
+                  <p className="text-black/90 text-base text-justify sm:text-base">
                     {finding}
                   </p>
                 </motion.div>
@@ -175,7 +176,6 @@ const PCMKeyFindings = () => {
                 className="w-full h-full opacity-40 object-cover"
               />
             </motion.div>
-            {/* Overlay text on top of the image */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#003C46]/10 to-[#0098af]/60 flex flex-col p-6">
               <motion.h2
                 className="text-4xl font-bold mb-6 flex items-center gap-2"
@@ -183,7 +183,6 @@ const PCMKeyFindings = () => {
               >
                 <span className="text-3xl">📌</span> Key Findings
               </motion.h2>
-
               <motion.div
                 variants={containerVariants}
                 className="grid grid-cols-1 md:grid-cols-1 gap-2"
@@ -207,7 +206,7 @@ const PCMKeyFindings = () => {
                       >
                         <span className="text-sm font-bold">{idx + 1}</span>
                       </motion.div>
-                      <p className="text-black transition-colors  duration-300">
+                      <p className="text-black transition-colors duration-300">
                         {finding}
                       </p>
                     </div>
@@ -218,7 +217,6 @@ const PCMKeyFindings = () => {
           </motion.div>
         )}
 
-        {/* Deliverables Section */}
         {isMobile ? (
           <motion.div
             variants={containerVariants}
@@ -234,13 +232,13 @@ const PCMKeyFindings = () => {
             </motion.h2>
             <motion.div
               variants={containerVariants}
-              className="grid grid-cols-2 sm:grid-cols-2 "
+              className="grid grid-cols-2 sm:grid-cols-2"
             >
               {deliverables.map((deliverable, idx) => (
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  className="flex items-start gap-2 p-1 rounded-lg "
+                  className="flex items-start gap-2 p-1 rounded-lg"
                 >
                   <CheckCircle className="text-[#00b4d8] h-4 w-4 mt-0.5" />
                   <span className="text-[#000000] text-base sm:text-base">
@@ -266,7 +264,6 @@ const PCMKeyFindings = () => {
                 className="w-full h-full object-cover"
               />
             </motion.div>
-            {/* Overlay text on top of the image */}
             <div className="absolute inset-0 bg-black/40 flex flex-col p-6">
               <motion.h2
                 className="text-4xl font-bold mb-6 flex items-center gap-2 bg-gradient-to-r from-[#003C46] to-[#0098af] bg-clip-text text-black/80"
@@ -274,7 +271,6 @@ const PCMKeyFindings = () => {
               >
                 <span className="text-3xl text-black">📦</span> Deliverables
               </motion.h2>
-
               <motion.div
                 variants={containerVariants}
                 className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-1"

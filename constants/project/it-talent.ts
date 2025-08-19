@@ -25,7 +25,7 @@ export const IT_TALENT_CONSTANTS = {
     },
     SECTION: {
       TITLE: "IT Talent Deployment",
-      SUBTITLE: "Contract Staffing for Full-Stack Development Team",
+      SUBTITLE: "Recruitment Support for Software Development Team",
       DESCRIPTION: "Successfully staffed and deployed a team of skilled full-stack developers (React & Node.js) for a growing IT company. Ensured quick turnaround, seamless onboarding, and end-to-end compliance support.",
       HIGHLIGHTS: [
         { TEXT: "Rapid deployment", ICON: "Zap" },

@@ -4,7 +4,7 @@ import { ChevronRight } from "lucide-react";
 
 const OpenPositions = () => {
   return (
-    <section id="positions" className="py-24 bg-[#F5FDFF]/30">
+    <section id="positions" className="py-16 bg-[#F5FDFF]/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <span className="inline-block px-3 py-1 bg-[#0098AF]/10 text-[#0098AF] text-sm font-medium rounded-full mb-4">

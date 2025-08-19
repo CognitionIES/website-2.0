@@ -1,4 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+"use client";
+
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -33,7 +34,7 @@ const projects: Project[] = [
   {
     id: "project-1",
     title: "Digitalization",
-    category: "Digital Transformation",
+    category: "Build And Operate",
     description:
       "Comprehensive Digital Transformation of a Manufacturing Plant through 3D Scanning, Digital Twin, and Real-Time Data Integration to Improve Efficiency and Accuracy.",
     image: digitalImage,
@@ -60,73 +61,58 @@ const RecentProjects = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        if (entry.isIntersecting) setIsInView(true);
       },
-      { threshold: 0.2 }
+      { threshold: 0.2, rootMargin: "0px" }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="w-full py-10 sm:py-8 lg:py-12 overflow-hidden relative"
-      >
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+      role="region"
+      aria-labelledby="projects-heading"
+      className="py-16 sm:py-12 lg:py-16 font-primary relative bg-gradient-to-b from-[#F0F9FB] to-white"
+    >
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-10 -left-10 w-40 h-40 rounded-full bg-[#0098af] opacity-5 blur-3xl"
-          animate={{ scale: [1, 1.05, 1], opacity: [0.05, 0.07, 0.05] }}
-          transition={{ duration: 8, repeat: Infinity, repeatType: "reverse" }}
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 0.15, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+          className="absolute top-1/4 left-1/4 w-56 h-56 bg-[#0098AF]/20 rounded-full blur-3xl -z-10"
         />
         <motion.div
-          className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-[#5b5b5b] opacity-5 blur-3xl"
-          animate={{ scale: [1, 1.1, 1], opacity: [0.05, 0.08, 0.05] }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            repeatType: "reverse",
-            delay: 1,
-          }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.05 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="absolute w-full h-full bg-dot-pattern bg-[length:22px_22px] opacity-[0.03]"
         />
-        <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-[#0098af] opacity-5 blur-3xl"></div>
-        <div className="absolute w-full h-full bg-dot-pattern bg-[length:20px_20px] opacity-[0.03]"></div>
       </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Section header */}
-        <div className="inline-block mb-1 bg-[#E6F0F5] bg-opacity-70 rounded-full backdrop-blur-sm px-3 py-1">
-          <p className="text-xs font-medium tracking-wider text-[#0098af] uppercase">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="inline-block px-3 py-1 bg-[#E6F0F5] rounded-full">
+          <p className="text-xs font-medium text-[#0098AF] uppercase">
             Featured Work
           </p>
         </div>
-        <motion.div
+        <motion.h1
+          id="projects-heading"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-4 sm:mb-6"
+          transition={{ duration: 0.6 }}
+          className="text-[24px] sm:text-[32px] font-heading font-semibold text-[#003C46] mt-2"
         >
-          <h1 className="text-xl sm:text-2xl lg:text-4xl font-semibold text-[#003C46] tracking-tight drop-shadow-sm">
-            Our Recent Projects
-          </h1>
-        </motion.div>
-
-        {/* Navigation buttons (desktop only) */}
-
-        {/* Projects grid with navigation */}
-        <div className="relative max-w-7xl">
+          Our Recent Projects
+        </motion.h1>
+        <div className="relative max-w-7xl mt-8">
           <div className="overflow-hidden">
             <div
-              className="flex transition-transform duration-500 ease-out gap-4 sm:gap-6 lg:gap-6"
+              className="flex gap-6 sm:gap-8 transition-transform duration-500"
               style={{
                 transform: `translateX(-${
                   activeIndex * (100 / visibleProjects)
@@ -138,20 +124,19 @@ const RecentProjects = () => {
                   key={project.id}
                   initial={{ opacity: 0, y: 30 }}
                   animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
                   }
                   transition={{ duration: 0.25, delay: 0.2 + index * 0.1 }}
                   className={cn(
-                    "project-card flex-shrink-0 w-full",
-                    isMobile ? "w-full" : "w-1/2"
+                    "project-card flex-shrink-0",
+                    isMobile ? "w-full" : "w-[45%]"
                   )}
                   whileHover={{ y: -5 }}
                 >
-                  <div className="group h-full bg-white/30 rounded-xl overflow-hidden shadow-sm border border-gray-100">
-                    {/* Image container */}
+                  <div className="h-full bg-white rounded-xl shadow-sm border border-[#003C46]/10 hover:border-[#0098AF] hover:shadow-[0_8px_20px_rgba(0,152,175,0.2)]">
                     <div className="relative h-[180px] sm:h-[240px] w-full overflow-hidden">
                       <div
-                        className="image-hover-scale absolute inset-0 bg-cover bg-center h-full w-full"
+                        className="absolute inset-0 bg-cover bg-center h-full w-full"
                         style={{
                           backgroundImage: `url(${
                             typeof project.image === "string"
@@ -160,33 +145,31 @@ const RecentProjects = () => {
                           })`,
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-60 group-hover:opacity-70 transition-opacity" />
-                      <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
-                        <div className="px-2 sm:px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full">
-                          <p className="text-[10px] sm:text-xs font-medium text-[#003C46]">
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#003C46]/40 to-transparent" />
+                      <div className="absolute top-4 left-4">
+                        <div className="px-3 py-1 bg-white/90 rounded-full">
+                          <p className="text-xs font-medium text-[#003C46]">
                             {project.category}
                           </p>
                         </div>
                       </div>
                     </div>
-
-                    {/* Content */}
-                    <div className="p-4 sm:p-6 space-y-2 sm:space-y-3">
-                      <h3 className="text-lg sm:text-2xl font-semibold text-[#5b5b5b] group-hover:text-[#0098af] transition-colors">
+                    <div className="p-6 space-y-3">
+                      <h3 className="text-[24px] font-heading font-semibold text-[#003C46] group-hover:text-[#0098AF]">
                         {project.title}
                       </h3>
-                      <p className="text-gray-600 line-clamp-3 text-sm sm:text-base leading-relaxed">
+                      <p className="text-base font-primary text-gray-600 line-clamp-3">
                         {project.description}
                       </p>
                       <Link
                         href={project.href}
-                        className="inline-flex items-center gap-1.5 text-sm sm:text-base font-medium text-[#0098af] group relative"
+                        className="inline-flex items-center gap-1.5 text-base font-medium text-[#0098AF] group"
                       >
                         <span className="relative">
                           View in detail
-                          <span className="absolute -bottom-px left-0 w-full h-px bg-[#0098af]/50 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                          <span className="absolute -bottom-px left-0 w-full h-px bg-[#0098AF]/50 group-hover:scale-x-100 scale-x-0 transition-transform" />
                         </span>
-                        <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </Link>
                     </div>
                   </div>
@@ -194,44 +177,40 @@ const RecentProjects = () => {
               ))}
             </div>
           </div>
+          {isMobile && (
+            <div className="flex justify-center gap-1.5 mt-4">
+              {projects.map((project, index) => (
+                <button
+                  key={project.id}
+                  className={cn(
+                    "w-2 h-2 rounded-full transition-all duration-300",
+                    activeIndex === index
+                      ? "bg-[#0098AF] scale-125"
+                      : "bg-[#5B5B5B]/20"
+                  )}
+                  onClick={() => setActiveIndex(index)}
+                  aria-label={`View ${project.title}`}
+                />
+              ))}
+            </div>
+          )}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-8 text-center"
+          >
+            <Link href="/projects">
+              <Button
+                variant="outline"
+                className="bg-[#0098AF] text-white hover:bg-white hover:text-[#003C46] hover:border-[#0098AF] rounded-full px-4 py-3 text-base"
+              >
+                View All Projects
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </motion.div>
         </div>
-
-        {/* Circular Indicators (mobile only) */}
-        {isMobile && (
-          <div className="flex justify-center gap-1.5 mt-4">
-            {projects.map((project, index) => (
-              <button
-                key={project.id}
-                className={cn(
-                  "w-2 h-2 rounded-full transition-all duration-300",
-                  activeIndex === index
-                    ? "bg-[#0098af] scale-125"
-                    : "bg-[#5b5b5b]/20"
-                )}
-                onClick={() => setActiveIndex(index)}
-                aria-label={`Go to ${project.title} project`}
-              />
-            ))}
-          </div>
-        )}
-
-        {/* View all projects button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-4 sm:mt-6 text-center"
-        >
-          <Link href="/projects">
-            <Button
-              variant="outline"
-              className="rounded-full bg-[#0098af] text-white hover:bg-white hover:text-black hover:outline hover:outline-2 hover:outline-[#0098af] px-3 py-2 sm:px-4 sm:py-3 h-auto text-sm sm:text-base font-medium border-[#0098af] transition-colors duration-300"
-            >
-              <span>View All Projects</span>
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

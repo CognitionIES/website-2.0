@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FiChevronRight, FiHome } from "react-icons/fi";
-import heroImage from "@/constants/images/projects/digitalization/hero-image-1.jpg";
+import heroImage from "@/constants/images/home/our-recent-projects/digitalization.jpg";
 
 const useIntersectionObserver = (threshold = 0.1) => {
   const [isVisible, setIsVisible] = useState(false);

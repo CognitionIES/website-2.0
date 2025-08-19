@@ -3,18 +3,19 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { MegaMenu } from "@/components/ui/Megamenu/MegaMenu";
+import Footer from "@/components/footer";
 import Hero from "./hero";
 import AboutSection from "./mainContent";
-import Footer from "@/components/footer";
-import { useIsMobile } from "@/hooks/use-mobile";
 import ServicesSection from "./Services";
 import IndustriesWeServe from "./industriesWeServe";
 import WhyPartner from "./CTA";
 import ProcessSection from "./process";
 import ToolsSection from "./tool";
+import { useIsMobile } from "@/hooks/use-mobile";
 
-const Index = () => {
+export default function Index() {
   const isMobile = useIsMobile();
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -38,27 +39,33 @@ const Index = () => {
     };
   }, []);
 
-  const handleContsactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Thank you for your message! We'll get back to you soon.");
-  };
-
   return (
-    <div className="h-auto w-full overflow-hidden relative">
-      <div className="absolute inset-0 pointer-events-none" />
+    <div className="h-auto w-full overflow-hidden relative bg-gradient-to-b from-[#F5FDFF] via-[#E6F0F5] to-[#F0F9FB]/80">
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 0.15, scale: 1 }}
+          transition={{ delay: 0.5, duration: 1.2 }}
+          className="absolute top-1/4 left-1/4 w-48 h-48 bg-[#0098AF]/20 rounded-full blur-3xl -z-10"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.05 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="absolute w-full h-full bg-dot-pattern bg-[length:20px_20px] opacity-[0.03]"
+        />
+      </div>
       <MegaMenu />
       <Hero />
-      <AboutSection />
-      <ServicesSection />
-      <ProcessSection />
-      <IndustriesWeServe />
-      <ToolsSection />
-      <section id="">
+      <section ref={sectionRef}>
+        <AboutSection />
+        <ServicesSection />
+        <ProcessSection />
+        <IndustriesWeServe />
+        <ToolsSection />
         <WhyPartner />
       </section>
       <Footer />
     </div>
   );
-};
-
-export default Index;
+}

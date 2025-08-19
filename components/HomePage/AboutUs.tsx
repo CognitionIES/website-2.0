@@ -59,7 +59,7 @@ const AboutUs = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full py-10 sm:py-8 lg:py-12 relative"
+      className="w-full py-16 sm:py-12 lg:py-16 relative"
     >
       {/* Subtle background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -98,7 +98,7 @@ const AboutUs = () => {
           animate={controls}
         />
 
-        <div className="grid grid-cols-1 mt-8 md:grid-cols-[1fr_auto] items-start gap-10 md:gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 mt-6 md:grid-cols-[1fr_auto] items-start gap-10 md:gap-8 max-w-7xl mx-auto">
           {/* Text content */}
           <motion.div
             className="order-2 mt-4 md:order-1"

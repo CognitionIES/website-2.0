@@ -95,7 +95,7 @@ const RecentProjects = () => {
                   }`}
                   style={{ transitionDelay: "600ms" }}
                 >
-                  Contract Staffing for Full-Stack Development Team
+                  Recruitment Support for Software Development Team
                 </h4>
                 <p
                   className={`text-[#5B5B5B] mb-8 leading-relaxed transition-all duration-500 ${
@@ -105,7 +105,7 @@ const RecentProjects = () => {
                   }`}
                   style={{ transitionDelay: "700ms" }}
                 >
-                  Successfully staffed and deployed a team of skilled full-stack
+                  Successfully recruited and deployed a team of skilled full-stack
                   developers (React & Node.js) for a growing IT company. Ensured
                   quick turnaround, seamless onboarding, and end-to-end
                   compliance support.

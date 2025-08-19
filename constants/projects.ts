@@ -11,7 +11,7 @@ export const projects: Project[] = [
   {
     id: 1,
     title: "IT Talent Deployment",
-    category: "Contract Staffing for Full-Stack Development Team",
+    category: "Recruitment Support for Software Development Team",
     description:
       "Successfully staffed and deployed a team of skilled full-stack developers (React & Node.js) for a growing IT company. Ensured quick turnaround, seamless onboarding, and end-to-end compliance support for a 12-month contract.",
     image:

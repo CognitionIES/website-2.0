@@ -255,7 +255,7 @@ const RecentProjects = () => {
                   }`}
                   style={{ transitionDelay: "600ms" }}
                 >
-                  Contract Staffing for Full-Stack Development Team
+                  Recruitment Support for Software Development Team
                 </h4>
 
                 <p
@@ -266,7 +266,7 @@ const RecentProjects = () => {
                   }`}
                   style={{ transitionDelay: "700ms" }}
                 >
-                  Successfully staffed and deployed a team of skilled full-stack
+                  Successfully recruited and deployed a team of skilled full-stack
                   developers (React & Node.js) for a growing IT company. Ensured
                   quick turnaround, seamless onboarding, and end-to-end
                   compliance support.
@@ -318,7 +318,7 @@ const ProjectOverview = () => {
     <section
       id="project-overview"
       ref={setRef}
-      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+      className="py-16 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
       <div className="absolute top-20 right-10 w-64 h-64 bg-[#0098AF]/5 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 left-10 w-48 h-48 bg-[#99D5DF]/10 rounded-full blur-2xl animate-float"></div>
@@ -445,7 +445,7 @@ const Objectives = () => {
   return (
     <section
       ref={setRef}
-      className="py-24 bg-gradient-to-br from-[#F5FDFF] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+      className="py-16 bg-gradient-to-br from-[#F5FDFF] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-[#0098AF] rounded-full animate-ping"></div>
@@ -598,7 +598,7 @@ const ProjectApproach = () => {
   return (
     <section
       ref={setRef}
-      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+      className="py-16 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
       <div className="absolute top-20 right-10 w-80 h-80 bg-[#0098AF]/5 rounded-full blur-3xl animate-float"></div>
       <div className="absolute bottom-20 left-10 w-64 h-64 bg-[#99D5DF]/10 rounded-full blur-2xl animate-float-delayed"></div>
@@ -743,7 +743,7 @@ const KeyResults = () => {
   return (
     <section
       ref={setRef}
-      className="py-24 bg-gradient-to-br from-[#F5FDFF] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+      className="py-16 bg-gradient-to-br from-[#F5FDFF] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-[#0098AF] rounded-full animate-ping"></div>
@@ -963,7 +963,7 @@ const TechAndTestimonial = () => {
   return (
     <section
       ref={setRef}
-      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+      className="py-16 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div

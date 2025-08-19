@@ -76,7 +76,7 @@ export default function StatSection() {
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <div className="relative overflow-hidden bg-gradient-to-br from-[#003C46] via-[#0098AF] to-[#0098AF]-hover">
-          <div className="relative max-w-7xl mx-auto px-6 py-24">
+          <div className="relative max-w-7xl mx-auto px-6 py-16">
             <div className="text-center">
               <h1 className="text-5xl font-bold text-white mb-6 leading-tight">
                 Staffing & Recruitment

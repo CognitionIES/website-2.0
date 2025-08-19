@@ -19,7 +19,7 @@ export const staffingProjects: Project[] = [
   {
     id: "it-talent-deployment",
     title: "IT Talent Deployment",
-    category: "Contract Staffing for Full-Stack Development Team",
+    category: "Recruitment Support for Software Development Team",
     description:
       "Successfully staffed and deployed a team of skilled full-stack developers (React & Node.js) for a growing IT company. Ensured quick turnaround, seamless onboarding, and end-to-end compliance support.",
     image:
@@ -32,7 +32,7 @@ export const staffingProjects: Project[] = [
   {
     id: "eng-talent-deployment",
     title: "Engineering Talent Deployment",
-    category: "Strategic Staffing Solution for Engineering Teams ",
+    category: "Recruitment Support for Engineering Teams ",
     description:
       "Delivering experienced engineering professionals to support design, development, and execution across capital projects, manufacturing setups, and plant engineering functions.",
     image: heroImage,

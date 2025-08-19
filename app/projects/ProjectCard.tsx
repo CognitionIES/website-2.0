@@ -61,7 +61,7 @@ export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      whileHover={{ y: -8 }}
+      whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
       <div className="relative h-full bg-white/95 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-white/20 hover:shadow-2xl transition-all duration-700 hover:border-[#0098AF]/30">

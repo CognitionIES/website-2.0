@@ -34,7 +34,7 @@ export default function ContactSection() {
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const isMobile = useIsMobile();
-  const [hasAnimated, setHasAnimated] = useState(false); // Track if animation has run
+  const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   const { TITLE, DESCRIPTION, EMAIL } = CONTACT_CONSTANTS.CONTACT;
@@ -44,7 +44,7 @@ export default function ContactSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true); // Mark as animated once it enters view
+          setHasAnimated(true);
         }
       },
       { threshold: 0.2 }
@@ -117,25 +117,13 @@ export default function ContactSection() {
   );
 
   const interestOptions = [
-    { value: "Staffing And Recruitment", label: "Staffing And Recruitment" },
+    {
+      value: " Recruitment And Resources",
+      label: " Recruitment And Resources",
+    },
     { value: "Build And Operate", label: "Build And Operate" },
     { value: "ServiceCPQ", label: "ServiceCPQ" },
     { value: "Others", label: "Others" },
-  ];
-
-  const locations = [
-    {
-      name: "Headquarters",
-      address: "Kplex, Genda Circle, Vadodara, Gujarat, India",
-    },
-    {
-      name: "Branch",
-      address: "Delhi, India",
-    },
-    {
-      name: "Branch",
-      address: "Chicago, IL, USA",
-    },
   ];
 
   const fadeInVariants = {
@@ -145,7 +133,7 @@ export default function ContactSection() {
       y: 0,
       transition: {
         duration: 0.7,
-        once: true, // Ensure animation runs only once
+        once: true,
       },
     },
   };
@@ -157,7 +145,7 @@ export default function ContactSection() {
       y: 0,
       transition: {
         duration: 0.3,
-        once: true, // Ensure animation runs only once
+        once: true,
       },
     },
   };
@@ -166,9 +154,25 @@ export default function ContactSection() {
   const StatusText = isMobile ? "p" : motion.p;
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section className="py-12 md:py-16 lg:py-16 bg-gradient-to-b from-[#F0F9FB] to-[#D9E8ED]/60 relative overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 0.15, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+          className="absolute top-1/4 right-1/4 w-56 h-56 bg-[#0098AF]/20 rounded-full blur-3xl -z-10"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.05 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="absolute w-full h-full bg-dot-pattern bg-[length:20px_20px] opacity-[0.03]"
+        />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className=" mb-12">
+        <div className="mb-12">
           <h1 className="text-xl sm:text-2xl lg:text-4xl font-semibold text-[#003C46] tracking-tight drop-shadow-sm">
             {TITLE}
           </h1>
@@ -176,7 +180,6 @@ export default function ContactSection() {
             {DESCRIPTION}
           </p>
         </div>
-
         <section ref={sectionRef} className="relative">
           <Container
             {...(!isMobile && {
@@ -186,8 +189,6 @@ export default function ContactSection() {
             })}
             className="grid grid-cols-1 lg:grid-cols-3 gap-8"
           >
-            {" "}
-            {/* Contact Info & Locations */}
             <div className="lg:col-span-1 space-y-8">
               <div className="bg-white p-6 rounded-2xl shadow-lg">
                 <h3 className="text-xl font-semibold text-[#003C46] mb-4 flex items-center gap-2">
@@ -202,23 +203,36 @@ export default function ContactSection() {
                   {EMAIL.ADDRESS}
                 </Link>
               </div>
-
               <div className="bg-white p-6 rounded-2xl shadow-lg">
                 <h3 className="text-xl font-semibold text-[#003C46] mb-4 flex items-center gap-2">
                   <FiMapPin className="text-[#0098AF]" />
                   Our Locations
                 </h3>
-                {locations.map((location, index) => (
-                  <div key={index} className="mb-4 last:mb-0">
-                    <p className="text-sm font-semibold text-gray-800">
-                      {location.name}
-                    </p>
-                    <p className="text-sm text-gray-600">{location.address}</p>
-                  </div>
-                ))}
+                <div className="mb-4">
+                  <p className="text-sm font-semibold text-gray-800">
+                    Headquarters
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Vadodara, India - 390007
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    1st floor Kplex, Genda Circle, Vadodara, Gujarat, India
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <p className="text-sm font-semibold text-gray-800">
+                    Branch Office
+                  </p>
+                  <p className="text-sm text-gray-600">Delhi, India</p>
+                </div>
+                <div className="mb-0">
+                  <p className="text-sm font-semibold text-gray-800">
+                    Branch Office
+                  </p>
+                  <p className="text-sm text-gray-600">Chicago, IL, USA</p>
+                </div>
               </div>
             </div>
-            {/* Contact Form */}
             <div className="lg:col-span-2 bg-white p-8 rounded-2xl shadow-lg border-l-4 border-[#0098AF]">
               <h2 className="text-2xl font-semibold text-[#003C46] mb-6">
                 Get in Touch

@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import {
   SearchIcon,
   GlobeIcon,
@@ -69,7 +72,7 @@ const processSteps: ProcessStep[] = [
   },
 ];
 
-const ProcessSection: React.FC = () => {
+export default function ProcessSection() {
   const [visibleSteps, setVisibleSteps] = useState<Set<string>>(new Set());
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -87,7 +90,7 @@ const ProcessSection: React.FC = () => {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
     const stepElements = sectionRef.current?.querySelectorAll("[data-step-id]");
@@ -99,120 +102,84 @@ const ProcessSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-[#F5FDFF]/50"
+      className="py-16 sm:py-12 lg:py-16 relative bg-gradient-to-b from-white to-[#F5F7FA]/80 overflow-hidden"
+      aria-labelledby="process-section-title"
     >
-      {/* Background pattern */}
-      <div
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: `
-            radial-gradient(circle at 25% 25%, hsl(185 64% 73% / 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 75% 75%, hsl(188 100% 34% / 0.1) 0%, transparent 50%)
-          `,
-        }}
-      ></div>
-
-      <div className="relative px-4 sm:px-6 lg:px-8 z-10 max-w-7xl mx-auto">
-        {/* Section header */}
-        <div className=" mb-16">
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 0.15, scale: 1 }}
+          transition={{ duration: 1.2 }}
+          className="absolute top-1/4 left-1/4 w-48 h-48 bg-[#0098AF]/20 rounded-full blur-3xl -z-10"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.05 }}
+          transition={{ duration: 1 }}
+          className="absolute w-full h-full bg-dot-pattern bg-[length:20px_20px] opacity-[0.03]"
+        />
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-12">
           <h2
-            className=" font-bold text-2xl md:text-3xl lg:text-4xl mb-4"
-            style={{ color: "hsl(193 100% 23%)" }}
+            id="process-section-title"
+            className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-[#003C46]"
           >
-            How We <span style={{ color: "hsl(188 100% 34%)" }}>Work</span>
+            How We <span className="text-[#0098AF]">Work</span>
           </h2>
-          <p
-            className="text-lg max-w-7xl mx-auto "
-            style={{ color: "hsl(200 20% 35%)" }}
-          >
+          <p className="text-sm sm:text-base lg:text-lg font-roboto text-[#5B5B5B] mt-4 leading-relaxed">
             A Unified Talent Acquisition Process for Every Hiring Model. Whether
             you need permanent hires, project-based consultants, or scalable
             offshore teams — our streamlined recruitment methodology delivers
             the right talent, every time.
           </p>
         </div>
-
-        {/* Process steps */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {processSteps.map((step, index) => {
             const IconComponent = step.icon;
             const isVisible = visibleSteps.has(step.id);
 
             return (
               <div key={step.id} className="relative">
-                <div
+                <motion.div
                   data-step-id={step.id}
                   data-delay={index * 200}
-                  className={`transition-all duration-700 ${
-                    isVisible ? "fade-in-up" : "opacity-0 translate-y-8"
-                  }`}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={
+                    isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                  }
+                  transition={{ duration: 0.7, delay: index * 0.1 }}
+                  className="p-6 bg-white/95 backdrop-blur-md rounded-xl shadow-lg border-[#003C46]/20 hover:shadow-[0_8px_20px_rgba(0,152,175,0.2)] hover:border-[#0098AF]/50 hover:scale-[1.02] transition-all duration-500 text-center"
                 >
-                  <div
-                    className="p-8 bg-white rounded-3xl transition-all duration-300 hover:-translate-y-2 text-center"
-                    style={{
-                      boxShadow: "0 4px 20px hsl(188 100% 34% / 0.15)",
-                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.boxShadow =
-                        "0 10px 30px -10px hsl(193 100% 23% / 0.3)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.boxShadow =
-                        "0 4px 20px hsl(188 100% 34% / 0.15)";
-                    }}
-                  >
-                    <div
-                      className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6"
-                      style={{ backgroundColor: "hsl(188 100% 34%)" }}
-                    >
-                      <IconComponent className="text-white w-8 h-8" />
-                    </div>
-
-                    <h3
-                      className="font-montserrat font-bold text-2xl mb-4"
-                      style={{ color: "hsl(193 100% 23%)" }}
-                    >
-                      {index + 1}. {step.title}
-                    </h3>
-
-                    <p
-                      className="font-roboto mb-4 leading-relaxed"
-                      style={{ color: "hsl(200 20% 35%)" }}
-                    >
-                      {step.description}
-                    </p>
-
-                    <div
-                      className="p-4 rounded-xl"
-                      style={{ backgroundColor: "hsl(185 64% 73% / 0.2)" }}
-                    >
-                      <p
-                        className="font-roboto font-medium text-sm"
-                        style={{ color: "hsl(193 100% 23%)" }}
-                      >
-                        <span className="font-semibold">Deliverable:</span>{" "}
-                        {step.deliverable}
-                      </p>
-                    </div>
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 bg-[#0098AF] hover:bg-[#007A8C] transition-colors duration-300">
+                    <IconComponent className="text-white w-6 h-6" />
                   </div>
-                </div>
-
-                {/* Arrow for larger screens */}
+                  <h3 className="text-lg sm:text-xl font-montserrat font-bold text-[#003C46] mb-2">
+                    {index + 1}. {step.title}
+                  </h3>
+                  <p className="text-sm sm:text-base font-roboto text-[#5B5B5B] leading-relaxed mb-4">
+                    {step.description}
+                  </p>
+                  <div className="p-3 rounded-xl bg-[#0098AF]/10">
+                    <p className="text-xs sm:text-sm font-roboto font-medium text-[#003C46]">
+                      <span className="font-semibold">Deliverable:</span>{" "}
+                      {step.deliverable}
+                    </p>
+                  </div>
+                </motion.div>
                 {index < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-6 transform -translate-y-1/2 z-10">
-                    <div
-                      className="w-8 h-8"
-                      style={{ color: "hsl(188 100% 34%)" }}
+                  <div className="hidden lg:block absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 z-10">
+                    <svg
+                      className="w-6 h-6 text-[#0098AF]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                     >
-                      <svg fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
                   </div>
                 )}
               </div>
@@ -222,6 +189,4 @@ const ProcessSection: React.FC = () => {
       </div>
     </section>
   );
-};
-
-export default ProcessSection;
+}

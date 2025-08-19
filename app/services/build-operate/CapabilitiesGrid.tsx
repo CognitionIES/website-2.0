@@ -176,7 +176,7 @@ const CapabilityCard: React.FC<CapabilityCardProps> = ({ capability }) => {
 const CapabilitiesGrid = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <section className="py-24 bg-gradient-to-br from-white via-slate-50/30 to-white relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-br from-white via-slate-50/30 to-white relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-[#003c46]/3 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#1c7a8a]/4 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />

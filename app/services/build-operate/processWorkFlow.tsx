@@ -31,6 +31,7 @@ export function ProcessWorkflow() {
 
   return (
     <section
+      id="process-workflow"
       ref={ref}
       className="relative py-16 bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 overflow-hidden"
       aria-labelledby="process-workflow-title"

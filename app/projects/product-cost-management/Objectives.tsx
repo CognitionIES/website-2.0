@@ -6,17 +6,21 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import objectiveImage from "@/constants/images/projects/pcm/objective.jpg";
 import objectiveImage2 from "@/constants/images/projects/pcm/objective-two.jpg";
-import { useIsMobile } from "@/hooks/use-mobile"; // Assuming this hook exists
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function Objectives() {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const isMobile = useIsMobile(); // Get isMobile from hook
+  const hasAnimated = useRef(false); // Track if animation has run
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        if (entry.isIntersecting && !hasAnimated.current) {
+          setIsInView(true);
+          hasAnimated.current = true; // Set to true after first view
+        }
       },
       {
         threshold: 0.2,
@@ -84,8 +88,8 @@ export default function Objectives() {
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 flex text-left items-center  bg-black/50 p-4 sm:p-6">
-                      <h3 className="text-2xl sm:text-2xl font-semibold uppercase text-white ">
+                    <div className="absolute inset-0 flex text-left items-center bg-black/50 p-4 sm:p-6">
+                      <h3 className="text-2xl sm:text-2xl font-semibold uppercase text-white">
                         🎯 Client Objectives
                       </h3>
                     </div>
@@ -117,21 +121,18 @@ export default function Objectives() {
                   </div>
                 </div>
 
-                {/* Mobile Roles Builts */}
+                {/* Mobile Roles Built */}
                 <div className="rounded-xl shadow-md overflow-hidden">
-                  {" "}
                   <div className="bg-[#003C46] p-3 sm:p-6">
-                    {" "}
                     <h3 className="text-xl sm:text-4xl font-semibold uppercase text-white mb-4">
                       💼 Roles Built
                     </h3>
-                    <div className=" grid grid-cols-1 md:grid-cols-2">
-                      {/* Market Positioning */}
+                    <div className="grid grid-cols-1 md:grid-cols-2">
                       <div>
                         <div className="space-y-2">
                           {[
                             "Product Designer",
-                            "Costing Engineer ",
+                            "Costing Engineer",
                             "Manufacturing Engineer",
                             "Hydraulic – SME",
                             "FEA Engineer",
@@ -139,7 +140,7 @@ export default function Objectives() {
                           ].map((item, index) => (
                             <motion.p
                               key={index}
-                              custom={index + 8} // Offset for previous list
+                              custom={index + 8}
                               variants={mobileItemVariants}
                               initial="hidden"
                               animate={isInView ? "visible" : "hidden"}
@@ -159,7 +160,6 @@ export default function Objectives() {
 
             {!isMobile && (
               <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-6 lg:gap-8">
-                {/* Desktop Client Objectives */}
                 <div className="relative h-[400px] lg:h-[430px] rounded-xl shadow-md overflow-hidden">
                   <Image
                     src={objectiveImage}
@@ -193,7 +193,6 @@ export default function Objectives() {
                   </div>
                 </div>
 
-                {/* Desktop Roles Built */}
                 <div className="relative h-[400px] lg:h-[430px] rounded-xl shadow-md overflow-hidden">
                   <Image
                     src={objectiveImage2}
@@ -210,7 +209,7 @@ export default function Objectives() {
                         <div className="space-y-2">
                           {[
                             "Product Designer",
-                            "Costing Engineer ",
+                            "Costing Engineer",
                             "Manufacturing Engineer",
                             "Hydraulic – SME",
                             "FEA Engineer",

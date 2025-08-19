@@ -1,41 +1,18 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion, Variants } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile"; // Assuming this hook exists
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function Tech() {
   const techItemsRef = useRef<(HTMLLIElement | null)[]>([]);
   const containerRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [isInView, setIsInView] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile(); // Get isMobile from hook
+  const isMobile = useIsMobile();
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
-      {
-        threshold: 0.2,
-        rootMargin: "0px 0px -20% 0px",
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isInView && !isMobile) {
-      // Desktop animations
+    if (!hasAnimated.current && !isMobile) {
+      hasAnimated.current = true;
       techItemsRef.current.forEach((item, index) => {
         if (item) {
           setTimeout(() => {
@@ -54,9 +31,8 @@ export default function Tech() {
         }
       });
     }
-  }, [isInView, isMobile]);
+  }, []);
 
-  // Animation variants
   const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -65,6 +41,7 @@ export default function Tech() {
       transition: {
         duration: 0.8,
         ease: "easeOut",
+        when: "beforeChildren",
       },
     },
   };
@@ -75,7 +52,7 @@ export default function Tech() {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.2,
+        delay: hasAnimated.current ? 0 : i * 0.2,
         duration: 0.6,
         ease: "easeOut",
       },
@@ -88,14 +65,13 @@ export default function Tech() {
       opacity: 1,
       y: 0,
       transition: {
-        delay: 0.1 * index,
+        delay: hasAnimated.current ? 0 : 0.1 * index,
         duration: 0.5,
         ease: "easeOut",
       },
     }),
   };
 
-  // Common data
   const technologies = [
     "3D Laser Scanning Equipment: For precise spatial data acquisition.",
     "AI-Powered Analysis Tools: To validate and analyze scan data against design specifications.",
@@ -111,20 +87,19 @@ export default function Tech() {
 
   return (
     <div>
-      <section
-        ref={sectionRef}
-        className="w-full py-8 sm:py-10 lg:py-12 relative overflow-hidden"
-      >
-        <div className="">
+      <section className="w-full py-8 sm:py-10 lg:py-12 relative overflow-hidden">
+        <div>
           <motion.div
-            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  relative z-10"
+            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
             variants={sectionVariants}
             initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
+            animate={hasAnimated.current ? "visible" : "hidden"}
+            onAnimationComplete={() => {
+              hasAnimated.current = true;
+            }}
           >
             {isMobile && (
-              <div className="space-y-8 ">
-                {/* Mobile Technologies */}
+              <div className="space-y-8">
                 <motion.div
                   ref={(el) => {
                     containerRefs.current[0] = el;
@@ -133,7 +108,7 @@ export default function Tech() {
                   variants={containerVariants}
                   custom={0}
                   initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
+                  animate="visible"
                 >
                   <h3 className="text-lg sm:text-xl font-semibold text-[#003C46] mb-4 flex items-center">
                     <span className="text-[#0098AF] mr-2">💡</span>
@@ -146,7 +121,7 @@ export default function Tech() {
                         custom={index}
                         variants={mobileItemVariants}
                         initial="hidden"
-                        animate={isInView ? "visible" : "hidden"}
+                        animate="visible"
                         className="flex items-start p-2 rounded-md hover:bg-gray-50"
                       >
                         <span className="text-[#0098AF] mr-2 mt-1">⦿</span>
@@ -156,7 +131,6 @@ export default function Tech() {
                   </ul>
                 </motion.div>
 
-                {/* Mobile Client Feedback */}
                 <motion.div
                   ref={(el) => {
                     containerRefs.current[1] = el;
@@ -165,7 +139,7 @@ export default function Tech() {
                   variants={containerVariants}
                   custom={1}
                   initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
+                  animate="visible"
                 >
                   <h3 className="text-lg sm:text-xl font-semibold text-[#003C46] mb-4 flex items-center">
                     <span className="text-[#0098AF] mr-2">🔄</span>
@@ -184,7 +158,6 @@ export default function Tech() {
 
             {!isMobile && (
               <div className="grid grid-cols-1 md:grid-cols-5 gap-6 lg:gap-8">
-                {/* Desktop Technologies */}
                 <motion.div
                   ref={(el) => {
                     containerRefs.current[0] = el;
@@ -193,7 +166,7 @@ export default function Tech() {
                   variants={containerVariants}
                   custom={0}
                   initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
+                  animate="visible"
                 >
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#003C46] mb-4 flex items-center">
                     <span className="text-[#0098AF] mr-2">💡</span>
@@ -217,7 +190,6 @@ export default function Tech() {
                   </ul>
                 </motion.div>
 
-                {/* Desktop Client Feedback */}
                 <motion.div
                   ref={(el) => {
                     containerRefs.current[1] = el;
@@ -226,7 +198,7 @@ export default function Tech() {
                   variants={containerVariants}
                   custom={1}
                   initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
+                  animate="visible"
                 >
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#003C46] mb-4 flex items-center">
                     <span className="text-[#0098AF] mr-2">🔄</span>

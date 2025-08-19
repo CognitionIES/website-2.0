@@ -1,39 +1,18 @@
+
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion, Variants } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function ApproachSection() {
   const listRefs = useRef<(HTMLLIElement | null)[]>([]);
-  const [isInView, setIsInView] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
-      {
-        threshold: 0.2,
-        rootMargin: "0px 0px -20% 0px",
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isInView && !isMobile) {
+    if (!hasAnimated.current && !isMobile) {
+      hasAnimated.current = true;
       listRefs.current.forEach((item, index) => {
         if (item) {
           setTimeout(() => {
@@ -43,7 +22,7 @@ export default function ApproachSection() {
         }
       });
     }
-  }, [isInView, isMobile]);
+  }, []);
 
   const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
@@ -53,6 +32,7 @@ export default function ApproachSection() {
       transition: {
         duration: 0.8,
         ease: "easeOut",
+        when: "beforeChildren",
       },
     },
   };
@@ -63,7 +43,7 @@ export default function ApproachSection() {
       opacity: 1,
       y: 0,
       transition: {
-        delay: 0.1 * index,
+        delay: hasAnimated.current ? 0 : 0.1 * index,
         duration: 0.5,
         ease: "easeOut",
       },
@@ -95,15 +75,15 @@ export default function ApproachSection() {
 
   return (
     <div>
-      <section
-        ref={sectionRef}
-        className="w-full py-8 sm:py-10 lg:py-12 relative overflow-hidden"
-      >
+      <section className="w-full py-8 sm:py-10 lg:py-12 relative overflow-hidden">
         <motion.div
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
           variants={sectionVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate={hasAnimated.current ? "visible" : "hidden"}
+          onAnimationComplete={() => {
+            hasAnimated.current = true;
+          }}
         >
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#003C46] mb-8 flex items-center">
             <span className="text-[#0098af] mr-2">🛠️</span> Build & Operate Model Approach
@@ -118,7 +98,7 @@ export default function ApproachSection() {
                     custom={index}
                     variants={mobileItemVariants}
                     initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
+                    animate="visible"
                     className="flex items-start"
                   >
                     <span className="text-[#0098af] pr-3 mt-1">⦿</span>

@@ -21,60 +21,60 @@ const Careers = dynamic(() => import("@/components/HomePage/Careers"), {
 
 export default function Home() {
   return (
-    <div>
+    <div className="relative bg-gradient-to-b from-[#F5FDFF] via-[#E6F0F5] to-[#F0F9FB]/80">
       <MegaMenu />
       <Hero />
-      <div className="min-h-screen  text-gray-900 font-sans relative">
+      <div className="min-h-screen text-gray-900 font-sans relative overflow-hidden">
         <main className="relative">
-          <section className="w-full  relative">
+          <section className="w-full relative">
             <AboutUs />
           </section>
-          <section className=" relative">
+          <section className="relative">
             <ServicesShowcase />
           </section>
-          <section className=" relative">
+          <section className="relative">
             <RecentProjects />
           </section>
-          <section className=" relative">
+          <section className="relative">
             <TestimonialSlider />
           </section>
-          <section className="w-full  relative overflow-hidden">
+          <section className="w-full relative overflow-hidden">
             <Careers />
           </section>
-          <section className=" bg-gradient-to-b from-[#F5FDFF] to-[#99D5DF]/30 relative">
+          <section className="relative bg-gradient-to-b from-[#F0F9FB] to-[#D9E8ED]/60">
             <ContactSection />
           </section>
           <CTA />
         </main>
         <Footer />
-        {/* Decorative Elements */}
+        {/* Enhanced Decorative Elements */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.15 }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 0.2, scale: 1 }}
           transition={{
-            delay: 1,
-            duration: 1,
+            delay: 0.5,
+            duration: 1.2,
             repeat: Infinity,
             repeatType: "reverse",
           }}
-          className="absolute top-1/4 left-10 w-5 h-5 bg-[#0098AF] rounded-full -z-10"
+          className="absolute top-1/5 left-16 w-6 h-6 bg-[#0098AF] rounded-full blur-md -z-10"
         />
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 0.1, scale: 1 }}
-          transition={{ delay: 0.7, duration: 1 }}
-          className="absolute bottom-1/3 right-1/4 w-32 h-32 bg-[#99D5DF] rounded-full blur-2xl -z-10"
+          animate={{ opacity: 0.15, scale: 1 }}
+          transition={{ delay: 0.8, duration: 1.5 }}
+          className="absolute bottom-1/4 right-20 w-48 h-48 bg-[#99D5DF]/50 rounded-full blur-3xl -z-10"
         />
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.2 }}
+          animate={{ opacity: 0.1 }}
           transition={{
-            delay: 1.5,
+            delay: 1.2,
             duration: 1,
             repeat: Infinity,
             repeatType: "reverse",
           }}
-          className="absolute top-1/2 right-12 w-4 h-4 bg-[#5B5B5B] rounded-full -z-10"
+          className="absolute top-3/4 left-1/3 w-8 h-8 bg-[#003C46]/30 rounded-full blur-sm -z-10"
         />
       </div>
     </div>

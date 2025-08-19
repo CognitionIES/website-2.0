@@ -124,7 +124,7 @@ const KeyResults = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className=" mb-8"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-[#003C46] mb-6">
             Key Results &{" "}
@@ -132,7 +132,7 @@ const KeyResults = () => {
               Impact
             </span>
           </h2>
-          <p className="text-xl text-[#5B5B5B] max-w-3xl mx-auto">
+          <p className="text-xl text-[#5B5B5B] max-w-7xl mx-auto">
             Measurable outcomes that exceeded expectations and delivered
             exceptional value to our client
           </p>
@@ -143,7 +143,7 @@ const KeyResults = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
         >
           {results.map((result, index) => (
             <motion.div
@@ -270,7 +270,7 @@ const KeyResults = () => {
               Project Successfully Completed
             </h3>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Delivered a complete engineering team of 30+ professionals with
+              Delivered a complete engineering team of 40+ professionals with
               zero attrition, exceeding all performance metrics and client
               expectations
             </p>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import Image from "next/image";
@@ -9,12 +10,16 @@ import approachImage from "@/constants/images/projects/pcm/pcm-approach.jpg";
 export default function ProjectApproach() {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const hasAnimated = useRef(false); // Track if animation has run
   const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        if (entry.isIntersecting && !hasAnimated.current) {
+          setIsInView(true);
+          hasAnimated.current = true; // Set to true after first view
+        }
       },
       {
         threshold: 0.2,

@@ -97,7 +97,7 @@ export default function ContactSection() {
   ];
 
   return (
-    <section className="py-24 bg-white relative">
+    <section className="py-16 bg-white relative">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial="hidden"

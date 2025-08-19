@@ -1,40 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion, Variants } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile"; // Assuming this hook exists
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function Scope() {
   const listRefs = useRef<(HTMLLIElement | null)[]>([]);
-  const [isInView, setIsInView] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile(); // Get isMobile from hook
+  const isMobile = useIsMobile();
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
-      {
-        threshold: 0.2,
-        rootMargin: "0px 0px -20% 0px",
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isInView && !isMobile) {
+    if (!hasAnimated.current && !isMobile) {
+      hasAnimated.current = true;
       listRefs.current.forEach((item, index) => {
         if (item) {
           setTimeout(() => {
@@ -44,7 +22,7 @@ export default function Scope() {
         }
       });
     }
-  }, [isInView, isMobile]);
+  }, []);
 
   const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
@@ -54,6 +32,7 @@ export default function Scope() {
       transition: {
         duration: 0.8,
         ease: "easeOut",
+        when: "beforeChildren",
       },
     },
   };
@@ -64,14 +43,13 @@ export default function Scope() {
       opacity: 1,
       y: 0,
       transition: {
-        delay: 0.1 * index,
+        delay: hasAnimated.current ? 0 : 0.1 * index,
         duration: 0.5,
         ease: "easeOut",
       },
     }),
   };
 
-  // Updated data for both desktop and mobile
   const scopeItems = [
     {
       title: "Process Lead",
@@ -93,19 +71,19 @@ export default function Scope() {
 
   return (
     <div>
-      <section
-        ref={sectionRef}
-        className="w-full py-8 sm:py-10 lg:py-12 relative overflow-hidden"
-      >
+      <section className="w-full py-8 sm:py-10 lg:py-12 relative overflow-hidden">
         <div>
           <motion.div
             className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
             variants={sectionVariants}
             initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
+            animate={hasAnimated.current ? "visible" : "hidden"}
+            onAnimationComplete={() => {
+              hasAnimated.current = true;
+            }}
           >
             {isMobile && (
-              <div className="bg-white/95 rounded-xl shadow-md p-6 space-y-4 ">
+              <div className="bg-white/95 rounded-xl shadow-md p-6 space-y-4">
                 <h3 className="text-xl sm:text-2xl font-semibold uppercase text-[#5b5b5b] flex items-center">
                   <span className="text-[#0098af] mr-2">👷</span>
                   Key Roles Deployed
@@ -121,7 +99,7 @@ export default function Scope() {
                       custom={index}
                       variants={mobileItemVariants}
                       initial="hidden"
-                      animate={isInView ? "visible" : "hidden"}
+                      animate="visible"
                       className="flex items-start"
                     >
                       <span className="text-[#0098af] pr-3 mt-1">⦿</span>
@@ -150,8 +128,8 @@ export default function Scope() {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#0098AF]/10 to-transparent rounded-bl-full"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#0098AF]/10 to-transparent rounded-tr-full"></div>
                 <div className="relative flex flex-col p-6 sm:p-8 lg:p-10">
-                  <div className="w-full ">
-                    <div className="w-full ">
+                  <div className="w-full">
+                    <div className="w-full">
                       <h3 className="text-2xl sm:text-3xl font-semibold uppercase text-[#5b5b5b] mb-6 flex items-center">
                         <span className="text-[#0098af] mr-3">👷</span>
                         Key Roles Deployed

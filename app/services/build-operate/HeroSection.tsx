@@ -3,6 +3,13 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 const HeroSection = () => {
+  const handleScrollToProcess = () => {
+    const processSection = document.getElementById("process-workflow");
+    if (processSection) {
+      processSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="bg-gradient-to-br from-white via-slate-50/40 to-slate-100/60 relative overflow-hidden">
       {/* Enhanced Premium Background Pattern */}
@@ -10,12 +17,10 @@ const HeroSection = () => {
         {/* Primary sophisticated gradient layers */}
         <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-gradient-to-br from-[#0098af]/6 via-[#007c90]/4 to-transparent rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-gradient-to-tl from-[#007c90]/8 via-[#0098af]/5 to-transparent rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-
-        {/* Premium SVG Background Pattern */}
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <section className="py-12 lg:py-20 ">
+        <section className="py-16 ">
           <div className="relative">
             <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
               {/* Left column - Enhanced Content */}
@@ -42,12 +47,14 @@ const HeroSection = () => {
                       </span>
                       <div className="absolute inset-0 bg-gradient-to-r from-[#0098af] to-[#007c90] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                       <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                      {/* Button glow */}
                       <div className="absolute inset-0 bg-gradient-to-r from-[#0098af] to-[#007c90] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg -z-10" />
                     </Link>
                   </button>
 
-                  <button className="group flex items-center gap-3 px-10 py-4 text-[#0098af] rounded-xl font-medium border border-[#0098af]/20 hover:border-[#0098af]/40 transition-all duration-700 hover:bg-[#0098af]/5 hover:-translate-y-1 backdrop-blur-sm bg-white/80">
+                  <button
+                    onClick={handleScrollToProcess}
+                    className="group flex items-center gap-3 px-10 py-4 text-[#0098af] rounded-xl font-medium border border-[#0098af]/20 hover:border-[#0098af]/40 transition-all duration-700 hover:bg-[#0098af]/5 hover:-translate-y-1 backdrop-blur-sm bg-white/80"
+                  >
                     View Our Process
                     <ArrowUpRight className="h-4 w-4 text-slate-400 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[#0098af]" />
                   </button>
@@ -57,7 +64,6 @@ const HeroSection = () => {
               {/* Right column - Enhanced Visual element */}
               <div className="lg:col-span-5 pr-12 relative">
                 <div className="relative">
-                  {/* Enhanced main visual card */}
                   <div className="relative z-10 bg-white/95 backdrop-blur-sm rounded-3xl p-10 shadow-[0_20px_40px_-12px_rgba(0,152,175,0.2)] border border-white/60 transform lg:translate-x-8 transition-all duration-700 hover:-translate-y-4 hover:shadow-[0_30px_60px_-12px_rgba(0,152,175,0.3)] group">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#0098af]/8 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -94,15 +100,12 @@ const HeroSection = () => {
                       </div>
                     </div>
 
-                    {/* Enhanced accent line */}
                     <div className="h-px w-full bg-gradient-to-r from-[#0098af]/0 via-[#0098af]/30 to-[#0098af]/0 transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100" />
                   </div>
 
-                  {/* Enhanced background accent cards */}
                   <div className="absolute -top-8 -left-8 w-40 h-40 bg-gradient-to-br from-[#0098af]/6 to-[#007c90]/6 rounded-3xl rotate-[-12deg] blur-sm" />
                   <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-tl from-[#007c90]/8 to-transparent rounded-2xl rotate-12 blur-sm" />
 
-                  {/* Enhanced floating metrics */}
                   <div className="absolute top-16 -left-6 bg-white/95 backdrop-blur-sm rounded-xl p-5 shadow-[0_8px_25px_-8px_rgba(0,152,175,0.2)] border border-white/60 transform -rotate-6 hover:rotate-0 transition-transform duration-300">
                     <div className="text-xl font-bold text-[#0098af]">98%</div>
                     <div className="text-xs text-slate-600">Success Rate</div>

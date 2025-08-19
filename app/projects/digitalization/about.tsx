@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import aboutImage from "@/constants/images/projects/digitalization/about.jpg";
@@ -10,12 +10,16 @@ import { useIsMobile } from "@/hooks/use-mobile";
 export default function AboutSection() {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const hasAnimated = useRef(false); // Track if animation has run
   const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        if (entry.isIntersecting && !hasAnimated.current) {
+          setIsInView(true);
+          hasAnimated.current = true; // Set to true after first view
+        }
       },
       {
         threshold: 0.2,
@@ -34,15 +38,14 @@ export default function AboutSection() {
     };
   }, []);
 
-  // Animation variants for fade-in and fade-out
-  const contentVariants = {
+  const contentVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut" as const,
+        ease: "easeOut",
       },
     },
   };
@@ -54,7 +57,6 @@ export default function AboutSection() {
         className="w-full py-8 sm:py-10 lg:py-12 relative overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          {/* Header Section */}
           <div className="mb-8 max-w-7xl">
             <span className="inline-block px-3 py-1 bg-[#0098af]/10 text-[#0098af] text-xs font-medium uppercase tracking-wider rounded-full mb-4">
               Digitalization
@@ -71,7 +73,7 @@ export default function AboutSection() {
           >
             {isMobile && (
               <div className="rounded-xl shadow-md overflow-hidden mb-8">
-                <div className="relative h-[150px] ">
+                <div className="relative h-[150px]">
                   <Image
                     src={aboutImage}
                     alt="Engineering services"

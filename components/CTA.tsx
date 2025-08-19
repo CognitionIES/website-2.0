@@ -10,14 +10,14 @@ import { PROJECTS_PAGE_CONSTANTS } from "@/constants/project/home";
 export default function CTASection() {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const hasAnimated = useRef(false); // Track if animation has run
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated.current) {
           setIsInView(true);
-          hasAnimated.current = true; // Set to true after first view
+          hasAnimated.current = true;
         }
       },
       { threshold: 0.2 }
@@ -40,8 +40,29 @@ export default function CTASection() {
       className="relative py-16 bg-gradient-to-r from-[#007B8F] to-[#0098AF] text-[#F5FDFF] overflow-hidden"
       aria-labelledby="cta-section-title"
     >
-      <div className="absolute top-10 left-10 w-32 h-32 bg-[#F5FDFF]/10 rounded-full blur-xl" />
-      <div className="absolute bottom-10 right-10 w-40 h-40 bg-[#F5FDFF]/5 rounded-full blur-2xl" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 0.2, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+          className="absolute top-10 left-10 w-48 h-48 bg-[#F5FDFF]/20 rounded-full blur-3xl -z-10"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 0.15, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+          className="absolute bottom-10 right-10 w-56 h-56 bg-[#F5FDFF]/15 rounded-full blur-3xl -z-10"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.05 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="absolute w-full h-full bg-dot-pattern bg-[length:20px_20px] opacity-[0.03]"
+        />
+      </div>
       <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -68,12 +89,6 @@ export default function CTASection() {
               <div className="absolute inset-0 bg-gradient-to-r from-[#F5FDFF] to-[#E6F0F5] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </button>
           </Link>
-          <button className="group flex items-center gap-3 px-8 py-3 text-white rounded-xl font-medium font-roboto border border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300">
-            <div className="flex items-center justify-center w-2 h-2 bg-green-400 rounded-full">
-              <div className="w-full h-full bg-green-400 rounded-full animate-pulse" />
-            </div>
-            Available for immediate consultation
-          </button>
         </div>
       </motion.div>
     </section>

@@ -16,7 +16,7 @@ const SummaryGains = () => {
 
   const summaryGains = [
     "35% Cost of Goods Reduction",
-    "50% Margin Increase",
+    "20% Margin Increase",
     "Improved Market Position with Competitive SKUs",
     "Engineering Backbone for Scalable SKU Platforming",
     "Data-driven, Modular, and Manufacturing-Friendly Design",

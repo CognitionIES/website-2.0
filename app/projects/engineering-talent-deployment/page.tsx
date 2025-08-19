@@ -320,7 +320,7 @@ const ProjectOverview = () => {
     <section
       id="project-overview"
       ref={setRef}
-      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+      className="py-16 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
       {/* Background decorative elements */}
       <div className="absolute top-20 right-10 w-64 h-64 bg-[#0098AF]/5 rounded-full blur-3xl animate-pulse"></div>
@@ -439,7 +439,7 @@ const Objectives = () => {
   return (
     <section
       ref={setRef}
-      className="py-24 bg-gradient-to-br from-[#F5FDFF] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+      className="py-16 bg-gradient-to-br from-[#F5FDFF] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -595,7 +595,7 @@ const ProjectApproach = () => {
   return (
     <section
       ref={setRef}
-      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+      className="py-16 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
       {/* Enhanced background decoration */}
       <div className="absolute top-20 right-10 w-80 h-80 bg-[#0098AF]/5 rounded-full blur-3xl animate-float"></div>
@@ -708,7 +708,7 @@ const TechAndTestimonial = () => {
   return (
     <section
       ref={setRef}
-      className="py-24 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
+      className="py-16 bg-gradient-to-br from-[#E6F0F5] via-[#F5FDFF] to-[#E6F0F5] relative overflow-hidden"
     >
       {/* Enhanced animated background elements */}
 

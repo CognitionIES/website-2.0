@@ -1,21 +1,26 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-//import Footer from "./footer";
 import { ArrowRight } from "lucide-react";
+
 export default function CTASection() {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const hasAnimated = useRef(false); // Track if animation has run
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        if (entry.isIntersecting && !hasAnimated.current) {
+          setIsInView(true);
+          hasAnimated.current = true; // Set to true after first view
+        }
       },
-      { threshold: 0.2 } // Trigger when 20% of the section is visible
+      { threshold: 0.2 }
     );
 
     if (sectionRef.current) {
@@ -24,40 +29,34 @@ export default function CTASection() {
 
     return () => {
       if (sectionRef.current) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         observer.unobserve(sectionRef.current);
       }
     };
   }, []);
 
-  // Animation variants for fade-in effect
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const fadeInVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.7, delay: 0.2 } },
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, delay: 0.4 } },
   };
 
-  // Animation for the background circle
-  // const circleVariants = {
-  //   hidden: { opacity: 0, scale: 0 },
-  //   visible: { opacity: 0.1, scale: 1, transition: { delay: 0.7, duration: 1 } },
-  // };
+  const circleVariants = {
+    hidden: { opacity: 0, scale: 0 },
+    visible: { opacity: 0.1, scale: 1, transition: { duration: 1, delay: 0.7 } },
+  };
 
   return (
     <div>
       <section
         ref={sectionRef}
-        className="w-full  relative bg-gradient-to-b from-white to-[#E6F0F5]/30"
+        className="w-full relative bg-gradient-to-b from-white to-[#E6F0F5]/30"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          {/* CTA section */}
-        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative"></div>
       </section>
       <section className="w-full py-12 sm:py-14 lg:py-22 bg-[#0098AF] text-white relative overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.4 }}
+          variants={fadeInVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 drop-shadow-md">
@@ -76,9 +75,9 @@ export default function CTASection() {
           </div>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 0.1, scale: 1 }}
-          transition={{ delay: 0.7, duration: 1 }}
+          variants={circleVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
           className="absolute bottom-1/3 left-1/3 w-32 h-32 bg-[#000000] opacity-20 rounded-full blur-3xl -z-10"
         />
       </section>

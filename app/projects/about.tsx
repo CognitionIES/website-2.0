@@ -116,7 +116,7 @@ export function ProjectsSection() {
               </div>
               <div>
                 <h3 className="text-lg sm:text-xl font-montserrat font-bold text-[#003C46]">
-                  Recruitment & Resources
+                  Recruitment & Resourcing
                 </h3>
                 <p className="text-sm font-roboto text-[#5B5B5B] font-medium">
                   Expert talent deployment solutions

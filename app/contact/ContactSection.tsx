@@ -118,8 +118,8 @@ export default function ContactSection() {
 
   const interestOptions = [
     {
-      value: " Recruitment And Resources",
-      label: " Recruitment And Resources",
+      value: " Recruitment And Resourcing",
+      label: " Recruitment And Resourcing",
     },
     { value: "Build And Operate", label: "Build And Operate" },
     { value: "ServiceCPQ", label: "ServiceCPQ" },

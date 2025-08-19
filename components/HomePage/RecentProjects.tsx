@@ -42,10 +42,10 @@ const projects: Project[] = [
   },
   {
     id: "project-2",
-    title: "Log Splitter Cost Optimization & Benchmarking",
+    title: "Industrial Equipment Cost Optimization & Benchmarking",
     category: "Financial Optimization",
     description:
-      "Conducted a detailed cost and function analysis of the Log Splitter, identifying cost-saving opportunities through competitive benchmarking and design optimization.",
+      "Conducted a detailed cost and function analysis of the Industrial Equipment, identifying cost-saving opportunities through competitive benchmarking and design optimization.",
     image: pcmImage2,
     href: "/projects/product-cost-management",
   },

@@ -24,7 +24,7 @@ export default function Hero() {
         <div className="absolute inset-0 opacity-5   bg-repeat" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-8 h-full flex flex-col justify-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white top-24 drop-shadow-md relative">
-             Recruitment And Resources
+             Recruitment And Resourcing
             <span className="absolute bottom-0 left-0 w-32 h-0.5 bg-gradient-to-r from-[#99D5DF] to-transparent" />
           </h1>
           {/* Move nav outside the centered flex flow and position it absolutely */}
@@ -42,7 +42,7 @@ export default function Hero() {
               href="/services/plant-engineering"
               className="hover:text-[#99D5DF] transition-colors duration-200"
             >
-               Recruitment And Resources{" "}
+               Recruitment And Resourcing{" "}
             </Link>
           </nav>
           <motion.div

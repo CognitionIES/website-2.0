@@ -18,7 +18,7 @@ interface Service {
 
 const servicesData: Service[] = [
   {
-    title: "Recruitment And Resources",
+    title: "Recruitment And Resourcing",
     href: "/services/staffing",
     icon: <Users className="w-4 h-4" />,
     description: "Professional staffing and recruitment services",

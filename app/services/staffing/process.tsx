@@ -143,25 +143,27 @@ export default function ProcessSection() {
               <div key={step.id} className="relative">
                 <motion.div
                   data-step-id={step.id}
-                  data-delay={index * 200}
+                  data-delay={index * 100}
                   initial={{ opacity: 0, y: 30 }}
                   animate={
                     isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
                   }
-                  transition={{ duration: 0.7, delay: index * 0.1 }}
-                  className="p-6 bg-white/95 backdrop-blur-md rounded-xl shadow-lg border-[#003C46]/20 hover:shadow-[0_8px_20px_rgba(0,152,175,0.2)] hover:border-[#0098AF]/50 hover:scale-[1.02] transition-all duration-500 text-center"
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  className="p-6 bg-white/95 backdrop-blur-md rounded-xl shadow-lg border-[#003C46]/20 hover:shadow-[0_8px_20px_rgba(0,152,175,0.2)] hover:border-[#0098AF]/50 hover:scale-[1.02] transition-all duration-500 text-center min-h-[300px] flex flex-col justify-between"
                 >
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 bg-[#0098AF] hover:bg-[#007A8C] transition-colors duration-300">
-                    <IconComponent className="text-white w-6 h-6" />
+                  <div>
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 bg-[#0098AF] hover:bg-[#007A8C] transition-colors duration-300">
+                      <IconComponent className="text-white w-6 h-6" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-montserrat font-bold text-[#003C46] mb-2">
+                      {index + 1}. {step.title}
+                    </h3>
+                    <p className="text-sm sm:text-base font-roboto text-[#5B5B5B] leading-relaxed mb-4 max-h-[100px] overflow-hidden">
+                      {step.description}
+                    </p>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-montserrat font-bold text-[#003C46] mb-2">
-                    {index + 1}. {step.title}
-                  </h3>
-                  <p className="text-sm sm:text-base font-roboto text-[#5B5B5B] leading-relaxed mb-4">
-                    {step.description}
-                  </p>
                   <div className="p-3 rounded-xl bg-[#0098AF]/10">
-                    <p className="text-xs sm:text-sm font-roboto font-medium text-[#003C46]">
+                    <p className="text-xs sm:text-sm font-roboto font-medium text-[#003C46] line-clamp-2">
                       <span className="font-semibold">Deliverable:</span>{" "}
                       {step.deliverable}
                     </p>

@@ -4,7 +4,7 @@ export const PROJECTS_PAGE_CONSTANTS = {
   HERO: {
     IMAGE: HeroImage,
     TITLE: "Projects",
-    SUBTITLE: "Showcasing innovative engineering solutions across industries.",
+    SUBTITLE: "Empowering businesses with end-to-end project execution.",
     BREADCRUMBS: {
       HOME: "Home",
       PROJECTS: "Projects",

@@ -14,7 +14,7 @@ export function ServicesSection() {
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Staffing & Recruitment",
+      title: "Recruitment & Resourcing",
       description:
         "Expert talent acquisition and staffing services to build high-performing teams that drive your business forward.",
       gradient: "from-green-500 to-teal-600",

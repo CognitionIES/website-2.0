@@ -42,8 +42,8 @@ export default function FooterNavigation() {
           isExternal: true 
         },
         { 
-          label: "Staffing & Recruitment", 
-          href: "/services/staffing-recruitment",
+          label: "Recruitment & Resourcing", 
+          href: "/services/staffing",
           isExternal: true 
         },
       ],

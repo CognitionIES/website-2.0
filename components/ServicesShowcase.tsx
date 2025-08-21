@@ -1,9 +1,17 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import saasImage from "@/constants/images/home/our-services/saas.jpg";
-import { ArrowUpRight, Settings, Factory, Monitor } from "lucide-react";
+import {
+  ArrowUpRight,
+  Settings,
+  Factory,
+  Monitor,
+  ArrowLeft,
+  ArrowRight,
+} from "lucide-react"; // Added ArrowLeft, ArrowRight
 import buildImage from "@/constants/images/build-operate/hero.jpg";
 import Image from "next/image";
 import Link from "next/link";
@@ -46,7 +54,7 @@ type Service = (typeof services)[number];
 type ServiceCardProps = {
   service: Service;
   index: number;
-  onHover: (index: number | null) => void;
+  onHover?: (index: number | null) => void;
 };
 
 const ServiceCard = ({ service, index, onHover }: ServiceCardProps) => {
@@ -54,8 +62,8 @@ const ServiceCard = ({ service, index, onHover }: ServiceCardProps) => {
   return (
     <motion.div
       className="group relative transition-all duration-500"
-      onMouseEnter={() => onHover(index)}
-      onMouseLeave={() => onHover(null)}
+      onMouseEnter={() => onHover?.(index)}
+      onMouseLeave={() => onHover?.(null)}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -109,15 +117,92 @@ const ServiceCard = ({ service, index, onHover }: ServiceCardProps) => {
               <span className="absolute inset-0 rounded-full bg-[#0098AF]/0 group-hover:bg-[#0098AF]/10 transition-all duration-300" />
             </Link>
             <div className="h-px flex-1 mx-4 bg-gradient-to-r from-transparent via-slate-200 to-transparent group-hover:via-[#0098AF]/40 transition-colors duration-300" />
-            <div className="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded-full border border-slate-200">
-              Premium Service
-            </div>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-[#0098AF]/0 via-[#0098AF] to-[#0098AF]/0 transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100" />
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#0098AF]/0 to-[#0098AF]/0 group-hover:from-[#0098AF]/10 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
       </div>
     </motion.div>
+  );
+};
+
+const Slider = ({ children }: { children: React.ReactNode }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const totalSlides = services.length;
+
+  const goToSlide = (index: number) => {
+    setActiveIndex(index);
+  };
+
+  const goToNextSlide = () => {
+    setActiveIndex((prev) => (prev + 1) % totalSlides);
+  };
+
+  const goToPrevSlide = () => {
+    setActiveIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  // Arrow key handling
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowRight") {
+        goToNextSlide();
+      } else if (event.key === "ArrowLeft") {
+        goToPrevSlide();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [totalSlides]);
+
+  return (
+    <div className="relative overflow-hidden">
+      <div
+        className="flex transition-transform duration-500 ease-in-out"
+        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+      >
+        {services.map((service, index) => (
+          <div key={service.id} className="w-full flex-shrink-0">
+            <ServiceCard service={service} index={index} />
+          </div>
+        ))}
+      </div>
+      {/* Arrow Buttons for Mobile View */}
+      <div className="absolute inset-y-0 left-0 flex items-center">
+        <button
+          onClick={goToPrevSlide}
+          className="p-2 bg-[#0098AF]/80 text-white rounded-full m-2 hover:bg-[#007A8C] transition-all duration-300"
+          aria-label="Previous slide"
+        >
+          <ArrowLeft className="h-6 w-6" />
+        </button>
+      </div>
+      <div className="absolute inset-y-0 right-0 flex items-center">
+        <button
+          onClick={goToNextSlide}
+          className="p-2 bg-[#0098AF]/80 text-white rounded-full m-2 hover:bg-[#007A8C] transition-all duration-300"
+          aria-label="Next slide"
+        >
+          <ArrowRight className="h-6 w-6" />
+        </button>
+      </div>
+      {/* Dot Indicators */}
+      <div className="mt-4 flex justify-center gap-2">
+        {services.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`h-2 w-2 rounded-full transition-all duration-300 ${
+              activeIndex === index
+                ? "bg-[#0098AF] scale-125"
+                : "bg-slate-300 hover:bg-[#0098AF]/50"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 
@@ -160,7 +245,10 @@ const ServicesShowcase = () => {
             deploying powerful SaaS tools, we help you grow with confidence.
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="md:hidden">
+          <Slider children={undefined} />
+        </div>
+        <div className="hidden md:grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <ServiceCard
               key={service.id}

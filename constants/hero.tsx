@@ -24,7 +24,7 @@ export const heroSlides: HeroSlide[] = [
     id: 1,
     title: "Empowering Teams, Elevating Success",
     subtitle: "The Right People for the Right Roles",
-    majorService: "Staffing & Recruitment",
+    majorService: "Recruitment & Resourcing ",
     description:
       "We connect exceptional talent with forward-thinking businesses, delivering tailored recruitment & staffing solutions that build strong, high-performing teams.",
     image: recruitmentImage,

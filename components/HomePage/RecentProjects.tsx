@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -10,6 +10,7 @@ import { StaticImageData } from "next/image";
 import digitalImage from "@/constants/images/home/our-recent-projects/digitalization.jpg";
 import pcmImage2 from "@/constants/images/home/our-recent-projects/pcm.jpg";
 import Link from "next/link";
+import heroImage from "@/constants/images/hero/pexels-fauxels-3183197.jpg";
 
 type Project = {
   id: string;
@@ -24,7 +25,7 @@ const projects: Project[] = [
   {
     id: "project-0",
     title: "IT Talent Deployment",
-    category: "Contract Staffing",
+    category: "Recruitment Support",
     description:
       "Successfully staffed and deployed a team of skilled full-stack developers (React & Node.js) for a growing IT company. Ensured quick turnaround, seamless onboarding, and end-to-end compliance support.",
     image:
@@ -34,7 +35,7 @@ const projects: Project[] = [
   {
     id: "project-1",
     title: "Digitalization",
-    category: "Build And Operate",
+    category: "Build and Operate",
     description:
       "Comprehensive Digital Transformation of a Manufacturing Plant through 3D Scanning, Digital Twin, and Real-Time Data Integration to Improve Efficiency and Accuracy.",
     image: digitalImage,
@@ -43,11 +44,20 @@ const projects: Project[] = [
   {
     id: "project-2",
     title: "Industrial Equipment Cost Optimization & Benchmarking",
-    category: "Financial Optimization",
+    category: "Build and Operate",
     description:
       "Conducted a detailed cost and function analysis of the Industrial Equipment, identifying cost-saving opportunities through competitive benchmarking and design optimization.",
     image: pcmImage2,
     href: "/projects/product-cost-management",
+  },
+  {
+    id: "project-3",
+    title: "Engineering Talent Deployment",
+    category: "Recruitment Support",
+    description:
+      "Delivering experienced engineering professionals to support design, development, and execution across capital projects, manufacturing setups, and plant engineering functions.",
+    image: heroImage,
+    href: "/projects/engineering-talent-deployment",
   },
 ];
 
@@ -57,6 +67,7 @@ const RecentProjects = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const isMobile = useIsMobile();
   const visibleProjects = isMobile ? 1 : 2;
+  const totalSlides = Math.ceil(projects.length / visibleProjects);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -70,6 +81,28 @@ const RecentProjects = () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowRight") {
+        setActiveIndex((prev) => (prev + 1) % totalSlides);
+      } else if (event.key === "ArrowLeft") {
+        setActiveIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [totalSlides]);
+
+  const goToNextSlide = () => {
+    setActiveIndex((prev) => (prev + 1) % totalSlides);
+  };
+
+  const goToPrevSlide = () => {
+    setActiveIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
 
   return (
     <section
@@ -96,7 +129,7 @@ const RecentProjects = () => {
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="inline-block px-3 py-1 bg-[#E6F0F5] rounded-full">
-          <p className="text-xs font-medium text-[#0098AF] uppercase">
+          <p className="text-xs font-medium text-[#003C46] uppercase">
             Featured Work
           </p>
         </div>
@@ -105,14 +138,19 @@ const RecentProjects = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
-          className="text-[24px] sm:text-[32px] font-heading font-semibold text-[#003C46] mt-2"
+          className="text-[28px] sm:text-[36px] font-heading font-bold text-[#003C46] mt-3 tracking-tight"
         >
           Our Recent Projects
         </motion.h1>
+        <p className="mt-2 text-gray-600 text-base sm:text-lg max-w-2xl">
+          Showcasing how we build, operate, and deliver impact across
+          industries.
+        </p>
+
         <div className="relative max-w-7xl mt-8">
           <div className="overflow-hidden">
             <div
-              className="flex gap-6 sm:gap-8 transition-transform duration-500"
+              className="flex  transition-transform duration-500"
               style={{
                 transform: `translateX(-${
                   activeIndex * (100 / visibleProjects)
@@ -129,14 +167,14 @@ const RecentProjects = () => {
                   transition={{ duration: 0.25, delay: 0.2 + index * 0.1 }}
                   className={cn(
                     "project-card flex-shrink-0",
-                    isMobile ? "w-full" : "w-[45%]"
+                    isMobile ? "w-full" : "w-[48%]" 
                   )}
                   whileHover={{ y: -5 }}
                 >
-                  <div className="h-full bg-white rounded-xl shadow-sm border border-[#003C46]/10 hover:border-[#0098AF] hover:shadow-[0_8px_20px_rgba(0,152,175,0.2)]">
-                    <div className="relative h-[180px] sm:h-[240px] w-full overflow-hidden">
-                      <div
-                        className="absolute inset-0 bg-cover bg-center h-full w-full"
+                  <div className="h-full bg-white rounded-2xl shadow-md border border-[#003C46]/10 hover:border-[#0098AF] hover:shadow-xl transition-all duration-300 p-2 group">
+                    <div className="relative h-[220px] sm:h-[260px] w-full overflow-hidden rounded-xl">
+                      <motion.div
+                        className="absolute inset-0 bg-cover bg-center"
                         style={{
                           backgroundImage: `url(${
                             typeof project.image === "string"
@@ -144,32 +182,33 @@ const RecentProjects = () => {
                               : project.image.src
                           })`,
                         }}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#003C46]/40 to-transparent" />
-                      <div className="absolute top-4 left-4">
-                        <div className="px-3 py-1 bg-white/90 rounded-full">
-                          <p className="text-xs font-medium text-[#003C46]">
-                            {project.category}
-                          </p>
-                        </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#003C46]/50 via-[#003C46]/20 to-transparent opacity-80 group-hover:opacity-90 transition duration-300" />
+                      <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 rounded-full shadow-sm">
+                        <p className="text-xs font-medium text-[#003C46]">
+                          {project.category}
+                        </p>
                       </div>
                     </div>
-                    <div className="p-6 space-y-3">
-                      <h3 className="text-[24px] font-heading font-semibold text-[#003C46] group-hover:text-[#0098AF]">
+
+                    <div className="p-5 space-y-3">
+                      <h3 className="text-lg sm:text-xl font-semibold text-[#003C46] group-hover:text-[#0098AF] transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-base font-primary text-gray-600 line-clamp-3">
+                      <p className="text-sm sm:text-base text-gray-600 line-clamp-3 leading-relaxed">
                         {project.description}
                       </p>
                       <Link
                         href={project.href}
-                        className="inline-flex items-center gap-1.5 text-base font-medium text-[#0098AF] group"
+                        className="inline-flex items-center gap-2 text-sm sm:text-base font-medium text-[#0098AF] relative group/link"
                       >
                         <span className="relative">
                           View in detail
-                          <span className="absolute -bottom-px left-0 w-full h-px bg-[#0098AF]/50 group-hover:scale-x-100 scale-x-0 transition-transform" />
+                          <span className="absolute -bottom-px left-0 w-full h-[1px] bg-[#0098AF]/60 scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left duration-300" />
                         </span>
-                        <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <ArrowUpRight className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                       </Link>
                     </div>
                   </div>
@@ -177,11 +216,30 @@ const RecentProjects = () => {
               ))}
             </div>
           </div>
+          {/* Arrow Buttons for Mobile and Desktop */}
+          <div className="absolute inset-y-0 left-0 flex items-center z-10">
+            <button
+              onClick={goToPrevSlide}
+              className="p-3 bg-white/70 backdrop-blur-sm border border-white/30 text-[#003C46] rounded-full shadow-md m-4 hover:bg-[#0098AF]/90 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#0098AF]"
+              aria-label="Previous slide"
+            >
+              <ArrowLeft className="h-5 w-5" />
+            </button>
+          </div>
+          <div className="absolute inset-y-0 right-0 flex items-center z-10">
+            <button
+              onClick={goToNextSlide}
+              className="p-2 bg-[#0098AF]/80 text-white rounded-full m-4 hover:bg-[#007A8C] transition-all duration-300"
+              aria-label="Next slide"
+            >
+              <ArrowRight className="h-6 w-6" />
+            </button>
+          </div>
           {isMobile && (
             <div className="flex justify-center gap-1.5 mt-4">
-              {projects.map((project, index) => (
+              {Array.from({ length: totalSlides }).map((_, index) => (
                 <button
-                  key={project.id}
+                  key={index}
                   className={cn(
                     "w-2 h-2 rounded-full transition-all duration-300",
                     activeIndex === index
@@ -189,7 +247,7 @@ const RecentProjects = () => {
                       : "bg-[#5B5B5B]/20"
                   )}
                   onClick={() => setActiveIndex(index)}
-                  aria-label={`View ${project.title}`}
+                  aria-label={`View slide ${index + 1}`}
                 />
               ))}
             </div>

@@ -79,7 +79,7 @@ export default function StatSection() {
           <div className="relative max-w-7xl mx-auto px-6 py-16">
             <div className="text-center">
               <h1 className="text-5xl font-bold text-white mb-6 leading-tight">
-                Staffing & Recruitment
+                Recruitment & Resourcing
                 <span className="block text-3xl font-normal text-[#99D5DF] mt-2">
                   Excellence
                 </span>

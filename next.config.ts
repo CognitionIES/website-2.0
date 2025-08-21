@@ -4,6 +4,7 @@ const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
   output: "export",
+  trailingSlash: true, // Ensures URLs like /projects/ are valid
   basePath: isProd ? "" : "", // Optional, usually leave blank unless hosting under subfolder
   assetPrefix: isProd ? "" : "",
 

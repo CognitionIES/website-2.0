@@ -76,7 +76,7 @@ const HeroSection = () => {
                         Global Team Leadership
                       </h3>
                       <p className="text-slate-600 leading-relaxed">
-                        Built and managed 30+ member teams for global clients,
+                        Built and managed 50+ member teams for global clients,
                         delivering complex projects with speed and precision.
                       </p>
                     </div>
@@ -92,10 +92,10 @@ const HeroSection = () => {
                       </div>
                       <div className="text-center p-5 bg-gradient-to-br from-slate-50 to-white rounded-xl group-hover:bg-gradient-to-br group-hover:from-[#0098af]/5 group-hover:to-white transition-all duration-300 border border-slate-100">
                         <div className="text-3xl font-bold text-[#0098af] mb-1">
-                          5+
+                          100%
                         </div>
                         <div className="text-xs text-slate-600">
-                          Years Experience
+                          On-Time Transitions
                         </div>
                       </div>
                     </div>

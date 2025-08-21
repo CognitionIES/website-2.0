@@ -66,7 +66,7 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <span className="inline-block px-3 py-1 bg-[#0098AF]/10 text-[#0098AF] text-xs font-roboto font-medium uppercase tracking-wider rounded-full mb-4">
-            Staffing and Recruitment Services
+             Recruitment and Resourcing Services
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-[#003C46]">
             Empowering Careers. Enabling Growth.

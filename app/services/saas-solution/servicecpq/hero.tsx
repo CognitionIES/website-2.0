@@ -15,17 +15,13 @@ const Hero = () => {
 
       <div className="container mx-auto">
         <div className="max-w-3xl mx-auto text-center">
-          <h1
-            className="text-4xl md:text-5xl font-medium tracking-tight lg:text-6xl font-semibold text-[#003C46] mb-6 leading-tight animate-fade-in-up"
-          >
+          <h1 className="text-4xl md:text-5xl font-medium tracking-tight lg:text-6xl font-semibold text-[#003C46] mb-6 leading-tight animate-fade-in-up">
             Intelligent After-Sales <br />
             All-in-One
           </h1>
 
           {/* Subheading */}
-          <p
-            className="text-lg md:text-xl text-[#5b5b5b] mb-10 max-w-3xl mx-auto animate-fade-in-up delay-100"
-          >
+          <p className="text-lg md:text-xl text-[#5b5b5b] mb-10 max-w-3xl mx-auto animate-fade-in-up delay-100">
             AI-powered platform unifying claims, Configue Price Quote (CPQ), and
             repair workflows.
           </p>
@@ -39,15 +35,6 @@ const Hero = () => {
               Book Free Demo
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <a
-              href="https://www.youtube.com/@AuxentiosTechnology/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#00b4d8] text-white px-6 py-3 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:bg-[#0098af] focus:outline-none focus:ring-2 focus:ring-[#00b4d8]/50 focus:ring-offset-2;
-  "
-            >
-              Explore
-            </a>
           </div>
 
           {/* Trust indicators */}

@@ -248,7 +248,7 @@ const RecentProjects = () => {
                   }`}
                   style={{ transitionDelay: "500ms" }}
                 >
-                  Engineering Talent Staffing
+                  Engineering Talent Resourcing
                 </h3>
 
                 <h4

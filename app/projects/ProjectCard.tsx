@@ -3,6 +3,7 @@ import { motion, Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image"; // Import Next.js Image component
 import { Project } from "@/constants/projects-data";
+import Link from "next/link";
 
 interface ProjectCardProps {
   project: Project;
@@ -108,13 +109,13 @@ export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <a
+            <Link
               href={project.href}
               className="flex items-center gap-2 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-[#003C46] font-semibold text-sm hover:bg-[#0098AF] hover:text-white transition-all duration-300"
             >
               <span>View Project</span>
               <ArrowUpRight className="w-4 h-4" />
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
 
@@ -125,7 +126,7 @@ export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
             <h3 className="text-2xl font-bold text-[#003C46] mb-2 group-hover:text-[#0098AF] transition-colors duration-300">
               {project.title}
             </h3>
-            <p className="text-[#5B5B5B] leading-relaxed line-clamp-3">
+            <p className="text-[#5B5B5B] leading-relaxed line-clamp-3 text-justify">
               {project.description}
             </p>
           </div>

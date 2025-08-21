@@ -9,12 +9,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
-import faqs from "@/constants/faqs";
 //import { cn } from "@/lib/utils";
 import { MegaMenu } from "@/components/ui/Megamenu/MegaMenu";
 import Footer from "@/components/footer";
 import Hero from "./hero";
 import CTASection from "@/components/CTA";
+import faqs from "@/constants/faqs";
 
 const FAQ = () => {
   const [isInView, setIsInView] = useState(false);

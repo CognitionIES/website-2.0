@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 const services = [
   {
     id: "01",
-    title: "Staffing & Recruitment",
+    title: "Recruitment & Resourcing",
     description:
       "Quickly access skilled talent and build high-performing teams. We connect you with experts to drive growth and deliver results.",
     image: staffImage,
@@ -66,7 +66,7 @@ const ServiceCard = ({ service, index, onHover }: ServiceCardProps) => {
         <div className="absolute inset-0 rounded-2xl border border-[#0098AF]/10" />
         <div className="relative p-8 pb-0">
           <div className="flex items-start justify-between mb-6">
-            <div className="text-6xl font-light text-[#0098AF]/10 leading-none drop-shadow-sm">
+            <div className="text-6xl font-light text-[#0098AF]/10 leading-none drop-shadow-sm transition-colors duration-300 group-hover:text-[#0098AF]/80">
               {service.id}
             </div>
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#0098AF]/10 to-[#007A8C]/10 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#0098AF] group-hover:to-[#007A8C] group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(0,152,175,0.3)]">
@@ -156,7 +156,7 @@ const ServicesShowcase = () => {
             </span>
           </h2>
           <p className="text-sm py-4 sm:text-sm md:text-base text-justify text-gray-650 leading-relaxed">
-            From staffing the right talent to building dedicated teams and
+            From Resourcing the right talent to building dedicated teams and
             deploying powerful SaaS tools, we help you grow with confidence.
           </p>
         </div>

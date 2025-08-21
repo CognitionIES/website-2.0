@@ -84,12 +84,12 @@ export function ProjectsSection() {
           </motion.h2>
           <motion.p
             variants={headerVariants}
-            className="text-sm sm:text-base lg:text-lg font-roboto text-[#5B5B5B] mt-4 leading-relaxed max-w-4xl"
+            className="text-sm sm:text-base lg:text-lg font-roboto text-[#5B5B5B] mt-4 leading-relaxed max-w-7xl"
           >
             Explore how Cognition IES is transforming businesses through
             <span className="text-[#0098AF] font-medium">
               {" "}
-              staffing solutions
+              Recruitment solutions
             </span>{" "}
             and
             <span className="text-[#0098AF] font-medium">

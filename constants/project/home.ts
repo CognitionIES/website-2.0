@@ -15,9 +15,9 @@ export const PROJECTS_PAGE_CONSTANTS = {
     TITLE: "Our Recent Projects",
     TITLE_HIGHLIGHT: "Projects",
     DESCRIPTION:
-      "Explore how Cognition IES is transforming businesses through cutting-edge staffing solutions and end-to-end Build & Operate models across IT and Engineering sectors.",
+      "Explore how Cognition IES is transforming businesses through cutting-edge recruitment solutions and end-to-end Build & Operate models across IT and Engineering sectors.",
     STAFFING: {
-      TITLE: "Staffing & Recruitment",
+      TITLE: "Recruitment and Resourcing ",
       SUBTITLE: "Expert talent deployment solutions",
     },
     BUILD_OPERATE: {

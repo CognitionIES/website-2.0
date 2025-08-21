@@ -106,9 +106,10 @@ export function MegaMenu() {
       setOpenMobileService(false);
     }
   };
+
   const arrowVariants: Variants = {
     initial: { rotate: 0 },
-    "group-hover": {
+    hover: {
       rotate: -45,
       transition: { duration: 0.2, ease: "easeOut" },
     },
@@ -132,9 +133,9 @@ export function MegaMenu() {
                 <Image
                   src={logo}
                   alt="CognitionIES Logo"
-                  width={130}
-                  height={40}
-                  className="hidden lg:block rounded-lg"
+                  width={100} // Reduced for better mobile display
+                  height={32}
+                  className="rounded-lg w-24 lg:w-32" // Responsive width
                 />
               </Link>
             </div>
@@ -144,7 +145,7 @@ export function MegaMenu() {
               {/* Home */}
               <Link
                 href="/"
-                className="px-4 text-lg font-medium text-gray-700 hover:text-cyan-600  rounded-lg transition-all duration-200 relative group"
+                className="px-4 text-lg font-medium text-gray-700 hover:text-cyan-600 rounded-lg transition-all duration-200 relative group"
               >
                 Home
                 <span className="absolute -bottom-0.5 left-1/2 w-0 h-0.5 bg-cyan-600 transition-all duration-300 group-hover:w-1/2 transform -translate-x-1/2"></span>
@@ -157,7 +158,7 @@ export function MegaMenu() {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <button className="flex items-center space-x-1 px-4 text-lg font-medium text-gray-700 hover:text-cyan-600  rounded-lg transition-all duration-200 group">
+                <button className="flex items-center space-x-1 px-4 text-lg font-medium text-gray-700 hover:text-cyan-600 rounded-lg transition-all duration-200 group">
                   <span>Services</span>
                   <ChevronDown
                     className={cn(
@@ -165,7 +166,7 @@ export function MegaMenu() {
                       showServices ? "rotate-180" : "rotate-0"
                     )}
                   />
-                  <span className="absolute -bottom-0.5 left-1/2 w-0 h-0.5 bg-cyan-600 transition-all duration-300  transform -translate-x-1/2"></span>
+                  <span className="absolute -bottom-0.5 left-1/2 w-0 h-0.5 bg-cyan-600 transition-all duration-300 transform -translate-x-1/2"></span>
                 </button>
 
                 {/* Dropdown Menu */}
@@ -211,7 +212,7 @@ export function MegaMenu() {
                 <Link
                   key={link.title}
                   href={link.href}
-                  className="px-4 text-lg font-medium text-gray-700 hover:text-cyan-600  rounded-lg transition-all duration-200 relative group"
+                  className="px-4 text-lg font-medium text-gray-700 hover:text-cyan-600 rounded-lg transition-all duration-200 relative group"
                 >
                   {link.title}
                   <span className="absolute -bottom-0.5 left-1/2 w-0 h-0.5 bg-cyan-600 transition-all duration-300 group-hover:w-1/2 transform -translate-x-1/2"></span>
@@ -227,7 +228,7 @@ export function MegaMenu() {
                 className="bg-cyan-600 hover:bg-[#5b5b5b] text-white shadow-md hover:shadow-lg transition-all duration-200"
               >
                 <Link href="/contact" className="flex items-center space-x-1">
-                  <span className="text-lg">Contact </span>
+                  <span className="text-lg">Contact</span>
                 </Link>
               </Button>
             </div>
@@ -330,14 +331,14 @@ export function MegaMenu() {
             <div className="pt-4 space-y-3 border-t border-gray-100">
               <Button
                 asChild
-                className="w-full hover:bg-[#5b5b5b]/80 bg-cyan-600  text-white"
+                className="w-full hover:bg-[#5b5b5b]/80 bg-cyan-600 text-white"
               >
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className=" flex items-center justify-center space-x-2"
+                  className="flex items-center justify-center space-x-2"
                 >
-                  <span className="">Contact</span>
+                  <span>Contact</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>

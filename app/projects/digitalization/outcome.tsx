@@ -11,14 +11,20 @@ export default function Outcome() {
   const listItemsRef = useRef<(HTMLLIElement | null)[]>([]);
   const tableRowsRef = useRef<(HTMLTableRowElement | null)[]>([]);
   const imageRef = useRef<HTMLDivElement>(null);
-  const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile(); // Get isMobile from hook
+
+  const [isInView, setIsInView] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false); // 👈 NEW
+
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        if (entry.isIntersecting && !hasAnimated) {
+          setIsInView(true);
+          setHasAnimated(true); // 👈 Lock animation after first trigger
+        }
       },
       {
         threshold: 0.2,
@@ -35,11 +41,11 @@ export default function Outcome() {
         observer.unobserve(sectionRef.current);
       }
     };
-  }, []);
+  }, [hasAnimated]);
 
   useEffect(() => {
     if (isInView && !isMobile) {
-      // Desktop animations
+      // Desktop animations only once
       listItemsRef.current.forEach((item, index) => {
         if (item) {
           setTimeout(() => {

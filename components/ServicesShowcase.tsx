@@ -241,7 +241,7 @@ const ServicesShowcase = () => {
             </span>
           </h2>
           <p className="text-sm py-4 sm:text-sm md:text-base text-justify text-gray-650 leading-relaxed">
-            From Resourcing the right talent to building dedicated teams and
+            From recruiting the right talent to building dedicated teams and
             deploying powerful SaaS tools, we help you grow with confidence.
           </p>
         </div>

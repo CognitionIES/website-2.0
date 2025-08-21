@@ -74,8 +74,8 @@ export default function Tech() {
 
   const technologies = [
     "3D Laser Scanning Equipment: For precise spatial data acquisition.",
-    "AI-Powered Analysis Tools: To validate and analyze scan data against design specifications.",
-    "Digital Twin Platforms: For creating and managing the intelligent digital replica of the facility.",
+    "AI-Powered Analysis Tool: Validate & analyze scan data against design specifications.",
+    "Digital Twin Platforms: Creating & managing intelligent digital replica of the facility.",
     "Dashboard and Visualization Tools: For real-time monitoring and analytics.",
   ];
 
@@ -122,7 +122,7 @@ export default function Tech() {
                         variants={mobileItemVariants}
                         initial="hidden"
                         animate="visible"
-                        className="flex items-start p-2 rounded-md hover:bg-gray-50"
+                        className="flex  items-start p-2 rounded-md hover:bg-gray-50"
                       >
                         <span className="text-[#0098AF] mr-2 mt-1">⦿</span>
                         {tech}
@@ -158,60 +158,66 @@ export default function Tech() {
 
             {!isMobile && (
               <div className="grid grid-cols-1 md:grid-cols-5 gap-6 lg:gap-8">
-                <motion.div
-                  ref={(el) => {
-                    containerRefs.current[0] = el;
-                  }}
-                  className="md:col-span-3 bg-white p-6 lg:p-8 rounded-xl shadow-md transition-all duration-500 hover:shadow-lg"
-                  variants={containerVariants}
-                  custom={0}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#003C46] mb-4 flex items-center">
-                    <span className="text-[#0098AF] mr-2">💡</span>
-                    Technologies Used
-                  </h3>
-                  <ul className="space-y-3 text-gray-700 text-base lg:text-lg">
-                    {technologies.map((tech, index) => (
-                      <li
-                        key={index}
-                        ref={(el) => {
-                          techItemsRef.current[index] = el;
-                        }}
-                        className="flex items-start opacity-0 translate-x-10 transition-all duration-500 ease-out hover:bg-gray-50 p-2 rounded-md"
-                      >
-                        <span className="text-[#0098AF] mr-2 transition-transform duration-300 inline-block hover:scale-110">
-                          ⦿
-                        </span>
-                        {tech}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
+                {/* Technologies Used */}
+                {technologies.length > 0 && (
+                  <motion.div
+                    ref={(el) => {
+                      containerRefs.current[0] = el;
+                    }}
+                    className="md:col-span-3 bg-white p-6 lg:p-8 rounded-xl shadow-md transition-all duration-500 hover:shadow-lg"
+                    variants={containerVariants}
+                    custom={0}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#003C46] mb-4 flex items-center">
+                      <span className="text-[#0098AF] mr-2">💡</span>
+                      Technologies Used
+                    </h3>
+                    <ul className="space-y-3 text-gray-700 text-base lg:text-lg">
+                      {technologies.map((tech, index) => (
+                        <li
+                          key={index}
+                          ref={(el) => {
+                            techItemsRef.current[index] = el;
+                          }}
+                          className="flex items-start opacity-0 translate-x-10 transition-all duration-500 text-md ease-out hover:bg-gray-50 p-1 rounded-md"
+                        >
+                          <span className="text-[#0098AF] mr-2 transition-transform duration-300 inline-block hover:scale-110">
+                            ⦿
+                          </span>
+                          {tech}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                )}
 
-                <motion.div
-                  ref={(el) => {
-                    containerRefs.current[1] = el;
-                  }}
-                  className="md:col-span-2 bg-white p-6 lg:p-8 rounded-xl shadow-md transition-all duration-500 hover:shadow-lg"
-                  variants={containerVariants}
-                  custom={1}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#003C46] mb-4 flex items-center">
-                    <span className="text-[#0098AF] mr-2">🔄</span>
-                    Client Feedback
-                  </h3>
-                  <blockquote className="text-gray-700 text-base lg:text-lg italic border-l-4 border-[#0098AF]/30 pl-4 transition-all duration-500 hover:border-l-6 hover:border-[#0098AF]/50">
-                    {clientFeedback.quote}
-                    <br />
-                    <cite className="not-italic mt-2 block text-right text-sm lg:text-base text-gray-500 transition-all duration-300 hover:text-[#0098AF]">
-                      {clientFeedback.cite}
-                    </cite>
-                  </blockquote>
-                </motion.div>
+                {/* Client Feedback */}
+                {clientFeedback?.quote && (
+                  <motion.div
+                    ref={(el) => {
+                      containerRefs.current[1] = el;
+                    }}
+                    className="md:col-span-2 bg-white p-6 lg:p-8 rounded-xl shadow-md transition-all duration-500 hover:shadow-lg"
+                    variants={containerVariants}
+                    custom={1}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#003C46] mb-4 flex items-center">
+                      <span className="text-[#0098AF] mr-2">🔄</span>
+                      Client Feedback
+                    </h3>
+                    <blockquote className="text-gray-700 text-base lg:text-lg italic border-l-4 border-[#0098AF]/30 pl-4 transition-all duration-500 hover:border-l-6 hover:border-[#0098AF]/50">
+                      {clientFeedback.quote}
+                      <br />
+                      <cite className="not-italic mt-2 block text-right text-sm lg:text-base text-gray-500 transition-all duration-300 hover:text-[#0098AF]">
+                        {clientFeedback.cite}
+                      </cite>
+                    </blockquote>
+                  </motion.div>
+                )}
               </div>
             )}
           </motion.div>

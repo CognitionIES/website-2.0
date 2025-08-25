@@ -15,15 +15,6 @@ interface Service {
 
 const services: Service[] = [
   {
-    id: "direct-hire",
-    title: "Direct Hire",
-    subtitle: "Finding Permanent Talent",
-    description:
-      "Build your core team with confidence. Our direct hire services connect you with top-tier, pre-vetted professionals who are aligned with your culture, goals, and long-term vision.",
-    image:
-      "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop",
-  },
-  {
     id: "contract-staffing",
     title: "Contract Staffing",
     subtitle: "Flexible Workforce, On Demand",
@@ -32,18 +23,10 @@ const services: Service[] = [
     image:
       "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop",
   },
-  {
-    id: "contract-to-hire",
-    title: "Contract-to-Hire (C2H)",
-    subtitle: "Try Before You Hire",
-    description:
-      "Evaluate talent in real-time before making it permanent. Our contract-to-hire model allows you to assess a candidate's skills, culture fit, and work ethic during a trial period. If it's a match, convert to full-time with confidence and zero guesswork.",
-    image:
-      "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400&h=200&fit=crop",
-  },
+
   {
     id: "rpo",
-    title: "Recruitment Process Outsourcing",
+    title: "Recruitment Process Outsource",
     subtitle: "End-to-End Hiring, Handled by Experts",
     description:
       "Outsource your recruitment engine and reduce cost-per-hire. With RPO, our team acts as an extension of your HR department, managing the entire hiring process — sourcing, screening, interviews, compliance, and analytics — with speed, consistency, and scale.",

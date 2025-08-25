@@ -16,10 +16,10 @@ import Industries from "./industries";
 
 const Index = () => {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <MegaMenu />
       <Hero />
-      <main className=" ">
+      <main className="flex-grow">
         <Partner />
         <Features />
         <VideoShowcase />
@@ -27,9 +27,9 @@ const Index = () => {
         <Industries />
         {/* <Integration /> */}
         <div className="relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-3/4 h-full bg-[#009af]/5 rounded-l-[100px] -z-10"></div>
+          <div className="absolute top-0 right-0 w-3/4 h-full bg-[#0098af]/5 rounded-l-[100px] -z-10"></div>
           <WhyChoose />
-        </div>{" "}
+        </div>
         <CTA />
       </main>
       <Footer />

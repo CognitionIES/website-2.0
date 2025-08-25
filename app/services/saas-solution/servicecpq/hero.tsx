@@ -11,53 +11,36 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-[#0098af]/30 to-[#00b4d8]/30 -z-10" />
 
       {/* Subtle pattern overlay */}
-      <BackgroundGrid className="-z-10" />
+      <BackgroundGrid className="-z-10 opacity-50" />
 
-      <div className="container mx-auto">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-medium tracking-tight lg:text-6xl font-semibold text-[#003C46] mb-6 leading-tight animate-fade-in-up">
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#003C46] mb-6 leading-tight animate-fade-in-up">
             Intelligent After-Sales <br />
-            All-in-One
+            All-in-One Platform
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-[#5b5b5b] mb-10 max-w-3xl mx-auto animate-fade-in-up delay-100">
-            AI-powered platform unifying claims, Configue Price Quote (CPQ), and
-            repair workflows.
+          <p className="text-lg md:text-xl text-[#5b5b5b] mb-10 max-w-3xl mx-auto animate-fade-in-up delay-100 leading-relaxed">
+            AI-powered platform unifying claims, Configure Price Quote (CPQ),
+            and repair workflows for seamless service management.
           </p>
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-200">
             <Link
               href="/contact"
-              className="bg-[#0098af] w-1/2 text-white px-6 py-3 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:bg-[#003C46] focus:outline-none focus:ring-2 focus:ring-[#0098af]/50 focus:ring-offset-2;  group"
+              className="bg-[#0098af] w-full sm:w-auto text-white px-8 py-3 rounded-full inline-flex items-center justify-center transition-all duration-300 hover:bg-[#003C46] focus:outline-none focus:ring-2 focus:ring-[#0098af]/50 focus:ring-offset-2 group font-medium shadow-md hover:shadow-lg"
             >
               Book Free Demo
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
-
-          {/* Trust indicators */}
-          {/* <div className="mt-10 text-center animate-fade-in-up delay-300">
-            <div className="flex justify-center items-center space-x-6">
-              <div className="text-center">
-                <p className="text-xl font-bold text-[#0098af]">5/5</p>
-              </div>
-              <div className="text-center">
-                <p className="text-xl font-bold text-[#0098af]">
-                  4.6/5
-                </p>
-                <p className="text-sm text-[#5b5b5b]">
-                  (Early Adopters)
-                </p>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
 
       {/* Decorative elements */}
-      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-background to-transparent -z-10" />
     </section>
   );
 };

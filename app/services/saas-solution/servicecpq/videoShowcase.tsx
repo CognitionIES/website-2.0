@@ -45,7 +45,7 @@ const VideoShowcase = () => {
             <div className="relative pt-[54.25%]">
               <iframe
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/zq4nEzGR85M"
+                src="https://www.youtube.com/embed/zq4nEzGR85M?start=8"
                 title="ServiceCPQ Demo Video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

@@ -2,11 +2,18 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, ArrowLeft } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 import digitalImage from "@/constants/images/home/our-recent-projects/digitalization.jpg";
 import pcmImage2 from "@/constants/images/home/our-recent-projects/pcm.jpg";
 import Link from "next/link";
@@ -62,19 +69,20 @@ const projects: Project[] = [
 ];
 
 const RecentProjects = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const isMobile = useIsMobile();
-  const visibleProjects = isMobile ? 1 : 2;
-  const totalSlides = Math.ceil(projects.length / visibleProjects);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) setIsInView(true);
+        if (entry.isIntersecting && !hasAnimated.current) {
+          setIsInView(true);
+          hasAnimated.current = true;
+        }
       },
-      { threshold: 0.2, rootMargin: "0px" }
+      { threshold: 0.2 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => {
@@ -82,193 +90,145 @@ const RecentProjects = () => {
     };
   }, []);
 
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowRight") {
-        setActiveIndex((prev) => (prev + 1) % totalSlides);
-      } else if (event.key === "ArrowLeft") {
-        setActiveIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [totalSlides]);
-
-  const goToNextSlide = () => {
-    setActiveIndex((prev) => (prev + 1) % totalSlides);
-  };
-
-  const goToPrevSlide = () => {
-    setActiveIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
-
   return (
     <section
       ref={sectionRef}
       role="region"
       aria-labelledby="projects-heading"
-      className="py-16 sm:py-12 lg:py-16 font-primary relative bg-gradient-to-b from-[#F0F9FB] to-white"
+      className="py-16 sm:py-20 lg:py-24 font-primary relative bg-gradient-to-b from-[#F0F9FB] to-white overflow-hidden"
     >
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          whileInView={{ opacity: 0.15, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 0.1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 1.2 }}
-          className="absolute top-1/4 left-1/4 w-56 h-56 bg-[#0098AF]/20 rounded-full blur-3xl -z-10"
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#0098AF]/20 rounded-full blur-3xl"
         />
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.05 }}
+          whileInView={{ opacity: 0.03 }}
           viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="absolute w-full h-full bg-dot-pattern bg-[length:22px_22px] opacity-[0.03]"
+          transition={{ duration: 1.2 }}
+          className="absolute inset-0 bg-dot-pattern bg-[length:24px_24px]"
         />
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="inline-block px-3 py-1 bg-[#E6F0F5] rounded-full">
-          <p className="text-xs font-medium text-[#003C46] uppercase">
+      <div className="max-w-[90%] sm:max-w-3xl lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="inline-block mb-4 bg-[#E6F0F5]/80 rounded-full px-4 py-1.5 text-xs font-medium tracking-wider text-[#0098AF] uppercase shadow-sm"
+          >
             Featured Work
-          </p>
+          </motion.span>
+          <motion.h2
+            id="projects-heading"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-[#003C46] tracking-tight"
+          >
+            Our Recent Projects
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-4 text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
+          >
+            Showcasing how we build, operate, and deliver impact across
+            industries.
+          </motion.p>
         </div>
-        <motion.h1
-          id="projects-heading"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className="text-[28px] sm:text-[36px] font-heading font-bold text-[#003C46] mt-3 tracking-tight"
-        >
-          Our Recent Projects
-        </motion.h1>
-        <p className="mt-2 text-gray-600 text-base sm:text-lg max-w-2xl">
-          Showcasing how we build, operate, and deliver impact across
-          industries.
-        </p>
 
-        <div className="relative max-w-7xl mt-8">
-          <div className="overflow-hidden">
-            <div
-              className="flex  transition-transform duration-500"
-              style={{
-                transform: `translateX(-${
-                  activeIndex * (100 / visibleProjects)
-                }%)`,
-              }}
-            >
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="relative"
+        >
+          <Carousel opts={{ align: "start", loop: true }} className="w-full">
+            <CarouselContent className="-ml-4">
               {projects.map((project, index) => (
-                <motion.div
+                <CarouselItem
                   key={project.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
-                  }
-                  transition={{ duration: 0.25, delay: 0.2 + index * 0.1 }}
-                  className={cn(
-                    "project-card flex-shrink-0",
-                    isMobile ? "w-full" : "w-[48%]" 
-                  )}
-                  whileHover={{ y: -5 }}
+                  className={cn("pl-4", isMobile ? "basis-full" : "basis-1/2")}
                 >
-                  <div className="h-full bg-white rounded-2xl shadow-md border border-[#003C46]/10 hover:border-[#0098AF] hover:shadow-xl transition-all duration-300 p-2 group">
-                    <div className="relative h-[220px] sm:h-[260px] w-full overflow-hidden rounded-xl">
-                      <motion.div
-                        className="absolute inset-0 bg-cover bg-center"
-                        style={{
-                          backgroundImage: `url(${
-                            typeof project.image === "string"
-                              ? project.image
-                              : project.image.src
-                          })`,
-                        }}
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#003C46]/50 via-[#003C46]/20 to-transparent opacity-80 group-hover:opacity-90 transition duration-300" />
-                      <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 rounded-full shadow-sm">
-                        <p className="text-xs font-medium text-[#003C46]">
+                  <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.1 * index,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <div className="h-[480px] sm:h-[520px] bg-white rounded-2xl  border border-[#003C46]/5 hover:border-[#0098AF]/50  transition-all duration-500 ease-out group overflow-hidden flex flex-col">
+                      <div className="relative h-[240px] sm:h-[280px] flex-shrink-0 overflow-hidden rounded-t-2xl">
+                        <Image
+                          src={project.image}
+                          alt={`${project.title} project image`}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          {...(index < 2
+                            ? { priority: true }
+                            : { loading: "lazy" })}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#003C46]/60 to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-300" />
+                        <div className="absolute top-4 left-4 px-3 py-1 bg-white/95 rounded-full shadow-md text-xs font-medium text-[#003C46] transition-all duration-300 group-hover:shadow-lg">
                           {project.category}
+                        </div>
+                      </div>
+                      <div className="p-6 space-y-4 flex flex-col flex-grow">
+                        <h3 className="text-xl font-semibold text-[#003C46] group-hover:text-[#0098AF] transition-colors duration-300">
+                          {project.title}
+                        </h3>
+                        <p className="text-sm text-gray-600 leading-6 overflow-y-auto flex-grow">
+                          {project.description}
                         </p>
+                        <Link
+                          href={project.href}
+                          className="inline-flex items-center gap-2 text-sm font-medium text-[#0098AF] hover:text-[#007A8C] transition-colors duration-300 mt-auto"
+                        >
+                          View in detail
+                          <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                        </Link>
                       </div>
                     </div>
-
-                    <div className="p-5 space-y-3">
-                      <h3 className="text-lg sm:text-xl font-semibold text-[#003C46] group-hover:text-[#0098AF] transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-sm sm:text-base text-gray-600 line-clamp-3 leading-relaxed">
-                        {project.description}
-                      </p>
-                      <Link
-                        href={project.href}
-                        className="inline-flex items-center gap-2 text-sm sm:text-base font-medium text-[#0098AF] relative group/link"
-                      >
-                        <span className="relative">
-                          View in detail
-                          <span className="absolute -bottom-px left-0 w-full h-[1px] bg-[#0098AF]/60 scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left duration-300" />
-                        </span>
-                        <ArrowUpRight className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                      </Link>
-                    </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </CarouselItem>
               ))}
-            </div>
-          </div>
-          {/* Arrow Buttons for Mobile and Desktop */}
-          <div className="absolute inset-y-0 left-0 flex items-center z-10">
-            <button
-              onClick={goToPrevSlide}
-              className="p-3 bg-white/70 backdrop-blur-sm border border-white/30 text-[#003C46] rounded-full shadow-md m-4 hover:bg-[#0098AF]/90 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#0098AF]"
-              aria-label="Previous slide"
-            >
-              <ArrowLeft className="h-5 w-5" />
-            </button>
-          </div>
-          <div className="absolute inset-y-0 right-0 flex items-center z-10">
-            <button
-              onClick={goToNextSlide}
-              className="p-2 bg-[#0098AF]/80 text-white rounded-full m-4 hover:bg-[#007A8C] transition-all duration-300"
-              aria-label="Next slide"
-            >
-              <ArrowRight className="h-6 w-6" />
-            </button>
-          </div>
-          {isMobile && (
-            <div className="flex justify-center gap-1.5 mt-4">
-              {Array.from({ length: totalSlides }).map((_, index) => (
-                <button
-                  key={index}
-                  className={cn(
-                    "w-2 h-2 rounded-full transition-all duration-300",
-                    activeIndex === index
-                      ? "bg-[#0098AF] scale-125"
-                      : "bg-[#5B5B5B]/20"
-                  )}
-                  onClick={() => setActiveIndex(index)}
-                  aria-label={`View slide ${index + 1}`}
+            </CarouselContent>
+            {!isMobile && (
+              <>
+                <CarouselPrevious
+                  className="absolute left-[-40px] lg:left-[-60px] top-1/2 transform -translate-y-1/2 h-12 w-12 rounded-full bg-[#0098AF] text-white hover:bg-[#007A8C] transition-colors duration-300 shadow-md"
+                  aria-label="Previous projects"
                 />
-              ))}
-            </div>
-          )}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-8 text-center"
-          >
-            <Link href="/projects">
-              <Button
-                variant="outline"
-                className="bg-[#0098AF] text-white hover:bg-white hover:text-[#003C46] hover:border-[#0098AF] rounded-full px-4 py-3 text-base"
-              >
-                View All Projects
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </motion.div>
-        </div>
+                <CarouselNext
+                  className="absolute right-[-40px] lg:right-[-60px] top-1/2 transform -translate-y-1/2 h-12 w-12 rounded-full bg-[#0098AF] text-white hover:bg-[#007A8C] transition-colors duration-300 shadow-md"
+                  aria-label="Next projects"
+                />
+              </>
+            )}
+          </Carousel>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12 text-center"
+        >
+          <Link href="/projects">
+            <Button className="bg-[#0098AF] text-white hover:bg-[#007A8C] rounded-full px-8 py-3 text-base font-medium transition-all duration-300 shadow-md hover:shadow-lg">
+              View All Projects
+              <ArrowRight className="ml-3 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </Button>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

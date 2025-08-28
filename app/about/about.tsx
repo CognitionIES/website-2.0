@@ -7,7 +7,7 @@ import { ABOUT_CONSTANTS } from "@/constants/aboutPage/constants";
 import { useEffect, useRef, useState } from "react";
 
 export default function AboutSection() {
-  const { IMAGES, TEXT,  STATS } = ABOUT_CONSTANTS;
+  const { IMAGES, TEXT, STATS } = ABOUT_CONSTANTS;
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -76,6 +76,12 @@ export default function AboutSection() {
               <p className="text-lg text-gray-600 text-justify leading-relaxed">
                 {TEXT.STORY_P2}
               </p>
+              <p className="text-lg text-gray-600 text-justify leading-relaxed">
+                {TEXT.STORY_P3}
+              </p>
+              <p className="text-lg text-gray-600 text-justify leading-relaxed">
+                {TEXT.STORY_P4}
+              </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 relative">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -115,4 +121,3 @@ export default function AboutSection() {
     </div>
   );
 }
- 

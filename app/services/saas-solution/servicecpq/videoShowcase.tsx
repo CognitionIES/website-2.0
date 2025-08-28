@@ -1,6 +1,7 @@
 import React from "react";
 import { Youtube } from "lucide-react";
 import BackgroundGrid from "@/components/ui/backgroundgrid";
+import servicecpqVideo from "@/constants/video/servicecpq.mp4";
 
 const VideoShowcase = () => {
   return (
@@ -43,13 +44,18 @@ const VideoShowcase = () => {
           <div className="relative rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.01] transition-transform duration-300 bg-black">
             {/* 16:9 aspect ratio wrapper */}
             <div className="relative pt-[54.25%]">
-              <iframe
+              <video
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/zq4nEzGR85M?start=8"
+                src={servicecpqVideo}
                 title="ServiceCPQ Demo Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+                controls
+                autoPlay
+                muted
+                loop
+              >
+                <source src={servicecpqVideo} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
 

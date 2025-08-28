@@ -29,15 +29,19 @@ export const ABOUT_CONSTANTS = {
       "Engineering the future with innovation, agility, and a human-first approach since 2023.",
     STORY_TITLE: "Our Journey",
     STORY_P1:
-      "The group founded in 2005, Cognition IES was built on a bold vision: to redefine how talent powers businesses. From India to the world, we've grown into a trusted talent solutions provider—specializing in staffing, recruitment, workforce management, and digital hiring solutions for industries like IT, Engineering, Manufacturing, GCCs and BFSI.",
+      "Founded in 2005, we began as a Recruitment & Resourcing company, connecting skilled professionals with businesses across engineering and IT sectors. From the start, our focus was on building long-term client relationships and delivering high-quality talent for critical projects.",
     STORY_P2:
-      "Whether you're building agile teams, hiring for long-term roles, or scaling operations, we connect you with the right people—backed by smart technology and deep domain expertise.",
+      "Over time, we expanded our offerings to include project-based hiring, flexible resourcing, and Build & Operate models, helping clients scale teams efficiently and meet dynamic business needs.",
     MISSION_TITLE: "Our Mission",
+    STORY_P3:
+      "In 2023, we launched Engineering Services, offering Product and Plant Engineering solutions. Our capabilities now include CAE/CFD, prototyping, embedded systems, asset management, Digital Twins, AI-driven analytics, and real-time monitoring, combining engineering excellence with technology-driven innovation.",
+    STORY_P4:
+      "Today, Cognition IES is a trusted partner for talent and engineering solutions, delivering smarter, more efficient, and future-ready services to clients worldwide.",
     MISSION_DESC:
-      "To deliver flexible, people-first hiring solutions that help businesses grow and talent thrive.",
+      "Empowering businesses with top talent, engineering excellence, and technology-driven innovation for faster, smarter, and sustainable results.",
     VISION_TITLE: "Our Vision",
     VISION_DESC:
-      "To be the most agile and trusted partner in workforce transformation—bridging people, processes, and performance globally.",
+      "To be a trusted partner delivering innovative, efficient, and future-ready solutions.",
     VALUES_TITLE: "What Drives Us",
     CTA_TITLE: "Shape the Future with Us",
     CTA_DESC: "Let’s turn your hiring needs into long-term success.",

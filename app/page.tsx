@@ -10,6 +10,7 @@ import RecentProjects from "@/components/HomePage/RecentProjects";
 import ContactSection from "./contact/ContactSection";
 import ServicesShowcase from "@/components/ServicesShowcase";
 import CTA from "@/components/CTA";
+import EngagementCarousel from "@/components/HomePage/EngagementModel";
 
 const TestimonialSlider = dynamic(
   () => import("@/components/HomePage/Testimonials"),
@@ -31,6 +32,9 @@ export default function Home() {
           </section>
           <section className="relative">
             <ServicesShowcase />
+          </section>
+          <section className="relative">
+            <EngagementCarousel />
           </section>
           <section className="relative">
             <RecentProjects />

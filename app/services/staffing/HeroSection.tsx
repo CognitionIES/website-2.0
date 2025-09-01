@@ -3,7 +3,7 @@ import { ArrowDown } from 'lucide-react';
 
 const HeroSection = () => {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-[#002b32] to-[#003C46] text-white py-16 md:py-24">
+    <div className="relative overflow-hidden bg-gradient-to-b from-[#002b32] to-[#003C46] text-white py-16 sm:py-20 lg:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate-fade-in">

@@ -24,10 +24,10 @@ const servicesData: Service[] = [
     description: "Professional staffing and recruitment services",
   },
   {
-    title: "Build and Operate",
-    href: "/services/build-operate",
+    title: "Engineering Services",
+    href: "/services/engineering-serivces",
     icon: <Server className="w-4 h-4" />,
-    description: "End-to-end build and operate solutions",
+    description: "End-to-end Engineering Services solutions",
   },
   {
     title: "SaaS Solutions - ServiceCPQ",

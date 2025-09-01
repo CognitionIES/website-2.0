@@ -96,7 +96,7 @@ export default function StatSection() {
         </div>
 
         {/* Services Section */}
-        <section className="py-24 px-6 relative overflow-hidden">
+        <section className="py-16 sm:py-20 lg:py-16 px-6 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#F5FDFF] via-white to-[#99D5DF]/20"></div>
           <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-[#99D5DF]/30 to-[#0098AF]/20 rounded-full blur-3xl opacity-40"></div>
           <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-br from-[#0098AF]/20 to-[#99D5DF]/30 rounded-full blur-3xl opacity-40"></div>
@@ -155,7 +155,7 @@ export default function StatSection() {
         </section>
 
         {/* Industries Section */}
-        <section className="py-24 px-6 relative overflow-hidden bg-[#003C46]">
+        <section className="py-16 sm:py-20 lg:py-16 px-6 relative overflow-hidden bg-[#003C46]">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#003C46] via-[#003C46]/95 to-[#0098AF]/20"></div>
 
           <div className="relative max-w-7xl mx-auto">

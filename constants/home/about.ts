@@ -2,13 +2,14 @@ import aboutImage from "@/constants/images/home/who-we-are.jpg";
 
 export const ABOUT_CONSTANTS = {
   TITLE: "Who We Are?",
-  SUBTITLE: "Empowering Organizations with Scalable Talent Solutions",
+  SUBTITLE:
+    "In 2023, we expanded into Engineering Services, helping industries accelerate design, development, and project execution with specialized technical expertise and offshore delivery models.",
   DESCRIPTION_1:
-    "At Cognition IES Pvt. Ltd., we specialize in Engineering and IT recruitment solutions tailored to meet the dynamic needs of industrial and technology-driven businesses. Since 2005, we’ve been a trusted partner in helping companies scale teams with speed, precision, and reliability.",
+    "Cognition IES is a group with a legacy of delivering Recruitment & Resourcing solutions since 2005. Over the years, we have partnered with global clients to bridge talent gaps, support large-scale projects, and provide flexible workforce solutions.",
   DESCRIPTION_2:
-    "Our unique Build & Operate model goes beyond traditional recruitment—we help you build project-ready teams and fully manage their operations, allowing you to focus on what matters most. From greenfield industrial setups to digital product rollouts, we offer flexible, end-to-end workforce solutions.",
+    "We also bring technology to the forefront with our SaaS solution – ServiceCPQ, designed to automate resourcing and project management processes, reduce costs, and enable real-time visibility.",
   DESCRIPTION_3:
-    "Driven by domain expertise, agility, and a commitment to operational excellence, we act as an extension of your team—delivering scalable, future-ready workforce strategies that accelerate growth.",
+    "What sets us apart is our ability to adapt to client needs. Whether it is short-term resourcing, long-term engineering partnerships, or scalable Build & Operate teams, CognitionIES delivers with integrity, innovation, and a commitment to excellence.",
   IMAGE: aboutImage,
   BUTTON_TEXT: "Download Brochure",
   BUTTON_HREF: "/brochure",

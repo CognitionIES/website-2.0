@@ -16,8 +16,8 @@ interface Service {
 const services: Service[] = [
   {
     id: "contract-staffing",
-    title: "Contract Staffing",
-    subtitle: "Flexible Workforce, On Demand",
+    title: "Time & Material",
+    subtitle: "Pay only for the hours or effort utilized.",
     description:
       "Scale quickly without long-term commitments. Our contract staffing services provide skilled professionals for short- or mid-term assignments. We manage everything from sourcing and onboarding to payroll and compliance — so you can focus on delivery, not HR.",
     image:

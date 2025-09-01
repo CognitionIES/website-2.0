@@ -95,7 +95,7 @@ const RecentProjects = () => {
       ref={sectionRef}
       role="region"
       aria-labelledby="projects-heading"
-      className="py-16 sm:py-20 lg:py-24 font-primary relative bg-gradient-to-b from-[#F0F9FB] to-white overflow-hidden"
+      className="py-16 sm:py-20 lg:py-16 font-primary relative bg-gradient-to-b from-[#F0F9FB] to-white overflow-hidden"
     >
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
@@ -114,12 +114,12 @@ const RecentProjects = () => {
         />
       </div>
       <div className="max-w-[90%] sm:max-w-3xl lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className=" mb-8">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="inline-block mb-4 bg-[#E6F0F5]/80 rounded-full px-4 py-1.5 text-xs font-medium tracking-wider text-[#0098AF] uppercase shadow-sm"
+            className="inline-block mb-2 bg-[#E6F0F5]/80 rounded-full px-4 py-1.5 text-xs font-medium tracking-wider text-[#0098AF] uppercase shadow-sm"
           >
             Featured Work
           </motion.span>
@@ -128,7 +128,7 @@ const RecentProjects = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-[#003C46] tracking-tight"
+            className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#003C46]"
           >
             Our Recent Projects
           </motion.h2>
@@ -136,7 +136,7 @@ const RecentProjects = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="mt-4 text-base sm:text-lg text-gray-600 max-w-7xl mx-auto leading-relaxed"
           >
             Showcasing how we build, operate, and deliver impact across
             industries.
@@ -165,7 +165,7 @@ const RecentProjects = () => {
                       ease: "easeOut",
                     }}
                   >
-                    <div className="h-[480px] sm:h-[520px] bg-white rounded-2xl  border border-[#003C46]/5 hover:border-[#0098AF]/50  transition-all duration-500 ease-out group overflow-hidden flex flex-col">
+                    <div className="h-[420px] sm:h-[480px] bg-white rounded-2xl  border border-[#003C46]/5 hover:border-[#0098AF]/50  transition-all duration-500 ease-out group overflow-hidden flex flex-col">
                       <div className="relative h-[240px] sm:h-[280px] flex-shrink-0 overflow-hidden rounded-t-2xl">
                         <Image
                           src={project.image}
@@ -186,7 +186,7 @@ const RecentProjects = () => {
                         <h3 className="text-xl font-semibold text-[#003C46] group-hover:text-[#0098AF] transition-colors duration-300">
                           {project.title}
                         </h3>
-                        <p className="text-sm text-gray-600 leading-6 overflow-y-auto flex-grow">
+                        <p className="text-md text-gray-600 leading-6  flex-grow">
                           {project.description}
                         </p>
                         <Link

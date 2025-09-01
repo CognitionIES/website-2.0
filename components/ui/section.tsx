@@ -26,7 +26,7 @@ export function Section({
       viewport={{ once: true, margin: "-100px" }}
       className={cn(
         "w-full",
-        customPadding || "py-16 md:py-24",
+        customPadding || "py-16 sm:py-20 lg:py-16",
         className
       )}
       {...props}

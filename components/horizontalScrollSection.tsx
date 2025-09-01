@@ -266,7 +266,7 @@ export const HorizontalScrollSection = forwardRef<
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        className="relative max-w-7xl mx-auto w-full flex flex-col justify-center py-14 lg:py-24"
+        className="relative max-w-7xl mx-auto w-full flex flex-col justify-center py-16 sm:py-20 lg:py-16"
         role="region"
         aria-labelledby={`${id}-title`}
       >

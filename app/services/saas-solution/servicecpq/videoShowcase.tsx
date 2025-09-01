@@ -1,7 +1,6 @@
 import React from "react";
 import { Youtube } from "lucide-react";
 import BackgroundGrid from "@/components/ui/backgroundgrid";
-import servicecpqVideo from "@/constants/video/servicecpq.mp4";
 
 const VideoShowcase = () => {
   return (
@@ -46,14 +45,17 @@ const VideoShowcase = () => {
             <div className="relative pt-[54.25%]">
               <video
                 className="absolute inset-0 w-full h-full"
-                src={servicecpqVideo}
+                src="/servicecpq.mp4"
                 title="ServiceCPQ Demo Video"
                 controls
                 autoPlay
                 muted
                 loop
               >
-                <source src={servicecpqVideo} type="video/mp4" />
+                <source
+                  src="/saas-solution/servicecpq/servicecpq.mp4"
+                  type="video/mp4"
+                />
                 Your browser does not support the video tag.
               </video>
             </div>

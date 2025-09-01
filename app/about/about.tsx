@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ABOUT_CONSTANTS } from "@/constants/aboutPage/constants";
-
 import { useEffect, useRef, useState } from "react";
 
 export default function AboutSection() {
@@ -14,11 +13,11 @@ export default function AboutSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting); // Update state when section enters or leaves view
+        setIsInView(entry.isIntersecting);
       },
       {
-        threshold: 0.2, // Triggers when 20% of the section is visible
-        rootMargin: "0px 0px -20% 0px", // Ensures it triggers only when scrolling down into the section
+        threshold: 0.2,
+        rootMargin: "0px 0px -20% 0px",
       }
     );
 
@@ -28,13 +27,11 @@ export default function AboutSection() {
 
     return () => {
       if (sectionRef.current) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         observer.unobserve(sectionRef.current);
       }
     };
   }, []);
 
-  // Animation variants for fade-in and fade-out
   const contentVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -67,7 +64,7 @@ export default function AboutSection() {
             variants={contentVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="grid md:grid-cols-2 gap-28 items-center"
+            className="grid md:grid-cols-2 gap-8 items-center"
           >
             <div className="">
               <p className="text-lg text-gray-600 mb-6 text-justify leading-relaxed">
@@ -99,22 +96,30 @@ export default function AboutSection() {
                         {stat.stat}
                       </span>
                     </div>
-                    <p className="text-lg leading-relaxed text-white   font-medium text-black">
+                    <p className="text-lg leading-relaxed text-white font-medium">
                       {stat.label}
                     </p>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="order-1 md:order-2 relative hidden md:block md:h-[360px] md:w-[620px] rounded-xl shadow-md overflow-hidden justify-self-end">
-              <Image
-                src={IMAGES.STORY_IMAGE.OurJourneyImage}
-                alt="Engineering services"
-                width={300}
-                height={500}
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <motion.div
+              className="relative w-full max-w-[500px] mx-auto md:max-w-[620px] rounded-xl shadow-lg overflow-hidden group"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="absolute inset-0 border-4 border-[#0098AF]/20 rounded-xl z-10" />
+              <div className="relative w-full h-[300px] sm:h-[360px] md:h-[400px]">
+                <Image
+                  src={IMAGES.STORY_IMAGE.OurJourneyImage}
+                  alt="Engineering services"
+                  fill
+                  className="object-cover rounded-xl group-hover:brightness-105 transition-brightness duration-300"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 620px"
+                  priority
+                />
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>

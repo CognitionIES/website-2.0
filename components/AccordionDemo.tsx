@@ -37,7 +37,7 @@ export default function AccordionDemo() {
   return (
     <section
       ref={sectionRef}
-      className="w-full py-16 sm:py-20 lg:py-24 relative bg-gradient-to-b from-white to-[#E6F0F5]/30"
+      className="w-full py-16 sm:py-20 lg:py-16 relative bg-gradient-to-b from-white to-[#E6F0F5]/30"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         <div className="mb-12 max-w-7xl">

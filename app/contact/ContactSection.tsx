@@ -121,7 +121,7 @@ export default function ContactSection() {
       value: " Recruitment And Resourcing",
       label: " Recruitment And Resourcing",
     },
-    { value: "Build And Operate", label: "Build And Operate" },
+    { value: "Engineering Services", label: "Engineering Services" },
     { value: "ServiceCPQ", label: "ServiceCPQ" },
     { value: "Others", label: "Others" },
   ];
@@ -187,9 +187,10 @@ export default function ContactSection() {
               animate: hasAnimated ? "visible" : "hidden",
               variants: fadeInVariants,
             })}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+            className="flex flex-col lg:grid lg:grid-cols-3 gap-8"
           >
-            <div className="lg:col-span-1 space-y-8">
+            {/* Details Section (Left on Desktop, Below Form on Mobile) */}
+            <div className="lg:col-span-1 space-y-8 order-2 lg:order-1">
               <div className="bg-white p-6 rounded-2xl shadow-lg">
                 <h3 className="text-xl font-semibold text-[#003C46] mb-4 flex items-center gap-2">
                   <FiMail className="text-[#0098AF]" />
@@ -229,11 +230,12 @@ export default function ContactSection() {
                   <p className="text-sm font-semibold text-gray-800">
                     Branch Office
                   </p>
-                  <p className="text-sm text-gray-600">Chicago, IL, USA</p>
+                  <p className="text-sm text-gray-600">Wisconsin, USA</p>
                 </div>
               </div>
             </div>
-            <div className="lg:col-span-2 bg-white p-8 rounded-2xl shadow-lg border-l-4 border-[#0098AF]">
+            {/* Form Section (Right on Desktop, First on Mobile) */}
+            <div className="lg:col-span-2 bg-white p-8 rounded-2xl shadow-lg border-l-4 border-[#0098AF] order-1 lg:order-2">
               <h2 className="text-2xl font-semibold text-[#003C46] mb-6">
                 Get in Touch
               </h2>

@@ -31,11 +31,11 @@ const services = [
   },
   {
     id: "02",
-    title: "Build & Operate",
+    title: "Engineering Services",
     description:
-      "We don’t just recruit—we manage. From building teams to running operations, we deliver performance, compliance & scalability without burdening your staff.",
+      "Turn ideas into reality with scalable engineering expertise. From product design to offshore delivery, we provide end-to-end solutions that ensure precision, cost-efficiency, and faster project execution.",
     image: buildImage,
-    href: "/services/build-operate",
+    href: "/services/engineering-serivces",
     icon: Factory,
   },
   {
@@ -240,7 +240,7 @@ const ServicesShowcase = () => {
               Smarter Tomorrow
             </span>
           </h2>
-          <p className="text-sm py-4 sm:text-sm md:text-base text-justify text-gray-650 leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-gray-600 max-w-7xl mx-auto leading-relaxed">
             From recruiting the right talent to building dedicated teams and
             deploying powerful SaaS tools, we help you grow with confidence.
           </p>

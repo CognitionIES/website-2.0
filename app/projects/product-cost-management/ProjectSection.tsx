@@ -17,7 +17,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ id, title, subtitle, ch
     <section 
       id={id} 
       className={cn(
-        "py-16 md:py-24 relative overflow-hidden", 
+        "py-16 sm:py-20 lg:py-16 relative overflow-hidden", 
         accent ? "bg-brand-teal/5" : "bg-white",
         gradientBg && "bg-gradient-to-br from-white via-brand-blue/5 to-brand-teal/5"
       )}

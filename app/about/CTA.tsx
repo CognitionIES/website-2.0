@@ -48,7 +48,7 @@ export default function CTASection() {
                 Get in Touch
               </Button>
             </Link>
-            <Link href="/services">
+            <Link href="/#services-showcase">
               <Button
                 variant="outline"
                 className="text-[#0098AF] border-white hover:bg-white hover:text-[#0098AF] px-8 py-3 sm:px-10 sm:py-4 rounded-full text-base sm:text-lg font-semibold shadow-lg relative overflow-hidden"

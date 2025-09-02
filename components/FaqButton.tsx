@@ -1,4 +1,4 @@
-// components/FaqButton.jsx
+// components/FaqButton.tsx
 "use client";
 
 import { useState } from "react";
@@ -19,12 +19,13 @@ const FaqButton = () => {
   const handleMouseLeave = () => setIsHovered(false);
 
   return (
-    <div className="fixed right-2 z-[1100] hidden md:block">
+    <div className="fixed right-4 top-4 z-[1100] sm:right-6 sm:top-6">
       <button
         onClick={handleNavigation}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="flex h-16 w-16 items-center justify-center rounded-full bg-transparent transition-transform duration-300 hover:scale-105"
+        className="flex h-5 w-12 items-center justify-center rounded-full bg-transparent transition-transform duration-300 hover:scale-105  sm:w-14  md:w-16"
+        aria-label="Open FAQ"
       >
         <Image
           src={isHovered ? FaqGif : FaqStatic}

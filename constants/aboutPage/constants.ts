@@ -29,14 +29,13 @@ export const ABOUT_CONSTANTS = {
       "Engineering the future with innovation, agility, and a human-first approach since 2023.",
     STORY_TITLE: "Our Journey",
     STORY_P1:
-      "Founded in 2005, we began as a Recruitment & Resourcing company, connecting skilled professionals with businesses across engineering and IT sectors. From the start, our focus was on building long-term client relationships and delivering high-quality talent for critical projects.",
+      "In 2005, a small group of professionals set out to connect skilled talent with businesses in engineering and IT. What started as a focused resourcing effort grew into a reliable network, supporting clients with project-based hiring, flexible resourcing, and Build & Operate models.",
     STORY_P2:
-      "Over time, we expanded our offerings to include project-based hiring, flexible resourcing, and Build & Operate models, helping clients scale teams efficiently and meet dynamic business needs.",
+      "By 2023, this foundation led to the formation of Cognition IES Pvt. Ltd. We brought together years of experience in talent solutions and expanded into advanced engineering and IT services. Our work now spans product and plant engineering, CAE & CFD, prototyping, embedded systems, asset management, digital twins, AI analytics, real-time monitoring, and IT solutions in app development, cloud, enterprise platforms, and digital transformation.",
     MISSION_TITLE: "Our Mission",
     STORY_P3:
-      "In 2023, we launched Engineering Services, offering Product and Plant Engineering solutions. Our capabilities now include CAE/CFD, prototyping, embedded systems, asset management, Digital Twins, AI-driven analytics, and real-time monitoring, combining engineering excellence with technology-driven innovation.",
-    STORY_P4:
-      "Today, Cognition IES is a trusted partner for talent and engineering solutions, delivering smarter, more efficient, and future-ready services to clients worldwide.",
+      "From modest beginnings, Cognition IES has grown into a trusted partner for talent, engineering, IT solutions, delivering practical, future ready services worldwide.",
+
     MISSION_DESC:
       "Empowering businesses with top talent, engineering excellence, and technology-driven innovation for faster, smarter, and sustainable results.",
     VISION_TITLE: "Our Vision",
@@ -59,6 +58,17 @@ export const ABOUT_CONSTANTS = {
     SCALE_HOVER: {
       rest: { scale: 1 },
       hover: { scale: 1.03, transition: { duration: 0.3 } },
+    },
+    FADE_UP: {
+      hidden: { opacity: 0, y: 30 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.6,
+          ease: [0.25, 0.25, 0.25, 0.75] as const,
+        },
+      },
     },
   },
 

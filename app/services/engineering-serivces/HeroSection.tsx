@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FiChevronRight, FiHome } from "react-icons/fi";
 import { PROJECTS_PAGE_CONSTANTS } from "@/constants/project/home";
+import heroImage from "@/constants/images/hero/eng-services.jpg"
 
 const useIntersectionObserver = (threshold = 0.1) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -44,7 +45,7 @@ export default function HeroSection() {
       ref={setRef}
       className="relative h-[500px] overflow-hidden"
       style={{
-        backgroundImage: `url(${PROJECTS_PAGE_CONSTANTS.HERO.IMAGE.src})`,
+        backgroundImage: `url(${heroImage.src})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",

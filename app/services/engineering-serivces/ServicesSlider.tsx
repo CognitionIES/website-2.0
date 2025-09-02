@@ -1,4 +1,5 @@
 "use client";
+
 import { motion, useAnimationControls } from "framer-motion";
 import { useState, useEffect } from "react";
 import {
@@ -141,7 +142,6 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ service, index }: ServiceCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-
   return (
     <motion.div
       className="flex-shrink-0 w-80 rounded-3xl p-8"
@@ -174,35 +174,37 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
         >
           {service.icon}
         </motion.div>
-
-        <div className="flex-1 space-y-4">
+        <div className="flex-1 space-y-6">
+          {" "}
+          {/* Increased space-y from 4 to 6 for better vertical rhythm */}
           <div>
             <h3
-              className="text-xl font-bold mb-2"
+              className="text-xl font-bold mb-3 leading-tight"
               style={{ color: "hsl(184, 31%, 36%)" }}
             >
               {service.title}
             </h3>
             <p
-              className="text-muted-foreground"
+              className="text-base leading-relaxed text-muted-foreground"
               style={{ color: "hsl(184, 31%, 36%)" }}
             >
               {service.description}
             </p>
           </div>
-
           <ul className="space-y-2">
+            {" "}
+            {/* Increased space-y from 2 to 3 for improved feature list spacing */}
             {service.features.map((feature, idx) => (
               <motion.li
                 key={idx}
-                className="flex items-center text-sm"
+                className="flex items-center text-sm leading-relaxed"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 + idx * 0.05 }}
                 style={{ color: "hsl(184, 31%, 36%)" }}
               >
                 <div
-                  className="w-1.5 h-1.5 rounded-full mr-3"
+                  className="w-2 h-2 rounded-full mr-4"
                   style={{ backgroundColor: "hsl(185, 100%, 34%)" }}
                 />
                 {feature}
@@ -219,12 +221,18 @@ interface ServiceSliderProps {
   title: string;
   services: typeof plantServices;
   direction: "left" | "right";
+  description: string;
 }
 
-const ServiceSlider = ({ title, services, direction }: ServiceSliderProps) => {
+const ServiceSlider = ({
+  title,
+  services,
+  direction,
+  description,
+}: ServiceSliderProps) => {
   const controls = useAnimationControls();
   const [isHovered, setIsHovered] = useState(false);
-  const cardWidth = 320; // Width of each card including margin
+  const cardWidth = 352; // Increased from 320 to 352 (w-80 is 320px, adding more margin for breathing room: 320 + 32px space-x)
   const singleSetWidth = services.length * cardWidth;
 
   useEffect(() => {
@@ -232,16 +240,14 @@ const ServiceSlider = ({ title, services, direction }: ServiceSliderProps) => {
       if (!isHovered) {
         const initialX = direction === "left" ? 0 : -singleSetWidth;
         const endX = direction === "left" ? -singleSetWidth : 0;
-
         while (!isHovered) {
           await controls.start({
             x: endX,
             transition: {
-              duration: services.length * 2, // Adjust speed based on number of cards
+              duration: services.length * 2.5, // Slightly slowed down for smoother, more deliberate scrolling
               ease: "linear",
             },
           });
-
           // Reset position instantly to create infinite loop
           await controls.start({
             x: initialX,
@@ -261,28 +267,32 @@ const ServiceSlider = ({ title, services, direction }: ServiceSliderProps) => {
   }, [isHovered, controls, direction, singleSetWidth, services.length]);
 
   return (
-    <div className="space-y-8">
-      <h3
-        className="text-4xl font-bold "
-        style={{ color: "hsl(184, 31%, 36%)" }}
-      >
-        {title}
-      </h3>
-
+    <div className="space-y-10">
+      <div>
+        <h3
+          className="text-4xl font-bold tracking-tight leading-tight mt-4"
+          style={{ color: "hsl(184, 31%, 36%)" }}
+        >
+          {title}
+        </h3>
+        <p
+          className="text-lg mt-3 max-w-3xl leading-relaxed"
+          style={{ color: "hsl(184, 31%, 36%)" }}
+        >
+          {description}
+        </p>
+      </div>
       <div
-        className="relative overflow-hidden"
+        className="relative overflow-hidden rounded-2xl"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <motion.div
-          className="flex space-x-6"
+          className="flex space-x-8"
           animate={controls}
           initial={{ x: direction === "left" ? 0 : -singleSetWidth }}
-          style={{
-            width: `${singleSetWidth * 2}px`, // Double width for seamless loop
-          }}
+          style={{ width: `${singleSetWidth * 2}px` }} // Double width for seamless loop
         >
-          {/* Render services twice for seamless looping */}
           {[...services, ...services].map((service, index) => (
             <ServiceCard
               key={`${service.title}-${index}`}
@@ -291,20 +301,18 @@ const ServiceSlider = ({ title, services, direction }: ServiceSliderProps) => {
             />
           ))}
         </motion.div>
-
-        {/* Gradient overlays for smooth edges */}
         <div
-          className="absolute left-0 top-0 bottom-0 w-20 pointer-events-none z-10"
+          className="absolute left-0 top-0 bottom-0 w-32 pointer-events-none z-10"
           style={{
             backgroundImage:
-              "linear-gradient(to right, hsla(196, 100%, 98%, 0.3), transparent)",
+              "linear-gradient(to right, hsla(196, 100%, 98%, 1), transparent)", // Enhanced opacity for better fade effect
           }}
         />
         <div
-          className="absolute right-0 top-0 bottom-0 w-20 pointer-events-none z-10"
+          className="absolute right-0 top-0 bottom-0 w-32 pointer-events-none z-10"
           style={{
             backgroundImage:
-              "linear-gradient(to left, hsla(196, 100%, 98%, 0.3), transparent)",
+              "linear-gradient(to left, hsla(196, 100%, 98%, 1), transparent)", // Enhanced opacity
           }}
         />
       </div>
@@ -314,60 +322,56 @@ const ServiceSlider = ({ title, services, direction }: ServiceSliderProps) => {
 
 export const ServicesSlider = () => {
   return (
-    <section
-      className="relative py-16 sm:py-20 lg:py-16 overflow-hidden"
-      style={{
-        backgroundImage:
-          "linear-gradient(to bottom right, hsla(196, 100%, 98%, 0.2), hsl(196, 100%, 98%), hsla(196, 100%, 98%, 0.3))",
-      }}
-    >
-      {/* Background layers */}
+    <section className="relative py-16 sm:py-24 lg:py-16 overflow-hidden">
       <div
-        className="absolute inset-0 opacity-50"
+        className="absolute inset-0 opacity-30"
         style={{
           backgroundImage:
-            "linear-gradient(135deg, hsla(186, 61%, 83%, 1.00), hsla(0, 0%, 98%, 1.00))",
+            "linear-gradient(135deg, hsla(186, 61%, 83%, 1), hsla(0, 0%, 98%, 1))", // Refined gradient for more natural flow
         }}
       />
-     
-
-      <div className="relative z-10 container max-w-7xl mx-auto px-6">
-        <div className="mb-16">
+      <div className="relative z-10 container max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        {" "}
+        {/* Added responsive px for better edge spacing */}
+        <div className="mb-8">
+          {" "}
+          {/* Increased mb for better header separation */}
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-7xl text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#003C46]"
+            className="max-w-7xl text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-tight text-[#003C46] mb-6"
           >
-            Our Engineering {" "}
-            <span
-              className=" font-semibold bg-gradient-to-br from-[#003C46] to-[#1C7A8A] bg-clip-text text-transparent"
-            >
+            Our Engineering{" "}
+            <span className="font-semibold bg-gradient-to-br from-[#003C46] to-[#1C7A8A] bg-clip-text text-transparent">
               Services Portfolio
             </span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl max-w-7xl mx-auto"
+            className="text-xl max-w-7xl mx-auto leading-relaxed"
             style={{ color: "hsl(184, 31%, 36%)" }}
           >
             Comprehensive engineering solutions spanning plant infrastructure
             and product development
           </motion.p>
         </div>
-
-        <div className="space-y-16">
+        <div className="space-y-2 lg:space-y-4">
+          {" "}
+          {/* Increased space-y for better slider separation on larger screens */}
           <ServiceSlider
             title="Plant Engineering Services"
             services={plantServices}
             direction="left"
+            description="Optimizing industrial facilities with expertise in process design, automation, electrical infrastructure, mechanical systems, and safety compliance for enhanced efficiency and sustainability."
           />
           <ServiceSlider
             title="Product Engineering Services"
             services={productServices}
             direction="right"
+            description="Transforming ideas into market-ready products through innovative mechanical design, advanced analysis, electrical engineering, prototyping, and comprehensive documentation."
           />
         </div>
       </div>

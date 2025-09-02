@@ -25,7 +25,7 @@ const services = [
     description:
       "Quickly access skilled talent and build high-performing teams. We connect you with experts to drive growth and deliver results.",
     image: staffImage,
-    href: "/services/staffing",
+    href: "/services/recruitment-resourcing",
     icon: Settings,
     metrics: { projects: "150+", satisfaction: "98%" },
   },

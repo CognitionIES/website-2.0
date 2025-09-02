@@ -73,14 +73,14 @@ const ServiceCard = ({
       className="flex-shrink-0 rounded-2xl p-6 mx-4 min-w-[280px]"
       style={{
         backgroundImage:
-          "linear-gradient(145deg, hsl(0, 0%, 100%), hsl(196, 100%, 98%))", // --gradient-card
-        boxShadow: "0 4px 20px -2px hsla(185, 100%, 34%, 0.08)", // --shadow-card
-        border: "1px solid hsla(186, 67%, 85%, 0.5)", // border-border/50
+          "linear-gradient(145deg, hsl(0, 0%, 100%), hsl(196, 100%, 98%))",
+        boxShadow: "0 4px 20px -2px hsla(185, 100%, 34%, 0.08)",
+        border: "1px solid hsla(186, 67%, 85%, 0.5)",
       }}
       whileHover={{
         scale: 1.02,
         y: -2,
-        boxShadow: "0 20px 60px -10px hsla(185, 100%, 34%, 0.25)", // --shadow-hover
+        boxShadow: "0 20px 60px -10px hsla(185, 100%, 34%, 0.25)",
       }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -91,8 +91,8 @@ const ServiceCard = ({
           <div
             className="p-3 rounded-xl"
             style={{
-              backgroundColor: "hsla(185, 100%, 34%, 0.1)", // bg-primary/10
-              color: "hsl(185, 100%, 34%)", // text-primary
+              backgroundColor: "hsla(185, 100%, 34%, 0.1)",
+              color: "hsl(185, 100%, 34%)",
             }}
           >
             {service.icon}
@@ -100,13 +100,13 @@ const ServiceCard = ({
           <div className="flex-1">
             <h4
               className="text-lg font-semibold"
-              style={{ color: "hsl(184, 31%, 36%)" }} // text-foreground
+              style={{ color: "hsl(184, 31%, 36%)" }}
             >
               {service.title}
             </h4>
             <p
               className="text-sm font-medium"
-              style={{ color: "hsla(185, 100%, 34%, 0.7)" }} // text-primary/70
+              style={{ color: "hsla(185, 100%, 34%, 0.7)" }}
             >
               {service.category}
             </p>
@@ -114,7 +114,7 @@ const ServiceCard = ({
         </div>
         <p
           className="text-sm leading-relaxed"
-          style={{ color: "hsl(184, 31%, 36%)" }} // text-muted-foreground
+          style={{ color: "hsl(184, 31%, 36%)" }}
         >
           {service.description}
         </p>
@@ -129,7 +129,7 @@ export const ServicesIntro = () => {
       className="relative py-20 overflow-hidden"
       style={{
         backgroundImage:
-          "linear-gradient(to bottom right, hsl(196, 100%, 98%), hsla(196, 100%, 98%, 0.1), hsla(185, 100%, 34%, 0.05))", // from-background via-muted/10 to-primary/5
+          "linear-gradient(to bottom right, hsl(196, 100%, 98%), hsla(196, 100%, 98%, 0.1), hsla(185, 100%, 34%, 0.05))",
       }}
     >
       {/* Layered background elements */}
@@ -137,7 +137,7 @@ export const ServicesIntro = () => {
         className="absolute inset-0 opacity-40"
         style={{
           backgroundImage:
-            "linear-gradient(135deg, hsla(0, 0%, 100%, 1.00), hsla(15, 2%, 49%, 1.00))", // --gradient-primary (fallback for bg-gradient-subtle)
+            "linear-gradient(135deg, hsla(0, 0%, 100%, 1.00), hsla(15, 2%, 49%, 1.00))",
         }}
       />
       <div className="absolute top-1/3 left-0 w-1/2 h-1/3 opacity-5 rounded-full blur-3xl" />
@@ -145,39 +145,32 @@ export const ServicesIntro = () => {
 
       <div className="relative z-10 container max-w-7xl mx-auto px-6">
         {/* Introduction Text */}
-        <div className=" mb-12">
+        <div className="mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} // Ensure animation runs only once
             transition={{ duration: 0.8 }}
-            className="max-w-7xl text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#003C46]"
+            className="max-w-7xl text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#003C46] mb-4"
           >
-            Engineering Excellence {" "}
-            <span
-              className=" font-semibold bg-gradient-to-br from-[#003C46] to-[#1C7A8A] bg-clip-text text-transparent"
-              
-            >
+            Engineering Excellence{" "}
+            <span className="font-semibold bg-gradient-to-br from-[#003C46] to-[#1C7A8A] bg-clip-text text-transparent">
               Across Industries
             </span>
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} // Ensure animation runs only once
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-7xl space-y-4"
+            className="max-w-7xl space-y-2"
           >
-            <p
-              className="text-lg"
-              style={{ color: "hsl(184, 31%, 36%)" }} // text-muted-foreground
-            >
+            <p className="text-lg" style={{ color: "hsl(184, 31%, 36%)" }}>
               From complex plant infrastructure to innovative product
               development, we deliver comprehensive engineering solutions that
               drive efficiency, safety, and sustainability.
             </p>
-            <p
-              className="text-base"
-              style={{ color: "hsl(184, 31%, 36%)" }} // text-muted-foreground
-            >
+            <p className="text-lg" style={{ color: "hsl(184, 31%, 36%)" }}>
               Our expertise spans mechanical, electrical, process, and embedded
               systems engineering, backed by cutting-edge tools and decades of
               industry experience.
@@ -220,14 +213,14 @@ export const ServicesIntro = () => {
             className="absolute left-0 top-0 bottom-0 w-24 pointer-events-none z-10"
             style={{
               backgroundImage:
-                "linear-gradient(to right, hsl(196, 100%, 98%), hsla(196, 100%, 98%, 0.8), transparent)", // from-background via-background/80 to-transparent
+                "linear-gradient(to right, hsl(196, 100%, 98%), hsla(196, 100%, 98%, 0.8), transparent)",
             }}
           />
           <div
             className="absolute right-0 top-0 bottom-0 w-24 pointer-events-none z-10"
             style={{
               backgroundImage:
-                "linear-gradient(to left, hsl(196, 100%, 98%), hsla(196, 100%, 98%, 0.8), transparent)", // from-background via-background/80 to-transparent
+                "linear-gradient(to left, hsl(196, 100%, 98%), hsla(196, 100%, 98%, 0.8), transparent)",
             }}
           />
         </div>

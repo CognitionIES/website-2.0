@@ -1,9 +1,8 @@
 "use client";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import aboutImage from "@/constants/images/hero/build-operate.png";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
+import aboutImage from "@/constants/images/hero/build-operate.png";
 
 export const AboutSection = () => {
   const ref = useRef<HTMLElement | null>(null);
@@ -23,21 +22,21 @@ export const AboutSection = () => {
         className="absolute inset-0 opacity-40"
         style={{
           backgroundImage:
-            "linear-gradient(135deg, hsl(185, 100%, 34%), hsl(185, 100%, 28%))", 
+            "linear-gradient(135deg, hsl(185, 100%, 34%), hsl(185, 100%, 28%))",
         }}
       />
       <div
         className="absolute top-0 left-1/4 w-1/3 h-full opacity-5 transform -rotate-12"
         style={{
           backgroundImage:
-            "linear-gradient(135deg, hsl(185, 100%, 28%), hsl(185, 100%, 28%))", 
+            "linear-gradient(135deg, hsl(185, 100%, 28%), hsl(185, 100%, 28%))",
         }}
       />
       <div
         className="absolute bottom-0 right-1/4 w-1/4 h-2/3 opacity-10 transform rotate-6"
         style={{
           backgroundImage:
-            "linear-gradient(135deg, hsl(185, 100%, 34%), hsl(185, 100%, 28%))", 
+            "linear-gradient(135deg, hsl(185, 100%, 34%), hsl(185, 100%, 28%))",
         }}
       /> */}
       <div className="relative z-10 container max-w-7xl mx-auto px-6">
@@ -64,7 +63,8 @@ export const AboutSection = () => {
                 style={{
                   boxShadow: "0 10px 40px -10px hsla(185, 100%, 34%, 0.15)", // --shadow-elegant
                 }}
-                fill
+                width={480} 
+                height={384} 
               />
 
               {/* Floating Stats Cards */}
@@ -85,7 +85,7 @@ export const AboutSection = () => {
                     className="text-sm"
                     style={{ color: "hsl(184, 31%, 36%)" }} // text-muted-foreground
                   >
-                    Years Experience
+                    Years Experiencd
                   </div>
                 </div>
               </div>
@@ -160,7 +160,6 @@ export const AboutSection = () => {
               </motion.div>
 
               {/* Key Metrics */}
-             
             </div>
           </motion.div>
         </div>

@@ -46,7 +46,7 @@ export default function UsefulLinks() {
   ];
 
   const services = [
-    { name: "Recruitment & Resourcing", href: "/services/staffing" },
+    { name: "Recruitment & Resourcing", href: "/services/recruitment-resourcing" },
     { name: "Build & Operate", href: "/services/build-operate" },
     { name: "SaaS Solutions", href: "/services/saas-solution/servicecpq" },
   ];
